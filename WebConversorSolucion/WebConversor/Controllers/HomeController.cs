@@ -22,6 +22,11 @@ namespace WebConversor.Controllers
         {
             return View();
         }
+        public IActionResult AcercaDe()
+        {
+            ViewBag.Descripcion = "La descripcion esta BACANA";
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
