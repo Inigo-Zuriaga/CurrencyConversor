@@ -1,21 +1,23 @@
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebConversor.Models;
+
 
 namespace WebConversor.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DbContexto _dbContexto;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,DbContexto contexto)
         {
             _logger = logger;
+            _dbContexto = contexto;
         }
 
         public IActionResult Index()
         {
-            return View();
+
+            List<Moneda> lista = _dbContexto.Monedas.ToList();
+            return View(lista);
         }
 
         public IActionResult Privacy()

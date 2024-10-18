@@ -1,11 +1,22 @@
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//1- Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DbContexto>(options =>
+{
+    options.UseSqlServer(
+        builder.Configuration["ConnectionStrings:CadenaConexion"]);
+});
+//builder.Services.AddDbContext<DbContexto>(options => {
+//    options.UseNpgsql(
+//        builder.Configuration["ConnectionStrings:CadenaConexion"]);
+//});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+//2- Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
