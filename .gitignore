@@ -360,3 +360,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WebConversorSolucion/WebConversor/Migrations/20241018154856_Migracion_Segunda.cs
+/WebConversorSolucion/WebConversor/Migrations/20241018154856_Migracion_Segunda.Designer.cs

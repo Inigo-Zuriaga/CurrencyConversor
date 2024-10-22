@@ -21,7 +21,7 @@ namespace WebConversor.Controllers
         // GET: Monedas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Monedas.ToListAsync());
+            return View(await _context.Coins.ToListAsync());
         }
 
         // GET: Monedas/Details/5
@@ -32,7 +32,7 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var moneda = await _context.Monedas
+            var moneda = await _context.Coins
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (moneda == null)
             {
@@ -53,15 +53,15 @@ namespace WebConversor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Simbolo")] Moneda moneda)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Simbolo")] Coin coin)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(moneda);
+                _context.Add(coin);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(moneda);
+            return View(coin);
         }
 
         // GET: Monedas/Edit/5
@@ -72,7 +72,7 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var moneda = await _context.Monedas.FindAsync(id);
+            var moneda = await _context.Coins.FindAsync(id);
             if (moneda == null)
             {
                 return NotFound();
@@ -85,9 +85,9 @@ namespace WebConversor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Simbolo")] Moneda moneda)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Simbolo")] Coin coin)
         {
-            if (id != moneda.Id)
+            if (id != coin.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace WebConversor.Controllers
             {
                 try
                 {
-                    _context.Update(moneda);
+                    _context.Update(coin);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MonedaExists(moneda.Id))
+                    if (!MonedaExists(coin.Id))
                     {
                         return NotFound();
                     }
@@ -112,7 +112,7 @@ namespace WebConversor.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(moneda);
+            return View(coin);
         }
 
         // GET: Monedas/Delete/5
@@ -123,7 +123,7 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var moneda = await _context.Monedas
+            var moneda = await _context.Coins
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (moneda == null)
             {
@@ -138,10 +138,10 @@ namespace WebConversor.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var moneda = await _context.Monedas.FindAsync(id);
+            var moneda = await _context.Coins.FindAsync(id);
             if (moneda != null)
             {
-                _context.Monedas.Remove(moneda);
+                _context.Coins.Remove(moneda);
             }
 
             await _context.SaveChangesAsync();
@@ -150,7 +150,7 @@ namespace WebConversor.Controllers
 
         private bool MonedaExists(int id)
         {
-            return _context.Monedas.Any(e => e.Id == id);
+            return _context.Coins.Any(e => e.Id == id);
         }
     }
 }
