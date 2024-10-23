@@ -1,10 +1,10 @@
 ﻿namespace WebConversor.Models
 {
-    public class Moneda
+    public class Coin
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
+        public string Name { get; set; }
 
-        public string Simbolo { get; set; }
+        public string Symbol { get; set; }
     }
 }

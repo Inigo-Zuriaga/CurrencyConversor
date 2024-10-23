@@ -1,4 +1,4 @@
-﻿@model List<Moneda>
+﻿@model List<Coin>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
+                        <th>Name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
                     {
                         <tr>
                             <td>@moneda.Id</td>
-                            <td>@moneda.Nombre</td>
+                            <td>@moneda.Name</td>
                         </tr>
                     }
                 </tbody>

@@ -12,13 +12,19 @@ namespace WebConversor.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Moneda>().HasData(
-                new Moneda { Id = 1, Nombre = "Dólar Estadounidense", Simbolo = "USD" },
-                new Moneda { Id = 2, Nombre = "Euro", Simbolo = "EUR" },
-                new Moneda { Id = 3, Nombre = "Yen Japonés", Simbolo = "JPY" }
+            modelBuilder.Entity<Coin>().HasData(
+                new Coin { Id = 1, Name = "Dólar Estadounidense", Symbol = "USD" },
+                new Coin { Id = 2, Name = "Euro", Symbol = "EUR" },
+                new Coin { Id = 3, Name = "Yen Japonés", Symbol = "JPY" }
             );
+
         }
 
-        public DbSet<Moneda> Monedas { get; set; }
+    
+
+        /*Declaramos las clases*/
+        public DbSet<Coin> Coins { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<History> Histories { get; set; }
     }
 }

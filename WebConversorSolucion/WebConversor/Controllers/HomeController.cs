@@ -16,7 +16,7 @@ namespace WebConversor.Controllers
         public IActionResult Index()
         {
 
-            List<Moneda> lista = _dbContexto.Monedas.ToList();
+            List<Coin> lista = _dbContexto.Coins.ToList();
             return View(lista);
         }
 

@@ -9,22 +9,22 @@ using WebConversor.Models;
 
 namespace WebConversor.Controllers
 {
-    public class MonedasController : Controller
+    public class CoinsController : Controller
     {
         private readonly DbContexto _context;
 
-        public MonedasController(DbContexto context)
+        public CoinsController(DbContexto context)
         {
             _context = context;
         }
 
-        // GET: Monedas
+        // GET: Coins
         public async Task<IActionResult> Index()
         {
             return View(await _context.Coins.ToListAsync());
         }
 
-        // GET: Monedas/Details/5
+        // GET: Coins/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,28 +32,28 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var moneda = await _context.Coins
+            var coin = await _context.Coins
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (moneda == null)
+            if (coin == null)
             {
                 return NotFound();
             }
 
-            return View(moneda);
+            return View(coin);
         }
 
-        // GET: Monedas/Create
+        // GET: Coins/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Monedas/Create
+        // POST: Coins/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Simbolo")] Coin coin)
+        public async Task<IActionResult> Create([Bind("Id,Name,Symbol")] Coin coin)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace WebConversor.Controllers
             return View(coin);
         }
 
-        // GET: Monedas/Edit/5
+        // GET: Coins/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,20 +72,20 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var moneda = await _context.Coins.FindAsync(id);
-            if (moneda == null)
+            var coin = await _context.Coins.FindAsync(id);
+            if (coin == null)
             {
                 return NotFound();
             }
-            return View(moneda);
+            return View(coin);
         }
 
-        // POST: Monedas/Edit/5
+        // POST: Coins/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Simbolo")] Coin coin)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Symbol")] Coin coin)
         {
             if (id != coin.Id)
             {
@@ -101,7 +101,7 @@ namespace WebConversor.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MonedaExists(coin.Id))
+                    if (!CoinExists(coin.Id))
                     {
                         return NotFound();
                     }
@@ -115,7 +115,7 @@ namespace WebConversor.Controllers
             return View(coin);
         }
 
-        // GET: Monedas/Delete/5
+        // GET: Coins/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,32 +123,32 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var moneda = await _context.Coins
+            var coin = await _context.Coins
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (moneda == null)
+            if (coin == null)
             {
                 return NotFound();
             }
 
-            return View(moneda);
+            return View(coin);
         }
 
-        // POST: Monedas/Delete/5
+        // POST: Coins/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var moneda = await _context.Coins.FindAsync(id);
-            if (moneda != null)
+            var coin = await _context.Coins.FindAsync(id);
+            if (coin != null)
             {
-                _context.Coins.Remove(moneda);
+                _context.Coins.Remove(coin);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MonedaExists(int id)
+        private bool CoinExists(int id)
         {
             return _context.Coins.Any(e => e.Id == id);
         }
