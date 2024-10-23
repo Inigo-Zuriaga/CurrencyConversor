@@ -9,22 +9,23 @@ using WebConversor.Models;
 
 namespace WebConversor.Controllers
 {
-    public class CoinsController : Controller
+    public class HistoriesController : Controller
     {
         private readonly DbContexto _context;
 
-        public CoinsController(DbContexto context)
+        public HistoriesController(DbContexto context)
         {
             _context = context;
         }
 
-        // GET: Coins
+        // GET: Histories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Coins.ToListAsync());
+            var dbContexto = _context.Histories.Include(h => h.User);
+            return View(await dbContexto.ToListAsync());
         }
 
-        // GET: Coins/Details/5
+        // GET: Histories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,42 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Coins
+            var history = await _context.Histories
+                .Include(h => h.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (coin == null)
+            if (history == null)
             {
                 return NotFound();
             }
 
-            return View(coin);
+            return View(history);
         }
 
-        // GET: Coins/Create
+        // GET: Histories/Create
         public IActionResult Create()
         {
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
-        // POST: Coins/Create
+        // POST: Histories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ShortName,Symbol")] Coin coin)
+        public async Task<IActionResult> Create([Bind("Id,UserId,FromCoin,ToCoin,Result,Date")] History history)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(coin);
+                _context.Add(history);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(coin);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", history.UserId);
+            return View(history);
         }
 
-        // GET: Coins/Edit/5
+        // GET: Histories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +76,23 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Coins.FindAsync(id);
-            if (coin == null)
+            var history = await _context.Histories.FindAsync(id);
+            if (history == null)
             {
                 return NotFound();
             }
-            return View(coin);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", history.UserId);
+            return View(history);
         }
 
-        // POST: Coins/Edit/5
+        // POST: Histories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ShortName,Symbol")] Coin coin)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,FromCoin,ToCoin,Result,Date")] History history)
         {
-            if (id != coin.Id)
+            if (id != history.Id)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace WebConversor.Controllers
             {
                 try
                 {
-                    _context.Update(coin);
+                    _context.Update(history);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CoinExists(coin.Id))
+                    if (!HistoryExists(history.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +117,11 @@ namespace WebConversor.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(coin);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", history.UserId);
+            return View(history);
         }
 
-        // GET: Coins/Delete/5
+        // GET: Histories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,34 +129,35 @@ namespace WebConversor.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Coins
+            var history = await _context.Histories
+                .Include(h => h.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (coin == null)
+            if (history == null)
             {
                 return NotFound();
             }
 
-            return View(coin);
+            return View(history);
         }
 
-        // POST: Coins/Delete/5
+        // POST: Histories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var coin = await _context.Coins.FindAsync(id);
-            if (coin != null)
+            var history = await _context.Histories.FindAsync(id);
+            if (history != null)
             {
-                _context.Coins.Remove(coin);
+                _context.Histories.Remove(history);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CoinExists(int id)
+        private bool HistoryExists(int id)
         {
-            return _context.Coins.Any(e => e.Id == id);
+            return _context.Histories.Any(e => e.Id == id);
         }
     }
 }
