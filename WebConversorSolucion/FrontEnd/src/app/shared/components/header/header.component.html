@@ -1,3 +1,38 @@
-<div class="Container-Header">
-  <h1>Esta es la cabecera !!!!</h1>
-</div>
+    <!-- Navbar -->
+    <nav class="bg-blue-600 mx-auto my-4 p-3 rounded-3xl max-w-5xl">
+      <div class="container mx-auto flex items-center justify-between px-4">
+          <!-- Logo y Nombre -->
+          <div class="flex items-center space-x-2">
+              <div class="bg-gray-300 rounded-full p-2">
+                  <span class="text-xl font-bold text-blue-600">🌐</span>
+              </div>
+              <span class="text-white text-xl font-semibold">CONVERSOR</span>
+          </div>
+          
+          <!-- Links (Desktop) -->
+          <div class="hidden md:flex items-center space-x-6">
+              <a href="#" class="text-white hover:text-gray-200">Home</a>
+              <a href="#" class="text-white hover:text-gray-200">Currency conversor</a>
+              <a href="#" class="text-white hover:text-gray-200">About</a>
+              <a href="#" class="text-white hover:text-gray-200">Algo mas?</a>
+          </div>
+          
+          <!-- Botón de login -->
+          <button class="bg-gray-400 hover:bg-gray-500 rounded-full h-8 w-8 flex items-center justify-center">
+              <span class="text-white text-sm">Login</span>
+          </button>
+
+          <!-- Menú móvil -->
+          <div class="md:hidden">
+              <button id="menuToggle" class="text-white">☰</button>
+          </div>
+      </div>
+
+      <!-- Opciones de Menú Móvil -->
+      <div id="mobileMenu" class="hidden md:hidden mt-2 px-4">
+          <a href="#" class="block text-white py-2 hover:text-gray-200">Home</a>
+          <a href="#" class="block text-white py-2 hover:text-gray-200">Currency conversor</a>
+          <a href="#" class="block text-white py-2 hover:text-gray-200">About</a>
+          <a href="#" class="block text-white py-2 hover:text-gray-200">Algo mas?</a>
+      </div>
+  </nav>
