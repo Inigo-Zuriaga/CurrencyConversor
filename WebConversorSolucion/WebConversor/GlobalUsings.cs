@@ -2,3 +2,11 @@
 global using Microsoft.AspNetCore.Mvc;
 global using System.Diagnostics;
 global using WebConversor.Models;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global  using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using Microsoft.EntityFrameworkCore;
+global using WebConversor.Models;
