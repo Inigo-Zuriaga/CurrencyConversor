@@ -1,4 +1,4 @@
-using Npgsql.EntityFrameworkCore.PostgreSQL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //1- Add services to the container.
