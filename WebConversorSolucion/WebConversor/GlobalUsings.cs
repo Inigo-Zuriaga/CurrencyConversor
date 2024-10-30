@@ -11,3 +11,5 @@ global using Microsoft.AspNetCore.Mvc.Rendering;
 global using Microsoft.EntityFrameworkCore;
 global using WebConversor.Models;
 global using Npgsql.EntityFrameworkCore.PostgreSQL;
+global using WebConversor.Services.Interfaces;
+global using WebConversor.Services;

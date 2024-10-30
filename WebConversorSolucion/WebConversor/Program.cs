@@ -3,7 +3,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //1- Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient<IApiService, ApiService>();
+// builder.Services.AddSingleton<IApiService, ApiService>();
 ///PRUEBA******************
 builder.Services.AddCors(options =>
 {
@@ -26,6 +27,8 @@ builder.Services.AddDbContext<DbContexto>(options =>
 });
 
 var app = builder.Build();
+
+
 
 //2- Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

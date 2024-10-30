@@ -1,0 +1,16 @@
+@model Dictionary<string, object>
+
+<h1>Detalles del Pokémon</h1>
+
+@if (Model != null)
+{
+<p>Nombre: @Model["name"]</p>
+<p>Altura: @Model["height"]</p>
+<p>Peso: @Model["weight"]</p>
+
+<!-- Si deseas acceder a otros campos, puedes hacerlo aquí -->
+}
+else
+{
+<p>No se pudo obtener los detalles del Pokémon.</p>
+}
