@@ -7,6 +7,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './pages/shared/header/header.component';
 import { FooterComponent } from './pages/shared/footer/footer.component';
+import { ConversorComponent } from './pages/conversor/conversor.component';
+import {HttpClientModule} from '@angular/common/http';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -19,10 +21,12 @@ import { FooterComponent } from './pages/shared/footer/footer.component';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
+    ConversorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
