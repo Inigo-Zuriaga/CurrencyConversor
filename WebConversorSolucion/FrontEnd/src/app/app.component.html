@@ -3,8 +3,13 @@
 los app-header, app-footer son los nombres/etiquetas de los componentes
 
 El router-outlet es como el @renderBody() de .net (cargara cada componente segun la ruta)-->
-
+<nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/conversor">Conversor</a>
+    <a routerLink="/historia">Historia</a>
+    <a routerLink="/about">About</a>
+    <a routerLink="/login">Login</a>
+  </nav>
 <header><app-header></app-header></header>
 <main><router-outlet></router-outlet></main>
 <footer><app-footer></app-footer></footer>
-

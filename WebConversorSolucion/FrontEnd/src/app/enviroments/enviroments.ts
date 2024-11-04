@@ -1,0 +1,1 @@
+export const environment = {  production: false,  apiKey: 'e8232f3beca6ca12993140cd',  apiUrl: 'https://v6.exchangerate-api.com/v6/',};
