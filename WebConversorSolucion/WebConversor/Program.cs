@@ -1,53 +1,23 @@
-
 var builder = WebApplication.CreateBuilder(args);
 
-//1- Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient<IApiService, ApiService>();
-// builder.Services.AddSingleton<IApiService, ApiService>();
-///PRUEBA******************
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowOrigin", builder =>
-    {
-        builder.WithOrigins("http://localhost:4200") // Cambia esto a la URL de tu frontend
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
-});
+// Add services to the container.
 
-
-///******************
-
-/*Creamos el contexto de la base de datos*/
-builder.Services.AddDbContext<DbContexto>(options =>
-{
-    options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:CadenaConexion"]);
-});
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-
-//2- Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
 app.UseAuthorization();
-//Comentario
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.UseCors("AllowOrigin");
+app.MapControllers();
+
 app.Run();
-
-
