@@ -22,6 +22,11 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ConversorComponent,
+<<<<<<< HEAD
+=======
+    AboutComponent,
+    HistoryComponent,
+>>>>>>> parent of 7141ebd (merge. Paginas y enrutamiento. (conversor esta comentado para que no funcione))
   ],
   imports: [
     BrowserModule,
