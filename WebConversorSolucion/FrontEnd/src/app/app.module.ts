@@ -9,6 +9,8 @@ import { HeaderComponent } from './pages/shared/header/header.component';
 import { FooterComponent } from './pages/shared/footer/footer.component';
 import { ConversorComponent } from './pages/conversor/conversor.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AboutComponent } from './pages/about/about.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -22,6 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ConversorComponent,
+    AboutComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
