@@ -1,6 +1,0 @@
-@WebConversor_HostAddress = http://localhost:5076
-
-GET {{WebConversor_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

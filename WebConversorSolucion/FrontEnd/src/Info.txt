@@ -1,8 +1,0 @@
-PARA CREAR COMPONENTES TENDREIS QUE ESTAR EN LA CARPETA FrontEnd
-
-ng g component nombreComponente --standalone false
-ng g component DireccionQueQuerais/nombreComponente --standalone false
-
-
-CREAR SERVICIOS (Los servicios usan la misma logica que en .net (indicamos funciones que usaremos en un componente))
-ng g service nombreServicio
