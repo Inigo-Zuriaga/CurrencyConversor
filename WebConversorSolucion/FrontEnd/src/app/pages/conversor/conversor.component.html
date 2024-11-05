@@ -1,19 +1,89 @@
-<div class="container-exchange flex flex-col">
-  <div class="mb-4 flex items-center">
-    <input [(ngModel)]="fromCurrency" placeholder="Moneda Base" class="border rounded p-2 mr-2">
-    <input [(ngModel)]="amount" placeholder="Moneda Base" class="border rounded p-2 mr-2">
-    <input [(ngModel)]="toCurrency" placeholder="Moneda Cambio" class="border rounded p-2 mr-2">
-    <button (click)="getExchangeRate()" class="bg-blue-500 text-white p-2 rounded">Hacer Conversión</button>
+<div class="flex space-x-4 p-4">
+  <!-- Input de cantidad y selector de moneda origen -->
+  <div class="relative w-64 flex mr-10">
+    <input
+      type="number"
+      [(ngModel)]="amount"
+      class="flex-grow px-4 py-2 rounded-l-md text-black bg-white outline-none border-0 shadow-md"
+      placeholder="0.00"
+      (input)="onAmountChange()"
+    />
+    <button
+      (click)="toggleDropdown('from')"
+      class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-r-md focus:outline-none"
+    >
+      <span class="mr-1">{{ fromCurrencySymbol }}</span>
+      <span class="text-sm">{{ fromCurrency }}</span>
+      <span class="ml-2">&#9662;</span>
+    </button>
+    
+    <!-- Menú desplegable para la moneda origen -->
+    <div
+      *ngIf="dropdownOpenFrom"
+      class="absolute left-0 top-full mt-1 w-32 bg-blue-900 text-white rounded-md shadow-lg z-10"
+    >
+      <ul class="py-2">
+        <li
+          *ngFor="let currency of currencies"
+          (click)="selectCurrency(currency, 'from')"
+          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
+        >
+          <span class="mr-2">{{ currency.symbol }}</span>
+          <span>{{ currency.code }}</span>
+          <span *ngIf="currency.code === fromCurrency" class="ml-auto">&#10003;</span>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <!-- Div informativo que aparece debajo del formulario -->
+  <!-- Input y selector de moneda destino -->
+  <div class="relative w-64 flex">
+    <button
+      (click)="toggleDropdown('to')"
+      class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-l-md focus:outline-none"
+    >
+      <span class="mr-1">{{ toCurrencySymbol }}</span>
+      <span class="text-sm">{{ toCurrency }}</span>
+      <span class="ml-2">&#9662;</span>
+    </button>
+    <input
+      type="text"
+      [value]="dataExchange.conversion_result"
+      class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 shadow-md"
+      placeholder="Resultado"
+      readonly
+    />
+
+    <!-- Menú desplegable para la moneda destino -->
+    <div
+      *ngIf="dropdownOpenTo"
+      class="absolute left-0 top-full mt-1 w-32 bg-blue-900 text-white rounded-md shadow-lg z-10"
+    >
+      <ul class="py-2">
+        <li
+          *ngFor="let currency of currencies"
+          (click)="selectCurrency(currency, 'to')"
+          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
+        >
+          <span class="mr-2">{{ currency.symbol }}</span>
+          <span>{{ currency.code }}</span>
+          <span *ngIf="currency.code === toCurrency" class="ml-auto">&#10003;</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="mt-10">
+  <button (click)="getExchangeRate()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+    Convertir
+  </button>
+</div>
+  <!-- Div informativo que aparece debajo del formulario
   <div *ngIf="exchangeRate" class="bg-gray-100 p-4 rounded shadow mt-4">
     <p class="text-lg font-semibold">RESULTADO: <span class="font-normal">{{dataExchange.result}}</span></p>
     <p class="text-lg font-semibold">MONEDA BASE: <span class="font-normal">{{dataExchange.base_code}}</span></p>
     <p class="text-lg font-semibold">MONEDA NUEVA: <span class="font-normal">{{dataExchange.target_code}}</span></p>
     <p class="text-lg font-semibold">CAMBIO: <span class="font-normal">{{dataExchange.conversion_rate}}</span></p>
     <p class="text-lg font-semibold">Cantidad Obtenida: <span class="font-normal">{{dataExchange.conversion_result}}</span></p>
-  </div>
-</div>
-
-<app-currency-selector></app-currency-selector>
+  </div> -->

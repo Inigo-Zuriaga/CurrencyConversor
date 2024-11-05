@@ -1,13 +1,11 @@
-<div class="relative w-64 flex">
-    <!-- Input de número -->
+<div class="relative w-64 flex mr-10">
     <input
       type="number"
       [(ngModel)]="amount"
       class="flex-grow px-4 py-2 rounded-l-md text-black bg-white outline-none border-0 shadow-md"
       placeholder="0.00"
+      (input)="onAmountChange()"
     />
-  
-    <!-- Botón del selector de moneda -->
     <button
       (click)="toggleDropdown()"
       class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-r-md focus:outline-none"
@@ -17,7 +15,6 @@
       <span class="ml-2">&#9662;</span>
     </button>
   
-    <!-- Menú desplegable -->
     <div
       *ngIf="dropdownOpen"
       class="absolute top-full right-0 mt-1 w-32 bg-blue-900 text-white rounded-md shadow-lg z-10"

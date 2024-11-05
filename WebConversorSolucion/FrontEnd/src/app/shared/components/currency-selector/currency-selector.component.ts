@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 interface Currency {
   symbol: string;
@@ -11,6 +11,9 @@ interface Currency {
   styleUrls: ['./currency-selector.component.css'],
 })
 export class CurrencySelectorComponent {
+  @Output() currencyChange = new EventEmitter<string>();
+  @Output() amountChange = new EventEmitter<number>();
+
   amount: number = 0;
   dropdownOpen: boolean = false;
   selectedCurrency: Currency = { symbol: '$', code: 'USD' };
@@ -30,5 +33,10 @@ export class CurrencySelectorComponent {
   selectCurrency(currency: Currency) {
     this.selectedCurrency = currency;
     this.dropdownOpen = false;
+    this.currencyChange.emit(this.selectedCurrency.code); // Emitimos el código de la moneda seleccionada
+  }
+
+  onAmountChange() {
+    this.amountChange.emit(this.amount); // Emitimos el valor del input
   }
 }

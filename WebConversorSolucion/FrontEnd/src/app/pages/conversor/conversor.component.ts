@@ -1,41 +1,68 @@
-import { Component,OnInit } from '@angular/core';
-import {ExchangeService} from '../../services/exchange.service';
-import {IExchange} from '../../Interfaces/iexchange';
+import { Component } from '@angular/core';
+import { ExchangeService } from '../../services/exchange.service';
+import { IExchange } from '../../Interfaces/iexchange';
 
 @Component({
   selector: 'app-conversor',
   templateUrl: './conversor.component.html',
-  styleUrl: './conversor.component.css'
+  styleUrls: ['./conversor.component.css']
 })
 export class ConversorComponent {
-
-  fromCurrency="";
-  toCurrency="";
-  amount=0;
-  exchangeRate: any;
-
-  dataExchange: IExchange={
+  fromCurrency = "USD"; // Moneda por defecto
+  toCurrency = "EUR"; // Moneda por defecto
+  amount = 0;
+  dropdownOpenFrom = false;
+  dropdownOpenTo = false;
+  currencies = [
+    { code: 'USD', symbol: '$' },
+    { code: 'EUR', symbol: '€' },
+    { code: 'GBP', symbol: '£' },
+    // Agrega más monedas según sea necesario
+  ];
+  dataExchange: IExchange = {
     result: "",
     base_code: "",
     target_code: "",
     conversion_rate: 0,
     conversion_result: 0
+  };
+
+  constructor(private exchangeService: ExchangeService) {}
+
+  toggleDropdown(type: string) {
+    if (type === 'from') {
+      this.dropdownOpenFrom = !this.dropdownOpenFrom;
+      this.dropdownOpenTo = false; // Cerrar el otro dropdown si está abierto
+    } else {
+      this.dropdownOpenTo = !this.dropdownOpenTo;
+      this.dropdownOpenFrom = false; // Cerrar el otro dropdown si está abierto
+    }
   }
 
-  data: any;
+  selectCurrency(currency: any, type: string) {
+    if (type === 'from') {
+      this.fromCurrency = currency.code;
+      this.dropdownOpenFrom = false;
+    } else {
+      this.toCurrency = currency.code;
+      this.dropdownOpenTo = false;
+    }
+  }
 
-  constructor(private exchangeService: ExchangeService) {
+  get fromCurrencySymbol() {
+    const currency = this.currencies.find(c => c.code === this.fromCurrency);
+    return currency ? currency.symbol : '';
+  }
+
+  get toCurrencySymbol() {
+    const currency = this.currencies.find(c => c.code === this.toCurrency);
+    return currency ? currency.symbol : '';
   }
 
   getExchangeRate() {
-    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency,this.amount).subscribe(
+    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency, this.amount).subscribe(
       data => {
-        this.exchangeRate = data;
-        this.dataExchange.result = data.result;
-        this.dataExchange.base_code = data.base_code;
-        this.dataExchange.target_code = data.target_code;
-        this.dataExchange.conversion_rate = data.conversion_rate;
-        this.dataExchange.conversion_result = data.conversion_result;
+        this.dataExchange = data; // Asume que data tiene la estructura adecuada
       },
       error => {
         console.error('Error fetching exchange rate', error);
@@ -43,27 +70,7 @@ export class ConversorComponent {
     );
   }
 
-  // ngOnInit() {
-  //   this.exchangeService.getExchangeRate("a","a");
-  //
-  //   this.exchangeService.pruebaConversor().subscribe(
-  //     (response) => {
-  //       this.data = response;
-  //     },
-  //     (error) => {
-  //       console.error('Error al obtener datos:', error);
-  //     }
-  // };
-//   ngOnInit() {
-//     this.exchangeService.pruebaConversor().subscribe(
-//       (response: any) => {
-//         this.data = response;
-//       },
-//       (error: any) => {
-//         console.error('Error al obtener datos:', error);
-//       }
-//     );
-//
-// }
+  onAmountChange() {
+    // Aquí puedes manejar los cambios en el input de cantidad si es necesario
+  }
 }
-
