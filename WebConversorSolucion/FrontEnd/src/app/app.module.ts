@@ -9,6 +9,7 @@ import { HeaderComponent } from './pages/shared/header/header.component';
 import { FooterComponent } from './pages/shared/footer/footer.component';
 import { ConversorComponent } from './pages/conversor/conversor.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -22,16 +23,12 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ConversorComponent,
-<<<<<<< HEAD
-=======
-    AboutComponent,
-    HistoryComponent,
->>>>>>> parent of 7141ebd (merge. Paginas y enrutamiento. (conversor esta comentado para que no funcione))
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,15 @@
-<div *ngIf="data">
-  <h1>Datos de Exchange</h1>
-  <pre>{{ data | json }}</pre>
+<div class="container-exchange flex flex-col">
+  <div class="mb-4 flex items-center">
+    <input [(ngModel)]="fromCurrency" placeholder="Moneda Base" class="border rounded p-2 mr-2">
+    <input [(ngModel)]="toCurrency" placeholder="Moneda Cambio" class="border rounded p-2 mr-2">
+    <button (click)="getExchangeRate()" class="bg-blue-500 text-white p-2 rounded">Hacer Conversión</button>
+  </div>
+
+  <!-- Div informativo que aparece debajo del formulario -->
+  <div *ngIf="exchangeRate" class="bg-gray-100 p-4 rounded shadow mt-4">
+    <p class="text-lg font-semibold">RESULTADO: <span class="font-normal">{{dataExchange.result}}</span></p>
+    <p class="text-lg font-semibold">MONEDA BASE: <span class="font-normal">{{dataExchange.base_code}}</span></p>
+    <p class="text-lg font-semibold">MONEDA NUEVA: <span class="font-normal">{{dataExchange.target_code}}</span></p>
+    <p class="text-lg font-semibold">CAMBIO: <span class="font-normal">{{dataExchange.conversion_rate}}</span></p>
+  </div>
 </div>

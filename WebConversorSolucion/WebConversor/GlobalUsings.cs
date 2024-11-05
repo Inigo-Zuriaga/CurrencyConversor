@@ -16,3 +16,4 @@ global using Microsoft.AspNetCore.Mvc.Rendering;
 global using WebConversor.Models;
 global using WebConversor.Services.Interfaces;
 global using WebConversor.Services;
+global using DotNetEnv;

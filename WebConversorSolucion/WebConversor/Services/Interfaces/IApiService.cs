@@ -4,7 +4,7 @@
     {
 
         // Task<Dictionary<string, object>>GetDataFromApiAsync();
-        Task<Dictionary<string, object>> GetDataFromApiAsync();
+        Task<Dictionary<string, object>> GetDataFromApiAsync(string FromCurrency, string ToCurrency);
 
     }
 }

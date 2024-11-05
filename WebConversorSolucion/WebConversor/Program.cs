@@ -42,7 +42,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
+Env.Load();
 app.MapControllers();
 app.UseCors("AllowOrigin");
 app.Run();
