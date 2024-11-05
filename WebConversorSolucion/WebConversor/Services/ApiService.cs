@@ -15,10 +15,10 @@ namespace WebConversor.Services
             _apiKey = Environment.GetEnvironmentVariable("API_KEY");
         }
         
-        public async Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency)
+        public async Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency,int amount)
         {
             // var response = await _httpClient.GetAsync("https://pokeapi.co/api/v2/pokemon/ditto");
-            var response = await _httpClient.GetAsync($"https://v6.exchangerate-api.com/v6/{_apiKey}/pair/{fromCurrency}/{toCurrency}");
+            var response = await _httpClient.GetAsync($"https://v6.exchangerate-api.com/v6/{_apiKey}/pair/{fromCurrency}/{toCurrency}/{amount}");
 
             response.EnsureSuccessStatusCode(); // Lanza una excepción si la solicitud falla
 

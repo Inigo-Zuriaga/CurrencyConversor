@@ -1,8 +1,10 @@
 <div class="container-exchange flex flex-col">
-  <div class="mb-4 flex items-center">
-    <input [(ngModel)]="fromCurrency" placeholder="Moneda Base" class="border rounded p-2 mr-2">
-    <input [(ngModel)]="toCurrency" placeholder="Moneda Cambio" class="border rounded p-2 mr-2">
-    <button (click)="getExchangeRate()" class="bg-blue-500 text-white p-2 rounded">Hacer Conversión</button>
+  <div class="mb-7 flex items-center">
+    <input [(ngModel)]="fromCurrency" placeholder="Moneda Base" class="border rounded p-2 mr-6">
+    <input [(ngModel)]="amount" placeholder="Moneda Base" class="border rounded p-2 mr-6">
+    <button (click)="getExchange()" class="bg-blue-500 text-white p-2 rounded mr-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-horizontal"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></svg></button>
+    <input [(ngModel)]="toCurrency" placeholder="Moneda Cambio" class="border rounded p-2 mr-6">
+
   </div>
 
   <!-- Div informativo que aparece debajo del formulario -->
@@ -11,5 +13,8 @@
     <p class="text-lg font-semibold">MONEDA BASE: <span class="font-normal">{{dataExchange.base_code}}</span></p>
     <p class="text-lg font-semibold">MONEDA NUEVA: <span class="font-normal">{{dataExchange.target_code}}</span></p>
     <p class="text-lg font-semibold">CAMBIO: <span class="font-normal">{{dataExchange.conversion_rate}}</span></p>
+    <p class="text-lg font-semibold">Cantidad Obtenida: <span class="font-normal">{{dataExchange.conversion_result}}</span></p>
   </div>
 </div>
+
+<app-currency-selector></app-currency-selector>

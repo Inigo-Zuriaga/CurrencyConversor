@@ -20,7 +20,7 @@ namespace WebConversor.Controllers
         {
             try
             {
-                var data = await _apiService.GetDataFromApiAsync(request.FromCurrency, request.ToCurrency);
+                var data = await _apiService.GetDataFromApiAsync(request.FromCurrency, request.ToCurrency, request.Amount);
                 return Ok(data);
             }
             catch (Exception e)

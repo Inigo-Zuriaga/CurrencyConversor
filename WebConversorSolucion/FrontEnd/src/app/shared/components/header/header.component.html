@@ -1,38 +1,29 @@
-    <!-- Navbar -->
-    <nav class="bg-blue-600 mx-auto my-4 p-3 rounded-3xl max-w-5xl">
-      <div class="container mx-auto flex items-center justify-between px-4">
-          <!-- Logo y Nombre -->
-          <div class="flex items-center space-x-2">
-              <div class="bg-gray-300 rounded-full p-2">
-                  <span class="text-xl font-bold text-blue-600">🌐</span>
-              </div>
-              <span class="text-white text-xl font-semibold">CONVERSOR</span>
-          </div>
-          
-          <!-- Links (Desktop) -->
-          <div class="hidden md:flex items-center space-x-6">
-              <a href="#" class="text-white hover:text-gray-200">Home</a>
-              <a href="#" class="text-white hover:text-gray-200">Currency conversor</a>
-              <a href="#" class="text-white hover:text-gray-200">About</a>
-              <a href="#" class="text-white hover:text-gray-200">Algo mas?</a>
-          </div>
-          
-          <!-- Botón de login -->
-          <button class="bg-gray-400 hover:bg-gray-500 rounded-full h-8 w-8 flex items-center justify-center">
-              <span class="text-white text-sm">Login</span>
-          </button>
 
-          <!-- Menú móvil -->
-          <div class="md:hidden">
-              <button id="menuToggle" class="text-white">☰</button>
-          </div>
-      </div>
+<div class="container mx-auto px-4 py-4 flex justify-center items-center">
+    <!-- Logo -->
+    <a href="#" class="text-2xl font-bold text-blue-600 mr-8">MyLogo</a>
 
-      <!-- Opciones de Menú Móvil -->
-      <div id="mobileMenu" class="hidden md:hidden mt-2 px-4">
-          <a href="#" class="block text-white py-2 hover:text-gray-200">Home</a>
-          <a href="#" class="block text-white py-2 hover:text-gray-200">Currency conversor</a>
-          <a href="#" class="block text-white py-2 hover:text-gray-200">About</a>
-          <a href="#" class="block text-white py-2 hover:text-gray-200">Algo mas?</a>
-      </div>
-  </nav>
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex space-x-7">
+        <a routerLink="/conversor" class="text-white hover:text-blue-600">Convertir</a>
+        <a routerLink="/about" class="text-white hover:text-blue-600">About</a>
+        <a routerLink="/services" class="text-white hover:text-blue-600">Services</a>
+        <a routerLink="/login" class="text-white hover:text-blue-600">Login</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button (click)="toggleMenu()" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
+        <!-- Icono de hamburguesa -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- Mobile Navigation Menu -->
+<div *ngIf="isMenuOpen" class="md:hidden bg-gray-100">
+    <a routerLink="/conversor" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">Convertir</a>
+    <a routerLink="/about" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">About</a>
+    <a routerLink="/services" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">Services</a>
+    <a routerLink="/login" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">Login</a>
+</div>

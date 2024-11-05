@@ -11,28 +11,31 @@ export class ConversorComponent {
 
   fromCurrency="";
   toCurrency="";
+  amount=0;
   exchangeRate: any;
 
   dataExchange: IExchange={
     result: "",
     base_code: "",
     target_code: "",
-    conversion_rate: 0
+    conversion_rate: 0,
+    conversion_result: 0
   }
+  //En el constructor inyectamos los servicios que vayamos a usar.
+  constructor(private exchangeService: ExchangeService) {}
 
-  data: any;
 
-  constructor(private exchangeService: ExchangeService) {
-  }
-
-  getExchangeRate() {
-    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency).subscribe(
+  //Metodo el cual se encarga de hacer una llamada a la api mediante el metodo del servicio ExchangeService.
+  //Asiganmos los datos recibidos a nuestra variable dataExchange.
+  getExchange() {
+    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency,this.amount).subscribe(
       data => {
         this.exchangeRate = data;
         this.dataExchange.result = data.result;
         this.dataExchange.base_code = data.base_code;
         this.dataExchange.target_code = data.target_code;
         this.dataExchange.conversion_rate = data.conversion_rate;
+        this.dataExchange.conversion_result = data.conversion_result;
       },
       error => {
         console.error('Error fetching exchange rate', error);
