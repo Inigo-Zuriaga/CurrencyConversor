@@ -1,11 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-
 builder.Services.AddHttpClient<IApiService, ApiService>();
 
-///PRUEBA COMUNICACION FRONT******************
+// Configuración de CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin", builder =>
@@ -15,34 +13,34 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
-///******************
-
-
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configuración de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
-/*Creamos el contexto de la base de datos*/
+// Configuración de base de datos
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:CadenaConexion"]);
 });
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuración del pipeline de solicitudes HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// Aplica la política de CORS antes de autorización y controladores
+app.UseCors("AllowOrigin");
+
 app.UseAuthorization();
+
 Env.Load();
 app.MapControllers();
-app.UseCors("AllowOrigin");
 app.Run();
