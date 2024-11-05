@@ -11,6 +11,7 @@ import { ConversorComponent } from './pages/conversor/conversor.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
+import { CurrencySelectorComponent } from './shared/components/currency-selector/currency-selector.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -25,6 +26,7 @@ import { PruebaComponent } from './prueba/prueba.component';
     FooterComponent,
     ConversorComponent,
     PruebaComponent,
+    CurrencySelectorComponent,
   ],
   imports: [
     BrowserModule,
