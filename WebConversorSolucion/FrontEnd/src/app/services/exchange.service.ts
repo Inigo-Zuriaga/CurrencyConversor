@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ExchangeService {
 
 
-  private apiUrl = 'http://localhost:5076/api/api';
+  private apiUrl = 'http://localhost:25850/api/api';
   constructor(private http: HttpClient) {}
 
   // getExchangeRate(fromCurrency: string, toCurrency: string) {
