@@ -1,26 +1,29 @@
-<div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Logo -->
-    <a href="#" class="text-2xl font-bold text-blue-600">
-        MyLogo
-    </a>
 
-    <!-- Navigation Menu -->
-    <nav class="hidden md:flex space-x-6">
-        <a href="#home" class="text-gray-600 hover:text-blue-600">Home</a>
-        <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
-        <a href="#services" class="text-gray-600 hover:text-blue-600">Services</a>
-        <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+<div class="container mx-auto px-4 py-4 flex justify-center items-center">
+    <!-- Logo -->
+    <a href="#" class="text-2xl font-bold text-blue-600 mr-8">MyLogo</a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex space-x-7">
+        <a routerLink="/conversor" class="text-white hover:text-blue-600">Convertir</a>
+        <a routerLink="/about" class="text-white hover:text-blue-600">About</a>
+        <a routerLink="/services" class="text-white hover:text-blue-600">Services</a>
+        <a routerLink="/login" class="text-white hover:text-blue-600">Login</a>
     </nav>
 
-    <!-- Action Button (hidden on mobile) -->
-    <a href="#get-started" class="hidden md:inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-        Get Started
-    </a>
-
     <!-- Mobile Menu Button -->
-    <button class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
+    <button (click)="toggleMenu()" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
+        <!-- Icono de hamburguesa -->
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
     </button>
+</div>
+
+<!-- Mobile Navigation Menu -->
+<div *ngIf="isMenuOpen" class="md:hidden bg-gray-100">
+    <a routerLink="/conversor" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">Convertir</a>
+    <a routerLink="/about" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">About</a>
+    <a routerLink="/services" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">Services</a>
+    <a routerLink="/login" class="block px-4 py-2 text-gray-600 hover:bg-blue-600 hover:text-white">Login</a>
 </div>

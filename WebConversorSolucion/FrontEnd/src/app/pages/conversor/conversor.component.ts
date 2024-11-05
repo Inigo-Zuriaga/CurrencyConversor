@@ -38,6 +38,8 @@ export class ConversorComponent {
       this.dropdownOpenFrom = false; // Cerrar el otro dropdown si está abierto
     }
   }
+  //En el constructor inyectamos los servicios que vayamos a usar.
+  constructor(private exchangeService: ExchangeService) {}
 
   selectCurrency(currency: any, type: string) {
     if (type === 'from') {
