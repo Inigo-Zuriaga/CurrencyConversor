@@ -1,6 +1,7 @@
 <div class="container-exchange flex flex-col">
   <div class="mb-4 flex items-center">
     <input [(ngModel)]="fromCurrency" placeholder="Moneda Base" class="border rounded p-2 mr-2">
+    <input [(ngModel)]="amount" placeholder="Moneda Base" class="border rounded p-2 mr-2">
     <input [(ngModel)]="toCurrency" placeholder="Moneda Cambio" class="border rounded p-2 mr-2">
     <button (click)="getExchangeRate()" class="bg-blue-500 text-white p-2 rounded">Hacer Conversión</button>
   </div>
@@ -11,5 +12,6 @@
     <p class="text-lg font-semibold">MONEDA BASE: <span class="font-normal">{{dataExchange.base_code}}</span></p>
     <p class="text-lg font-semibold">MONEDA NUEVA: <span class="font-normal">{{dataExchange.target_code}}</span></p>
     <p class="text-lg font-semibold">CAMBIO: <span class="font-normal">{{dataExchange.conversion_rate}}</span></p>
+    <p class="text-lg font-semibold">Cantidad Obtenida: <span class="font-normal">{{dataExchange.conversion_result}}</span></p>
   </div>
 </div>

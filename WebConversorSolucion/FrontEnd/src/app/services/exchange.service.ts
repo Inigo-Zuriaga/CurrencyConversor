@@ -20,10 +20,11 @@ export class ExchangeService {
   //   });
   // }
 
-  getExchangeRate(fromCurrency: string, toCurrency: string): Observable<any> {
+  getExchangeRate(fromCurrency: string, toCurrency: string,amount:number): Observable<any> {
     const body = {
       fromCurrency:fromCurrency,
-      toCurrency:toCurrency
+      toCurrency:toCurrency,
+      Amount:amount
     };
 
     return this.http.post(`${this.apiUrl}/exchange-rate`, body);
