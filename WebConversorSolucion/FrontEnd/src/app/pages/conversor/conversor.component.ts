@@ -21,13 +21,13 @@ export class ConversorComponent {
     conversion_rate: 0,
     conversion_result: 0
   }
+  //En el constructor inyectamos los servicios que vayamos a usar.
+  constructor(private exchangeService: ExchangeService) {}
 
-  data: any;
 
-  constructor(private exchangeService: ExchangeService) {
-  }
-
-  getExchangeRate() {
+  //Metodo el cual se encarga de hacer una llamada a la api mediante el metodo del servicio ExchangeService.
+  //Asiganmos los datos recibidos a nuestra variable dataExchange.
+  getExchange() {
     this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency,this.amount).subscribe(
       data => {
         this.exchangeRate = data;
