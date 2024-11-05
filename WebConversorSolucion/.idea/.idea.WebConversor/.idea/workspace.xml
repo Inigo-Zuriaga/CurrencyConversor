@@ -10,15 +10,16 @@
   <component name="ChangeListManager">
     <list default="true" id="09bf295e-4887-4d37-b1af-ff016a83accd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/shared/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/footer/footer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/shared/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/footer/footer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/shared/footer/footer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/footer/footer.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/shared/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/header/header.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/shared/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/shared/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/header/header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/shared/components/header/header.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/Interfaces/iexchange.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/Interfaces/iexchange.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/shared/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/ExchangeRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/ExchangeRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/ApiService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/ApiService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/Interfaces/IApiService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/Interfaces/IApiService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <workItem from="1730738585438" duration="7723000" />
       <workItem from="1730752282382" duration="172000" />
       <workItem from="1730821147790" duration="3604000" />
-      <workItem from="1730826126163" duration="2461000" />
+      <workItem from="1730826126163" duration="3437000" />
     </task>
     <servers />
   </component>

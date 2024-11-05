@@ -11,13 +11,15 @@ export class ConversorComponent {
 
   fromCurrency="";
   toCurrency="";
+  amount=0;
   exchangeRate: any;
 
   dataExchange: IExchange={
     result: "",
     base_code: "",
     target_code: "",
-    conversion_rate: 0
+    conversion_rate: 0,
+    conversion_result: 0
   }
 
   data: any;
@@ -26,13 +28,14 @@ export class ConversorComponent {
   }
 
   getExchangeRate() {
-    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency).subscribe(
+    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency,this.amount).subscribe(
       data => {
         this.exchangeRate = data;
         this.dataExchange.result = data.result;
         this.dataExchange.base_code = data.base_code;
         this.dataExchange.target_code = data.target_code;
         this.dataExchange.conversion_rate = data.conversion_rate;
+        this.dataExchange.conversion_result = data.conversion_result;
       },
       error => {
         console.error('Error fetching exchange rate', error);
