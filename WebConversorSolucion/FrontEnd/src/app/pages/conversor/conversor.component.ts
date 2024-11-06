@@ -13,6 +13,7 @@ export class ConversorComponent {
   amount = 0;
   dropdownOpenFrom = false;
   dropdownOpenTo = false;
+
   currencies = [
     { code: 'USD', symbol: '$' },
     { code: 'EUR', symbol: '€' },
@@ -39,7 +40,6 @@ export class ConversorComponent {
     }
   }
   //En el constructor inyectamos los servicios que vayamos a usar.
-  constructor(private exchangeService: ExchangeService) {}
 
   selectCurrency(currency: any, type: string) {
     if (type === 'from') {
