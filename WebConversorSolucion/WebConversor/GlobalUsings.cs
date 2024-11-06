@@ -17,3 +17,4 @@ global using WebConversor.Models;
 global using WebConversor.Services.Interfaces;
 global using WebConversor.Services;
 global using DotNetEnv;
+global using System.ComponentModel.DataAnnotations.Schema;

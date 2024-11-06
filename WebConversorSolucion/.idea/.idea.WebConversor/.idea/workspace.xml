@@ -8,7 +8,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09bf295e-4887-4d37-b1af-ff016a83accd" name="Changes" comment="" />
+    <list default="true" id="09bf295e-4887-4d37-b1af-ff016a83accd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/History.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/History.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,6 +92,8 @@
       <workItem from="1730738585438" duration="7723000" />
       <workItem from="1730752282382" duration="172000" />
       <workItem from="1730824283082" duration="1146000" />
+      <workItem from="1730908803536" duration="1221000" />
+      <workItem from="1730912168314" duration="7065000" />
     </task>
     <servers />
   </component>
