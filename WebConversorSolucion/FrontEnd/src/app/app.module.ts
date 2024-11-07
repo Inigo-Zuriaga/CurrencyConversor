@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
@@ -9,11 +8,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ConversorComponent } from './pages/conversor/conversor.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
-import { CurrencySelectorComponent } from './shared/components/currency-selector/currency-selector.component';
 import {loginInterceptor} from './Interceptors/login.interceptor';
 import {AuthInterceptor} from './Interceptors/auth.interceptor';
+import {CommonModule} from '@angular/common';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -35,7 +34,8 @@ import {AuthInterceptor} from './Interceptors/auth.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+
   ],
   providers: [
     {
