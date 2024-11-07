@@ -9,6 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09bf295e-4887-4d37-b1af-ff016a83accd" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../.vs/slnx.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
@@ -17,6 +18,14 @@
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/UserController.cs" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/History.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/History.cs" afterDir="false" />
+>>>>>>> 8510119839544dd4a03a6155f87f4033ab3bf4e0
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +103,12 @@
       <workItem from="1730738585438" duration="7723000" />
       <workItem from="1730752282382" duration="172000" />
       <workItem from="1730824283082" duration="1146000" />
+<<<<<<< HEAD
       <workItem from="1730920196957" duration="2234000" />
+=======
+      <workItem from="1730908803536" duration="1221000" />
+      <workItem from="1730912168314" duration="7065000" />
+>>>>>>> 8510119839544dd4a03a6155f87f4033ab3bf4e0
     </task>
     <servers />
   </component>

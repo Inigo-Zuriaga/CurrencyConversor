@@ -16,18 +16,21 @@ public class DbContexto : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Coin>().HasData(
-            new Coin { Id = 1, Name = "Dólar Estadounidense", ShortName = "USD", Symbol = "USD" },
+            new Coin { Id = 1, Name = "Dï¿½lar Estadounidense", ShortName = "USD", Symbol = "USD" },
             new Coin { Id = 2, Name = "Euro", ShortName = "EUR", Symbol = "EUR" },
-            new Coin { Id = 3, Name = "Yen Japonés", ShortName = "YEN", Symbol = "JPY" }
+            new Coin { Id = 3, Name = "Yen Japonï¿½s", ShortName = "YEN", Symbol = "JPY" }
         );
 
         modelBuilder.Entity<User>().HasData(
-           new User { Id = 1, Name = "Dólar Estadounidense", Email = "asda@gmail.com", LastName = "aaa", Password = "ddd", Img = "dd" },
-           new User { Id = 2, Name = "Euro", Email = "ggrg2@gmail.com", LastName = "aaa", Password = "fff", Img = "ff" }
+           new User { Id = 1, Name = "Julian", Email = "asda@gmail.com", LastName = "Gomez", Password = "ddd", Img = "dd" },
+           new User { Id = 2, Name = "Manuel", Email = "ggrg2@gmail.com", LastName = "Garcia", Password = "fff", Img = "ff" }
 
        );
         modelBuilder.Entity<History>().HasData(
-          new History { Id = 1, UserId = 2, FromCoin = "EUR", ToCoin = "USD", Result = 20.0, Date = new DateTime(2004, 12, 20) }
+          // new History { Id = 1, UserId = 2, FromCoin = "EUR", ToCoin = "USD", Result = 20.0, Date = new DateTime(2004, 12, 20) }
+          new History { Id = 1, UserId = 1, FromCoin = "EUR", ToCoin = "USD", Date = new DateTime(2004, 12, 20) },
+          new History { Id = 2, UserId = 2, FromCoin = "USD", ToCoin = "EUR", Date = DateTime.Now },
+          new History { Id = 3, UserId = 2, FromCoin = "USD", ToCoin = "PLN", Date = new DateTime(2007, 03, 20) }
         );
 
     }
@@ -37,5 +40,5 @@ public class DbContexto : DbContext
     /*Declaramos las clases*/
     public DbSet<Coin> Coins { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<History> Histories { get; set; }
+    public DbSet<History> ExchangeHistory { get; set; }
 }

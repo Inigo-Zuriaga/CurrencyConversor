@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebConversor.Models;
 
@@ -11,9 +12,11 @@ using WebConversor.Models;
 namespace WebConversor.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    partial class DbContextoModelSnapshot : ModelSnapshot
+    [Migration("20241106173518_migracion-historial")]
+    partial class migracionhistorial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,22 +108,6 @@ namespace WebConversor.Migrations
                             Date = new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromCoin = "EUR",
                             ToCoin = "USD",
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(2024, 11, 6, 18, 55, 13, 961, DateTimeKind.Local).AddTicks(2005),
-                            FromCoin = "USD",
-                            ToCoin = "EUR",
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FromCoin = "USD",
-                            ToCoin = "PLN",
                             UserId = 2
                         });
                 });
@@ -163,8 +150,8 @@ namespace WebConversor.Migrations
                             Id = 1,
                             Email = "asda@gmail.com",
                             Img = "dd",
-                            LastName = "Gomez",
-                            Name = "Julian",
+                            LastName = "aaa",
+                            Name = "D�lar Estadounidense",
                             Password = "ddd"
                         },
                         new
@@ -172,8 +159,8 @@ namespace WebConversor.Migrations
                             Id = 2,
                             Email = "ggrg2@gmail.com",
                             Img = "ff",
-                            LastName = "Garcia",
-                            Name = "Manuel",
+                            LastName = "aaa",
+                            Name = "Euro",
                             Password = "fff"
                         });
                 });

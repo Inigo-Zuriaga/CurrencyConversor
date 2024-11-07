@@ -1,69 +1,86 @@
-import { Component,OnInit } from '@angular/core';
-import {ExchangeService} from '../../services/exchange.service';
-import {IExchange} from '../../Interfaces/iexchange';
+import { Component, OnInit } from '@angular/core';
+import coins from './coins.json';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+// Definición de la interfaz de moneda
+interface Currency {
+  id: number;
+  name: string;
+  shortname: string;
+  symbol: string;
+}
 
 @Component({
   selector: 'app-conversor',
   templateUrl: './conversor.component.html',
-  styleUrl: './conversor.component.css'
+  styleUrls: ['./conversor.component.css'],
 })
-export class ConversorComponent {
+export class ConversorComponent implements OnInit {
+  amount: number = 0; // Cantidad a convertir
+  convertedAmount: number = 0; // Resultado de la conversión
+  fromCurrency: Currency = { id: 1, name: 'United States Dollar', shortname: 'USD', symbol: '$' }; // Moneda origen
+  toCurrency: Currency = { id: 2, name: 'Euro', shortname: 'EUR', symbol: '€' }; // Moneda destino
+  currencies: Currency[] = coins; // Lista completa de monedas del JSON
+  dropdownOpenFrom: boolean = false; // Controla el desplegable del selector origen
+  dropdownOpenTo: boolean = false; // Controla el desplegable del selector destino
+  filteredCurrencies: Currency[] = []; // Lista de monedas filtrada para el buscador
 
-  fromCurrency="";
-  toCurrency="";
-  amount=0;
-  exchangeRate: any;
+  constructor(private http: HttpClient) {}
 
-  dataExchange: IExchange={
-    result: "",
-    base_code: "",
-    target_code: "",
-    conversion_rate: 0,
-    conversion_result: 0
+  ngOnInit() {
+    // Inicializa el listado filtrado con todas las monedas
+    this.filteredCurrencies = this.currencies;
   }
-  //En el constructor inyectamos los servicios que vayamos a usar.
-  constructor(private exchangeService: ExchangeService) {}
 
+  // Función para alternar el dropdown de monedas
+  toggleDropdown(select: 'from' | 'to') {
+    this.dropdownOpenFrom = select === 'from' ? !this.dropdownOpenFrom : false;
+    this.dropdownOpenTo = select === 'to' ? !this.dropdownOpenTo : false;
+  }
 
-  //Metodo el cual se encarga de hacer una llamada a la api mediante el metodo del servicio ExchangeService.
-  //Asiganmos los datos recibidos a nuestra variable dataExchange.
-  getExchange() {
-    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency,this.amount).subscribe(
-      data => {
-        this.exchangeRate = data;
-        this.dataExchange.result = data.result;
-        this.dataExchange.base_code = data.base_code;
-        this.dataExchange.target_code = data.target_code;
-        this.dataExchange.conversion_rate = data.conversion_rate;
-        this.dataExchange.conversion_result = data.conversion_result;
+  // Selecciona una moneda y cierra el desplegable
+  selectCurrency(currency: Currency, type: 'from' | 'to') {
+    if (type === 'from') {
+      this.fromCurrency = currency;
+    } else {
+      this.toCurrency = currency;
+    }
+    this.closeDropdowns();
+  }
+
+  // Cierra ambos desplegables
+  closeDropdowns() {
+    this.dropdownOpenFrom = false;
+    this.dropdownOpenTo = false;
+  }
+
+  // Filtrar monedas basado en el término de búsqueda (por código o nombre)
+  filterCurrencies(event: Event) {
+    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredCurrencies = this.currencies.filter(
+      (currency) =>
+        currency.shortname.toLowerCase().includes(searchTerm) ||
+        currency.symbol.toLowerCase().includes(searchTerm) ||
+        currency.name.toLowerCase().includes(searchTerm) // Buscamos por nombre, shortname y símbolo
+    );
+  }
+
+  // Realiza la solicitud para obtener la tasa de cambio
+  getExchangeRate() {
+    const url = 'http://localhost:25850/api/api/exchange-rate';
+    const requestBody = {
+      fromCurrency: this.fromCurrency.shortname,
+      toCurrency: this.toCurrency.shortname,
+      amount: this.amount,
+    };
+
+    this.http.post<any>(url, requestBody).subscribe(
+      (response) => {
+        this.convertedAmount = response.conversion_result;
       },
-      error => {
+      (error: HttpErrorResponse) => {
         console.error('Error fetching exchange rate', error);
       }
     );
   }
-
-  // ngOnInit() {
-  //   this.exchangeService.getExchangeRate("a","a");
-  //
-  //   this.exchangeService.pruebaConversor().subscribe(
-  //     (response) => {
-  //       this.data = response;
-  //     },
-  //     (error) => {
-  //       console.error('Error al obtener datos:', error);
-  //     }
-  // };
-//   ngOnInit() {
-//     this.exchangeService.pruebaConversor().subscribe(
-//       (response: any) => {
-//         this.data = response;
-//       },
-//       (error: any) => {
-//         console.error('Error al obtener datos:', error);
-//       }
-//     );
-//
-// }
 }
-
