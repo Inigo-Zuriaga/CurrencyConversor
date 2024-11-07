@@ -1,36 +1,37 @@
-<div class="flex space-x-4 p-4">
+<div class="flex space-x-4 p-4 ">
   <!-- Input de cantidad y selector de moneda origen -->
-  <div class="relative w-64 flex mr-10">
+  <div class="relative w-64 flex mr-28">
+    <div class="flex border-0 rounded-xl shadow-xl  px-1 py-1 bg-white">
     <input
       type="number"
       [(ngModel)]="amount"
-      class="flex-grow px-4 py-2 rounded-l-md text-black bg-white outline-none border-0 shadow-md"
+      class="flex-grow px-4 py-2 rounded-l-xl text-black bg-white outline-none border-0 "
       placeholder="0.00"
     />
     <button
       (click)="toggleDropdown('from')"
-      class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-r-md focus:outline-none min-w-24"
+      class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-xl focus:outline-none min-w-24 hover:bg-blue-800"
       >
       <span class="mr-1">{{ fromCurrency.symbol }}</span>
       <span class="text-sm">{{ fromCurrency.shortname }}</span>
       <span class="ml-2">&#9662;</span>
     </button>
-
+  </div>
     <div
       *ngIf="dropdownOpenFrom"
-      class="absolute top-full right-0 mt-1 w-48 bg-blue-900 text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
+      class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
     >
       <input
         type="text"
         (input)="filterCurrencies($event)"
         placeholder="Buscar..."
-        class="w-full px-4 py-2 bg-blue-900 text-white outline-none border-b border-gray-500 sticky top-0 z-20"
+        class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20 "
       />
       <ul class="py-2">
         <li
           *ngFor="let currency of filteredCurrencies"
           (click)="selectCurrency(currency, 'from')"
-          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
+          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-800"
         >
           <span class="mr-2">{{ currency.symbol }}</span>
           <span>{{ currency.shortname }}</span>
@@ -41,9 +42,10 @@
 
   <!-- Input y selector de moneda destino -->
   <div class="relative w-64 flex">
+    <div class="flex border-0 rounded-xl shadow-xl  px-1 py-1 bg-white">
     <button
       (click)="toggleDropdown('to')"
-      class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-l-md focus:outline-none min-w-24"
+      class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-lg focus:outline-none min-w-24 hover:bg-blue-800"
     >
       <span class="mr-1">{{ toCurrency.symbol }}</span>
       <span class="text-sm">{{ toCurrency.shortname }}</span>
@@ -52,20 +54,20 @@
     <input
       type="text"
       [value]="convertedAmount"
-      class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 shadow-md"
+      class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 "
       placeholder="Resultado"
       readonly
     />
-
+</div>
     <div
       *ngIf="dropdownOpenTo"
-      class="absolute top-full right-0 mt-1 w-48 bg-blue-900 text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
+      class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
     >
       <input
         type="text"
         (input)="filterCurrencies($event)"
         placeholder="Buscar..."
-        class="w-full px-4 py-2 bg-blue-900 text-white outline-none border-b border-gray-500 sticky top-0 z-20"
+        class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20"
       />
       <ul class="py-2">
         <li
@@ -82,7 +84,7 @@
 </div>
 
 <div class="mt-10">
-  <button (click)="getExchangeRate(); closeDropdowns()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+  <button (click)="getExchangeRate(); closeDropdowns()" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900">
     Convertir
   </button>
 </div>
