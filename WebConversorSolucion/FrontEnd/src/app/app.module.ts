@@ -10,7 +10,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import  { ConversorComponent } from './pages/conversor/conversor.component';
 import {FormsModule} from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 

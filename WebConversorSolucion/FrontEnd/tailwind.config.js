@@ -6,6 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primaryBlue: '#14213D',
+        primaryRed: '#93032E',
         light: '#6EC1E4',  // Ejemplo de un color claro para "primary"
         DEFAULT: '#3490dc', // El color principal (por defecto) de "primary"
         dark: '#2779bd',    // Ejemplo de un color oscuro para "primary"
