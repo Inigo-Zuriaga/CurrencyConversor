@@ -8,10 +8,12 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ConversorComponent } from './pages/conversor/conversor.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
 import { CurrencySelectorComponent } from './shared/components/currency-selector/currency-selector.component';
+import {loginInterceptor} from './Interceptors/login.interceptor';
+import {AuthInterceptor} from './Interceptors/auth.interceptor';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -34,7 +36,18 @@ import { CurrencySelectorComponent } from './shared/components/currency-selector
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: loginInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

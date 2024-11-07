@@ -16,7 +16,7 @@
       <span class="text-sm">{{ fromCurrency }}</span>
       <span class="ml-2">&#9662;</span>
     </button>
-    
+
     <!-- Menú desplegable para la moneda origen -->
     <div
       *ngIf="dropdownOpenFrom"
@@ -79,6 +79,9 @@
     Convertir
   </button>
 </div>
+<button (click)="getExchangeRate2()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+  Prueba Intercepetor
+</button>
   <!-- Div informativo que aparece debajo del formulario
   <div *ngIf="exchangeRate" class="bg-gray-100 p-4 rounded shadow mt-4">
     <p class="text-lg font-semibold">RESULTADO: <span class="font-normal">{{dataExchange.result}}</span></p>

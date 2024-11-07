@@ -20,6 +20,7 @@ export class ConversorComponent {
     { code: 'GBP', symbol: '£' },
     // Agrega más monedas según sea necesario
   ];
+
   dataExchange: IExchange = {
     result: "",
     base_code: "",
@@ -71,7 +72,25 @@ export class ConversorComponent {
       }
     );
   }
+//***************************************
+  user="usuario";
+  pass="contraseña";
+  getExchangeRate2() {
+    this.exchangeService.getExchangeRate2(this.user, this.pass).subscribe(
 
+      data => {
+        console.log("Usuario: "+this.user+" Contraseña: "+this.pass);
+        console.log("Entraaaa")
+        console.log('Login successful', data);
+        // this.dataExchange = data; // Asume que data tiene la estructura adecuada
+      },
+      error => {
+        console.log("Usuario: "+this.user+" Contraseña: "+this.pass);
+        console.error('Error fetching exchange rate', error);
+      }
+    );
+  }
+////*****************************
   onAmountChange() {
     // Aquí puedes manejar los cambios en el input de cantidad si es necesario
   }
