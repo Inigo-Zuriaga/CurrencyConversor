@@ -1,78 +1,86 @@
-import { Component } from '@angular/core';
-import { ExchangeService } from '../../services/exchange.service';
-import { IExchange } from '../../Interfaces/iexchange';
+import { Component, OnInit } from '@angular/core';
+import coins from './coins.json';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+// Definición de la interfaz de moneda
+interface Currency {
+  id: number;
+  name: string;
+  shortname: string;
+  symbol: string;
+}
 
 @Component({
   selector: 'app-conversor',
   templateUrl: './conversor.component.html',
-  styleUrls: ['./conversor.component.css']
+  styleUrls: ['./conversor.component.css'],
 })
-export class ConversorComponent {
-  fromCurrency = "USD"; // Moneda por defecto
-  toCurrency = "EUR"; // Moneda por defecto
-  amount = 0;
-  dropdownOpenFrom = false;
-  dropdownOpenTo = false;
+export class ConversorComponent implements OnInit {
+  amount: number = 0; // Cantidad a convertir
+  convertedAmount: number = 0; // Resultado de la conversión
+  fromCurrency: Currency = { id: 1, name: 'United States Dollar', shortname: 'USD', symbol: '$' }; // Moneda origen
+  toCurrency: Currency = { id: 2, name: 'Euro', shortname: 'EUR', symbol: '€' }; // Moneda destino
+  currencies: Currency[] = coins; // Lista completa de monedas del JSON
+  dropdownOpenFrom: boolean = false; // Controla el desplegable del selector origen
+  dropdownOpenTo: boolean = false; // Controla el desplegable del selector destino
+  filteredCurrencies: Currency[] = []; // Lista de monedas filtrada para el buscador
 
-  currencies = [
-    { code: 'USD', symbol: '$' },
-    { code: 'EUR', symbol: '€' },
-    { code: 'GBP', symbol: '£' },
-    // Agrega más monedas según sea necesario
-  ];
-  dataExchange: IExchange = {
-    result: "",
-    base_code: "",
-    target_code: "",
-    conversion_rate: 0,
-    conversion_result: 0
-  };
+  constructor(private http: HttpClient) {}
 
-  constructor(private exchangeService: ExchangeService) {}
+  ngOnInit() {
+    // Inicializa el listado filtrado con todas las monedas
+    this.filteredCurrencies = this.currencies;
+  }
 
-  toggleDropdown(type: string) {
+  // Función para alternar el dropdown de monedas
+  toggleDropdown(select: 'from' | 'to') {
+    this.dropdownOpenFrom = select === 'from' ? !this.dropdownOpenFrom : false;
+    this.dropdownOpenTo = select === 'to' ? !this.dropdownOpenTo : false;
+  }
+
+  // Selecciona una moneda y cierra el desplegable
+  selectCurrency(currency: Currency, type: 'from' | 'to') {
     if (type === 'from') {
-      this.dropdownOpenFrom = !this.dropdownOpenFrom;
-      this.dropdownOpenTo = false; // Cerrar el otro dropdown si está abierto
+      this.fromCurrency = currency;
     } else {
-      this.dropdownOpenTo = !this.dropdownOpenTo;
-      this.dropdownOpenFrom = false; // Cerrar el otro dropdown si está abierto
+      this.toCurrency = currency;
     }
-  }
-  //En el constructor inyectamos los servicios que vayamos a usar.
-
-  selectCurrency(currency: any, type: string) {
-    if (type === 'from') {
-      this.fromCurrency = currency.code;
-      this.dropdownOpenFrom = false;
-    } else {
-      this.toCurrency = currency.code;
-      this.dropdownOpenTo = false;
-    }
+    this.closeDropdowns();
   }
 
-  get fromCurrencySymbol() {
-    const currency = this.currencies.find(c => c.code === this.fromCurrency);
-    return currency ? currency.symbol : '';
+  // Cierra ambos desplegables
+  closeDropdowns() {
+    this.dropdownOpenFrom = false;
+    this.dropdownOpenTo = false;
   }
 
-  get toCurrencySymbol() {
-    const currency = this.currencies.find(c => c.code === this.toCurrency);
-    return currency ? currency.symbol : '';
-  }
-
-  getExchangeRate() {
-    this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency, this.amount).subscribe(
-      data => {
-        this.dataExchange = data; // Asume que data tiene la estructura adecuada
-      },
-      error => {
-        console.error('Error fetching exchange rate', error);
-      }
+  // Filtrar monedas basado en el término de búsqueda (por código o nombre)
+  filterCurrencies(event: Event) {
+    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredCurrencies = this.currencies.filter(
+      (currency) =>
+        currency.shortname.toLowerCase().includes(searchTerm) ||
+        currency.symbol.toLowerCase().includes(searchTerm) ||
+        currency.name.toLowerCase().includes(searchTerm) // Buscamos por nombre, shortname y símbolo
     );
   }
 
-  onAmountChange() {
-    // Aquí puedes manejar los cambios en el input de cantidad si es necesario
+  // Realiza la solicitud para obtener la tasa de cambio
+  getExchangeRate() {
+    const url = 'http://localhost:25850/api/api/exchange-rate';
+    const requestBody = {
+      fromCurrency: this.fromCurrency.shortname,
+      toCurrency: this.toCurrency.shortname,
+      amount: this.amount,
+    };
+
+    this.http.post<any>(url, requestBody).subscribe(
+      (response) => {
+        this.convertedAmount = response.conversion_result;
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error fetching exchange rate', error);
+      }
+    );
   }
 }
