@@ -1,9 +1,7 @@
 ﻿using System.Text.Json;
 namespace WebConversor.Services
 {
-    
-
-
+  
     public class ApiService : IApiService
     {
         private readonly HttpClient _httpClient;
