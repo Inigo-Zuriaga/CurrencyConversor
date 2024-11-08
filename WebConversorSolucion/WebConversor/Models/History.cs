@@ -27,5 +27,4 @@ namespace WebConversor.Models
         [Required]
         public DateTime Date { get; set; }=DateTime.Now;
 
-    }
 }

@@ -1,52 +1,72 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebConversor.ViewModels;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+namespace WebConversor.Controllers;
 
-namespace WebConversor.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class UserController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly SignInManager<IdentityUser> _signInManager;
+
+    public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
     {
-        private readonly DbContexto _context;
-        
-        public UserController(DbContexto context)
+        _userManager = userManager;
+        _signInManager = signInManager;
+    }
+
+    // Acción POST para manejar el login de usuarios
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginViewModel model)
+    {
+        if (!ModelState.IsValid)
         {
-            _context = context;
-        }
-        
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
+            return BadRequest("Datos de login inválidos.");
         }
 
-        // GET api/<UserController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        if (user != null)
         {
-            return "value";
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+            if (result.Succeeded)
+            {
+                // Generar un JWT token aquí si es necesario
+                return Ok(new { Message = "Login exitoso", Token = "BearerTokenAquí" });
+            }
         }
 
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        return Unauthorized(new { Message = "Correo o contraseña incorrectos." });
+    }
+
+    // Acción POST para manejar el registro de usuarios
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
+    {
+        if (!ModelState.IsValid)
         {
+            return BadRequest("Datos de registro inválidos.");
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+        var result = await _userManager.CreateAsync(user, model.Password);
+
+        if (result.Succeeded)
         {
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            return Ok(new { Message = "Registro exitoso" });
         }
 
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        return BadRequest(result.Errors);
+    }
+
+    // Acción para cerrar sesión
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return Ok(new { Message = "Cierre de sesión exitoso." });
         
         
         //CREAR UN DICCIONARIO Q PILLE 2 STRINGS

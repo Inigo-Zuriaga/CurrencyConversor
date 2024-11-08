@@ -18,3 +18,10 @@ app-root {
 main {
   flex: 1;
 }
+
+/* styles.css */
+:root {
+  --font-barlow: 'Barlow', sans-serif;
+  --font-barlowsemibold: 'Barlow', sans-serif;
+  --font-barlowbold: 'Barlow', sans-serif;
+}
