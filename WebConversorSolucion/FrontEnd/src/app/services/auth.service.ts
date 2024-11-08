@@ -22,11 +22,8 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, body);
   }
 
-
   logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
-  constructor(private http: HttpClient) { }
   decodedToken:any;
-
 
   //Guarda el token en el localstorage
   storeToken(accesToken: string) {
