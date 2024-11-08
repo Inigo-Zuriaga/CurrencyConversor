@@ -37,8 +37,9 @@ namespace WebConversor.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Img = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,7 +47,7 @@ namespace WebConversor.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Histories",
+                name: "ExchangeHistory",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -54,14 +55,13 @@ namespace WebConversor.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     FromCoin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ToCoin = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Result = table.Column<double>(type: "float", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Histories", x => x.Id);
+                    table.PrimaryKey("PK_ExchangeHistory", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Histories_Users_UserId",
+                        name: "FK_ExchangeHistory_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -73,28 +73,33 @@ namespace WebConversor.Migrations
                 columns: new[] { "Id", "Name", "ShortName", "Symbol" },
                 values: new object[,]
                 {
-                    { 1, "Dólar Estadounidense", "USD", "USD" },
+                    { 1, "D�lar Estadounidense", "USD", "USD" },
                     { 2, "Euro", "EUR", "EUR" },
-                    { 3, "Yen Japonés", "YEN", "JPY" }
+                    { 3, "Yen Japon�s", "YEN", "JPY" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "Img", "LastName", "Name", "Password" },
+                columns: new[] { "Id", "Email", "FechaNacimiento", "Img", "LastName", "Name", "Password" },
                 values: new object[,]
                 {
-                    { 1, "asda@gmail.com", "dd", "aaa", "Dólar Estadounidense", "ddd" },
-                    { 2, "ggrg2@gmail.com", "ff", "aaa", "Euro", "fff" }
+                    { 1, "asda@gmail.com", null, "dd", "Gomez", "Julian", "ddd" },
+                    { 2, "ggrg2@gmail.com", null, "ff", "Garcia", "Manuel", "fff" }
                 });
 
             migrationBuilder.InsertData(
-                table: "Histories",
-                columns: new[] { "Id", "Date", "FromCoin", "Result", "ToCoin", "UserId" },
-                values: new object[] { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "EUR", 20.0, "USD", 2 });
+                table: "ExchangeHistory",
+                columns: new[] { "Id", "Date", "FromCoin", "ToCoin", "UserId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "EUR", "USD", 1 },
+                    { 2, new DateTime(2024, 11, 8, 19, 1, 32, 513, DateTimeKind.Local).AddTicks(8346), "USD", "EUR", 2 },
+                    { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "USD", "PLN", 2 }
+                });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Histories_UserId",
-                table: "Histories",
+                name: "IX_ExchangeHistory_UserId",
+                table: "ExchangeHistory",
                 column: "UserId");
         }
 
@@ -105,7 +110,7 @@ namespace WebConversor.Migrations
                 name: "Coins");
 
             migrationBuilder.DropTable(
-                name: "Histories");
+                name: "ExchangeHistory");
 
             migrationBuilder.DropTable(
                 name: "Users");

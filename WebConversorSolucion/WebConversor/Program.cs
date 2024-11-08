@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Identity;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddHttpClient<IApiService, ApiService>();
+builder.Services.AddScoped<UserService>();
 
 // Configuracion de CORS para permitir solicitudes desde tu frontend Angular
 builder.Services.AddCors(options =>
@@ -15,38 +14,39 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
-
 builder.Services.AddControllers();
 
 // Configuracion de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configuracion de base de datos
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:CadenaConexion"]);
 });
 
+
+// Configuracion de base de datos
+
+
 var app = builder.Build();
 
 // Configura Entity Framework y ASP.NET Core Identity
-builder.Services.AddDbContext<DbContexto>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// builder.Services.AddDbContext<DbContexto>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Configura Identity, DbContext, etc.
-builder.Services.AddDefaultIdentity<IdentityUser>()
-    .AddEntityFrameworkStores<DbContexto>()
-    .AddDefaultTokenProviders();
+// builder.Services.AddDefaultIdentity<IdentityUser>()
+//     .AddEntityFrameworkStores<DbContexto>()
+//     .AddDefaultTokenProviders();
 
 // Otras configuraciones necesarias (controladores y vistas)
-builder.Services.AddControllersWithViews();
+// builder.Services.AddControllersWithViews();
 
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Configuracion del pipeline de solicitudes HTTP
 if (app.Environment.IsDevelopment())
@@ -59,11 +59,12 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowOrigin");
 
 // Configura las rutas y middlewares
-app.UseAuthentication();  // Para permitir la autenticación
-app.UseAuthorization();   // Para permitir la autorización
-
-app.MapDefaultControllerRoute();
+app.UseAuthentication();  // Para permitir la autenticaciï¿½n
+app.UseAuthorization();   // Para permitir la autorizaciï¿½n
 
 Env.Load();
+
 app.MapControllers();
+
+
 app.Run();

@@ -110,7 +110,7 @@ namespace WebConversor.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 11, 6, 18, 55, 13, 961, DateTimeKind.Local).AddTicks(2005),
+                            Date = new DateTime(2024, 11, 8, 19, 1, 32, 513, DateTimeKind.Local).AddTicks(8346),
                             FromCoin = "USD",
                             ToCoin = "EUR",
                             UserId = 2
@@ -137,8 +137,10 @@ namespace WebConversor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("FechaNacimiento")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Img")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
