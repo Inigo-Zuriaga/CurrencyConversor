@@ -11,7 +11,10 @@ import { Observable } from 'rxjs';
 export class ExchangeService {
 
 
-  private apiUrl = 'http://localhost:25850/api/api';
+  private apiUrl = 'http://localhost:25850/api/api'
+
+  //Api de prueba
+  private apiUrl2 = 'http://localhost:5299/api/Auth';
   constructor(private http: HttpClient) {}
 
   // getExchangeRate(fromCurrency: string, toCurrency: string) {
@@ -31,6 +34,16 @@ export class ExchangeService {
 
     return this.http.post(`${this.apiUrl}/exchange-rate`, body);
   }
+  getExchangeRate2(username: string, password: string): Observable<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    const body = {
+      email:username,
+      password:password
+    };
+
+    return this.http.post(`${this.apiUrl2}/login`, body, { headers });
+  }
+
 
   // private apiUrl = 'http://localhost:45471/api/PruebaApi/exchange-data';
   pruebaConversor(): Observable<any> {

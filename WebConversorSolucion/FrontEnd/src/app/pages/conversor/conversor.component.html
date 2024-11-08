@@ -1,89 +1,99 @@
-<div class="flex space-x-4 p-4">
+<h1 class="font-regularb font-bold">Conversor</h1>
+<p class="">Select the source currency and the target currency. Click 'Convert it!' to see the conversion value.</p>
+
+<!-- Contenedor principal con disposición en columna para pantallas pequeñas -->
+<div class="flex flex-col md:flex-row items-center justify-center md:space-x-36 p-4 font-regularb">
+
   <!-- Input de cantidad y selector de moneda origen -->
-  <div class="relative w-64 flex mr-10">
-    <input
-      type="number"
-      [(ngModel)]="amount"
-      class="flex-grow px-4 py-2 rounded-l-md text-black bg-white outline-none border-0 shadow-md"
-      placeholder="0.00"
-      (input)="onAmountChange()"
-    />
-    <button
-      (click)="toggleDropdown('from')"
-      class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-r-md focus:outline-none"
-    >
-      <span class="mr-1">{{ fromCurrencySymbol }}</span>
-      <span class="text-sm">{{ fromCurrency }}</span>
-      <span class="ml-2">&#9662;</span>
-    </button>
-    
-    <!-- Menú desplegable para la moneda origen -->
+  <div class="relative w-64 flex mb-4 md:mb-0">
+    <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
+      <input
+        type="number"
+        [(ngModel)]="amount"
+        class="flex-grow px-4 py-2 rounded-l-xl text-black bg-white outline-none border-0 "
+        placeholder="0.00"
+      />
+      <button
+        (click)="toggleDropdown('from')"
+        class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-xl focus:outline-none min-w-24 hover:bg-blue-800 font-bold"
+      >
+        <span class="mr-1">{{ fromCurrency.symbol }}</span>
+        <span class="text-sm">{{ fromCurrency.shortname }}</span>
+        <span class="ml-2">&#9662;</span>
+      </button>
+    </div>
     <div
       *ngIf="dropdownOpenFrom"
-      class="absolute left-0 top-full mt-1 w-32 bg-blue-900 text-white rounded-md shadow-lg z-10"
+      class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
     >
+      <input
+        type="text"
+        (input)="filterCurrencies($event)"
+        placeholder="Buscar..."
+        class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20 "
+      />
       <ul class="py-2">
         <li
-          *ngFor="let currency of currencies"
+          *ngFor="let currency of filteredCurrencies"
           (click)="selectCurrency(currency, 'from')"
-          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
+          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-800"
         >
           <span class="mr-2">{{ currency.symbol }}</span>
-          <span>{{ currency.code }}</span>
-          <span *ngIf="currency.code === fromCurrency" class="ml-auto">&#10003;</span>
+          <span>{{ currency.shortname }}</span>
         </li>
       </ul>
     </div>
   </div>
 
   <!-- Input y selector de moneda destino -->
-  <div class="relative w-64 flex">
-    <button
-      (click)="toggleDropdown('to')"
-      class="flex items-center px-4 py-2 bg-blue-900 text-white rounded-l-md focus:outline-none"
-    >
-      <span class="mr-1">{{ toCurrencySymbol }}</span>
-      <span class="text-sm">{{ toCurrency }}</span>
-      <span class="ml-2">&#9662;</span>
-    </button>
-    <input
-      type="text"
-      [value]="dataExchange.conversion_result"
-      class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 shadow-md"
-      placeholder="Resultado"
-      readonly
-    />
-
-    <!-- Menú desplegable para la moneda destino -->
+  <div class="relative w-64 flex font-regularb">
+    <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
+      <button
+        (click)="toggleDropdown('to')"
+        class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-lg focus:outline-none min-w-24 hover:bg-blue-800 font-bold"
+      >
+        <span class="mr-1">{{ toCurrency.symbol }}</span>
+        <span class="text-sm">{{ toCurrency.shortname }}</span>
+        <span class="ml-2">&#9662;</span>
+      </button>
+      <input
+        type="text"
+        [value]="convertedAmount"
+        class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 "
+        placeholder="Resultado"
+        readonly
+      />
+    </div>
     <div
       *ngIf="dropdownOpenTo"
-      class="absolute left-0 top-full mt-1 w-32 bg-blue-900 text-white rounded-md shadow-lg z-10"
+      class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
     >
+      <input
+        type="text"
+        (input)="filterCurrencies($event)"
+        placeholder="Buscar..."
+        class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20"
+      />
       <ul class="py-2">
         <li
-          *ngFor="let currency of currencies"
+          *ngFor="let currency of filteredCurrencies"
           (click)="selectCurrency(currency, 'to')"
           class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
         >
           <span class="mr-2">{{ currency.symbol }}</span>
-          <span>{{ currency.code }}</span>
-          <span *ngIf="currency.code === toCurrency" class="ml-auto">&#10003;</span>
+          <span>{{ currency.shortname }}</span>
         </li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="mt-10">
-  <button (click)="getExchangeRate()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+<div class="flex mt-10 items-center justify-center">
+  <button (click)="getExchangeRate(); closeDropdowns()" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold">
     Convertir
   </button>
 </div>
-  <!-- Div informativo que aparece debajo del formulario
-  <div *ngIf="exchangeRate" class="bg-gray-100 p-4 rounded shadow mt-4">
-    <p class="text-lg font-semibold">RESULTADO: <span class="font-normal">{{dataExchange.result}}</span></p>
-    <p class="text-lg font-semibold">MONEDA BASE: <span class="font-normal">{{dataExchange.base_code}}</span></p>
-    <p class="text-lg font-semibold">MONEDA NUEVA: <span class="font-normal">{{dataExchange.target_code}}</span></p>
-    <p class="text-lg font-semibold">CAMBIO: <span class="font-normal">{{dataExchange.conversion_rate}}</span></p>
-    <p class="text-lg font-semibold">Cantidad Obtenida: <span class="font-normal">{{dataExchange.conversion_result}}</span></p>
-  </div> -->
+
+<button (click)="getExchangeRate2()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+  Prueba Interceptor
+</button>

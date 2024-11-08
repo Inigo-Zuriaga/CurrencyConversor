@@ -9,24 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09bf295e-4887-4d37-b1af-ff016a83accd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../.vs/slnx.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/CoinsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/CoinsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Models/Coin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/Coin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Models/History.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/History.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Services/ApiService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/ApiService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Services/Interfaces/IApiService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/Interfaces/IApiService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
