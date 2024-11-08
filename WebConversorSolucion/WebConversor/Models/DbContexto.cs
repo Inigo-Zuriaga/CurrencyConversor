@@ -37,7 +37,7 @@ public class DbContexto : DbContext
 
 
 
-    /*Declaramos las clases*/
+    //Declaramos las clases
     public DbSet<Coin> Coins { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<History> ExchangeHistory { get; set; }

@@ -1,8 +1,6 @@
 ﻿using System.Text.Json;
 namespace WebConversor.Services
 {
-    
-
 
     public class ApiService : IApiService
     {
@@ -14,16 +12,20 @@ namespace WebConversor.Services
             _httpClient = httpClient;
             _apiKey = Environment.GetEnvironmentVariable("API_KEY");
         }
-        
-        public async Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency,int amount)
+
+        public async Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency,
+            int amount)
         {
             // var response = await _httpClient.GetAsync("https://pokeapi.co/api/v2/pokemon/ditto");
-            var response = await _httpClient.GetAsync($"https://v6.exchangerate-api.com/v6/{_apiKey}/pair/{fromCurrency}/{toCurrency}/{amount}");
+            var response =
+                await _httpClient.GetAsync(
+                    $"https://v6.exchangerate-api.com/v6/{_apiKey}/pair/{fromCurrency}/{toCurrency}/{amount}");
 
             response.EnsureSuccessStatusCode(); // Lanza una excepción si la solicitud falla
 
             var content = await response.Content.ReadAsStringAsync();
-            var data = JsonSerializer.Deserialize<Dictionary<string, object>>(content); // Deserializa JSON a un objeto genérico
+            var data = JsonSerializer
+                .Deserialize<Dictionary<string, object>>(content); // Deserializa JSON a un objeto genérico
 
             return data;
         }

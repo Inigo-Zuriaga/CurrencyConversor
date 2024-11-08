@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import coins from './coins.json';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ExchangeService } from '../../services/exchange.service';// Asegúrate de que el servicio esté importado correctamente
-import {FormGroup} from '@angular/forms';
 interface Currency {
   name: string;
   shortname: string;
