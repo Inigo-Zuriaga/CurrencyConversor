@@ -16,13 +16,13 @@ public class DbContexto : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Coin>().HasData(
-            new Coin { Id = 1, Name = "Dólar Estadounidense", ShortName = "USD", Symbol = "USD" },
+            new Coin { Id = 1, Name = "Dï¿½lar Estadounidense", ShortName = "USD", Symbol = "USD" },
             new Coin { Id = 2, Name = "Euro", ShortName = "EUR", Symbol = "EUR" },
-            new Coin { Id = 3, Name = "Yen Japonés", ShortName = "YEN", Symbol = "JPY" }
+            new Coin { Id = 3, Name = "Yen Japonï¿½s", ShortName = "YEN", Symbol = "JPY" }
         );
 
         modelBuilder.Entity<User>().HasData(
-           new User { Id = 1, Name = "Dólar Estadounidense", Email = "asda@gmail.com", LastName = "aaa", Password = "ddd", Img = "dd" },
+           new User { Id = 1, Name = "Dï¿½lar Estadounidense", Email = "asda@gmail.com", LastName = "aaa", Password = "ddd", Img = "dd" },
            new User { Id = 2, Name = "Euro", Email = "ggrg2@gmail.com", LastName = "aaa", Password = "fff", Img = "ff" }
 
        );
@@ -34,7 +34,7 @@ public class DbContexto : DbContext
 
 
 
-    /*Declaramos las clases*/
+    //Declaramos las clases
     public DbSet<Coin> Coins { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<History> Histories { get; set; }
