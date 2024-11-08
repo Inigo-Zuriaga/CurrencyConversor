@@ -2,13 +2,23 @@
 
     <div id="signin">
 
-        <form>
+       <!-- <form>
           <h2>Email:</h2>
           <input class="email" Type="text" value="">
-          <h2>Password:</h2>
-          <input class="password" Type=" " value="">
+          <h2>Password:</h2>-->
 
-          <button>Login</button>
+      <form (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input type="email" [(ngModel)]="email" name="email" required />
+        </div>
+        <div>
+          <label for="password">Contraseña</label>
+          <input type="password" [(ngModel)]="password" name="password" required />
+        </div>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>  <input class="password" Type=" " value="">
+
+        <button type="submit">Iniciar sesión</button>
 
         </form>
 
