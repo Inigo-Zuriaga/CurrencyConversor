@@ -31,7 +31,9 @@ namespace WebConversor.Services
                 Name = user.Name,
                 LastName = user.LastName,
                 Email = user.Email,
-                Password = user.Password
+                Password = user.Password,
+                FechaNacimiento = user.FechaNacimiento,
+                Img = user.Img
             };
             
             _context.Users.Add(newUser);

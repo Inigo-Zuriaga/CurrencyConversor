@@ -8,7 +8,7 @@ import jwt_decode, {jwtDecode, JwtPayload} from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/user';  // URL de la API backend
+  private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
 
   constructor(private http: HttpClient) {}
 
@@ -17,16 +17,26 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, body);
   }
 
+  signIn(name:string,lastName:string,email: string, fechaNacimiento:Date,password: string,img:string): Observable<any> {
+    const body = { name,lastName,email,fechaNacimiento,password,img };
+    // const body = {
+    //   "name": name,
+    //   "lastName": lastName,
+    //   "email": email,
+    //   "fechaNacimiento": fechaNacimiento,
+    //   "password": password,
+    //   "img": img
+    // };
+    return this.http.post(`${this.apiUrl}/SignIn`, body);
+
+  }
   register(email: string, password: string, confirmPassword: string): Observable<any> {
     const body = { email, password, confirmPassword };
-    return this.http.post(`${this.apiUrl}/register`, body);
+    return this.http.post(`${this.apiUrl}/SignIn`, body);
   }
-
-
   logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
-  constructor(private http: HttpClient) { }
-  decodedToken:any;
 
+  decodedToken:any;
 
   //Guarda el token en el localstorage
   storeToken(accesToken: string) {
