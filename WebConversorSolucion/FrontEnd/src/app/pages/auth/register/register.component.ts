@@ -4,9 +4,9 @@ import {Iuser} from '../../../Interfaces/iuser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-sing-in',
+  selector: 'app-register',
   templateUrl: './sing-in.component.html',
-  styleUrl: './sing-in.component.css'
+  styleUrl: './register.component.css'
 })
 export class SingInComponent{
   loginForm: FormGroup = new FormGroup({});
