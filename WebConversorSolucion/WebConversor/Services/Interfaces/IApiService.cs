@@ -1,10 +1,9 @@
-﻿namespace WebConversor.Services.Interfaces
+﻿namespace WebConversor.Services.Interfaces;
+
+public interface IApiService
 {
-    public interface IApiService
-    {
 
-        // Task<Dictionary<string, object>>GetDataFromApiAsync();
-        Task<Dictionary<string, object>> GetDataFromApiAsync(string FromCurrency, string ToCurrency,int amount);
+    // Task<Dictionary<string, object>>GetDataFromApiAsync();
+    Task<Dictionary<string, object>> GetDataFromApiAsync(string FromCurrency, string ToCurrency,int amount);
 
-    }
 }
