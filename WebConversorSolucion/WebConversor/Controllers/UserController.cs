@@ -95,7 +95,7 @@ public class UserController : ControllerBase
     }
   
     [HttpPost("SignIn")]
-    public async Task<IActionResult> SignIn([FromBody] User request)
+    public async Task<IActionResult> Register([FromBody] User request)
     {
         
         if(request == null)
@@ -104,8 +104,8 @@ public class UserController : ControllerBase
         }
         
         
-        // var usuario=await _userService.SignInUser(request.Name,request.LastName,request.Email,request.Password);
-        var result=await _userService.SignInUser(request);
+        // var usuario=await _userService.RegisterUser(request.Name,request.LastName,request.Email,request.Password);
+        var result=await _userService.RegisterUser(request);
         
         if(result!="Usuario registrado con exito")
         {

@@ -16,7 +16,7 @@ namespace WebConversor.Services
         }
         
         // public async Task<IActionResult> SignInUser(string name,string lastname,string email,string password)
-        public async Task<string> SignInUser(User user)
+        public async Task<string> RegisterUser(User user)
         {
             
             var userExist = _context.Users.FirstOrDefault(x => x.Email == user.Email);

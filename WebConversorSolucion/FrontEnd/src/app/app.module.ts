@@ -13,7 +13,7 @@ import { PruebaComponent } from './prueba/prueba.component';
 import {loginInterceptor} from './Interceptors/login.interceptor';
 import {AuthInterceptor} from './Interceptors/auth.interceptor';
 import {CommonModule} from '@angular/common';
-import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -28,7 +28,7 @@ import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
     FooterComponent,
     ConversorComponent,
     PruebaComponent,
-    SingInComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

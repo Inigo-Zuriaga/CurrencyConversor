@@ -25,11 +25,12 @@ namespace WebConversor.Controllers
                 return Unauthorized("El usuario no está autenticado.");
             }
 
-            List<History> exchangeList =await _context.ExchangeHistory.Include(x =>x.User)
+            List<History> exchangeList =await _context.ExchangeHistory
+                .Include(x =>x.User)
                 .Where(x => x.User.Email == email)
                 .OrderByDescending(x => x.Date)
                 .ToListAsync();
-            
+                
             return Ok(exchangeList);
         }
         

@@ -5,10 +5,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './sing-in.component.html',
+  templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class SingInComponent{
+export class RegisterComponent{
   loginForm: FormGroup = new FormGroup({});
   user:Iuser={
     name:'',
