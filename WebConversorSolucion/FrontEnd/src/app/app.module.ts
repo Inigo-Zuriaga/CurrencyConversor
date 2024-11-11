@@ -14,7 +14,8 @@ import {loginInterceptor} from './Interceptors/login.interceptor';
 import {AuthInterceptor} from './Interceptors/auth.interceptor';
 import {CommonModule} from '@angular/common';
 import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
-
+import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 
@@ -29,6 +30,7 @@ import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
     ConversorComponent,
     PruebaComponent,
     SingInComponent,
+    CurrencyChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    NgChartsModule,
 
   ],
   providers: [
