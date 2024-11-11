@@ -46,6 +46,7 @@ export class SingInComponent{
     )
       .subscribe(
         (data) => {
+          //hola
         console.log(data);
         //Si el registro es correcto, redirige al login
 
