@@ -17,7 +17,16 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, body);
   }
 
-  signIn(name:string,lastName:string,email: string, fechaNacimiento:Date,password: string,img:string): Observable<any> {
+  signIn(name:string,
+         lastName:string,
+         email: string,
+         password: string,
+         fechaNacimiento:Date,
+         img:string): Observable<any> {
+
+    console.log("lafecha******************************")
+    console.log(fechaNacimiento)
+
     const body = { name,lastName,email,fechaNacimiento,password,img };
     // const body = {
     //   "name": name,

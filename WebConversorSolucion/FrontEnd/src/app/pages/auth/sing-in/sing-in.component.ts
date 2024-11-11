@@ -14,8 +14,8 @@ export class SingInComponent{
     name:'',
     lastName:'',
     email:'',
-    fechaNacimiento:new Date(),
     password:'',
+    fechaNacimiento:new Date(),
     img:''
   }
 
@@ -26,8 +26,8 @@ export class SingInComponent{
       name: [''],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
-      fechaNacimiento: [''],
       password: [''],
+      fechaNacimiento: [''],
       img: ['']
     });
 
@@ -36,15 +36,16 @@ export class SingInComponent{
 
 
   onSubmit(): void {
-
     this.authService.signIn(
       this.loginForm.value.name,
       this.loginForm.value.lastName,
       this.loginForm.value.email,
       this.loginForm.value.password,
       this.loginForm.value.fechaNacimiento,
-      this.loginForm.value.img)
-      .subscribe( (data) => {
+      this.loginForm.value.img
+    )
+      .subscribe(
+        (data) => {
         console.log(data);
         //Si el registro es correcto, redirige al login
 
