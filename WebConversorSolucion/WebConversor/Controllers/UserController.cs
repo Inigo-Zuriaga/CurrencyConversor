@@ -9,6 +9,8 @@ namespace WebConversor.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private object _validUsers;
+
         // GET: api/<UserController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -40,26 +42,57 @@ namespace WebConversor.Controllers
         public void Delete(int id)
         {
         }
-        
-        
-        //CREAR UN DICCIONARIO Q PILLE 2 STRINGS
-        // [HttpPost ("Registro")] 
-        // public IActionResult Login([FromBody] User request)
-        // {
-        //     // Validar el correo y la contraseña
-        //     if (_validUsers.ContainsKey(request.Email) && _validUsers[request.Email] == request.Password)
-        //     {
-        //         // Generar un token o simplemente devolver un mensaje de éxito
-        //         return Ok(new { Message = "Login exitoso", Token = "abc123" });
-        //     }
-        //     else
-        //     {
-        //         return Unauthorized(new { Message = "Credenciales inválidas" });
-        //     }
-        // }
-            
-        
-        
-        
+
+
+//         CREAR UN DICCIONARIO Q PILLE 2 STRINGS
+
+        [HttpPost("Registro")]
+        public IActionResult Login([FromBody] User request)
+        {
+            // Validar el correo y la contraseña
+            if (_validUsers.ContainsKey(request.Email) && _validUsers[Request.Email] == request.Password)
+            {
+                // Generar un token o simplemente devolver un mensaje de éxito
+                return Ok(new { Message = "Login exitoso", Token = "abc123" });
+            }
+
+            else
+            {
+                return Unauthorized(new { Message = "Credenciales inválidas" });
+            }
+        }
+
+        // llevar el usuario a la base de datos una vez se ha validado
+
+        public class UsuarioController : Controller
+        {
+            private readonly DbContexto _context;
+
+            public UsuarioController(DbContexto context)
+            {
+                _context = context;
+            }
+
+            [HttpPost]
+            public async Task<IActionResult> Registrar(User user)
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Users.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+
+                return View(user);
+            }
+
+            private IActionResult View(User viewName)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
     }
+    
 }
+

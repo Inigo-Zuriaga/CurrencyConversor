@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import coins from './coins.json';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {IExchange} from '../../Interfaces/iexchange';
+import {ExchangeService} from '../../services/exchange.service';
 
 // Definición de la interfaz de moneda
 interface Currency {
@@ -10,22 +12,34 @@ interface Currency {
   symbol: string;
 }
 
+
+
 @Component({
   selector: 'app-conversor',
   templateUrl: './conversor.component.html',
   styleUrls: ['./conversor.component.css'],
 })
 export class ConversorComponent implements OnInit {
+
+  dataExchange: IExchange = {
+    result: "",
+    base_code: "",
+    target_code: "",
+    conversion_rate: 0,
+    conversion_result: 0
+  };
+
   amount: number = 0; // Cantidad a convertir
   convertedAmount: number = 0; // Resultado de la conversión
   fromCurrency: Currency = { id: 1, name: 'United States Dollar', shortname: 'USD', symbol: '$' }; // Moneda origen
+
   toCurrency: Currency = { id: 2, name: 'Euro', shortname: 'EUR', symbol: '€' }; // Moneda destino
   currencies: Currency[] = coins; // Lista completa de monedas del JSON
   dropdownOpenFrom: boolean = false; // Controla el desplegable del selector origen
   dropdownOpenTo: boolean = false; // Controla el desplegable del selector destino
   filteredCurrencies: Currency[] = []; // Lista de monedas filtrada para el buscador
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private exchangeService: ExchangeService) {}
 
   ngOnInit() {
     // Inicializa el listado filtrado con todas las monedas
@@ -83,4 +97,17 @@ export class ConversorComponent implements OnInit {
       }
     );
   }
+
+  // getExchangeRate() {
+  //   this.exchangeService.getExchangeRate(this.fromCurrency, this.toCurrency, this.amount)
+  //     .subscribe(
+  //     data => {
+  //       this.dataExchange = data; // Asume que data tiene la estructura adecuada
+  //       },
+  //         (error: any) => {
+  //       console.error('Error fetching exchange rate', error);
+  //     }  );
+  // }
+
+
 }

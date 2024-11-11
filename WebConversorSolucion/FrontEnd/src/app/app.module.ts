@@ -8,8 +8,9 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import  { ConversorComponent } from './pages/conversor/conversor.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
+import {CommonModule} from '@angular/common';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
