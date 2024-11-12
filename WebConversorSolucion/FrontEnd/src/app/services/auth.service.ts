@@ -12,9 +12,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    const body = { email, password, rememberMe: false };
-    return this.http.post(`${this.apiUrl}/login`, body);
+  login(email: string, 
+    password: string): Observable<any> {
+    const body = 
+    { 
+      "email":email, 
+      "password":password 
+    };
+    return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
   signIn(name:string,
@@ -24,7 +29,7 @@ export class AuthService {
          fechaNacimiento:Date,
          img:string): Observable<any> {
 
-    console.log("lafecha******************************")
+    console.log("lafecha******************************")  
     console.log(fechaNacimiento)
 
     const body = { name,lastName,email,fechaNacimiento,password,img };

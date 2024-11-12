@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebConversor.ViewModels;
 
@@ -87,6 +88,7 @@ public class UserController : ControllerBase
     //     //         return Unauthorized(new { Message = "Credenciales inválidas" });
     //     //     }
     // }
+    //[Authorize]
     [HttpGet("mostrarUsuarios")]
     public async Task<IActionResult> Get()
     {
@@ -114,4 +116,27 @@ public class UserController : ControllerBase
         }
         return Ok("Usuario registrado con exito");
     }
+    
+    [HttpPost("Login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    {
+        
+        /*if(request == null)
+        {
+            return BadRequest("Datos de registro inválidos.");
+        }*/
+        
+        
+        // var usuario=await _userService.RegisterUser(request.Name,request.LastName,request.Email,request.Password);
+        var result=await _userService.LoginUser(request);
+        
+        if(result!="Usuario registrado con exito")
+        {
+            // return StatusCode(StatusCodes.Status500InternalServerError, result);
+            return BadRequest(result);
+        }
+        return Ok("Usuario registrado con exito");
+    }
+
+
 }
