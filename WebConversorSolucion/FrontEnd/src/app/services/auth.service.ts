@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import jwt_decode, {jwtDecode, JwtPayload} from 'jwt-decode';
+import {jwtDecode, JwtPayload} from 'jwt-decode';
 
 
 @Injectable({
@@ -12,6 +12,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  // método para iniciar sesión
   login(email: string, 
     password: string): Observable<any> {
     const body = 
@@ -22,6 +23,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
+  // método para registrar un usuario nuevo
   signIn(name:string,
          lastName:string,
          email: string,
@@ -48,6 +50,8 @@ export class AuthService {
     const body = { email, password, confirmPassword };
     return this.http.post(`${this.apiUrl}/SignIn`, body);
   }
+
+  // variable que indica si el usuario está logueado o no
   logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
 
   decodedToken:any;
@@ -88,6 +92,8 @@ export class AuthService {
     }
 
   }
+
+  // devuelve el nombre de usuario si el token está almacenado y es válido
   getUserName():string{
 
     const accessToken =this.getAccessToken();

@@ -8,8 +8,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+
 export class RegisterComponent{
-  loginForm: FormGroup = new FormGroup({});
+  loginForm: FormGroup = new FormGroup({}); // declara el formulario de registro
   user:Iuser={
     name:'',
     lastName:'',
@@ -19,9 +20,9 @@ export class RegisterComponent{
     img:''
   }
 
-
+  // Constructor que inyecta el AuthService y FormBuilder para construir el formulario
   constructor(private authService: AuthService,private fb: FormBuilder) {
-
+    // definir la estructura del form con sus campos y validaciones
     this.loginForm = this.fb.group({
       name: [''],
       lastName: [''],
@@ -32,11 +33,9 @@ export class RegisterComponent{
     });
 
   }
-
-
-
+  // función que se llama al enviar el form
   onSubmit(): void {
-    this.authService.signIn(
+    this.authService.signIn( //se llama ha este método y se le pasan los valores del form
       this.loginForm.value.name,
       this.loginForm.value.lastName,
       this.loginForm.value.email,
@@ -51,8 +50,6 @@ export class RegisterComponent{
         //Si el registro es correcto, redirige al login
 
       });
-
-
 
   }
 
