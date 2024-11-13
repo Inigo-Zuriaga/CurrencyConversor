@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
 namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
@@ -14,7 +11,7 @@ public class ApiController : ControllerBase
     {
         _apiService = apiService;
     }
-    
+
     [HttpPost("exchange-rate")]
     public async Task<IActionResult> GetExchangeRate([FromBody] ExchangeRequest request)
     {
@@ -28,6 +25,6 @@ public class ApiController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
         }
     }
-    
+
 }
 

@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace WebConversor.Controllers
+﻿namespace WebConversor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class HistoryController : ControllerBase
     {
-        
+
         private readonly DbContexto _context;
-        
+
         public HistoryController(DbContexto context)
         {
             _context = context;
@@ -25,15 +22,15 @@ namespace WebConversor.Controllers
                 return Unauthorized("El usuario no está autenticado.");
             }
 
-            List<History> exchangeList =await _context.ExchangeHistory
-                .Include(x =>x.User)
+            List<History> exchangeList = await _context.ExchangeHistory
+                .Include(x => x.User)
                 .Where(x => x.User.Email == email)
                 .OrderByDescending(x => x.Date)
                 .ToListAsync();
-                
+
             return Ok(exchangeList);
         }
-        
-        
+
+
     }
 }
