@@ -123,9 +123,13 @@ public class UserController : ControllerBase
         if(result!="El correo o la contraseña son incorrectos")
         {
             // return StatusCode(StatusCodes.Status500InternalServerError, result);
-            return BadRequest(result);
+            // return BadRequest(result);
+            return BadRequest("El correo o la contraseña son incorrectos");
         }
-        return Ok("Usuario logueado con exito");
+        var token= _userService.GenerateJwtToken(request.Email);
+        
+        // return Ok("Usuario logueado con exito");
+        return Ok(new { Token = token });
     }
 
 
