@@ -19,8 +19,12 @@ namespace WebConversor.Models
 
         public User User { get; set; }
         [Required] public string FromCoin { get; set; }
+        
+        [Required] public double FromAmount { get; set; }
 
         [Required] public string ToCoin { get; set; }
+        
+        [Required] public double ToAmount { get; set; }
 
         // public double Result { get; set; }
         [Required] public DateTime Date { get; set; } = DateTime.Now;

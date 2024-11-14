@@ -9,8 +9,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241112193037_log.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241112193037_log.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/History.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/History.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +95,7 @@
       <updated>1731346057244</updated>
       <workItem from="1731346059169" duration="1635000" />
       <workItem from="1731432016667" duration="512000" />
+      <workItem from="1731519503974" duration="6319000" />
     </task>
     <servers />
   </component>

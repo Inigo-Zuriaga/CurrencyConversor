@@ -4,6 +4,7 @@ import {MainPageComponent} from './pages/main-page/main-page.component';
 import {LoginComponent} from './pages/auth/login/login.component';
 import {ConversorComponent} from './pages/conversor/conversor.component';
 import {RegisterComponent} from './pages/auth/register/register.component';
+import {HistoryComponent} from './pages/history/history.component';
 //Aqui añadimos las rutas de la app. Asociamos cada ruta con un componente.
 //Si la ruta necesita un parámetro, se pone nombreAccion/:nombreDelParametro
 const routes: Routes = [
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path:'conversor',component:ConversorComponent},
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
+  {path: 'history', component: HistoryComponent },
+
 
 ];
 

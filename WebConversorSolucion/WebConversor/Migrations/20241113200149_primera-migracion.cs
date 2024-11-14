@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebConversor.Migrations
 {
     /// <inheritdoc />
-    public partial class log : Migration
+    public partial class primeramigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,7 +54,9 @@ namespace WebConversor.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     FromCoin = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FromAmount = table.Column<double>(type: "float", nullable: false),
                     ToCoin = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ToAmount = table.Column<double>(type: "float", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -89,12 +91,12 @@ namespace WebConversor.Migrations
 
             migrationBuilder.InsertData(
                 table: "ExchangeHistory",
-                columns: new[] { "Id", "Date", "FromCoin", "ToCoin", "UserId" },
+                columns: new[] { "Id", "Date", "FromAmount", "FromCoin", "ToAmount", "ToCoin", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "EUR", "USD", 1 },
-                    { 2, new DateTime(2024, 11, 12, 20, 30, 36, 71, DateTimeKind.Local).AddTicks(2136), "USD", "EUR", 2 },
-                    { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "USD", "PLN", 2 }
+                    { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76.0, "EUR", 2.0, "USD", 1 },
+                    { 2, new DateTime(2024, 11, 13, 21, 1, 48, 316, DateTimeKind.Local).AddTicks(4226), 20.0, "USD", 16.0, "EUR", 2 },
+                    { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.0, "USD", 120.0, "PLN", 2 }
                 });
 
             migrationBuilder.CreateIndex(

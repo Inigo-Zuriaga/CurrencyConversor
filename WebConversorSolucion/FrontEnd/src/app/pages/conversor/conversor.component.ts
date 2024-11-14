@@ -59,12 +59,37 @@ export class ConversorComponent implements OnInit {
         currency.name.toLowerCase().includes(searchTerm)
     );
   }
-
+   emailPrueba="ggrg2@gmail.com";
   // Actualización del método para llamar al servicio
   getExchangeRate() {
     this.exchangeService.getExchangeRate(this.fromCurrency.shortname, this.toCurrency.shortname, this.amount).subscribe(
       (data) => {
+        console.log('Exchange rate fetched successfully', data);
+
+
+
         this.convertedAmount = data.conversion_result; // Asume que `data` tiene la estructura adecuada
+        // Llama al servicio para guardar el historial
+
+        const fromCoin:string=this.fromCurrency.shortname;
+        // this.exchangeService.createExchangeHistory(data.base_code,this.amount,data.target_code,data.conversion_result,new Date(),emailPrueba).subscribe(
+
+        console.log('Tipo de fromCurrency.shortname:', typeof this.fromCurrency.shortname);
+        console.log('Tipo de amount:', typeof this.amount);
+        console.log('Tipo de toCurrency.shortname:', typeof this.toCurrency.shortname);
+        console.log('Tipo de data.conversion_result:', typeof data.conversion_result);
+        // console.log('Tipo de Date:', this.Date(new Date()));
+        console.log('Tipo de emailPrueba:', typeof this.emailPrueba);
+
+        this.exchangeService.createExchangeHistory(this.fromCurrency.shortname,this.amount,this.toCurrency.shortname,data.conversion_result,new Date(),this.emailPrueba).subscribe(
+          (data) => {
+            console.log('Historial creado', data);
+          },
+          (error) => {
+            console.error('Error al crear el historial', error);
+          }
+        )
+
       },
       (error: HttpErrorResponse) => {
         console.error('Error fetching exchange rate', error);
