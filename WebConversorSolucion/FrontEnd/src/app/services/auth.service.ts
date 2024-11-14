@@ -9,17 +9,13 @@ import {jwtDecode, JwtPayload} from 'jwt-decode';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
+  //private logged = new BehaviorSubject<boolean>(this.isUserLogged());
 
   constructor(private http: HttpClient) {}
 
   // método para iniciar sesión
-  login(email: string, 
-    password: string): Observable<any> {
-    const body = 
-    { 
-      "email":email, 
-      "password":password 
-    };
+  login(email: string, password: string): Observable<any> {
+    const body = { "email":email, "password":password };
     return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
@@ -73,7 +69,7 @@ export class AuthService {
     return <string>localStorage.getItem('accessToken');
   }
   getUserToken():string{
-    return <string>localStorage.getItem('username');
+    return <string>localStorage.getItem('email');
   }
 
   DeleteUsername(): void {
@@ -94,7 +90,7 @@ export class AuthService {
   }
 
   // devuelve el nombre de usuario si el token está almacenado y es válido
-  getUserName():string{
+  /*getUserName():string{
 
     const accessToken =this.getAccessToken();
     if(!accessToken){
@@ -102,7 +98,15 @@ export class AuthService {
     }
     const decodedToken = this.decodeToken(accessToken);
     return decodedToken ? decodedToken.username:'';
-}
+  }*/
+  getUserName(): string {
+    const token = this.getAccessToken();
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.username || '';
+    }
+    return '';
+  }
 
 }
 

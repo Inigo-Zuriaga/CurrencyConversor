@@ -1,6 +1,4 @@
-﻿// using Microsoft.AspNetCore.Identity;
-
-namespace WebConversor.Models;
+﻿namespace WebConversor.Models;
 //
 // [Table("User")] //corresponde con la tabla de la base de datos: User
 // public class User 
