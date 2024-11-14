@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-// using Microsoft.AspNetCore.Identity;
+﻿// using Microsoft.AspNetCore.Identity;
 
 namespace WebConversor.Models;
 //
@@ -43,7 +41,7 @@ namespace WebConversor.Models;
 //     public string? Img { get; set; } // Opcional: campo para almacenar la URL de la imagen del perfil del usuario
 // }
 
-public class User 
+public class User
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
@@ -51,5 +49,5 @@ public class User
     public string Email { get; set; } = string.Empty;
     public DateTime? FechaNacimiento { get; set; }
     public string Password { get; set; } = string.Empty;
-    public string? Img { get; set; }=string.Empty;
+    public string? Img { get; set; } = string.Empty;
 }

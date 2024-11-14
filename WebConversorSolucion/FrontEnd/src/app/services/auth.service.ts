@@ -14,16 +14,18 @@ export class AuthService {
   private apiUrl2=environment.apiUrl2;
   constructor(private http: HttpClient) {}
 
-  login(email: string,
+  // método para iniciar sesión
+  login(email: string, 
     password: string): Observable<any> {
-    const body =
-    {
-      "email":email,
-      "password":password
+    const body = 
+    { 
+      "email":email, 
+      "password":password 
     };
     return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
+  // método para registrar un usuario nuevo
   signIn(name:string,
          lastName:string,
          email: string,
@@ -50,6 +52,8 @@ export class AuthService {
     const body = { email, password, confirmPassword };
     return this.http.post(`${this.apiUrl}/SignIn`, body);
   }
+
+  // variable que indica si el usuario está logueado o no
   logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
 
   decodedToken:any;
@@ -90,6 +94,8 @@ export class AuthService {
     }
 
   }
+
+  // devuelve el nombre de usuario si el token está almacenado y es válido
   getUserName():string{
 
     const accessToken =this.getAccessToken();
