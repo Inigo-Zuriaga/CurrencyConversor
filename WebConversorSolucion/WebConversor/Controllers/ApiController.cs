@@ -26,5 +26,21 @@ public class ApiController : ControllerBase
         }
     }
 
+    [HttpPost("historical-data")]
+    public async Task<IActionResult> ChartDataRequest([FromBody] ExchangeRequest request)
+    {
+
+        try
+        {
+            var data = await _apiService.GetDataFromApiAsync(request.FromCurrency, request.ToCurrency, request.Amount);
+            return Ok(data);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+
 }
 

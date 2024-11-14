@@ -16,6 +16,7 @@ import {CommonModule} from '@angular/common';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -32,6 +33,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
     PruebaComponent,
     CurrencyChartComponent,
     RegisterComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
