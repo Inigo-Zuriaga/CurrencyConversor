@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import jwt_decode, {jwtDecode, JwtPayload} from 'jwt-decode';
-
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
-
+  // private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
+  private apiUrl3 = 'http://localhost:25850/api/History';  // URL de la API backend
+  private apiUrl=environment.apiUrl;
+  private apiUrl2=environment.apiUrl2;
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    const body = { email, password, rememberMe: false };
-    return this.http.post(`${this.apiUrl}/login`, body);
+  // método para iniciar sesión
+  login(email: string, 
+    password: string): Observable<any> {
+    const body = 
+    { 
+      "email":email, 
+      "password":password 
+    };
+    return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
+  // método para registrar un usuario nuevo
   signIn(name:string,
          lastName:string,
          email: string,
@@ -24,25 +33,27 @@ export class AuthService {
          fechaNacimiento:Date,
          img:string): Observable<any> {
 
-    console.log("lafecha******************************")
-    console.log(fechaNacimiento)
 
     const body = { name,lastName,email,fechaNacimiento,password,img };
-    // const body = {
-    //   "name": name,
-    //   "lastName": lastName,
-    //   "email": email,
-    //   "fechaNacimiento": fechaNacimiento,
-    //   "password": password,
-    //   "img": img
-    // };
     return this.http.post(`${this.apiUrl}/SignIn`, body);
 
   }
+
+  viewHistory(email: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { email }; // Este es el formato correcto, un objeto JSON con la propiedad email
+    console.log("El body");
+    console.log(body);
+    console.log(body.email.toString());
+    return this.http.post(`${this.apiUrl3}/History`, JSON.stringify(email), { headers });
+  }
+
   register(email: string, password: string, confirmPassword: string): Observable<any> {
     const body = { email, password, confirmPassword };
     return this.http.post(`${this.apiUrl}/SignIn`, body);
   }
+
+  // variable que indica si el usuario está logueado o no
   logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
 
   decodedToken:any;
@@ -83,6 +94,8 @@ export class AuthService {
     }
 
   }
+
+  // devuelve el nombre de usuario si el token está almacenado y es válido
   getUserName():string{
 
     const accessToken =this.getAccessToken();

@@ -12,7 +12,7 @@ using WebConversor.Models;
 namespace WebConversor.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20241108180134_primera-migracion")]
+    [Migration("20241113200149_primera-migracion")]
     partial class primeramigracion
     {
         /// <inheritdoc />
@@ -84,9 +84,15 @@ namespace WebConversor.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<double>("FromAmount")
+                        .HasColumnType("float");
+
                     b.Property<string>("FromCoin")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ToAmount")
+                        .HasColumnType("float");
 
                     b.Property<string>("ToCoin")
                         .IsRequired()
@@ -106,15 +112,19 @@ namespace WebConversor.Migrations
                         {
                             Id = 1,
                             Date = new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FromAmount = 76.0,
                             FromCoin = "EUR",
+                            ToAmount = 2.0,
                             ToCoin = "USD",
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 11, 8, 19, 1, 32, 513, DateTimeKind.Local).AddTicks(8346),
+                            Date = new DateTime(2024, 11, 13, 21, 1, 48, 316, DateTimeKind.Local).AddTicks(4226),
+                            FromAmount = 20.0,
                             FromCoin = "USD",
+                            ToAmount = 16.0,
                             ToCoin = "EUR",
                             UserId = 2
                         },
@@ -122,7 +132,9 @@ namespace WebConversor.Migrations
                         {
                             Id = 3,
                             Date = new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FromAmount = 45.0,
                             FromCoin = "USD",
+                            ToAmount = 120.0,
                             ToCoin = "PLN",
                             UserId = 2
                         });
