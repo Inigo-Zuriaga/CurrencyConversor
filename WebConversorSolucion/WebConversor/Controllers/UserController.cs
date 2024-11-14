@@ -1,4 +1,6 @@
-﻿namespace WebConversor.Controllers;
+﻿using NuGet.Common;
+
+namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -92,6 +94,7 @@ public class UserController : ControllerBase
         return Ok(users);
     }
 
+//registrarse
     [HttpPost("SignIn")]
     public async Task<IActionResult> Register([FromBody] User request)
     {
@@ -113,23 +116,27 @@ public class UserController : ControllerBase
         return Ok("Usuario registrado con exito");
     }
 
+//login
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        
+        if(request == null)
+        {
+            return BadRequest("Datos de registro inválidos.");
+        }
+
         // var usuario=await _userService.RegisterUser(request.Name,request.LastName,request.Email,request.Password);
-        var result=await _userService.LoginUser(request);
-        
-        if(result!="El correo o la contraseña son incorrectos")
+        var result = await _userService.LoginUser(request);
+
+        if (result != "Usuario registrado con exito")
         {
             // return StatusCode(StatusCodes.Status500InternalServerError, result);
             // return BadRequest(result);
             return BadRequest("El correo o la contraseña son incorrectos");
         }
-        var token= _userService.GenerateJwtToken(request.Email);
-        
-        // return Ok("Usuario logueado con exito");
+        var token = _userService.GenerateJwtToken(request.Email);
         return Ok(new { Token = token });
+        
     }
 
 

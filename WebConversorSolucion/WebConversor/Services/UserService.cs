@@ -1,9 +1,4 @@
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 namespace WebConversor.Services;
-
 
 public class UserService
 {
@@ -50,13 +45,15 @@ public class UserService
  
         var userExist = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
 
-        
-        if (userExist != null)
+        if (userExist == null)
         {
-            return "El correo o la contraseña son incorrectos";
+            return "EL correo o contraseña son incorrectos";
         }
 
-        return "Usuario logueado con exito";
+        return "Usuario registrado con exito";
+
+        // Genera el token JWT si el usuario existe y las credenciales son correctas
+        //return GenerateJwtToken(userExist.Email, userExist.Password);
     }
 
 
@@ -71,12 +68,14 @@ public class UserService
         var claims = new[]
         {
             //Indicamos los datos que queremos pasar con el token
-            new Claim("email", email),
+            new Claim("email", email)
             //new Claim(JwtRegisteredClaimNames.Exp, expirationTime.ToString()) // Tiempo de expiraci�n
         };
 
         var token = new JwtSecurityToken(
             issuer: jwtSettings["Issuer"],
+            //issuer: _configuration["Jwt:Issuer"],
+            //audience: _configuration["Jwt:Audience"],
             audience: jwtSettings["Audience"],
             claims: claims,
             expires: DateTime.Now.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),

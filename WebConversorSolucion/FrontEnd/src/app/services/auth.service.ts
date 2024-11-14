@@ -15,13 +15,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   // método para iniciar sesión
-  login(email: string, 
-    password: string): Observable<any> {
-    const body = 
-    { 
-      "email":email, 
-      "password":password 
-    };
+  login(email: string, password: string): Observable<any> {
+    const body = { "email":email, "password":password };
     return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
@@ -75,7 +70,7 @@ export class AuthService {
     return <string>localStorage.getItem('accessToken');
   }
   getUserToken():string{
-    return <string>localStorage.getItem('username');
+    return <string>localStorage.getItem('email');
   }
 
   DeleteUsername(): void {
@@ -96,7 +91,7 @@ export class AuthService {
   }
 
   // devuelve el nombre de usuario si el token está almacenado y es válido
-  getUserName():string{
+  /*getUserName():string{
 
     const accessToken =this.getAccessToken();
     if(!accessToken){
@@ -104,7 +99,15 @@ export class AuthService {
     }
     const decodedToken = this.decodeToken(accessToken);
     return decodedToken ? decodedToken.username:'';
-}
+  }*/
+  getUserName(): string {
+    const token = this.getAccessToken();
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.username || '';
+    }
+    return '';
+  }
 
 }
 
