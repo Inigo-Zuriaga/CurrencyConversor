@@ -12,16 +12,19 @@ export class AuthService {
   private apiUrl3 = 'http://localhost:25850/api/History';  // URL de la API backend
   private apiUrl=environment.apiUrl;
   private apiUrl2=environment.apiUrl2;
-  constructor(private http: HttpClient) {}
+
+
+  // variable que indica si el usuario está logueado o no
+  // logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
+  logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
+
+  constructor(private http: HttpClient) {
+    this.logged.next(this.UserIsLogged());
+  }
 
   // método para iniciar sesión
-  login(email: string, 
-    password: string): Observable<any> {
-    const body = 
-    { 
-      "email":email, 
-      "password":password 
-    };
+  login(email: string, password: string): Observable<any> {
+    const body = { "email":email, "password":password };
     return this.http.post(`${this.apiUrl}/Login`, body);
   }
 
@@ -53,14 +56,12 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/SignIn`, body);
   }
 
-  // variable que indica si el usuario está logueado o no
-  logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
-
   decodedToken:any;
 
   //Guarda el token en el localstorage
-  storeToken(accesToken: string) {
-  localStorage.setItem('accessToken', accesToken);
+  storeToken(accesToken: string): void {
+    localStorage.setItem('accessToken', accesToken);
+    this.logged.next(true); // Publica que el usuario está logueado
   }
 
   get isLogged(): Observable<boolean> {
@@ -68,14 +69,19 @@ export class AuthService {
   }
 
   //Borra el token del localstorage
-  deleteToken():void {
+  // deleteToken():void {
+  //   localStorage.removeItem('accessToken');
+  //   this.logged.next(false);
+  // }
+
+  deleteToken(): void {
     localStorage.removeItem('accessToken');
+    this.logged.next(false); // Publica que el usuario ha cerrado sesión
   }
-  getAccessToken():string{
-    return <string>localStorage.getItem('accessToken');
-  }
+
+
   getUserToken():string{
-    return <string>localStorage.getItem('username');
+    return <string>localStorage.getItem('email');
   }
 
   DeleteUsername(): void {
@@ -94,17 +100,17 @@ export class AuthService {
     }
 
   }
-
-  // devuelve el nombre de usuario si el token está almacenado y es válido
-  getUserName():string{
-
-    const accessToken =this.getAccessToken();
-    if(!accessToken){
-     return '';
+  getAccessToken():string{
+    return <string>localStorage.getItem('accessToken');
+  }
+  getUserEmail(): string {
+    const token = this.getAccessToken();
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.email || '';
     }
-    const decodedToken = this.decodeToken(accessToken);
-    return decodedToken ? decodedToken.username:'';
-}
+    return '';
+  }
 
 }
 

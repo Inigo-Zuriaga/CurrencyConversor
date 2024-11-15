@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import coins from './coins.json';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ExchangeService } from '../../services/exchange.service';// Asegúrate de que el servicio esté importado correctamente
+import { ExchangeService } from '../../services/exchange.service';
+import {AuthService} from '../../services/auth.service';
+
+// Asegúrate de que el servicio esté importado correctamente
 interface Currency {
   name: string;
   shortname: string;
@@ -24,8 +27,8 @@ export class ConversorComponent implements OnInit {
   dropdownOpenFrom: boolean = false;
   dropdownOpenTo: boolean = false;
   filteredCurrencies: Currency[] = [];
-
-  constructor(private exchangeService: ExchangeService, private http: HttpClient) {}
+  email:string='';
+  constructor(private exchangeService: ExchangeService, private http: HttpClient,private authService:AuthService) {}
 
   ngOnInit() {
     this.filteredCurrencies = this.currencies;
@@ -59,29 +62,24 @@ export class ConversorComponent implements OnInit {
         currency.name.toLowerCase().includes(searchTerm)
     );
   }
-   emailPrueba="ggrg2@gmail.com";
+
   // Actualización del método para llamar al servicio
   getExchangeRate() {
+
     this.exchangeService.getExchangeRate(this.fromCurrency.shortname, this.toCurrency.shortname, this.amount).subscribe(
       (data) => {
         console.log('Exchange rate fetched successfully', data);
-
 
 
         this.convertedAmount = data.conversion_result; // Asume que `data` tiene la estructura adecuada
         // Llama al servicio para guardar el historial
 
         const fromCoin:string=this.fromCurrency.shortname;
-        // this.exchangeService.createExchangeHistory(data.base_code,this.amount,data.target_code,data.conversion_result,new Date(),emailPrueba).subscribe(
 
-        console.log('Tipo de fromCurrency.shortname:', typeof this.fromCurrency.shortname);
-        console.log('Tipo de amount:', typeof this.amount);
-        console.log('Tipo de toCurrency.shortname:', typeof this.toCurrency.shortname);
-        console.log('Tipo de data.conversion_result:', typeof data.conversion_result);
-        // console.log('Tipo de Date:', this.Date(new Date()));
-        console.log('Tipo de emailPrueba:', typeof this.emailPrueba);
+        //Recogemos el email del usuario logueado
+        this.email= this.authService.getUserEmail();
 
-        this.exchangeService.createExchangeHistory(this.fromCurrency.shortname,this.amount,this.toCurrency.shortname,data.conversion_result,new Date(),this.emailPrueba).subscribe(
+        this.exchangeService.createExchangeHistory(this.fromCurrency.shortname,this.amount,this.toCurrency.shortname,data.conversion_result,new Date(),this.email).subscribe(
           (data) => {
             console.log('Historial creado', data);
           },

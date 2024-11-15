@@ -1,9 +1,4 @@
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 namespace WebConversor.Services;
-
 
 public class UserService
 {
@@ -47,21 +42,24 @@ public class UserService
     //login
     public async Task<string> LoginUser(LoginRequest request)
     {
-
+ 
         var userExist = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
 
-        if (userExist != null)
+        if (userExist == null)
         {
-            return "El usuario ya existe";
+            return "EL correo o contraseÃ±a son incorrectos";
         }
 
         return "Usuario registrado con exito";
+
+        // Genera el token JWT si el usuario existe y las credenciales son correctas
+        //return GenerateJwtToken(userExist.Email, userExist.Password);
     }
 
 
 
     //Configurar segun los datos que queramos pasar
-    private string GenerateJwtToken(string username, string password)
+    public string GenerateJwtToken(string email)
     {
         var jwtSettings = _configuration.GetSection("JwtSettings");
         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
@@ -70,13 +68,14 @@ public class UserService
         var claims = new[]
         {
             //Indicamos los datos que queremos pasar con el token
-            new Claim("username", username),
-            new Claim("password", password)
-            //new Claim(JwtRegisteredClaimNames.Exp, expirationTime.ToString()) // Tiempo de expiración
+            new Claim("email", email)
+            //new Claim(JwtRegisteredClaimNames.Exp, expirationTime.ToString()) // Tiempo de expiraciï¿½n
         };
 
         var token = new JwtSecurityToken(
             issuer: jwtSettings["Issuer"],
+            //issuer: _configuration["Jwt:Issuer"],
+            //audience: _configuration["Jwt:Audience"],
             audience: jwtSettings["Audience"],
             claims: claims,
             expires: DateTime.Now.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
