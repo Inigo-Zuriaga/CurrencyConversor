@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Iuser} from '../../../Interfaces/iuser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent{
   }
 
   // Constructor que inyecta el AuthService y FormBuilder para construir el formulario
-  constructor(private authService: AuthService,private fb: FormBuilder) {
+  constructor(private authService: AuthService,private fb: FormBuilder,private route:Router) {
     // definir la estructura del form con sus campos y validaciones
     this.loginForm = this.fb.group({
       name: [''],
@@ -33,6 +34,14 @@ export class RegisterComponent{
     });
 
   }
+
+  ngOnInit(): void {
+    if (this.authService.UserIsLogged()){
+
+      this.route.navigate(['/']).then(r => { })
+    }
+  }
+
   // función que se llama al enviar el form
   onSubmit(): void {
     this.authService.signIn( //se llama ha este método y se le pasan los valores del form
@@ -47,6 +56,9 @@ export class RegisterComponent{
         (data) => {
           //hola
         console.log(data);
+
+          //Comprobar si funciona dando errores
+          // this.route.navigate(['/'])
         //Si el registro es correcto, redirige al login
 
       });

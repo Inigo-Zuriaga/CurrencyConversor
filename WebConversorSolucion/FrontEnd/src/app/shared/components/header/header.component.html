@@ -8,9 +8,10 @@
         <a routerLink="/conversor" class="text-white hover:text-blue-300">Convertir</a>
         <a routerLink="/about" class="text-white hover:text-blue-300">About</a>
         <a routerLink="/services" class="text-white hover:text-blue-300">Services</a>
-
+        <a *ngIf="isLoged" routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
 
       <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300 ml-auto">Login</a>
+      <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Desconectarse</a>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -27,5 +28,7 @@
     <a routerLink="/conversor" class="block px-4 py-2 text-white hover:bg-blue-700">Convertir</a>
     <a routerLink="/about" class="block px-4 py-2 text-white hover:bg-blue-700">About</a>
     <a routerLink="/services" class="block px-4 py-2 text-white hover:bg-blue-700">Services</a>
+    <a *ngIf="isLoged"routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
     <a *ngIf="!isLoged" routerLink="/login" class="block px-4 py-2 text-white hover:bg-blue-700">Login</a>
+    <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Desconectarse</a>
 </div>
