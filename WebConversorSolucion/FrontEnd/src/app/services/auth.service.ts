@@ -56,6 +56,7 @@ export class AuthService {
   //Guarda el token en el localstorage
   storeToken(accesToken: string) {
   localStorage.setItem('accessToken', accesToken);
+    this.logged.next(true);
   }
 
   get isLogged(): Observable<boolean> {

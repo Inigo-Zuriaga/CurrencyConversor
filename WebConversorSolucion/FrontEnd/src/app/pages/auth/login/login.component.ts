@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit{
     if (this.authService.UserIsLogged()){
       this.route.navigate(['/']).then(r => { })
     }
+
+    this.onSubmit();
   }
 
   // Método para manejar el envío del formulario
@@ -35,8 +37,8 @@ export class LoginComponent implements OnInit{
       (data) => {
         // se ejecuta si el login es exitoso
         console.log(data); // mostrar respuesta por consola
-        this.authService.storeToken(data.token) 
-        this.route.navigate(['/']).then(r => { })
+        this.authService.storeToken(data.token)
+        this.route.navigate(['/']);
       }
     );
   }
