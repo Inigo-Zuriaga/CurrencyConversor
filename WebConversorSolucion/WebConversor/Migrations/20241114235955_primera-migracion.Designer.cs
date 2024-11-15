@@ -12,7 +12,7 @@ using WebConversor.Models;
 namespace WebConversor.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20241113200149_primera-migracion")]
+    [Migration("20241114235955_primera-migracion")]
     partial class primeramigracion
     {
         /// <inheritdoc />
@@ -121,7 +121,7 @@ namespace WebConversor.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 11, 13, 21, 1, 48, 316, DateTimeKind.Local).AddTicks(4226),
+                            Date = new DateTime(2024, 11, 15, 0, 59, 55, 280, DateTimeKind.Local).AddTicks(7977),
                             FromAmount = 20.0,
                             FromCoin = "USD",
                             ToAmount = 16.0,
