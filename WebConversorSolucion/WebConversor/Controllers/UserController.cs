@@ -111,9 +111,12 @@ public class UserController : ControllerBase
         if (result != "Usuario registrado con exito")
         {
             // return StatusCode(StatusCodes.Status500InternalServerError, result);
-            return BadRequest(result);
+            // return BadRequest(result);
+            return BadRequest(new { error = "No se ha podido registrar el usuario" });
+
         }
-        return Ok("Usuario registrado con exito");
+        // return Ok("Usuario registrado con exito");
+        return Ok(new { message = "Usuario registrado correctamente" });
     }
 
 //login

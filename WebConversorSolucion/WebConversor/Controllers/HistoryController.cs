@@ -1,4 +1,6 @@
-﻿namespace WebConversor.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace WebConversor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -51,7 +53,7 @@
             return Ok(exchangeList);
         }
 
-
+        [Authorize]
         [HttpPost("CreateHistory")]
         // public async Task<ActionResult> CreateHistory([FromBody] History history)
         public async Task<ActionResult> CreateHistory([FromBody] HistoryRequest history)

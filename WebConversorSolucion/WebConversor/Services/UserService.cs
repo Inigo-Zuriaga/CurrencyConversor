@@ -37,7 +37,7 @@ public class UserService
         _context.Users.Add(newUser);
         await _context.SaveChangesAsync();
 
-        return "Usuario registrado con exito"; ;
+        return "Usuario registrado con exito";
     }
     //login
     public async Task<string> LoginUser(LoginRequest request)
