@@ -1,5 +1,3 @@
-using Azure;
-
 namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
