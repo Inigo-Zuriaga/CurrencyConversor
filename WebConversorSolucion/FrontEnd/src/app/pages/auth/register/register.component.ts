@@ -57,8 +57,8 @@ export class RegisterComponent{
           //hola
         console.log(data);
 
-          //Comprobar si funciona dando errores
-          // this.route.navigate(['/'])
+          //Comprobar si funciona dando errores (Puede que sea que detecta que salta un error lo que devuelve la api)
+          this.route.navigate(['/'])
         //Si el registro es correcto, redirige al login
 
       });

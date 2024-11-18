@@ -36,7 +36,6 @@ export class AuthService {
          fechaNacimiento:Date,
          img:string): Observable<any> {
 
-
     const body = { name,lastName,email,fechaNacimiento,password,img };
     return this.http.post(`${this.apiUrl}/SignIn`, body);
 
