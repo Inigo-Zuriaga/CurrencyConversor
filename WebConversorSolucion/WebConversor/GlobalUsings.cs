@@ -8,7 +8,7 @@ global using System.Linq;
 global using System.Threading.Tasks;
 global using WebConversor.Models;
 global using WebConversor.Services;
-global using WebConversor.Services.Interfaces;
+//global using WebConversor.Services.Interfaces;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.IdentityModel.Tokens;
 global using System.Text;

@@ -32,16 +32,15 @@ namespace WebConversor.Services
 
             return data;
         }
-        // Nuevo método para obtener datos históricos de la moneda
+        // Nuevo método para obtener datos históricos para el gráfico de las monedas
         public async Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency)
         {
 
-            // Convierte las fechas a cadenas en el formato esperado por la API
-            string startDateStr = ("1999-01-01");
-            string endDateStr = ("2024-11-1");
+            string startDate = ("1999-01-01");
+            string endDate = ("2024-11-01");
 
             var response = await _httpClient.GetAsync(
-                $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromCurrency}&to_symbol={toCurrency}&apikey={_apiKey2}&start_date={startDateStr}&end_date={endDateStr}");
+                $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromCurrency}&to_symbol={toCurrency}&apikey={_apiKey2}&start_date={startDate}&end_date={endDate}");
 
             response.EnsureSuccessStatusCode();  // Lanza una excepción si la solicitud falla
 
