@@ -1,3 +1,5 @@
+using WebConversor.Services.Interfaces;
+
 namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
