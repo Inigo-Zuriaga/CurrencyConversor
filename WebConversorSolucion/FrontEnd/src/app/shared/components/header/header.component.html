@@ -1,21 +1,19 @@
-<div class="bg-primaryBlue mx-auto mt-3 px-4 py-4 lg:px-20 xl:px-56 max-w-screen-lg rounded-xl shadow-lg flex justify-between items-center font-regularb">
+<div class="bg-primaryBlue fixed top-0 left-0 right-0 mx-auto px-4 py-4 lg:px-20 xl:px-56 max-w-screen-lg rounded-xl shadow-lg flex justify-between items-center font-regularb z-50 mt-3">
     <!-- Logo -->
-
     <a href="#" class="text-2xl font-regularb font-bold text-white">CONVERSOR</a>
 
     <!-- Desktop Navigation Links -->
     <nav class="hidden md:flex space-x-7">
-        <a routerLink="/conversor" class="text-white hover:text-blue-300">Convertir</a>
+        <a routerLink="/conversor" class="text-white hover:text-blue-300">Convert</a>
         <a routerLink="/about" class="text-white hover:text-blue-300">About</a>
         <a routerLink="/services" class="text-white hover:text-blue-300">Services</a>
         <a *ngIf="isLoged" routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
-
-      <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300 ml-auto">Login</a>
-      <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Desconectarse</a>
+        <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300 ml-auto">Login</a>
+        <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Logout</a>
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button (click)="toggleMenu()" class="md:hidden text-white hover:text-blue-300 focus:outline-none">
+    <button (click)="toggleMenu()" class="md:hidden text-white hover:text-blue-700 focus:outline-none">
         <!-- Icono de hamburguesa -->
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -24,11 +22,16 @@
 </div>
 
 <!-- Mobile Navigation Menu -->
-<div *ngIf="isMenuOpen" class="md:hidden bg-primaryBlue -mt-3 pt-7 pb-7 rounded-xl rounded-t-none">
-    <a routerLink="/conversor" class="block px-4 py-2 text-white hover:bg-blue-700">Convertir</a>
+<div *ngIf="isMenuOpen" class="md:hidden bg-primaryBlue mt-16 pt-7 pb-7 rounded-xl rounded-t-none fixed z-50 top-0 left-0 right-0 mx-auto">
+    <a routerLink="/conversor" class="block px-4 py-2 text-white hover:bg-blue-700">Convert</a>
     <a routerLink="/about" class="block px-4 py-2 text-white hover:bg-blue-700">About</a>
     <a routerLink="/services" class="block px-4 py-2 text-white hover:bg-blue-700">Services</a>
-    <a *ngIf="isLoged"routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
+    <a *ngIf="isLoged" routerLink="/history" class="block px-4 py-2 text-white hover:bg-blue-700">Historial</a>
     <a *ngIf="!isLoged" routerLink="/login" class="block px-4 py-2 text-white hover:bg-blue-700">Login</a>
-    <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Desconectarse</a>
+    <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="block px-4 py-2 text-white hover:bg-blue-700">Logout</a>
+</div>
+
+<!-- Contenido Principal -->
+<div class="mt-20">
+    <!-- Tu contenido aquí -->
 </div>

@@ -1,5 +1,4 @@
-﻿
-namespace WebConversor.Services.Interfaces;
+﻿namespace WebConversor.Services.Interfaces;
 
 public interface IApiService
 {
