@@ -57,12 +57,10 @@ public class UserController : ControllerBase
         // Llama al servicio para validar las credenciales
         // var usuario=await _userService.RegisterUser(request.Name,request.LastName,request.Email,request.Password);
         var result = await _userService.LoginUser(request);
-
-        if (result != "Usuario registrado con exito")
+        
+        if (result != request.Email)
         {
-            // return StatusCode(StatusCodes.Status500InternalServerError, result);
-            // return BadRequest(result);
-            return BadRequest("El correo o la contraseña son incorrectos");
+            return BadRequest(new { error = "El correo o la contraseña son incorrectos" });
         }
 
         // Genera un token JWT para el usuario autenticado

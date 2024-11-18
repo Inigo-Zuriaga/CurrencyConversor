@@ -95,7 +95,7 @@ namespace WebConversor.Migrations
                 values: new object[,]
                 {
                     { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76.0, "EUR", 2.0, "USD", 1 },
-                    { 2, new DateTime(2024, 11, 15, 0, 59, 55, 280, DateTimeKind.Local).AddTicks(7977), 20.0, "USD", 16.0, "EUR", 2 },
+                    { 2, new DateTime(2024, 11, 18, 21, 4, 26, 194, DateTimeKind.Local).AddTicks(5129), 20.0, "USD", 16.0, "EUR", 2 },
                     { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.0, "USD", 120.0, "PLN", 2 }
                 });
 

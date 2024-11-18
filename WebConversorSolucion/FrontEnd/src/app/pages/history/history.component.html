@@ -1,7 +1,7 @@
 
 
 <div class="overflow-x-auto px-4 py-6">
-  <table class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
+  <table *ngIf="historyData.length > 0" class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
     <thead>
     <tr>
       <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Dinero Cambiado</th>
@@ -18,6 +18,9 @@
     </tr>
     </tbody>
   </table>
+
+
+  <p *ngIf="historyData.length === 0" class="text-center text-gray-500">No se ha realizado ninguna conversión.</p>
 </div>
 
 
