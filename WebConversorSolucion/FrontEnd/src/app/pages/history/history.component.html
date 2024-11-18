@@ -1,28 +1,26 @@
 
 
-<div class="overflow-x-auto">
-  <table class="min-w-full bg-white border border-gray-300">
+<div class="overflow-x-auto px-4 py-6">
+  <table class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
     <thead>
     <tr>
-      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">ID</th>
-      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">Dinero Cambiado</th>
-      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">Cantidad Obtenida</th>
-      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">Fecha</th>
+      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Dinero Cambiado</th>
+      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Cantidad Obtenida</th>
+      <th class="py-2 px-6 border-b text-left text-gray-600 font-semibold bg-yellow-100">Fecha</th>
     </tr>
     </thead>
     <tbody>
-    <!-- Utiliza *ngFor para iterar sobre los datos obtenidos de la API -->
-    <tr *ngFor="let item of historyData;" class="hover:bg-gray-100">
-      <td class="py-2 px-4 border-b">{{ item.id }}</td>
-      <td class="py-2 px-4 border-b"> {{item.fromAmount}} {{ item.fromCoin }}</td>
-      <td class="py-2 px-4 border-b">{{item.toAmount}} {{ item.toCoin }}</td>
-      <td class="py-2 px-4 border-b">{{ item.date }}</td>
+    <tr *ngFor="let item of historyData;" class="hover:bg-gray-100 odd:bg-blue-100 even:bg-blue-50">
+      <td class="py-2 px-4 border-b">{{ item.fromAmount }} {{ item.fromCoin }}</td>
+      <td class="py-2 px-4 border-b">{{ item.toAmount }} {{ item.toCoin }}</td>
+      <td class="py-2 px-4 border-b">{{ item.date | date:'yyyy-MM-dd HH:mm' }}</td>
+
     </tr>
     </tbody>
   </table>
 </div>
 
 
-<button (click)="onSubmit()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-  Prueba Historial
-</button>
+<!--<button (click)="onSubmit()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">-->
+<!--  Prueba Historial-->
+<!--</button>-->
