@@ -42,7 +42,7 @@ public class UserService
     //login
     public async Task<string> LoginUser(LoginRequest request)
     {
-
+ 
         var userExist = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
 
         if (userExist == null)

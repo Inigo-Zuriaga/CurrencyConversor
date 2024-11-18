@@ -131,7 +131,8 @@ public class UserController : ControllerBase
         if (result != "Usuario registrado con exito")
         {
             // return StatusCode(StatusCodes.Status500InternalServerError, result);
-            return BadRequest(result);
+            // return BadRequest(result);
+            return BadRequest("El correo o la contraseña son incorrectos");
         }
         var token = _userService.GenerateJwtToken(request.Email);
         return Ok(new { Token = token });

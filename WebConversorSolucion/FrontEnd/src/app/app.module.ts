@@ -17,6 +17,7 @@ import { CurrencyChartComponent } from './currency-chart/currency-chart.componen
 import { NgChartsModule } from 'ng2-charts';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { HistoryComponent } from './pages/history/history.component';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -56,6 +57,7 @@ import { HistoryComponent } from './pages/history/history.component';
       useClass: AuthInterceptor,
       multi: true
     },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
