@@ -1,130 +1,57 @@
-﻿using NuGet.Common;
-
-namespace WebConversor.Controllers;
+﻿namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
-{
-    // private readonly UserManager<IdentityUser> _userManager;
-    // private readonly SignInManager<IdentityUser> _signInManager;
-    private readonly UserService _userService;
-    private readonly DbContexto _context;
-    public UserController(
-        // UserManager<IdentityUser> userManager,
-        // SignInManager<IdentityUser> signInManager,
-        DbContexto context,
-        UserService userService)
+{ 
+    private readonly UserService _userService; // Servicio para la lógica de usuarios
+    private readonly DbContexto _context; // Contexto de la base de datos
+    public UserController(DbContexto context,UserService userService)
     {
-        // _userManager = userManager;
-        // _signInManager = signInManager;
         _context = context;
         _userService = userService;
     }
 
-    // Acción POST para manejar el login de usuarios
-    // [HttpPost("login")]
-    // public async Task<IActionResult> Login([FromBody] LoginViewModel model)
-    // {
-    //     if (!ModelState.IsValid)
-    //     {
-    //         return BadRequest("Datos de login inválidos.");
-    //     }
-    //
-    //     var user = await _userManager.FindByEmailAsync(model.Email);
-    //     if (user != null)
-    //     {
-    //         var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
-    //         if (result.Succeeded)
-    //         {
-    //             // Generar un JWT token aquí si es necesario
-    //             return Ok(new { Message = "Login exitoso", Token = "BearerTokenAquí" });
-    //         }
-    //     }
-    //
-    //     return Unauthorized(new { Message = "Correo o contraseña incorrectos." });
-    // }
-
-    // Acción POST para manejar el registro de usuarios
-    // [HttpPost("register")]
-    // public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
-    // {
-    //     if (!ModelState.IsValid)
-    //     {
-    //         return BadRequest("Datos de registro inválidos.");
-    //     }
-    //
-    //     var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-    //     var result = await _userManager.CreateAsync(user, model.Password);
-    //
-    //     if (result.Succeeded)
-    //     {
-    //         await _signInManager.SignInAsync(user, isPersistent: false);
-    //         return Ok(new { Message = "Registro exitoso" });
-    //     }
-    //
-    //     return BadRequest(result.Errors);
-    // }
-
-    // Acción para cerrar sesión
-    // [HttpPost("logout")]
-    // public async Task<IActionResult> Logout()
-    // {
-    //     await _signInManager.SignOutAsync();
-    //     return Ok(new { Message = "Cierre de sesión exitoso." });
-    //     // public IActionResult Login([FromBody] User request)
-    //     // {
-    //     //     // Validar el correo y la contraseña
-    //     //     if (_context.ContainsKey(request.Email) && _validUsers[request.Email] == request.Password)
-    //     //     {
-    //     //         // Generar un token o simplemente devolver un mensaje de éxito
-    //     //         return Ok(new { Message = "Login exitoso", Token = "abc123" });
-    //     //     }
-    //     //     else
-    //     //     {
-    //     //         return Unauthorized(new { Message = "Credenciales inválidas" });
-    //     //     }
-    // }
-
-    //[Authorize]
-    [HttpGet("mostrarUsuarios")]
+    // Endpoint para obtener todos los usuarios registrados
+    [HttpGet("mostrarUsuarios")] // Indica que este método responde a solicitudes GET en la ruta "api/User/mostrarUsuarios"
     public async Task<IActionResult> Get()
     {
-        var users = await _context.Users.ToListAsync();
-        return Ok(users);
+        var users = await _context.Users.ToListAsync();// Obtiene la lista de usuarios
+        return Ok(users); // Devuelve la lista en la respuesta con código 200 OK
     }
 
-//registrarse
+    // Endpoint para registrar un nuevo usuario
     [HttpPost("SignIn")]
     public async Task<IActionResult> Register([FromBody] User request)
     {
 
         if (request == null)
         {
-            return BadRequest("Datos de registro inválidos.");
+            return BadRequest("Datos de registro inválidos."); // Devuelve código 400 BadRequest si los datos son nulos
         }
 
-
+        // Llama al servicio para registrar al usuario
         // var usuario=await _userService.RegisterUser(request.Name,request.LastName,request.Email,request.Password);
         var result = await _userService.RegisterUser(request);
 
         if (result != "Usuario registrado con exito")
         {
             // return StatusCode(StatusCodes.Status500InternalServerError, result);
-            return BadRequest(result);
+            return BadRequest(result); // Devuelve un error si el registro falla
         }
-        return Ok("Usuario registrado con exito");
+        return Ok("Usuario registrado con exito"); // Devuelve un mensaje de éxito
     }
 
-//login
+    // Endpoint para iniciar sesión
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         if(request == null)
         {
-            return BadRequest("Datos de registro inválidos.");
+            return BadRequest("Datos de registro inválidos."); // Devuelve si los datos son nulos
         }
 
+        // Llama al servicio para validar las credenciales
         // var usuario=await _userService.RegisterUser(request.Name,request.LastName,request.Email,request.Password);
         var result = await _userService.LoginUser(request);
 
@@ -134,10 +61,9 @@ public class UserController : ControllerBase
             // return BadRequest(result);
             return BadRequest("El correo o la contraseña son incorrectos");
         }
+
+        // Genera un token JWT para el usuario autenticado
         var token = _userService.GenerateJwtToken(request.Email);
-        return Ok(new { Token = token });
-        
+        return Ok(new { Token = token }); // Devuelve el token
     }
-
-
 }

@@ -2,7 +2,6 @@ namespace WebConversor.Models;
 
 public class DbContexto : DbContext
 {
-
     public DbContexto(DbContextOptions<DbContexto> options) : base(options)
     {
 
@@ -30,8 +29,6 @@ public class DbContexto : DbContext
         );
 
     }
-
-
 
     //Declaramos las clases
     public DbSet<Coin> Coins { get; set; }

@@ -48,27 +48,7 @@ builder.Services.AddDbContext<DbContexto>(options =>
         builder.Configuration["ConnectionStrings:CadenaConexion"]);
 });
 
-
-// Configuracion de base de datos
-
-
 var app = builder.Build();
-
-// Configura Entity Framework y ASP.NET Core Identity
-// builder.Services.AddDbContext<DbContexto>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Configura Identity, DbContext, etc.
-// builder.Services.AddDefaultIdentity<IdentityUser>()
-//     .AddEntityFrameworkStores<DbContexto>()
-//     .AddDefaultTokenProviders();
-
-// Otras configuraciones necesarias (controladores y vistas)
-// builder.Services.AddControllersWithViews();
-
-// app.MapControllerRoute(
-//     name: "default",
-//     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Configuracion del pipeline de solicitudes HTTP
 if (app.Environment.IsDevelopment())
@@ -87,6 +67,5 @@ app.UseAuthorization();   // Para permitir la autorizaci�n
 Env.Load();
 
 app.MapControllers();
-
 
 app.Run();
