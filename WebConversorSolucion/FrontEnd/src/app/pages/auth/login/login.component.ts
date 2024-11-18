@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit{
   // Método para manejar el envío del formulario
   onSubmit() {
     // Llamamos al servicio de autenticación, pasando el email y la contraseña del formulario
-
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
     .subscribe(
       (data) => {
@@ -40,6 +39,10 @@ export class LoginComponent implements OnInit{
         console.log(data); // mostrar respuesta por consola
         this.authService.storeToken(data.token)
         this.route.navigate(['/']);
+      },
+      (error) => {
+        console.error('Error al iniciar sesión', error);
+        alert('Correo o contraseña incorrectos'); // Mensaje de error
       }
     );
     this.loginForm.reset(); // resetea el formulario

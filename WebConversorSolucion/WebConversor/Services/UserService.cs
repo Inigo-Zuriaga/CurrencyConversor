@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using WebConversor.Models;
+
 namespace WebConversor.Services;
 
 public class UserService
@@ -52,6 +55,11 @@ public class UserService
             return "EL correo o contraseña son incorrectos"; // Devuelve mensaje de error si no existe
         }
 
+        // Aquí deberías comparar la contraseña (esto se puede hacer más adelante con hashing/encriptación)
+        if (userExist.Password == request.Password) // Compara las contraseñas (por ahora sin encriptación)
+        {
+            return userExist.Email; // Las credenciales son correctas
+        }
         return "Usuario registrado con exito";
 
         // Genera el token JWT si el usuario existe y las credenciales son correctas
