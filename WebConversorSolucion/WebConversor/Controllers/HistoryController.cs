@@ -20,8 +20,6 @@ namespace WebConversor.Controllers
         [HttpGet]
         public async Task<ActionResult<List<History>>> Get()
         {
-            // var email = User.Identity?.Name;
-
             //Correo Hardcodeado para pruebas
             var email = "ggrg2@gmail.com";
 
@@ -44,10 +42,7 @@ namespace WebConversor.Controllers
         [HttpPost("History")]
         public async Task<ActionResult<List<History>>> GetHistory([FromBody] string email)
         {
-            // var email = User.Identity?.Name;
 
-            //Correo Hardcodeado para pruebas
-            // var email = "ggrg2@gmail.com";
             if (string.IsNullOrEmpty(email))
             {
                 return Unauthorized("El usuario no está autenticado.");
@@ -79,6 +74,25 @@ namespace WebConversor.Controllers
             // }
 
             return Ok(createdHistory);
+        }
+        
+        // [Authorize]
+        [HttpPost("DeleteHistory")]
+        public async Task<ActionResult> DeleteHistory([FromBody] int id)
+        {
+            // var email = User.Identity?.Name;
+            //Correo Hardcodeado para pruebas
+
+            var deletedHistory = await _historyService.DeleteHistory(id);
+
+            if (!deletedHistory)
+            {
+                // return Unauthorized("El usuario no está autenticado.");
+                return BadRequest(new { error = "No se ha podido borrar la conversion" });
+            }
+
+            // return Ok(deletedHistory);
+            return Ok(new { message = "Conversion eliminada correctamente" });
         }
         
     }

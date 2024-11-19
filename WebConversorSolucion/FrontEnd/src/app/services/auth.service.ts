@@ -47,7 +47,7 @@ export class AuthService {
     console.log("El body");
     console.log(body);
     console.log(body.email.toString());
-    return this.http.post(`${this.apiUrl3}/History`, JSON.stringify(email), { headers });
+    return this.http.post(`${this.apiUrl2}/History`, JSON.stringify(email), { headers });
   }
 
   register(email: string, password: string, confirmPassword: string): Observable<any> {

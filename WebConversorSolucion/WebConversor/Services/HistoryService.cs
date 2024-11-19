@@ -12,7 +12,7 @@ public class HistoryService
 
     }
 
-    // Método para crear un historial de intercambio basado en una solicitud de historial
+    // Mï¿½todo para crear un historial de intercambio basado en una solicitud de historial
     public async Task<string> CreateHistory(HistoryRequest history)
     {
         // Verifica si el usuario existe en la base de datos
@@ -37,7 +37,24 @@ public class HistoryService
         _context.ExchangeHistory.Add(newHistory); // Agrega el nuevo historial al contexto
         await _context.SaveChangesAsync(); // Guarda los cambios en la base de datos
 
-        return "Historial creado con exito"; // Devuelve un mensaje de éxito
+        return "Historial creado con exito"; // Devuelve un mensaje de ï¿½xito
+    }
+    
+    public async Task<bool> DeleteHistory(int id)
+    {
+        // Busca el historial por su id
+        var history = _context.ExchangeHistory.FirstOrDefault(x => x.Id == id);
+
+        if(history == null)
+        {
+            return false;
+        }
+
+        _context.ExchangeHistory.Remove(history); // Elimina el historial del contexto
+        await _context.SaveChangesAsync(); // Guarda los cambios en la base de datos
+
+        // return "Historial eliminado con exito"; // Devuelve un mensaje de ï¿½xito
+        return true;
     }
     
 }
