@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace WebConversor.Controllers;
+﻿namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class HistoryController : ControllerBase
 {
-
     private readonly DbContexto _context; // Contexto de la bbdd
     private readonly HistoryService _historyService; // Servicio para manejar la lógica de historial
 
