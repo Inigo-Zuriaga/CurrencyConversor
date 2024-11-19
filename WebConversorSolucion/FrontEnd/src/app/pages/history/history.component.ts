@@ -16,10 +16,11 @@ export class HistoryComponent implements OnInit {
   email:string ='';
 
   ngOnInit():void {
+
     if (!this.authService.UserIsLogged()){
       this.route.navigate(['/']);
     }
-    console.log("No puedes ver el historial si no estás logueado");
+    this.onSubmit();
   }
 
 

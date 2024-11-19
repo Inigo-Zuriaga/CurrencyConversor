@@ -11,6 +11,8 @@ module.exports = {
         boldb: 'var(--font-barlowbold)'
       },
       colors: {
+        blue3: '#bbe3ff',
+        blue4: '#8cd3ff',
         primaryBlue: '#14213D',
         primaryRed: '#93032E',
         white2: '#F9F9F9',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import jwt_decode, {jwtDecode, JwtPayload} from 'jwt-decode';
+import {jwtDecode, JwtPayload} from 'jwt-decode';
 import {environment} from "../environments/environment";
 
 @Injectable({
