@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Identity;
-using WebConversor.Models;
 
 namespace WebConversor.Services;
 
@@ -7,12 +6,13 @@ public class UserService
 {
     private readonly IConfiguration _configuration; // Configuración para obtener claves y valores
     private readonly DbContexto _context; // Contexto de la bbdd
+    private readonly IPasswordHasher<User> _passwordHasher; // Instancia de IPasswordHasher para gestionar el hashing de contraseñas
 
-    public UserService(DbContexto context, IConfiguration configuration)
+    public UserService(DbContexto context, IConfiguration configuration, IPasswordHasher<User> passwordHasher)
     {
         _context = context;
         _configuration = configuration;
-
+        _passwordHasher = passwordHasher; // Inicializa la instancia de IPasswordHasher
     }
 
     // Método para registrar un nuevo usuario
@@ -27,13 +27,16 @@ public class UserService
             return "El usuario ya existe"; // Retorna mensaje si el usuario ya está registrado
         }
 
+        // Hashea la contraseña antes de almacenarla
+        user.Password = _passwordHasher.HashPassword(user, user.Password);
+
         // Crea un nuevo usuario con los datos proporcionados
         var newUser = new User
         {
             Name = user.Name,
             LastName = user.LastName,
             Email = user.Email,
-            Password = user.Password,
+            Password = user.Password, //ya hasheada encriptada
             FechaNacimiento = user.FechaNacimiento,
             Img = user.Img
         };
@@ -47,24 +50,35 @@ public class UserService
     // Método para iniciar sesión con las credenciales del usuario
     public async Task<string> LoginUser(LoginRequest request)
     {
-        // Verifica si el usuario existe basado en su mail
-        var userExist = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
-
-        if (userExist == null)
+        try
         {
-            return "EL correo o contraseña son incorrectos"; // Devuelve mensaje de error si no existe
-        }
+            Console.WriteLine("Datos recibidos en el endpoint Login:");
+            Console.WriteLine($"Email: {request.Email}");
+            Console.WriteLine($"Password: {request.Password}");
 
-        // Aquí deberías comparar la contraseña (esto se puede hacer más adelante con hashing/encriptación)
-        if (userExist.Password == request.Password) // Compara las contraseñas (por ahora sin encriptación)
+            var userExist = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
+
+            if (userExist == null)
+            {
+                return "El correo o la contraseña son incorrectos";
+            }
+
+            var passwordVerificationResult = _passwordHasher.VerifyHashedPassword(userExist, userExist.Password, request.Password);
+
+            if (passwordVerificationResult == PasswordVerificationResult.Failed)
+            {
+                return "El correo o la contraseña son incorrectos";
+            }
+
+            return GenerateJwtToken(userExist.Email);
+        }
+        catch (Exception ex)
         {
-            return userExist.Email; // Las credenciales son correctas
+            // Loguear el error o enviarlo al cliente
+            return $"Error al procesar la solicitud: {ex.Message}";
         }
-        return "Usuario registrado con exito";
-
-        // Genera el token JWT si el usuario existe y las credenciales son correctas
-        //return GenerateJwtToken(userExist.Email, userExist.Password);
     }
+
 
 
 
