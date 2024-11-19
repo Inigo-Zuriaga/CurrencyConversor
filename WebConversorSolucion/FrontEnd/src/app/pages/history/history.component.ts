@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { ExchangeService } from '../../services/exchange.service';
 import {Router} from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 export class HistoryComponent implements OnInit {
 
 
-  constructor(private authService: AuthService,private route:Router) { }
+  constructor(private authService: AuthService,private exchangeService:ExchangeService,private route:Router) { }
 
   historyData: any[] = [];
   email:string ='';
@@ -37,6 +38,42 @@ export class HistoryComponent implements OnInit {
       (error) => {
         console.error("Error al obtener el historial:", error);
     });
+  }
+
+
+  deleteHistory(id:number){
+
+
+    Swal.fire({
+      title: "Estas seguro?",
+      text: "Se borrara el registro!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirmar"
+    }).then((result:any) => {
+
+      if (result.isConfirmed) {
+
+        this.exchangeService.deleteHistory(id).subscribe(
+          (data) => {
+            console.log("Historial eliminado:", data);
+            this.onSubmit();
+          },
+          (error) => {
+            console.error("Error al borrar el historial:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "Error al borrar el registro.",
+              icon: "error"
+            });
+          });
+
+      }});
+
+
+
   }
 
 }

@@ -13,28 +13,10 @@ public class HistoryController : ControllerBase
             _historyService = historyService;
         }
 
-        // Obtiene el historial de intercambios del usuario ordenado por fecha descendente
-        List<History> exchangeList = await _context.ExchangeHistory
-            .Include(x => x.User) // Incluye los datos del usuario asociado
-            .Where(x => x.User.Email == email) // Filtra por correo electrónico
-            .OrderByDescending(x => x.Date) // Ordena por fecha descendente
-            .ToListAsync();
-
-        return Ok(exchangeList);
-    }
-
-    // Endpoint para obtener el historial de intercambios basándose en un correo electrónico proporcionado
-    [HttpPost("History")]
-    public async Task<ActionResult<List<History>>> GetHistory([FromBody] string email)
-    {
-        // var email = User.Identity?.Name;
-
-        //Correo Hardcodeado para pruebas
-        // var email = "ggrg2@gmail.com";
-        if (string.IsNullOrEmpty(email))
+        // Endpoint para obtener el historial de intercambios de un usuario autenticado
+        [HttpGet]
+        public async Task<ActionResult<List<History>>> Get()
         {
-            // var email = User.Identity?.Name;
-
             //Correo Hardcodeado para pruebas
             var email = "ggrg2@gmail.com";
 
@@ -45,13 +27,23 @@ public class HistoryController : ControllerBase
 
             // Obtiene el historial de intercambios del usuario ordenado por fecha descendente
             List<History> exchangeList = await _context.ExchangeHistory
-                .Include(x => x.User)              // Incluye los datos del usuario asociado
+                .Include(x => x.User) // Incluye los datos del usuario asociado
                 .Where(x => x.User.Email == email) // Filtra por correo electrónico
-                .OrderByDescending(x => x.Date)    // Ordena por fecha descendente
+                .OrderByDescending(x => x.Date) // Ordena por fecha descendente
                 .ToListAsync();
 
-            return Ok(exchangeList);
-        }
+        return Ok(exchangeList);
+    }
+
+        // Endpoint para obtener el historial de intercambios basándose en un correo electrónico proporcionado
+        [HttpPost("History")]
+        public async Task<ActionResult<List<History>>> GetHistory([FromBody] string email)
+        {
+
+            if (string.IsNullOrEmpty(email))
+            {
+                return Unauthorized("El usuario no está autenticado.");
+            }
 
         // Obtiene el historial de intercambios para el correo proporcionado
         List<History> exchangeList = await _context.ExchangeHistory
@@ -73,16 +65,31 @@ public class HistoryController : ControllerBase
 
         var createdHistory = await _historyService.CreateHistory(history);
 
-            var createdHistory = await _historyService.CreateHistory(history);
+        // if (string.IsNullOrEmpty(email))
+        // {
+        //     return Unauthorized("El usuario no está autenticado.");
+        // }
 
-            // if (string.IsNullOrEmpty(email))
-            // {
-            //     return Unauthorized("El usuario no está autenticado.");
-            // }
+        return Ok(createdHistory);
+    }
+        
+    // [Authorize]
+    [HttpPost("DeleteHistory")]
+    public async Task<ActionResult> DeleteHistory([FromBody] int id)
+    {
+        // var email = User.Identity?.Name;
+        //Correo Hardcodeado para pruebas
 
-            return Ok(createdHistory);
+        var deletedHistory = await _historyService.DeleteHistory(id);
+
+        if (!deletedHistory)
+        {
+            // return Unauthorized("El usuario no está autenticado.");
+            return BadRequest(new { error = "No se ha podido borrar la conversion" });
         }
 
+        // return Ok(deletedHistory);
+        return Ok(new { message = "Conversion eliminada correctamente" });
     }
     
 }
