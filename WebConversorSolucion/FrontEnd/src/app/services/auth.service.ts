@@ -8,9 +8,9 @@ import {environment} from "../environments/environment";
   providedIn: 'root',
 })
 export class AuthService {
-  // private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
+   private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
   private apiUrl3 = 'http://localhost:25850/api/History';  // URL de la API backend
-  private apiUrl=environment.apiUrl;
+  //private apiUrl=environment.apiUrl;
   private apiUrl2=environment.apiUrl2;
 
 
@@ -24,9 +24,10 @@ export class AuthService {
 
   // método para iniciar sesión
   login(email: string, password: string): Observable<any> {
-    const body = { "email":email, "password":password };
-    return this.http.post(`${this.apiUrl}/Login`, body);
+    const body = { "email": email, "password": password };
+    return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
   }
+  
 
   // método para registrar un usuario nuevo
   signIn(name:string,
