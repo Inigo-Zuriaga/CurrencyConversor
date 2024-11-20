@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 // Add services to the container.
 builder.Services.AddHttpClient<IApiService, ApiService>();

@@ -63,7 +63,6 @@ public class HistoryController : ControllerBase
         // var email = User.Identity?.Name;
         //Correo Hardcodeado para pruebas
 
-        var createdHistory = await _historyService.CreateHistory(history);
 
             var createdHistory = await _historyService.CreateHistory(history);
 
@@ -96,4 +95,4 @@ public class HistoryController : ControllerBase
         
     }
     
-}
+

@@ -3,18 +3,21 @@ import { AuthService } from '../../services/auth.service';
 import { ExchangeService } from '../../services/exchange.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {PdfService} from '../../services/pdf.service';
+
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit    {
 
-
-  constructor(private authService: AuthService,private exchangeService:ExchangeService,private route:Router) { }
+  constructor(private authService: AuthService,private exchangeService:ExchangeService,private pdfService:PdfService,private route:Router) { }
 
   historyData: any[] = [];
   email:string ='';
+
+
 
   ngOnInit():void {
 
@@ -40,6 +43,17 @@ export class HistoryComponent implements OnInit {
     });
   }
 
+  generatePdf(){
+    this.pdfService.generatePdf('pdf-content','historial.pdf');
+    // this.pdfService.generatePdf('pdf-content');
+    if (this.historyData.length > 0) {
+    // if (this.pdfContent) {
+    //   this.pdfService.generatePdf('pdf-content','historial.pdf');
+    }else{
+      console.error("No hay datos disponibles para generar el PDF.");
+
+    }
+  }
 
   deleteHistory(id:number){
 
