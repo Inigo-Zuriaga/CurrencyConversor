@@ -31,17 +31,27 @@ export class LoginComponent implements OnInit{
   }
   // Método para manejar el envío del formulario
   onSubmit() {
-    // Llamamos al servicio de autenticación, pasando el email y la contraseña del formulario
-
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
-    .subscribe(
+    const loginData = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    };
+  
+    console.log("Datos enviados al backend:", loginData);
+  
+    this.authService.login(loginData.email, loginData.password).subscribe(
       (data) => {
-        // se ejecuta si el login es exitoso
-        console.log(data); // mostrar respuesta por consola
-        this.authService.storeToken(data.token)
+        console.log("Respuesta del backend:", data);
+        this.authService.storeToken(data.token);
         this.route.navigate(['/']);
+      },
+      (error) => {
+        console.error("Error en el login:", error);
+
       }
     );
-    this.loginForm.reset(); // resetea el formulario
+  
+    this.loginForm.reset();
   }
+  
+  
 }
