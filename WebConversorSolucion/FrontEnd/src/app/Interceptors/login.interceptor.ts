@@ -25,9 +25,6 @@ export class loginInterceptor implements HttpInterceptor {
             this.authService.storeToken(accessToken);
             this.authService.logged.next(true);
           }
-          // console.log("entrando en el else")
-          // console.log(req.url)
-
         }),
         catchError((error) => {
           console.log("entrando en el catch")

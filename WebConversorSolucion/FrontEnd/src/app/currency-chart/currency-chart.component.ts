@@ -1,47 +1,53 @@
-// src/app/components/currency-chart/currency-chart.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ChartData } from 'chart.js';
-import { ChartService } from '../services/chart.service';
+import { ExchangeHistoryService } from '../services/chart.service';
+import { ChartData } from 'chart.js'; // Importa ChartData de chart.js para tipar los datos
 
 @Component({
   selector: 'app-currency-chart',
   templateUrl: './currency-chart.component.html',
-  styleUrls: ['./currency-chart.component.css']
+  styleUrls: ['./currency-chart.component.css'],
 })
 export class CurrencyChartComponent implements OnInit {
-  public lineChartData: ChartData<'line'> = {
-    labels: [], // Fechas
+  lineChartData: ChartData<'line'> = {
+    labels: [],
     datasets: [
       {
-        label: 'EUR to USD Monthly Evolution',
-        data: [], // Datos de precios
+        data: [],
+        label: 'Historical Data',
+        borderColor: '#42A5F5',
         fill: false,
-        borderColor: '#93032E',
-        tension: 0.1
-      }
-    ]
+      },
+    ],
   };
 
-  constructor(private currencyService: ChartService) {}
+  fromCurrency: string = 'USD'; // Moneda de origen por defecto
+  toCurrency: string = 'EUR'; // Moneda de destino por defecto
+
+  constructor(private exchangeHistoryService: ExchangeHistoryService) {}
 
   ngOnInit(): void {
-    this.loadCurrencyData();
+    this.loadHistoricalData(); // Cargar datos históricos al iniciar
   }
 
-  private loadCurrencyData(): void {
-    this.currencyService.getMonthlyHistory('EUR').subscribe((data) => {
-      const timeSeries = data['Time Series FX (Monthly)'];
-      const labels = [];
-      const prices = [];
-
-      for (const date in timeSeries) {
-        labels.push(date);
-        prices.push(parseFloat(timeSeries[date]['4. close']));
+  loadHistoricalData(): void {
+    this.exchangeHistoryService.getHistoricalData(this.fromCurrency, this.toCurrency).subscribe(
+      (data) => {
+        console.log('Datos históricos:', data);
+        this.prepareChartData(data);
+      },
+      (error) => {
+        console.error('Error al cargar los datos históricos:', error);
       }
+    );
+  }
 
-      // Invertir para tener las fechas en orden cronológico
-      this.lineChartData.labels = labels.reverse();
-      this.lineChartData.datasets[0].data = prices.reverse();
-    });
+  // Preparar los datos para el gráfico
+  prepareChartData(data: any): void {
+    // Suponiendo que los datos de la API contienen la estructura adecuada
+    const dates = Object.keys(data['Time Series FX (Daily)']);
+    const values = Object.values(data['Time Series FX (Daily)']).map((item: any) => item['4. close']);
+
+    this.lineChartData.labels = dates; // Fechas para el eje X
+    this.lineChartData.datasets[0].data = values; // Valores de conversión para el eje Y
   }
 }

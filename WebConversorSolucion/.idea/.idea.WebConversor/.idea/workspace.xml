@@ -8,9 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +31,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.WebConversor: IIS Express.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.WebConversor: IIS Express.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -84,10 +82,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1731346057244</updated>
-      <workItem from="1731346059169" duration="2292000" />
-      <workItem from="1731957433303" duration="1068000" />
-      <workItem from="1732118957608" duration="45000" />
-      <workItem from="1732119324138" duration="1262000" />
+      <workItem from="1731346059169" duration="1635000" />
+      <workItem from="1731432016667" duration="512000" />
+      <workItem from="1731519503974" duration="6319000" />
+      <workItem from="1731599037179" duration="7584000" />
+      <workItem from="1731684374913" duration="4773000" />
+      <workItem from="1731944468038" duration="8809000" />
     </task>
     <servers />
   </component>

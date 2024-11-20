@@ -3,21 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ChartService {
-  private apiKey = '5092QPE29Y58ZS7V';
-  private apiUrl = 'https://www.alphavantage.co/query';
+export class ExchangeHistoryService {
+  private apiUrl = 'http://localhost:25850/api/Api/historical-data'; // URL de tu API en el backend
 
   constructor(private http: HttpClient) {}
 
-  getMonthlyHistory(symbol: string): Observable<any> {
-    const params = {
-      function: 'FX_MONTHLY',
-      from_symbol: symbol,
-      to_symbol: 'USD', // Puedes cambiarlo a la divisa deseada
-      apikey: this.apiKey
-    };
-    return this.http.get(this.apiUrl, { params });
+  // Método para obtener los datos históricos de la API
+  getHistoricalData(fromCurrency: string, toCurrency: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`);
   }
 }

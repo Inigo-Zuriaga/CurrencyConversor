@@ -1,22 +1,22 @@
-<div class="mt-20 mb-10 px-10  sm:px-8 lg:px-20 xl:px-72 max-w-screen-lg">
+<div class=" flex flex-col my-10 items-center">
 <h1 class="font-regularb font-bold">Conversor</h1>
 <p class="font-regularb">Select the source currency and the target currency. Click 'Convert it!' to see the conversion value.</p>
 </div>
+<br>
 <!-- Contenedor principal con disposición en columna para pantallas pequeñas -->
 <div class="flex flex-col md:flex-row items-center ml-auto md:space-x-16 justify-center p-4 font-regularb">
 
   <!-- Input de cantidad y selector de moneda origen -->
   <div class="relative w-64 flex mb-5 md:mb-0">
-    <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
+    <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white ">
       <input
         type="number"
         [(ngModel)]="amount"
-        class="flex-grow px-4 py-2 rounded-l-xl text-black bg-white outline-none border-0 "
-        placeholder="0.00"
+        class="flex-grow px-4 py-2 rounded-l-xl text-black bg-white outline-none border-0"
       />
       <button
         (click)="toggleDropdown('from')"
-        class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-xl focus:outline-none min-w-24 hover:bg-blue-800 font-bold"
+        class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-xl min-w-24 hover:bg-blue-800 font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <span class="mr-1">{{ fromCurrency.symbol }}</span>
         <span class="text-sm">{{ fromCurrency.shortname }}</span>
@@ -30,7 +30,6 @@
       <input
         type="text"
         (input)="filterCurrencies($event)"
-        placeholder="Buscar..."
         class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20 "
       />
       <ul class="py-2">
@@ -53,7 +52,7 @@
     <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
       <button
         (click)="toggleDropdown('to')"
-        class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-lg focus:outline-none min-w-24 hover:bg-blue-800 font-bold"
+        class="flex items-center px-4 py-2 mr-1 bg-primaryBlue text-white rounded-lg min-w-24 hover:bg-blue-800 font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <span class="mr-1">{{ toCurrency.symbol }}</span>
         <span class="text-sm">{{ toCurrency.shortname }}</span>
@@ -63,7 +62,6 @@
         type="text"
         [value]="convertedAmount"
         class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 "
-        placeholder="Resultado"
         readonly
       />
     </div>
@@ -74,7 +72,6 @@
       <input
         type="text"
         (input)="filterCurrencies($event)"
-        placeholder="Buscar..."
         class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20"
       />
       <ul class="py-2">
@@ -93,14 +90,11 @@
 
 <div class="flex mt-10 items-center justify-center">
   <button (click)="getExchangeRate(); closeDropdowns()" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold">
-    Convertir
+    Convert
   </button>
 </div>
 
-<button (click)="getExchangeRate2()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-  Prueba Interceptor
-</button>
   <!-- Aquí se invoca el componente del gráfico -->
 <div class="mt-20 px-4 max-w-screen-lg mx-auto">
-  <app-currency-chart currencySymbol="EUR"></app-currency-chart>
+  <app-currency-chart></app-currency-chart>
 </div>
