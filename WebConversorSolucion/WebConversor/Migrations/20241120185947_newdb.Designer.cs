@@ -12,13 +12,8 @@ using WebConversor.Models;
 namespace WebConversor.Migrations
 {
     [DbContext(typeof(DbContexto))]
-<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241118180249_conversor1.Designer.cs
-    [Migration("20241118180249_conversor1")]
-    partial class conversor1
-========
-    [Migration("20241118200427_primera-migracion")]
-    partial class primeramigracion
->>>>>>>> 07e4d72d36dda98246e51f8e37be999d057d7207:WebConversorSolucion/WebConversor/Migrations/20241118200427_primera-migracion.Designer.cs
+    [Migration("20241120185947_newdb")]
+    partial class newdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,11 +121,7 @@ namespace WebConversor.Migrations
                         new
                         {
                             Id = 2,
-<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241118180249_conversor1.Designer.cs
-                            Date = new DateTime(2024, 11, 18, 19, 2, 48, 620, DateTimeKind.Local).AddTicks(5939),
-========
-                            Date = new DateTime(2024, 11, 18, 21, 4, 26, 194, DateTimeKind.Local).AddTicks(5129),
->>>>>>>> 07e4d72d36dda98246e51f8e37be999d057d7207:WebConversorSolucion/WebConversor/Migrations/20241118200427_primera-migracion.Designer.cs
+                            Date = new DateTime(2024, 11, 20, 19, 59, 46, 479, DateTimeKind.Local).AddTicks(2656),
                             FromAmount = 20.0,
                             FromCoin = "USD",
                             ToAmount = 16.0,
