@@ -1,54 +1,66 @@
-<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-  <h2 class="text-2xl font-semibold text-gray-700 mb-4">Registro de Usuario</h2>
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md font-regularb my-10">
+  <h2 class="text-2xl font-semibold text-gray-700 mb-4">User register</h2>
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
     <!-- Nombre -->
     <div class="mb-4">
-      <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+      <label for="name" class="block text-sm font-medium">Name</label>
       <input
         id="name"
         formControlName="name"
         type="text"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        name is mandatory and MUST be valid.
+      </div>
     </div>
 
     <!-- Apellido -->
     <div class="mb-4">
-      <label for="lastName" class="block text-sm font-medium text-gray-700">Apellido</label>
+      <label for="lastName" class="block text-sm font-medium">Surname</label>
       <input
         id="lastName"
         formControlName="lastName"
         type="text"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('lastName')?.invalid && loginForm.get('lastName')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        Last Name is mandatory and MUST be valid.
+      </div>
     </div>
 
     <!-- Correo electrónico -->
     <div class="mb-4">
-      <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+      <label for="email" class="block text-sm font-medium">Email</label>
       <input
         id="email"
         formControlName="email"
         type="email"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        Email is mandatory and MUST be valid.
+      </div>
     </div>
 <!--    Contraseña-->
     <div class="mb-4">
-      <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+      <label for="password" class="block text-sm font-medium">Password</label>
       <input
         id="password"
         formControlName="password"
         type="password"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        The password MUST have at least 6 characters.
+      </div>
     </div>
 
     <!-- Fecha de Nacimiento -->
     <div class="mb-4">
-      <label for="fechaNacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+      <label for="fechaNacimiento" class="block text-sm font-medium ">Birthdate</label>
       <input
         id="fechaNacimiento"
         formControlName="fechaNacimiento"
@@ -57,11 +69,9 @@
       />
     </div>
 
-
-
     <!-- Imagen -->
     <div class="mb-4">
-      <label for="img" class="block text-sm font-medium text-gray-700">Imagen (opcional)</label>
+      <label for="img" class="block text-sm font-medium">Image (optional)</label>
       <input
         id="img"
         formControlName="img"
@@ -71,13 +81,15 @@
     </div>
 
     <!-- Botón de Enviar -->
-    <div class="mt-6">
+    <div class="mt-6 flex justify-center">
       <button
         type="submit"
-        class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5"
       >
-        Registrar
+        Register User
       </button>
     </div>
+   
   </form>
 </div>
+<!-- <div class="bg-primaryBlue fixed top-0 right-0 h-full w-1/4 z-50"></div> -->

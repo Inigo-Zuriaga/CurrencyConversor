@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace WebConversor.Controllers;
+﻿namespace WebConversor.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class CoinsController : ControllerBase
 {
 
-    private readonly ILogger<CoinsController> _logger;
-    private readonly DbContexto _dbContexto;
+    private readonly ILogger<CoinsController> _logger; // Logger para registrar información y errores
+    private readonly DbContexto _dbContexto; // Contexto de base de datos (aunque aquí no se utiliza)
 
     public CoinsController(ILogger<CoinsController> logger, DbContexto contexto)
     {
@@ -17,7 +14,7 @@ public class CoinsController : ControllerBase
         _dbContexto = contexto;
     }
 
-
+    // Endpoint para obtener una lista de monedas
     [HttpGet]
     public IActionResult Get()
     {

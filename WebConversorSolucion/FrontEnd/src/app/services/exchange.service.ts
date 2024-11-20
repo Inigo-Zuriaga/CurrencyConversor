@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-//import { environment } from '../environments/environment';
+import { environment } from '../environments/environment';
 
 import { Observable } from 'rxjs';
 
@@ -11,10 +11,11 @@ import { Observable } from 'rxjs';
 export class ExchangeService {
 
 
-  private apiUrl = 'http://localhost:25850/api/api'
+  private apiUrl = 'http://localhost:25850/api/api';
+  private apiUrl2 = environment.apiUrl2;
+  private apiUrl3 = 'http://localhost:25850/api/History';
 
   //Api de prueba
-  private apiUrl2 = 'http://localhost:5299/api/Auth';
   constructor(private http: HttpClient) {}
 
   // getExchangeRate(fromCurrency: string, toCurrency: string) {
@@ -34,16 +35,25 @@ export class ExchangeService {
 
     return this.http.post(`${this.apiUrl}/exchange-rate`, body);
   }
-  getExchangeRate2(username: string, password: string): Observable<any> {
-    const headers = { 'Content-Type': 'application/json' };
-    const body = {
-      email:username,
-      password:password
-    };
 
-    return this.http.post(`${this.apiUrl2}/login`, body, { headers });
+  createExchangeHistory(fromCoin:string,fromAmount:number,toCoin:string,toAmount:number,date:Date,
+                        email:string): Observable<any> {
+
+    const body = {
+      fromCoin:fromCoin,
+      fromAmount:fromAmount,
+      toCoin:toCoin,
+      toAmount:toAmount,
+      date:date,
+      email:email
+    };
+    return this.http.post(`${this.apiUrl3}/CreateHistory`,body);
   }
 
+  deleteHistory(historyId:number): Observable<any> {
+
+    return this.http.post(`${this.apiUrl2}/DeleteHistory`, historyId);
+  }
 
   // private apiUrl = 'http://localhost:45471/api/PruebaApi/exchange-data';
   pruebaConversor(): Observable<any> {

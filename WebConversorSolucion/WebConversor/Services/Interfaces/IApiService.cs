@@ -2,8 +2,6 @@
 
 public interface IApiService
 {
-
-    // Task<Dictionary<string, object>>GetDataFromApiAsync();
-    Task<Dictionary<string, object>> GetDataFromApiAsync(string FromCurrency, string ToCurrency,int amount);
+    Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency, int amount);
 
 }

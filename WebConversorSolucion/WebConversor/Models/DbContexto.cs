@@ -1,12 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
-
 namespace WebConversor.Models;
 
 public class DbContexto : DbContext
 {
-
     public DbContexto(DbContextOptions<DbContexto> options) : base(options)
     {
 
@@ -28,14 +23,12 @@ public class DbContexto : DbContext
        );
         modelBuilder.Entity<History>().HasData(
           // new History { Id = 1, UserId = 2, FromCoin = "EUR", ToCoin = "USD", Result = 20.0, Date = new DateTime(2004, 12, 20) }
-          new History { Id = 1, UserId = 1, FromCoin = "EUR", ToCoin = "USD", Date = new DateTime(2004, 12, 20) },
-          new History { Id = 2, UserId = 2, FromCoin = "USD", ToCoin = "EUR", Date = DateTime.Now },
-          new History { Id = 3, UserId = 2, FromCoin = "USD", ToCoin = "PLN", Date = new DateTime(2007, 03, 20) }
+          new History { Id = 1, UserId = 1, FromCoin = "EUR", FromAmount = 76 ,ToCoin = "USD",ToAmount = 2, Date = new DateTime(2004, 12, 20) },
+          new History { Id = 2, UserId = 2, FromCoin = "USD", FromAmount = 20, ToCoin = "EUR",ToAmount = 16, Date = DateTime.Now },
+          new History { Id = 3, UserId = 2, FromCoin = "USD", FromAmount = 45, ToCoin = "PLN",ToAmount = 120, Date = new DateTime(2007, 03, 20) }
         );
 
     }
-
-
 
     //Declaramos las clases
     public DbSet<Coin> Coins { get; set; }
