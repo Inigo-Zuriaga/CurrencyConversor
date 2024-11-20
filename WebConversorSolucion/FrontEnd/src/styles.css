@@ -26,6 +26,13 @@ main {
   --font-barlowbold: 'Barlow', sans-serif;
 }
 
+
+body {
+  background-image: url("assets/CoinWeb.gif");
+  background-size: cover;
+  background-color: khaki;
+}
+
 body {
   margin: 0;
   padding: 0;

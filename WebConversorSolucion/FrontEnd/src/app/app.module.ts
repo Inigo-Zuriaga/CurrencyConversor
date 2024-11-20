@@ -12,12 +12,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
 import {loginInterceptor} from './Interceptors/login.interceptor';
 import {AuthInterceptor} from './Interceptors/auth.interceptor';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { HistoryComponent } from './pages/history/history.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -35,6 +36,7 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
     CurrencyChartComponent,
     RegisterComponent,
     HistoryComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
     ReactiveFormsModule,
     CommonModule,
     NgChartsModule,
+    NgOptimizedImage,
 
   ],
   providers: [

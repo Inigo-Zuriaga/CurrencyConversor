@@ -64,30 +64,28 @@ public class HistoryController : ControllerBase
         //Correo Hardcodeado para pruebas
 
 
-            var createdHistory = await _historyService.CreateHistory(history);
+        // if (string.IsNullOrEmpty(email))
+        // {
+        //     return Unauthorized("El usuario no está autenticado.");
+        // }
 
-            // if (string.IsNullOrEmpty(email))
-            // {
-            //     return Unauthorized("El usuario no está autenticado.");
-            // }
-
-            return Ok(createdHistory);
-        }
+        return Ok(createdHistory);
+    }
         
-        // [Authorize]
-        [HttpPost("DeleteHistory")]
-        public async Task<ActionResult> DeleteHistory([FromBody] int id)
+    // [Authorize]
+    [HttpPost("DeleteHistory")]
+    public async Task<ActionResult> DeleteHistory([FromBody] int id)
+    {
+        // var email = User.Identity?.Name;
+        //Correo Hardcodeado para pruebas
+
+        var deletedHistory = await _historyService.DeleteHistory(id);
+
+        if (!deletedHistory)
         {
-            // var email = User.Identity?.Name;
-            //Correo Hardcodeado para pruebas
-
-            var deletedHistory = await _historyService.DeleteHistory(id);
-
-            if (!deletedHistory)
-            {
-                // return Unauthorized("El usuario no está autenticado.");
-                return BadRequest(new { error = "No se ha podido borrar la conversion" });
-            }
+            // return Unauthorized("El usuario no está autenticado.");
+            return BadRequest(new { error = "No se ha podido borrar la conversion" });
+        }
 
             // return Ok(deletedHistory);
             return Ok(new { message = "Conversion eliminada correctamente" });
