@@ -25,3 +25,10 @@ main {
   --font-barlowsemibold: 'Barlow', sans-serif;
   --font-barlowbold: 'Barlow', sans-serif;
 }
+
+
+body {
+  background-image: url("assets/CoinWeb.gif");
+  background-size: cover;
+  background-color: khaki;
+}
