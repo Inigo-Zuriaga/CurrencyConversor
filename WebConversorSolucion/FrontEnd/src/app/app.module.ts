@@ -19,6 +19,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { HistoryComponent } from './pages/history/history.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PdfComponent } from './pages/history/pdf/pdf.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -37,6 +38,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     RegisterComponent,
     HistoryComponent,
     NotFoundComponent,
+    PdfComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CommonModule,
     NgChartsModule,
     NgOptimizedImage,
+
 
   ],
   providers: [

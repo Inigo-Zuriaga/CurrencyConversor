@@ -56,5 +56,23 @@ public class HistoryService
         // return "Historial eliminado con exito"; // Devuelve un mensaje de �xito
         return true;
     }
+
+    public static string ToHtmlFile(List<HistoryRequest> data)
+    {
+        string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
+        string tempHtml=File.ReadAllText(templatePath);
+        StringBuilder stringData=new StringBuilder(String.Empty);
+        for (int i = 0; i < data.Count; i++)
+        {
+        //     stringData.Append($"<tr><td>{data[i].Id}</td><td>{data[i].FromCoin}</td><td>{data[i].FromAmount}</td><td>{data[i].ToCoin}</td><td>{data[i].ToAmount}</td><td>{data[i].Date}</td></tr>");
+        //<td class="py-2 px-4 border-b">{{ item.fromAmount }} {{ item.fromCoin }}</td>
+        // <td class="py-2 px-4 border-b">{{ item.toAmount }} {{ item.toCoin }}</td>
+        //     <td class="py-2 px-4 border-b">{{ item.date | date:'yyyy-MM-dd HH:mm' }}</td>
+        
+       stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date}</td></tr>");
+        };
+        return tempHtml.Replace("{data}", stringData.ToString());
+        // return stringData.ToString();
+    }
     
 }

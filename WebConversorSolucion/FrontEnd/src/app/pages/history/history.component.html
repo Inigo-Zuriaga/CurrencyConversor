@@ -1,5 +1,6 @@
 
-<div id="pdf-content" class="overflow-x-auto px-4 py-6">
+<!--<div id="pdf-content" class="overflow-x-auto px-4 py-6">-->
+<div id="contentToConvert" class="overflow-x-auto px-4 py-6">
   <table *ngIf="historyData.length > 0" class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
     <thead>
     <tr>
@@ -18,6 +19,8 @@
     </tbody>
   </table>
 </div>
-<button *ngIf="historyData.length > 0" (click)="generatePdf()">Generar PDF</button>
-
+<!--<button *ngIf="historyData.length > 0" (click)="generatePdf()">Generar PDF</button>-->
+<button *ngIf="historyData.length > 0" (click)="crearPdf()">Generar PDF</button>
+<!--<app-pdf [data]="userData"></app-pdf>-->
+<!--<app-pdf #child style="display: none;"></app-pdf>-->
 <p *ngIf="historyData.length === 0" class="text-center text-gray-500">No se ha realizado ninguna conversión.</p>
