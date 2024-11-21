@@ -25,19 +25,17 @@ export class RegisterComponent/* implements OnInit*/{
   constructor(private authService: AuthService,private fb: FormBuilder,private route:Router) {
     // definir la estructura del form con sus campos y validaciones
     this.loginForm = this.fb.group({
-      name: [''],
-      lastName: [''],
-      email: ['', [Validators.required, Validators.email]], // Campo de email con validación de requerimiento y formato de email
-      password: ['', [Validators.required, Validators.minLength(6)]], // Campo de contraseña con validación de requerimiento y longitud mínima de 6 caracteres
+      name: ['', Validators.required],  // Nombre obligatorio
+      lastName: ['', Validators.required],  // Apellobligatorio
+      email: ['', [Validators.required, Validators.email]],  // Email es obligatorio y debe tener un formato válido
+      password: ['', [Validators.required, Validators.minLength(6)]],  // Contraseña obligatoria, mínimo 6 caracteres
       fechaNacimiento: [''],
-      img: ['']
+      img: ['']  // La imagen no es obligatoria
     });
-
   }
       
   ngOnInit(): void {
     if (this.authService.UserIsLogged()){
-
       this.route.navigate(['/']).then(r => { })
     }
   }

@@ -23,12 +23,11 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     if (this.authService.UserIsLogged()){
-
       this.route.navigate(['/']).then(r => { })
     }
-
-    // this.onSubmit();
+    this.onSubmit();
   }
+
   // Método para manejar el envío del formulario
   onSubmit() {
     const loginData = {
@@ -48,7 +47,8 @@ export class LoginComponent implements OnInit{
         //console.error("Error en el login:", error);
 
         if (error.status === 401 || error.status === 400) {
-          this.loginForm.setErrors({ serverError: error.error.error });
+          this.loginForm.get('password')?.setErrors({ incorrectPassword: true });
+          //this.loginForm.setErrors({ serverError: error.error.error });
         } else {
           console.error("Error en el login:", error);
         }
@@ -56,6 +56,6 @@ export class LoginComponent implements OnInit{
 
     );
   
-    this.loginForm.reset();
+    //this.loginForm.reset();
   }
 }
