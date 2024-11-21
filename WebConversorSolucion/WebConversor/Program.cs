@@ -39,7 +39,11 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString;
+    });
 
 // Configuracion de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();

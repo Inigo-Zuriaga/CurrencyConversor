@@ -16,8 +16,9 @@ public class ApiService : IApiService
 
     // Método para obtener datos actuales de conversión de moneda
     public async Task<Dictionary<string, object>> GetDataFromApiAsync(string fromCurrency, string toCurrency,
-        int amount)
+        decimal amount)
     {
+        Console.WriteLine("amount:" + amount);
         // Construye la URL con los parámetros necesarios
         var response =
             await _httpClient.GetAsync(

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit{
       this.route.navigate(['/']).then(r => { })
     }
 
-    this.onSubmit();
+    // this.onSubmit();
   }
   // Método para manejar el envío del formulario
   onSubmit() {

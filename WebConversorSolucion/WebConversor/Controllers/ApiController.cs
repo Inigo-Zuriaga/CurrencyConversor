@@ -29,6 +29,7 @@ public class ApiController : ControllerBase
         }
     }
 
+
     // Endpoint para obtener los datos históricos para el gráfico de tasas de cambio entre dos monedas
     [HttpPost("historical-data")]
     public async Task<IActionResult> ChartDataRequest([FromBody] ExchangeRequest request)
