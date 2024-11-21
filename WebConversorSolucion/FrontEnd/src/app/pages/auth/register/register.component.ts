@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrl: './register.component.css'
 })
 
-export class RegisterComponent{
+export class RegisterComponent/* implements OnInit*/{
   loginForm: FormGroup = new FormGroup({}); // declara el formulario de registro
   user:Iuser={
     name:'',
@@ -25,19 +25,17 @@ export class RegisterComponent{
   constructor(private authService: AuthService,private fb: FormBuilder,private route:Router) {
     // definir la estructura del form con sus campos y validaciones
     this.loginForm = this.fb.group({
-      name: [''],
-      lastName: [''],
-      email: ['', [Validators.required, Validators.email]],
-      password: [''],
+      name: ['', Validators.required],  // Nombre obligatorio
+      lastName: ['', Validators.required],  // Apellobligatorio
+      email: ['', [Validators.required, Validators.email]],  // Email es obligatorio y debe tener un formato válido
+      password: ['', [Validators.required, Validators.minLength(6)]],  // Contraseña obligatoria, mínimo 6 caracteres
       fechaNacimiento: [''],
-      img: ['']
+      img: ['']  // La imagen no es obligatoria
     });
-
   }
-
+      
   ngOnInit(): void {
     if (this.authService.UserIsLogged()){
-
       this.route.navigate(['/']).then(r => { })
     }
   }
@@ -62,7 +60,5 @@ export class RegisterComponent{
         //Si el registro es correcto, redirige al login
 
       });
-
   }
-
 }

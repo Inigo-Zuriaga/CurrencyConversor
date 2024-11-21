@@ -12,6 +12,9 @@
         type="text"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        Name is mandatory and MUST be valid.
+      </div>
     </div>
 
     <!-- Apellido -->
@@ -23,6 +26,9 @@
         type="text"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('lastName')?.invalid && loginForm.get('lastName')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        Last Name is mandatory and MUST be valid.
+      </div>
     </div>
 
     <!-- Correo electrónico -->
@@ -34,6 +40,9 @@
         type="email"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        Email is mandatory and MUST be valid.
+      </div>
     </div>
 <!--    Contraseña-->
     <div class="mb-4">
@@ -44,6 +53,9 @@
         type="password"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-900 font-bold text-sm mt-1">
+        The password MUST have at least 6 characters.
+      </div>
     </div>
 
     <!-- Fecha de Nacimiento -->
@@ -56,8 +68,6 @@
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
     </div>
-
-
 
     <!-- Imagen -->
     <div class="mb-4">

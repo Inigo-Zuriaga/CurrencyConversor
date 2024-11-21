@@ -8,7 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebConversor.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241120155643_primera-migracion.cs
     public partial class primeramigracion : Migration
+========
+    public partial class Migraciones : Migration
+>>>>>>>> 1d7b2e62ad1652e48b26b8f83c58da68cd16fc1a:WebConversorSolucion/WebConversor/Migrations/20241120165734_Migraciones.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -95,7 +99,11 @@ namespace WebConversor.Migrations
                 values: new object[,]
                 {
                     { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76.0, "EUR", 2.0, "USD", 1 },
+<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241120155643_primera-migracion.cs
                     { 2, new DateTime(2024, 11, 20, 16, 56, 42, 104, DateTimeKind.Local).AddTicks(6080), 20.0, "USD", 16.0, "EUR", 2 },
+========
+                    { 2, new DateTime(2024, 11, 20, 17, 57, 33, 120, DateTimeKind.Local).AddTicks(7329), 20.0, "USD", 16.0, "EUR", 2 },
+>>>>>>>> 1d7b2e62ad1652e48b26b8f83c58da68cd16fc1a:WebConversorSolucion/WebConversor/Migrations/20241120165734_Migraciones.cs
                     { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.0, "USD", 120.0, "PLN", 2 }
                 });
 
