@@ -8,24 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/pdf.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/pdf.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Services/HistoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/HistoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/libs/libwkhtmltox.dll" beforeDir="false" />
-    </list>
+    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,20 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.WebConversor: IIS Express.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.WebConversor: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebConversor: IIS Express">
     <configuration name="WebConversor: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebConversor/WebConversor.csproj" />
@@ -114,7 +97,7 @@
       <workItem from="1731684374913" duration="4773000" />
       <workItem from="1731944468038" duration="8809000" />
       <workItem from="1732117712265" duration="8852000" />
-      <workItem from="1732203604698" duration="11263000" />
+      <workItem from="1732203604698" duration="11562000" />
     </task>
     <servers />
   </component>
