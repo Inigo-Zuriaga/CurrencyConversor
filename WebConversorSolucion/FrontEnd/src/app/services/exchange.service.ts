@@ -52,7 +52,7 @@ export class ExchangeService {
   }
   createPdf(history:History[]): Observable<any> {
 
-    return this.http.post(`${this.apiUrl4}`, history);
+    return this.http.post(`${this.apiUrl4}`, history,{ responseType: 'blob' });
   }
 
 

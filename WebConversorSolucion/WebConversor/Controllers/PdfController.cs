@@ -32,26 +32,24 @@ namespace WebConversor.Controllers;
                     Top = 10
                 },
                 DocumentTitle = "PDF Report",
-                Out = Path.Combine(Directory.GetCurrentDirectory(), "Exports", filename)
+                //Out = Path.Combine(Directory.GetCurrentDirectory(), "Exports", filename)
                 // Out = Path.Combine(Directory.GetCurrentDirectory(), filename)
             };
             var objectSettings = new ObjectSettings()
             {
                 PagesCount = true,
                 HtmlContent = HistoryService.ToHtmlFile(history),
-                WebSettings = {DefaultEncoding = "utf-8", UserStyleSheet = null}
+                WebSettings = {DefaultEncoding = "utf-8", UserStyleSheet = null }
             };
             var pdf = new HtmlToPdfDocument()
             {
                 GlobalSettings = glb,
                 Objects = {objectSettings}
             };
-            // var pdfDoc=_converter.Convert(pdf);
-            // return File(pdfDoc, "application/pdf", "test.pdf");
-
-            string result = $"Files/{filename}";
-            await Task.Yield();
-            return Ok(result);
+         var pdfDoc=_converter.Convert(pdf);
+         //return File(pdfDoc, "application/pdf", filename);
+         return File(pdfDoc, "application/pdf", "test.pdf");
+    
         }
         
 

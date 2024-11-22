@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="test.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
@@ -23,7 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exports\" />
+    <Compile Update="Controllers\WeatherForecastController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +42,10 @@
     <None Update="libwkhtmltox.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exports\" />
   </ItemGroup>
 
 </Project>

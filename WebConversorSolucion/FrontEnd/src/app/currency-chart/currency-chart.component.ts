@@ -8,17 +8,18 @@ import { ChartData } from 'chart.js'; // Importa ChartData de chart.js para tipa
   styleUrls: ['./currency-chart.component.css'],
 })
 export class CurrencyChartComponent implements OnInit {
-  lineChartData: ChartData<'line'> = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        label: 'Historical Data',
-        borderColor: '#42A5F5',
-        fill: false,
-      },
-    ],
-  };
+  //
+  // lineChartData: ChartData<'line'> = {
+  //   labels: [],
+  //   datasets: [
+  //     {
+  //       data: [],
+  //       label: 'Historical Data',
+  //       borderColor: '#42A5F5',
+  //       fill: false,
+  //     },
+  //   ],
+  // };
 
   fromCurrency: string = 'USD'; // Moneda de origen por defecto
   toCurrency: string = 'EUR'; // Moneda de destino por defecto
@@ -47,7 +48,9 @@ export class CurrencyChartComponent implements OnInit {
     const dates = Object.keys(data['Time Series FX (Daily)']);
     const values = Object.values(data['Time Series FX (Daily)']).map((item: any) => item['4. close']);
 
-    this.lineChartData.labels = dates; // Fechas para el eje X
-    this.lineChartData.datasets[0].data = values; // Valores de conversión para el eje Y
+    //this.lineChartData.labels = dates; // Fechas para el eje X
+   // this.lineChartData.datasets[0].data = values; // Valores de conversión para el eje Y
+
+
   }
 }

@@ -8,11 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebConversor.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241120155643_primera-migracion.cs
-    public partial class primeramigracion : Migration
-========
-    public partial class Migraciones : Migration
->>>>>>>> 1d7b2e62ad1652e48b26b8f83c58da68cd16fc1a:WebConversorSolucion/WebConversor/Migrations/20241120165734_Migraciones.cs
+    public partial class primerammigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -58,9 +54,9 @@ namespace WebConversor.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     FromCoin = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FromAmount = table.Column<double>(type: "float", nullable: false),
+                    FromAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ToCoin = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ToAmount = table.Column<double>(type: "float", nullable: false),
+                    ToAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -98,13 +94,9 @@ namespace WebConversor.Migrations
                 columns: new[] { "Id", "Date", "FromAmount", "FromCoin", "ToAmount", "ToCoin", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76.0, "EUR", 2.0, "USD", 1 },
-<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241120155643_primera-migracion.cs
-                    { 2, new DateTime(2024, 11, 20, 16, 56, 42, 104, DateTimeKind.Local).AddTicks(6080), 20.0, "USD", 16.0, "EUR", 2 },
-========
-                    { 2, new DateTime(2024, 11, 20, 17, 57, 33, 120, DateTimeKind.Local).AddTicks(7329), 20.0, "USD", 16.0, "EUR", 2 },
->>>>>>>> 1d7b2e62ad1652e48b26b8f83c58da68cd16fc1a:WebConversorSolucion/WebConversor/Migrations/20241120165734_Migraciones.cs
-                    { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.0, "USD", 120.0, "PLN", 2 }
+                    { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76m, "EUR", 2m, "USD", 1 },
+                    { 2, new DateTime(2024, 11, 22, 0, 25, 30, 6, DateTimeKind.Local).AddTicks(9181), 20m, "USD", 16m, "EUR", 2 },
+                    { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45m, "USD", 120m, "PLN", 2 }
                 });
 
             migrationBuilder.CreateIndex(
