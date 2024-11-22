@@ -10,14 +10,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241118180249_conversor1.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241118180249_conversor1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241118200427_primera-migracion.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241118200427_primera-migracion.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,19 +36,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.WebConversor: IIS Express.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.WebConversor: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebConversor: IIS Express">
     <configuration name="WebConversor: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebConversor/WebConversor.csproj" />
@@ -98,7 +95,12 @@
       <workItem from="1731599037179" duration="7584000" />
       <workItem from="1731684374913" duration="4773000" />
       <workItem from="1731944468038" duration="8809000" />
-      <workItem from="1732128898548" duration="2229000" />
+      <workItem from="1732128898548" duration="2297000" />
+      <workItem from="1732203764282" duration="987000" />
+      <workItem from="1732215754010" duration="11000" />
+      <workItem from="1732215817707" duration="238000" />
+      <workItem from="1732216111453" duration="2901000" />
+      <workItem from="1732295756711" duration="1703000" />
     </task>
     <servers />
   </component>

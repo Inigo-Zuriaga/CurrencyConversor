@@ -1,55 +1,18 @@
 
-#text {
-width: 100%;
-  height: 681px;
-  align-content: center;
-justify-items: center;
+
+@keyframes elevator {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Subir 20px */
+  }
+  100% {
+    transform: translateY(0); /* Regresar a la posición original */
+  }
 }
 
-#text h1 {
-  font-size: 14em;
+.animate-elevator {
+  animation: elevator 2s ease-in-out infinite;
 }
-
-.number {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-bottom: 0.5em;
-}
-
-
-
-.number .imagen{
-  background-image: url("../../../assets/moneda.png");
-  background-size: cover;
-  width: 200px;
-  height: 200px;
-}
-
-#warning {
-  width: 50%;
-  height: 40%;
-  align-content: center;
-  text-align: center;
-  margin-top: 0.5em;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-#warning h1 {
-font-size: 4em;
-  margin-bottom: 0.5em;
-}
-#warning h2 {
-  font-size: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-#warning a {
-border-radius: 30px;
-}
-
 
