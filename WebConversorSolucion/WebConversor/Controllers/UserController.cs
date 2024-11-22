@@ -36,6 +36,8 @@ public class UserController : ControllerBase
 
         if (result != "Usuario registrado con exito")
         {
+           // return BadRequest(new { error = result }); // Enviar el error al frontend
+
             return BadRequest(new { error = "No se ha podido registrar el usuario" });
         }
 
@@ -48,7 +50,9 @@ public class UserController : ControllerBase
     {
         if (request == null)
         {
-            return BadRequest("Datos de inicio de sesión inválidos.");
+            return BadRequest(new { error = "Por favor, complete todos los campos." });
+
+            //return BadRequest("Datos de inicio de sesión inválidos.");
         }
 
         // Llama al servicio para validar las credenciales del usuario
@@ -56,6 +60,8 @@ public class UserController : ControllerBase
 
         if (result == "El correo o la contraseña son incorrectos")
         {
+            //return Unauthorized(new { error = result }); // Mensaje de error para el frontend
+
             return Unauthorized(new { error = "El correo o la contraseña son incorrectos" });
         }
 

@@ -1,53 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { ExchangeHistoryService } from '../services/chart.service';
-import { ChartData } from 'chart.js'; // Importa ChartData de chart.js para tipar los datos
+import { ChartData } from 'chart.js';
+import { ChartService } from '../services/chart.service';
 
 @Component({
   selector: 'app-currency-chart',
   templateUrl: './currency-chart.component.html',
-  styleUrls: ['./currency-chart.component.css'],
+  styleUrls: ['./currency-chart.component.css']
 })
 export class CurrencyChartComponent implements OnInit {
-  lineChartData: ChartData<'line'> = {
-    labels: [],
+  lineChartData: any = {
+    labels: [],  // Aquí van las fechas
     datasets: [
       {
-        data: [],
-        label: 'Historical Data',
-        borderColor: '#42A5F5',
+        data: [],  // Aquí van las tasas de cambio
+        label: 'Exchange Rate',
+        borderColor: '#00f',
         fill: false,
+        tension: 0.1,
       },
     ],
   };
 
-  fromCurrency: string = 'USD'; // Moneda de origen por defecto
-  toCurrency: string = 'EUR'; // Moneda de destino por defecto
+  constructor(private chartService: ChartService) {}
 
-  constructor(private exchangeHistoryService: ExchangeHistoryService) {}
-
-  ngOnInit(): void {
-    this.loadHistoricalData(); // Cargar datos históricos al iniciar
+  ngOnInit() {
+    this.loadExchangeHistory();
   }
 
-  loadHistoricalData(): void {
-    this.exchangeHistoryService.getHistoricalData(this.fromCurrency, this.toCurrency).subscribe(
+  loadExchangeHistory() {
+    const fromCurrency = 'USD';  // Ajusta según lo necesites
+    const toCurrency = 'EUR';    // Ajusta según lo necesites
+
+    this.chartService.getHistoricalData(fromCurrency, toCurrency).subscribe(
       (data) => {
-        console.log('Datos históricos:', data);
-        this.prepareChartData(data);
+        console.log('Data received for historical exchange rates:', data);
+
+        // Asegúrate de que los datos recibidos tengan las propiedades "dates" y "rates"
+        if (data && data.dates && data.rates) {
+          // Asignamos los datos del gráfico
+          this.lineChartData.labels = data.dates;  // Asignamos las fechas
+          this.lineChartData.datasets[0].data = data.rates;  // Asignamos las tasas de cambio
+
+          console.log('Chart data updated:', this.lineChartData);
+        } else {
+          console.error('Data format incorrect. Expected "dates" and "rates" arrays.');
+        }
       },
       (error) => {
-        console.error('Error al cargar los datos históricos:', error);
+        console.error('Error loading exchange history', error);
       }
     );
-  }
-
-  // Preparar los datos para el gráfico
-  prepareChartData(data: any): void {
-    // Suponiendo que los datos de la API contienen la estructura adecuada
-    const dates = Object.keys(data['Time Series FX (Daily)']);
-    const values = Object.values(data['Time Series FX (Daily)']).map((item: any) => item['4. close']);
-
-    this.lineChartData.labels = dates; // Fechas para el eje X
-    this.lineChartData.datasets[0].data = values; // Valores de conversión para el eje Y
   }
 }

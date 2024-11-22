@@ -3,15 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ExchangeHistoryService {
-  private apiUrl = 'http://localhost:25850/api/Api/historical-data'; // URL de tu API en el backend
+export class ChartService {
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:25850/api/api';  // URL de tu API
 
-  // Método para obtener los datos históricos de la API
+  constructor(private http: HttpClient) { }
+
+  // Método para obtener los datos históricos de tasas de cambio
   getHistoricalData(fromCurrency: string, toCurrency: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`);
+    const request = {
+      FromCurrency: fromCurrency,
+      ToCurrency: toCurrency,
+    };
+
+    return this.http.post<any>(`${this.apiUrl}/historical-data`, request);
   }
 }

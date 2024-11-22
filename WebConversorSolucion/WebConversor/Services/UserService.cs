@@ -19,6 +19,11 @@ public class UserService
     // public async Task<IActionResult> SignInUser(string name,string lastname,string email,string password)
     public async Task<string> RegisterUser(User user)
     {
+        if (user.Password.Length < 6)
+        {
+            return "La contraseña debe tener al menos 6 caracteres.";
+        }
+
         // Verifica si el usuario ya existe basado en el mail
         var userExist = _context.Users.FirstOrDefault(x => x.Email == user.Email);
 
@@ -78,9 +83,6 @@ public class UserService
             return $"Error al procesar la solicitud: {ex.Message}";
         }
     }
-
-
-
 
     //Configurar segun los datos que queramos pasar, genera un token JWT
     public string GenerateJwtToken(string email)

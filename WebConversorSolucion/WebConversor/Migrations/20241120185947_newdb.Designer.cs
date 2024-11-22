@@ -12,8 +12,13 @@ using WebConversor.Models;
 namespace WebConversor.Migrations
 {
     [DbContext(typeof(DbContexto))]
+<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241120185947_newdb.Designer.cs
     [Migration("20241120185947_newdb")]
     partial class newdb
+========
+    [Migration("20241122170856_migracion")]
+    partial class migracion
+>>>>>>>> dcfce18f672312149849de7a10e4696ac3e4860e:WebConversorSolucion/WebConversor/Migrations/20241122170856_migracion.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,15 +89,15 @@ namespace WebConversor.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("FromAmount")
-                        .HasColumnType("float");
+                    b.Property<decimal>("FromAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FromCoin")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ToAmount")
-                        .HasColumnType("float");
+                    b.Property<decimal>("ToAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ToCoin")
                         .IsRequired()
@@ -112,19 +117,24 @@ namespace WebConversor.Migrations
                         {
                             Id = 1,
                             Date = new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FromAmount = 76.0,
+                            FromAmount = 76m,
                             FromCoin = "EUR",
-                            ToAmount = 2.0,
+                            ToAmount = 2m,
                             ToCoin = "USD",
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
+<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241120185947_newdb.Designer.cs
                             Date = new DateTime(2024, 11, 20, 19, 59, 46, 479, DateTimeKind.Local).AddTicks(2656),
                             FromAmount = 20.0,
+========
+                            Date = new DateTime(2024, 11, 22, 18, 8, 55, 649, DateTimeKind.Local).AddTicks(4515),
+                            FromAmount = 20m,
+>>>>>>>> dcfce18f672312149849de7a10e4696ac3e4860e:WebConversorSolucion/WebConversor/Migrations/20241122170856_migracion.Designer.cs
                             FromCoin = "USD",
-                            ToAmount = 16.0,
+                            ToAmount = 16m,
                             ToCoin = "EUR",
                             UserId = 2
                         },
@@ -132,9 +142,9 @@ namespace WebConversor.Migrations
                         {
                             Id = 3,
                             Date = new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FromAmount = 45.0,
+                            FromAmount = 45m,
                             FromCoin = "USD",
-                            ToAmount = 120.0,
+                            ToAmount = 120m,
                             ToCoin = "PLN",
                             UserId = 2
                         });

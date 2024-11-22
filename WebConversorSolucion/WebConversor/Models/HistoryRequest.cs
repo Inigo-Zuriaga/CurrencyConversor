@@ -4,11 +4,11 @@ public class HistoryRequest
 {
      public string FromCoin { get; set; }
         
-     public double FromAmount { get; set; }
+     public decimal FromAmount { get; set; }
 
      public string ToCoin { get; set; }
         
-     public double ToAmount { get; set; }
+     public decimal ToAmount { get; set; }
      
      public DateTime Date { get; set; } = DateTime.Now;
      
