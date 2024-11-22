@@ -1,26 +1,4 @@
 
-<!--<div id="pdf-content" class="overflow-x-auto px-4 py-6">-->
-<!--<div class="overflow-x-auto px-4 py-6">-->
-<!--  <table *ngIf="historyData.length > 0" class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Dinero Cambiado</th>-->
-<!--      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Cantidad Obtenida</th>-->
-<!--      <th class="py-2 px-6 border-b text-left text-gray-600 font-semibold bg-yellow-100">Fecha</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr *ngFor="let item of historyData;" class="hover:bg-gray-100 odd:bg-blue-100 even:bg-blue-50">-->
-<!--      <td class="py-2 px-4 border-b">{{ item.fromAmount }} {{ item.fromCoin }}</td>-->
-<!--      <td class="py-2 px-4 border-b">{{ item.toAmount }} {{ item.toCoin }}</td>-->
-<!--      <td class="py-2 px-4 border-b">{{ item.date | date:'yyyy-MM-dd HH:mm' }}</td>-->
-<!--      <button  (click)="deleteHistory(item.id)" class="bg-red-700">Borrar Historial</button>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--  </table>-->
-<!--</div>-->
-<!--<button *ngIf="historyData.length > 0" (click)="crearPdf()">Generar PDF</button>-->
-<!--<p *ngIf="historyData.length === 0" class="text-center text-gray-500">No se ha realizado ninguna conversión.</p>-->
 <div id="contentToConvert" class="overflow-x-auto px-4 py-6">
   <table *ngIf="historyData.length > 0" class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
     <thead>
@@ -53,51 +31,9 @@
           class="bg-green-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-500 transition">
     Descargar PDF
   </button>
-  <button (click)="crearPdf()"
-          class="bg-gray-700 text-white py-2 px-6 rounded-md shadow-md hover:bg-gray-800 transition">
-    Descargar PDF
-  </button>
 
 </div>
 
 <!-- Mensaje cuando no hay datos -->
 <p *ngIf="historyData.length === 0" class="text-center text-gray-500 mt-4">No se ha realizado ninguna conversión.</p>
 
-
-<div  class="overflow-x-auto px-4 py-6">
-  <table *ngIf="historyData.length > 0" class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-md">
-    <thead>
-    <tr>
-      <th class="py-3 px-4 border-b text-left text-gray-700 font-medium bg-gray-100">Dinero Cambiado</th>
-      <th class="py-3 px-4 border-b text-left text-gray-700 font-medium bg-gray-100">Cantidad Obtenida</th>
-      <th class="py-3 px-6 border-b text-left text-gray-700 font-medium bg-gray-100">Fecha</th>
-      <th class="py-3 px-6 border-b text-center text-gray-700 font-medium bg-gray-100">Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of historyData;" class="hover:bg-gray-50 odd:bg-gray-100 even:bg-white">
-      <td class="py-2 px-4 border-b text-gray-800">{{ item.fromAmount }} {{ item.fromCoin }}</td>
-      <td class="py-2 px-4 border-b text-gray-800">{{ item.toAmount }} {{ item.toCoin }}</td>
-      <td class="py-2 px-4 border-b text-gray-800">{{ item.date | date:'yyyy-MM-dd HH:mm' }}</td>
-      <td class="py-2 px-4 border-b text-center">
-        <button (click)="deleteHistory(item.id)"
-                class="bg-gray-700 text-white py-1 px-4 rounded-md hover:bg-gray-800 transition">
-          Borrar
-
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Botón de Generar PDF -->
-<div *ngIf="historyData.length > 0" class="flex justify-end mt-6 max-w-6xl mx-auto">
-  <button (click)="crearPdf()"
-          class="bg-gray-700 text-white py-2 px-6 rounded-md shadow-md hover:bg-gray-800 transition">
-    Generar PDF
-  </button>
-</div>
-
-<!-- Mensaje cuando no hay datos -->
-<p *ngIf="historyData.length === 0" class="text-center text-gray-600 mt-4">No se ha realizado ninguna conversión.</p>
