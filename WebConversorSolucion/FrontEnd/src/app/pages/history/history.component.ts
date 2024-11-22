@@ -69,6 +69,7 @@ crearPdf(){
 
         const a = document.createElement('a');
         a.href = url;
+        this.email= this.authService.getUserEmail();
         a.download = 'HistorialConversiones.pdf'; // Nombre del archivo
         a.click();
         window.URL.revokeObjectURL(url);

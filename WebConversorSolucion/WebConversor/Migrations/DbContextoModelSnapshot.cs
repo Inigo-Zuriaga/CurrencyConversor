@@ -118,7 +118,7 @@ namespace WebConversor.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 11, 22, 0, 25, 30, 6, DateTimeKind.Local).AddTicks(9181),
+                            Date = new DateTime(2024, 11, 22, 18, 8, 55, 649, DateTimeKind.Local).AddTicks(4515),
                             FromAmount = 20m,
                             FromCoin = "USD",
                             ToAmount = 16m,

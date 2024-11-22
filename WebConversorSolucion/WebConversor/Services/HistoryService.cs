@@ -22,7 +22,18 @@ public class HistoryService
         {
             return "No se puede generar el historial, el usuario no existe";
         }
+        
+        
+        var countHistory = await _context.ExchangeHistory
+            .Include(x => x.User)
+            .Where(x => x.User.Email == history.Email)
+            .OrderByDescending(x => x.Date)
+            .ToListAsync();
 
+        if (countHistory.Count == 10)
+        {
+            _context.ExchangeHistory.Remove(countHistory[9]);
+        }
         // Crea un nuevo objeto de historial con los datos proporcionados
         var newHistory = new History
         {
@@ -62,15 +73,12 @@ public class HistoryService
         string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
         string tempHtml=File.ReadAllText(templatePath);
         StringBuilder stringData=new StringBuilder(String.Empty);
-        for (int i = 0; i < data.Count; i++)
-        {
-        
-       // stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date}</td></tr>");
-       stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
+            for(int i = 0; i < data.Count; i++)
+            {
+                stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
 
-        };
+            };
         return tempHtml.Replace("{data}", stringData.ToString());
-        // return stringData.ToString();
     }
     
 }
