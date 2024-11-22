@@ -64,12 +64,10 @@ public class HistoryService
         StringBuilder stringData=new StringBuilder(String.Empty);
         for (int i = 0; i < data.Count; i++)
         {
-        //     stringData.Append($"<tr><td>{data[i].Id}</td><td>{data[i].FromCoin}</td><td>{data[i].FromAmount}</td><td>{data[i].ToCoin}</td><td>{data[i].ToAmount}</td><td>{data[i].Date}</td></tr>");
-        //<td class="py-2 px-4 border-b">{{ item.fromAmount }} {{ item.fromCoin }}</td>
-        // <td class="py-2 px-4 border-b">{{ item.toAmount }} {{ item.toCoin }}</td>
-        //     <td class="py-2 px-4 border-b">{{ item.date | date:'yyyy-MM-dd HH:mm' }}</td>
         
-       stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date}</td></tr>");
+       // stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date}</td></tr>");
+       stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
+
         };
         return tempHtml.Replace("{data}", stringData.ToString());
         // return stringData.ToString();

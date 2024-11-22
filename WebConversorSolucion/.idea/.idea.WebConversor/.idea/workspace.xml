@@ -8,14 +8,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="" />
+    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/currency-chart/currency-chart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/currency-chart/currency-chart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/currency-chart/currency-chart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/currency-chart/currency-chart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Exports/test.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Exports/test.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/HtmlTemplates/historyPdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/HtmlTemplates/historyPdf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241120155643_primera-migracion.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/20241120155643_primera-migracion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Migrations/DbContextoModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/HistoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/HistoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/test.pdf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="autoShow" value="false" />
+    <option name="firstShow" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -41,6 +61,7 @@
     &quot;.NET Launch Settings Profile.WebConversor: IIS Express.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -98,6 +119,8 @@
       <workItem from="1731944468038" duration="8809000" />
       <workItem from="1732117712265" duration="8852000" />
       <workItem from="1732203604698" duration="11562000" />
+      <workItem from="1732233909835" duration="310000" />
+      <workItem from="1732236686687" duration="2972000" />
     </task>
     <servers />
   </component>

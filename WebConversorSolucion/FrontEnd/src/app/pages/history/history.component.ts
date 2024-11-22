@@ -11,33 +11,12 @@ import { History } from '../../Interfaces/ihistory';
   styleUrl: './history.component.css'
 })
 export class HistoryComponent implements OnInit    {
-  // @ViewChild(PdfComponent) pdfComponent: PdfComponent | undefined; // Accede al hijo a través de ViewChild
-
-  @ViewChild('content') contentElement!: ElementRef; // Referencia al elemento
-
 
   // downloadPdf() {
   //   // @ts-ignore
   //   this.pdfComponent.generatePdf(); // Llama a la función del hijo para generar el PDF
   // }
-  dataPdf: History[] = [
-    // {
-    //   fromCoin: 'BTC',
-    //   fromAmount: 1.0,
-    //   toCoin: 'ETH',
-    //   toAmount: 30.0,
-    //   date: new Date(),
-    //   email: 'user@example.com'
-    // },
-    // {
-    //   fromCoin: 'ETH',
-    //   fromAmount: 2.0,
-    //   toCoin: 'USD',
-    //   toAmount: 4000.0,
-    //   date: new Date(),
-    //   email: 'user2@example.com'
-    // }
-  ];
+  dataPdf: History[] = [];
 
   constructor(private authService: AuthService,private exchangeService:ExchangeService,private pdfService:PdfService,private route:Router) { }
 
@@ -46,12 +25,6 @@ export class HistoryComponent implements OnInit    {
   htmlContent:string='';
 
 
-  generarPdf() {
-    if (this.contentElement) {
-      const element = this.contentElement.nativeElement;
-      this.pdfService.generatePdfFromElement(element, 'historial_transacciones.pdf');
-    }
-  }
 
   ngOnInit():void {
 
@@ -60,7 +33,6 @@ export class HistoryComponent implements OnInit    {
     }
     this.onSubmit();
   }
-  // dataPdf: History[] = [];
 
   onSubmit(){
     //Obtengo el email del usuario desde el token
@@ -77,7 +49,7 @@ export class HistoryComponent implements OnInit    {
           fromAmount: item.fromAmount,      // La cantidad de la moneda de origen
           toCoin: item.toCoin,              // El tipo de moneda de destino
           toAmount: item.toAmount,          // La cantidad de la moneda de destino
-          date: item.date,                  // La fecha de la transacción
+          date: item.date ,                  // La fecha de la transacción
           email: item.user.email            // El email del usuario relacionado con la transacción
         }));
 
@@ -91,10 +63,15 @@ export class HistoryComponent implements OnInit    {
 crearPdf(){
   console.log("El history"+this.dataPdf);
     this.exchangeService.createPdf(this.dataPdf).subscribe(
-      (data) => {
-        console.log("El history"+this.dataPdf[1]);
-        console.log("El data"+ data);
-        console.log("PDF creado:");
+      (data:Blob) => {
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'HistorialConversiones.pdf'; // Nombre del archivo
+        a.click();
+        window.URL.revokeObjectURL(url);
       }
     );
 }
@@ -109,6 +86,7 @@ crearPdf(){
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
       confirmButtonText: "Confirmar"
     }).then((result:any) => {
 
