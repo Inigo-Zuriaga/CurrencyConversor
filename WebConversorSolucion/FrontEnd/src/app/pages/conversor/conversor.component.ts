@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import coins from './coins.json';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ExchangeService } from '../../services/exchange.service';
-import {AuthService} from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
-// Asegúrate de que el servicio esté importado correctamente
 interface Currency {
   name: string;
   shortname: string;
@@ -25,8 +24,13 @@ export class ConversorComponent implements OnInit {
   dropdownOpenFrom: boolean = false;
   dropdownOpenTo: boolean = false;
   filteredCurrencies: Currency[] = [];
-  email:string='';
-  constructor(private exchangeService: ExchangeService, private http: HttpClient,private authService:AuthService) {}
+  email: string = '';
+
+  constructor(
+    private exchangeService: ExchangeService,
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.filteredCurrencies = this.currencies;
@@ -61,31 +65,34 @@ export class ConversorComponent implements OnInit {
     );
   }
 
-  // Actualización del método para llamar al servicio
+  // Método para obtener la tasa de cambio
   getExchangeRate() {
-
     this.exchangeService.getExchangeRate(this.fromCurrency.shortname, this.toCurrency.shortname, this.amount).subscribe(
       (data) => {
         console.log('Exchange rate fetched successfully', data);
 
-
         this.convertedAmount = data.conversion_result; // Asume que `data` tiene la estructura adecuada
-        // Llama al servicio para guardar el historial
 
-        const fromCoin:string=this.fromCurrency.shortname;
+        // Recogemos el email del usuario logueado
+        const fromCoin: string = this.fromCurrency.shortname;
+        this.email = this.authService.getUserEmail();
 
-        //Recogemos el email del usuario logueado
-        this.email= this.authService.getUserEmail();
-
-        this.exchangeService.createExchangeHistory(this.fromCurrency.shortname,this.amount,this.toCurrency.shortname,data.conversion_result,new Date(),this.email).subscribe(
-          (data) => {
-            console.log('Historial creado', data);
+        // Llamamos al servicio para crear el historial
+        this.exchangeService.createExchangeHistory(
+          this.fromCurrency.shortname,
+          this.amount,
+          this.toCurrency.shortname,
+          data.conversion_result,
+          new Date(),
+          this.email
+        ).subscribe(
+          (response) => {
+            console.log('Historial creado', response);
           },
           (error) => {
             console.error('Error al crear el historial', error);
           }
-        )
-
+        );
       },
       (error: HttpErrorResponse) => {
         console.error('Error fetching exchange rate', error);
