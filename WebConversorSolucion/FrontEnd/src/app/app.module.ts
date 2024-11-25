@@ -48,6 +48,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     NgChartsModule,
     NgOptimizedImage,
 
+
   ],
   providers: [
     {

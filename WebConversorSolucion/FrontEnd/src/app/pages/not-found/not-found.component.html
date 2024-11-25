@@ -1,18 +1,52 @@
+<!--<div class="mi-componente-fondo">-->
 
 
-<div  id="text" class="text-center">
 
-  <div class="number">
+<!--<div  id="text">-->
 
-    <h1 class=" font-extrabold text-gray-800">4</h1>
+<!--  <div class="number">-->
+<!--    <h1 class=" font-extrabold text-gray-800">4</h1>-->
+<!--    <div class="imagen"></div>-->
+<!--    <h1 class="font-extrabold text-gray-800">4</h1>-->
+<!--  </div>-->
 
-    <div class="imagen"></div>
+<!--  <div id="warning">-->
+<!--    <h1 class="text-2xl font-bold text-gray-800 mt-4">Página no encontrada</h1>-->
+<!--    <h2 class="text-gray-800 font-medium mt-2">Lo sentimos, la página que buscas no existe o ha sido movida.</h2>-->
+<!--    <a href="/" class="mt-6 inline-block px-6 py-3 bg-primaryBlue text-white px-10 py-3 rounded hover:bg-white hover:text-primaryBlue">Volver al inicio</a>-->
+<!--  </div>-->
 
-    <h1 class="font-extrabold text-gray-800">4</h1>
+<!--</div>-->
+
+<!--</div>-->
+<div class="mi-componente-fondo min-h-screen flex items-center justify-center">
+  <div id="text" class="text-center">
+    <!-- Número 404 con la moneda como "0" -->
+    <div class="number flex items-center justify-center text-[12rem] font-extrabold text-gray-800 animate-elevator">
+      <h1>4</h1>
+      <div class="imagen mx-6">
+        <!-- Imagen de la moneda -->
+        <img
+          src="../../../assets/moneda.png"
+          alt="Moneda"
+          class="w-40 h-40 object-contain animate-elevator"
+        />
+      </div>
+      <h1>4</h1>
+    </div>
+
+    <!-- Mensaje de advertencia -->
+    <div id="warning" class="mt-8">
+      <h1 class="text-[3rem] font-bold text-gray-800">ups, página no encontrada</h1>
+      <h2 class=" text-[2rem] text-gray-600 font-medium mt-2">
+        Me da que la tecnología no es lo tuyo, dale al botón crack.
+      </h2>
+      <!-- Botón para regresar al inicio -->
+      <a
+        href="/"
+        class="mt-12 inline-block px-10 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-white hover:text-blue-600 hover:shadow transition">
+        Volver al inicio
+      </a>
+    </div>
   </div>
-  <p class="text-2xl font-medium text-gray-600 mt-4">Página no encontrada</p>
-  <p class="text-gray-500 mt-2">Lo sentimos, la página que buscas no existe o ha sido movida.</p>
-  <a href="/" class="mt-6 inline-block px-6 py-3 bg-primaryBlue text-white px-10 py-3 rounded hover:bg-white hover:text-primaryBlue">
-    Volver al inicio
-  </a>
 </div>

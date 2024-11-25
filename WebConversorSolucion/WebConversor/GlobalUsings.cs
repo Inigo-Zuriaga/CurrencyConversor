@@ -18,3 +18,4 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Text.Json;
 global using Azure;
 global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Http;

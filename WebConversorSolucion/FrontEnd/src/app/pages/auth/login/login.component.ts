@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit{
     if (this.authService.UserIsLogged()){
       this.route.navigate(['/']).then(r => { })
     }
-    this.onSubmit();
+    // this.onSubmit();
   }
 
   // Método para manejar el envío del formulario
@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit{
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-  
+
     console.log("Datos enviados al backend:", loginData);
-  
+
     this.authService.login(loginData.email, loginData.password).subscribe(
       (data) => {
         console.log("Respuesta del backend:", data);
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit{
       }
 
     );
-  
+
     //this.loginForm.reset();
   }
 }

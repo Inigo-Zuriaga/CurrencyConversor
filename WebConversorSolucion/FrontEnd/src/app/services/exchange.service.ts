@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
-
+import { History } from '../Interfaces/ihistory';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class ExchangeService {
   private apiUrl = 'http://localhost:25850/api/api';
   private apiUrl2 = environment.apiUrl2;
   private apiUrl3 = 'http://localhost:25850/api/History';
+  private apiUrl4 = 'http://localhost:25850/api/Pdf';
 
   //Api de prueba
   constructor(private http: HttpClient) {}
@@ -49,6 +50,11 @@ export class ExchangeService {
     };
     return this.http.post(`${this.apiUrl3}/CreateHistory`,body);
   }
+  createPdf(history:History[]): Observable<any> {
+
+    return this.http.post(`${this.apiUrl4}`, history,{ responseType: 'blob' });
+  }
+
 
   deleteHistory(historyId:number): Observable<any> {
 

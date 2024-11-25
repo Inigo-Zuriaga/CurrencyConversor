@@ -24,8 +24,17 @@ main {
   --font-barlow: 'Barlow', sans-serif;
   --font-barlowsemibold: 'Barlow', sans-serif;
   --font-barlowbold: 'Barlow', sans-serif;
-}
 
+  --background: linear-gradient(
+    45deg,
+    rgba(30, 58, 138, 0.5),
+    rgba(59, 130, 246, 0.5),
+    rgba(147, 51, 234, 0.5),
+    rgba(244, 63, 94, 0.5)
+  );
+  --background-size: 300% 300%;
+  --animation-gradient: gradientAnimation 8s ease infinite;
+}
 
 body {
   background-image: url("assets/CoinWeb.gif");
@@ -39,15 +48,16 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
   background: linear-gradient(
-    45deg,
-    rgba(30, 58, 138, 0.5),
-    rgba(59, 130, 246, 0.5),
-    rgba(147, 51, 234, 0.5),
-    rgba(244, 63, 94, 0.5)
-  );
-  background-size: 300% 300%;
-  animation: gradientAnimation 8s ease infinite;
+  45deg,
+  rgba(30, 58, 138, 0.5),
+  rgba(59, 130, 246, 0.5),
+  rgba(147, 51, 234, 0.5),
+  rgba(244, 63, 94, 0.5)
+);
+  /*background-size: 300% 300%;*/
+  /*animation: gradientAnimation 8s ease infinite;*/
 }
 
 /* Animación para el degradado */

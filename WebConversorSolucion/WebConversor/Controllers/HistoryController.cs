@@ -64,7 +64,6 @@ public class HistoryController : ControllerBase
         //Correo Hardcodeado para pruebas
 
         var createdHistory = await _historyService.CreateHistory(history);
-
         // if (string.IsNullOrEmpty(email))
         // {
         //     return Unauthorized("El usuario no está autenticado.");
@@ -88,8 +87,10 @@ public class HistoryController : ControllerBase
             return BadRequest(new { error = "No se ha podido borrar la conversion" });
         }
 
-        // return Ok(deletedHistory);
-        return Ok(new { message = "Conversion eliminada correctamente" });
+            // return Ok(deletedHistory);
+            return Ok(new { message = "Conversion eliminada correctamente" });
+        }
+        
     }
     
-}
+
