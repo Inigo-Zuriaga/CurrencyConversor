@@ -48,7 +48,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:CadenaConexion"]);
+        builder.Configuration["ConnectionStrings:AzureConexion"]);
 });
 
 var app = builder.Build();

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebConversor.Migrations
 {
     /// <inheritdoc />
-    public partial class Migraciones : Migration
+    public partial class migraciones : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -95,7 +95,7 @@ namespace WebConversor.Migrations
                 values: new object[,]
                 {
                     { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76.0, "EUR", 2.0, "USD", 1 },
-                    { 2, new DateTime(2024, 11, 20, 17, 57, 33, 120, DateTimeKind.Local).AddTicks(7329), 20.0, "USD", 16.0, "EUR", 2 },
+                    { 2, new DateTime(2024, 11, 25, 20, 52, 22, 948, DateTimeKind.Local).AddTicks(2157), 20.0, "USD", 16.0, "EUR", 2 },
                     { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.0, "USD", 120.0, "PLN", 2 }
                 });
 
