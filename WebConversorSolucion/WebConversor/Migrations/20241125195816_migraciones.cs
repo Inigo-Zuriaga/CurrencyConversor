@@ -8,11 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebConversor.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241125195224_migraciones.cs
     public partial class migraciones : Migration
-========
-    public partial class primera : Migration
->>>>>>>> 46e525ad157185c89ac2200e28defef5c8459ff7:WebConversorSolucion/WebConversor/Migrations/20241125180131_primera.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -98,15 +94,9 @@ namespace WebConversor.Migrations
                 columns: new[] { "Id", "Date", "FromAmount", "FromCoin", "ToAmount", "ToCoin", "UserId" },
                 values: new object[,]
                 {
-<<<<<<<< HEAD:WebConversorSolucion/WebConversor/Migrations/20241125195224_migraciones.cs
-                    { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76.0, "EUR", 2.0, "USD", 1 },
-                    { 2, new DateTime(2024, 11, 25, 20, 52, 22, 948, DateTimeKind.Local).AddTicks(2157), 20.0, "USD", 16.0, "EUR", 2 },
-                    { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.0, "USD", 120.0, "PLN", 2 }
-========
                     { 1, new DateTime(2004, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 76m, "EUR", 2m, "USD", 1 },
-                    { 2, new DateTime(2024, 11, 25, 19, 1, 29, 785, DateTimeKind.Local).AddTicks(3702), 20m, "USD", 16m, "EUR", 2 },
+                    { 2, new DateTime(2024, 11, 25, 20, 58, 15, 464, DateTimeKind.Local).AddTicks(2784), 20m, "USD", 16m, "EUR", 2 },
                     { 3, new DateTime(2007, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 45m, "USD", 120m, "PLN", 2 }
->>>>>>>> 46e525ad157185c89ac2200e28defef5c8459ff7:WebConversorSolucion/WebConversor/Migrations/20241125180131_primera.cs
                 });
 
             migrationBuilder.CreateIndex(
