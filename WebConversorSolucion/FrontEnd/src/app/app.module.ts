@@ -19,6 +19,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { HistoryComponent } from './pages/history/history.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
 
 //En este Archivo importaremos todos los componentes que creemos y

@@ -18,6 +18,7 @@ namespace WebConversor.Controllers;
         [HttpPost]
         public async Task<IActionResult> GeneratePdf([FromBody] List<HistoryRequest> history)
         {
+   
             string filename= "test.pdf";
             var glb=new GlobalSettings()
             {
@@ -47,6 +48,8 @@ namespace WebConversor.Controllers;
                 Objects = {objectSettings}
             };
             var pdfDoc=_converter.Convert(pdf);
+       
+            
             return File(pdfDoc, "application/pdf", "test.pdf");
         }
         

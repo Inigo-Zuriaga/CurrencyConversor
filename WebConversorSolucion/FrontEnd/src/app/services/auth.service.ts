@@ -27,7 +27,7 @@ export class AuthService {
     const body = { "email": email, "password": password };
     return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
   }
-  
+
 
   // método para registrar un usuario nuevo
   signIn(name:string,
@@ -39,6 +39,10 @@ export class AuthService {
 
     const body = { name,lastName,email,fechaNacimiento,password,img };
     return this.http.post(`${this.apiUrl}/SignIn`, body/*, { observe: 'response' }*/);
+
+  }
+
+  changePicture(){
 
   }
 

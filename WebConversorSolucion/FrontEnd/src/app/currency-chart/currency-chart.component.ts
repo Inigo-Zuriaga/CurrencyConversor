@@ -1,31 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, ChangeDetectorRef, OnInit} from '@angular/core';
 import { ChartData } from 'chart.js';
 import { ChartService } from '../services/chart.service';
-
 @Component({
   selector: 'app-currency-chart',
   templateUrl: './currency-chart.component.html',
   styleUrls: ['./currency-chart.component.css']
 })
-export class CurrencyChartComponent implements OnInit {
-  lineChartData: any = {
-    labels: [],  // Aquí van las fechas
-    datasets: [
-      {
-        data: [],  // Aquí van las tasas de cambio
-        label: 'Exchange Rate',
-        borderColor: '#00f',
-        fill: false,
-        tension: 0.1,
-      },
-    ],
-  };
+export class CurrencyChartComponent implements OnInit, OnChanges {
+  @Input() lineChartData: any;
+  // lineChartData: any = {
+  //   labels: [],  // Aquí van las fechas
+  //   datasets: [
+  //     {
+  //       data: [],  // Aquí van las tasas de cambio
+  //       label: 'Exchange Rate',
+  //       borderColor: '#00f',
+  //       fill: false,
+  //       tension: 0.1,
+  //     },
+  //   ],
+  // };
 
-  constructor(private chartService: ChartService) {}
+  constructor(private chartService: ChartService,private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.loadExchangeHistory();
+    console.log('Initial chart data:', this.lineChartData);
   }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes['lineChartData']) {
+  //     console.log('Chart data updated:', this.lineChartData);
+  //   }
+  // }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['lineChartData']) {
+      console.log('Chart data has changed:', this.lineChartData);
+      // Forzar la detección de cambios
+      this.cdRef.detectChanges();
+    }
+  }
+
+  // ngOnInit() {
+  //   this.loadExchangeHistory();
+  // }
 
   loadExchangeHistory() {
     const fromCurrency = 'USD';  // Ajusta según lo necesites
@@ -35,15 +51,36 @@ export class CurrencyChartComponent implements OnInit {
       (data) => {
         console.log('Data received for historical exchange rates:', data);
 
-        // Asegúrate de que los datos recibidos tengan las propiedades "dates" y "rates"
-        if (data && data.dates && data.rates) {
-          // Asignamos los datos del gráfico
-          this.lineChartData.labels = data.dates;  // Asignamos las fechas
-          this.lineChartData.datasets[0].data = data.rates;  // Asignamos las tasas de cambio
+        const timeSeries = data['Time Series FX (Daily)']; // Asegúrate de usar la clave correcta
+        if (timeSeries) {
+          // Extraer fechas y valores de cierre
+          const dates = Object.keys(timeSeries).reverse(); // Fechas en orden ascendente
+          const rates = dates.map(date => parseFloat(timeSeries[date]['4. close'])); // Valores de cierre
 
-          console.log('Chart data updated:', this.lineChartData);
+          console.log('Processed Dates:', dates);
+          console.log('Processed Rates:', rates);
+
+          // Configurar los datos para el gráfico
+          this.lineChartData = {
+            labels: dates, // Fechas
+            datasets: [
+              {
+                label: `Exchange Rate (${fromCurrency} to ${toCurrency})`,
+                data: rates, // Valores de cierre
+                borderColor: '#00f',
+                backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                fill: true,
+                tension: 0.1,
+              },
+            ],
+          };
+
+          console.log('Chart data prepared:', this.lineChartData);
+
+          // Forzar la detección de cambios
+          // this.cdRef.detectChanges();
         } else {
-          console.error('Data format incorrect. Expected "dates" and "rates" arrays.');
+          console.error('Time Series data is missing in the response.');
         }
       },
       (error) => {
@@ -51,4 +88,5 @@ export class CurrencyChartComponent implements OnInit {
       }
     );
   }
+
 }

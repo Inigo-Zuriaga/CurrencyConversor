@@ -8,14 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.html" afterDir="false" />
-    </list>
+    <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,8 +101,7 @@
       <workItem from="1732203604698" duration="11562000" />
       <workItem from="1732233909835" duration="310000" />
       <workItem from="1732236686687" duration="2972000" />
-      <workItem from="1732565216372" duration="318000" />
-      <workItem from="1732640889351" duration="1498000" />
+      <workItem from="1732294771226" duration="3557000" />
     </task>
     <servers />
   </component>
