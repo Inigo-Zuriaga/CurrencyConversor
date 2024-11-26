@@ -70,14 +70,45 @@ public class HistoryService
 
     public static string ToHtmlFile(List<HistoryRequest> data)
     {
-        string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
-        string tempHtml=File.ReadAllText(templatePath);
+        //string uploadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Exports");
+
+// Crear el directorio si no existe
+        //if (!Directory.Exists(uploadsPath))
+        //{
+        //    Directory.CreateDirectory(uploadsPath);
+        //}
+        
+        // Guardar un archivo
+        //string filePath = Path.Combine(uploadsPath, "test.pdf");
+        // File.WriteAllText(filePath, "Contenido del archivo.");
         StringBuilder stringData=new StringBuilder(String.Empty);
+        string tempHtml=String.Empty;
+        try
+        {
+            string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
+            //string templatePath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HtmlTemplates", "historyPdf.html");
+            tempHtml=File.ReadAllText(templatePath);
+            // StringBuilder stringData=new StringBuilder(String.Empty);
             for(int i = 0; i < data.Count; i++)
             {
                 stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
 
             };
+            
+        }
+        catch (Exception e)
+        {
+            return e.Message;
+        }
+        //  string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
+        // //string templatePath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HtmlTemplates", "historyPdf.html");
+        // string tempHtml=File.ReadAllText(templatePath);
+        // // StringBuilder stringData=new StringBuilder(String.Empty);
+        //     for(int i = 0; i < data.Count; i++)
+        //     {
+        //         stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
+        //
+        //     };
         return tempHtml.Replace("{data}", stringData.ToString());
     }
     
