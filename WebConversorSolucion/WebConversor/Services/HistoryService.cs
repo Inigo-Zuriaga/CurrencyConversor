@@ -70,7 +70,20 @@ public class HistoryService
 
     public static string ToHtmlFile(List<HistoryRequest> data)
     {
-        string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
+        //string uploadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Exports");
+
+// Crear el directorio si no existe
+        //if (!Directory.Exists(uploadsPath))
+        //{
+        //    Directory.CreateDirectory(uploadsPath);
+        //}
+        
+        // Guardar un archivo
+        //string filePath = Path.Combine(uploadsPath, "test.pdf");
+        // File.WriteAllText(filePath, "Contenido del archivo.");
+        
+         string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
+        //string templatePath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HtmlTemplates", "historyPdf.html");
         string tempHtml=File.ReadAllText(templatePath);
         StringBuilder stringData=new StringBuilder(String.Empty);
             for(int i = 0; i < data.Count; i++)
