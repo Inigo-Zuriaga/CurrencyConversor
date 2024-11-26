@@ -3,6 +3,7 @@ import coins from './coins.json';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ExchangeService } from '../../services/exchange.service';
 import { AuthService } from '../../services/auth.service';
+import { ChartService } from '../../services/chart.service';
 
 interface Currency {
   name: string;
@@ -26,14 +27,21 @@ export class ConversorComponent implements OnInit {
   filteredCurrencies: Currency[] = [];
   email: string = '';
 
+
+    // Datos para el gráfico
+    lineChartData: any = { datasets: [], labels: [] };
+
   constructor(
     private exchangeService: ExchangeService,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private chartService: ChartService
   ) {}
 
   ngOnInit() {
     this.filteredCurrencies = this.currencies;
+    this.updateChartData();
+    // this.getExchangeRate();
   }
 
   toggleDropdown(select: 'from' | 'to') {
@@ -100,7 +108,36 @@ export class ConversorComponent implements OnInit {
     );
   }
 
+  updateChartData() {
+    this.chartService.getHistoricalData(this.fromCurrency.shortname, this.toCurrency.shortname).subscribe(
+      (data) => {
+        console.log('Chart data received:', data);
+
+        // Procesar datos para el gráfico
+        const labels = Object.keys(data).reverse(); // Fechas
+        const values = labels.map((date) => parseFloat(data[date]['4. close'])); // Cierres
+
+        this.lineChartData = {
+          labels,
+          datasets: [
+            {
+              data: values,
+              label: `${this.fromCurrency.shortname} to ${this.toCurrency.shortname}`,
+              borderColor: '#3e95cd',
+              fill: false,
+            },
+          ],
+        };
+      },
+      (error) => {
+        console.error('Error fetching chart data', error);
+      }
+    );
+  }
+
+
   onAmountChange() {
     // Aquí puedes manejar los cambios en el input de cantidad si es necesario
   }
+
 }
