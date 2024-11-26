@@ -2,12 +2,20 @@ using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
+// using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Log.Logger = new LoggerConfiguration()
+//     .MinimumLevel.Debug()
+//     .WriteTo.Console()
+//     .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Day)
+//     .CreateLogger();
 
 
+// Agregar servicio de Serilog
+// builder.Logging.AddSerilog();
 // Add services to the container.
 builder.Services.AddHttpClient<IApiService, ApiService>();
 builder.Services.AddScoped<UserService>();

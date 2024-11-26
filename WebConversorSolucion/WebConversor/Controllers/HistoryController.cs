@@ -6,11 +6,13 @@ public class HistoryController : ControllerBase
 {
     private readonly DbContexto _context; // Contexto de la bbdd
     private readonly HistoryService _historyService; // Servicio para manejar la lógica de historial
-
+    // private readonly ILogger<HistoryController> _logger;
         public HistoryController(DbContexto context, HistoryService historyService)
+        // public HistoryController(DbContexto context, HistoryService historyService, ILogger<HistoryController> logger)
         {
             _context = context;
             _historyService = historyService;
+            // _logger = logger;
         }
 
         // Endpoint para obtener el historial de intercambios de un usuario autenticado
@@ -52,6 +54,7 @@ public class HistoryController : ControllerBase
             .OrderByDescending(x => x.Date)
             .ToListAsync();
 
+        // _logger.LogInformation($"Historial de intercambios solicitado por {email}");
         return Ok(exchangeList);
     }
 
