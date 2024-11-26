@@ -18,6 +18,6 @@ export class ChartService {
       ToCurrency: toCurrency,
     };
 
-    return this.http.post<any>(`${this.apiUrl}/historical-data`, request);
+    return this.http.post(`${this.apiUrl}/historical-data`, request);
   }
 }
