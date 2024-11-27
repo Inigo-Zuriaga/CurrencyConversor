@@ -46,7 +46,7 @@
   </div>
 
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flex content-center rotate-90 md:rotate-0 mb-5 md:mb-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-
+<!--  <span class="i-material-symbols-arrow-right-alt"></span>-->
   <!-- Input y selector de moneda destino -->
   <div class="relative w-64 flex font-regularb mb-10 md:mb-0">
     <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
@@ -95,7 +95,16 @@
 </div>
 
   <!-- Aquí se invoca el componente del gráfico -->
-<div class="mt-20 px-4 max-w-screen-lg mx-auto">
+<div *ngIf="chartReady" class="mt-20 px-4 max-w-screen-lg mx-auto">
   <app-currency-chart [lineChartData]="lineChartData"></app-currency-chart>
-
 </div>
+
+<div class="mt-20 px-4 max-w-screen-lg mx-auto">
+  <h2 class="text-lg font-semibold mb-4 text-center md:text-center">Últimas conversiones</h2>
+  <app-historytable [historyData]="historyData" [limit]="3" class="w-full"></app-historytable>
+</div>
+  <!-- Botón para ver más -->
+  <div *ngIf="historyData.length>0" class="flex justify-center mt-4">
+
+    <a routerLink="/history" class=" text-blue-700 rounded-lg hover:text-white transition">Ver más</a>
+  </div>

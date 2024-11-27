@@ -21,6 +21,7 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
+import { HistorytableComponent } from './shared/components/historytable/historytable.component';
 
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
@@ -40,6 +41,8 @@ import { AboutComponent } from './pages/about/about.component';
     HistoryComponent,
     NotFoundComponent,
     AboutComponent,
+    ProfileComponent,
+    HistorytableComponent
   ],
   imports: [
     BrowserModule,

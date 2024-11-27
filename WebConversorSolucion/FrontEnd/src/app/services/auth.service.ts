@@ -18,6 +18,9 @@ export class AuthService {
   // logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
   logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
 
+  private historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); // Estado inicial vacío
+  public historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
+
   constructor(private http: HttpClient) {
     this.logged.next(this.UserIsLogged());
   }
@@ -26,6 +29,15 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     const body = { "email": email, "password": password };
     return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
+  }
+
+  updateHistory(historyData: any[]) {
+    this.historySubject.next(historyData); // Emite el nuevo estado del historial
+  }
+  fetchAndUpdateHistory(email: string) {
+    this.viewHistory(email).subscribe((data) => {
+      this.updateHistory(data); // Actualiza el BehaviorSubject
+    });
   }
 
 
