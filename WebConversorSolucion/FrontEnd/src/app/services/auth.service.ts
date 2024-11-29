@@ -15,8 +15,8 @@ export class AuthService {
 
 
   // variable que indica si el usuario está logueado o no
-  // logged :BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.UserIsLogged());
   logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
+  // logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged() || !this.isTokenExpired());
 
   private historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); // Estado inicial vacío
   public historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
@@ -94,6 +94,33 @@ export class AuthService {
     localStorage.removeItem('accessToken');
     this.logged.next(false); // Publica que el usuario ha cerrado sesión
   }
+  isTokenExpired(): boolean {
+    const token = this.getAccessToken();
+    if (!token) {
+      return true; // Si no hay token, consideramos que está expirado
+    }
+
+    try {
+      const decodedToken: any = jwtDecode(token);
+      const expirationDate = decodedToken.exp * 1000; // El valor de 'exp' está en segundos, así que multiplicamos por 1000 para pasarlo a milisegundos
+      const currentTime = new Date().getTime(); // Obtenemos el tiempo actual en milisegundos
+
+      // return currentTime > expirationDate;
+      console.log("El tiempo actual es: ",currentTime);
+      console.log("La fecha de expiración es: ",expirationDate);
+
+      if (currentTime > expirationDate) {
+        this.deleteToken(); // Si el token ha expirado, lo borramos
+        return true;
+      } else {
+        return false;
+      }
+
+    } catch (error) {
+      console.error('Error al decodificar el token', error);
+      return true;
+    }
+  }
 
 
   getUserToken():string{
@@ -105,6 +132,7 @@ export class AuthService {
   }
   //Comprueba si hay un token almacenado en el localstorage. Y devuelve true si lo hay.
   UserIsLogged():boolean{
+    this.isTokenExpired();
     return !!localStorage.getItem('accessToken');
   }
 
