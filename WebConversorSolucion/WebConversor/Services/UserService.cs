@@ -57,6 +57,8 @@ public class UserService
     {
         try
         {
+            
+            //Borrar los console
             Console.WriteLine("Datos recibidos en el endpoint Login:");
             Console.WriteLine($"Email: {request.Email}");
             Console.WriteLine($"Password: {request.Password}");

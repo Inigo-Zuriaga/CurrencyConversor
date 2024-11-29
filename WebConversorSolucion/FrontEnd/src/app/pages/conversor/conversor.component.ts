@@ -41,10 +41,6 @@ export class ConversorComponent implements OnInit {
   ) {}
 
 
-
-
-
-
   ngOnInit() {
     this.filteredCurrencies = this.currencies;
 
@@ -65,7 +61,15 @@ export class ConversorComponent implements OnInit {
         console.error("Error al obtener el historial:", error);
       });
   }
+  swapCurrencies() {
+    // Intercambiar las monedas de origen y destino
+    const temp = this.fromCurrency;
+    this.fromCurrency = this.toCurrency;
+    this.toCurrency = temp;
 
+    // Realizar la conversión nuevamente con las monedas intercambiadas
+    // this.getExchangeRate();
+  }
   async getExchangeRate() {
     try {
       // Llamamos al servicio para obtener la tasa de cambio y esperamos la respuesta
