@@ -3,12 +3,10 @@
 const { addDynamicIconSelectors } = require('@iconify/tailwind')
 
 module.exports = {
-  plugins: [addDynamicIconSelectors()]
-}
-module.exports = {
   content: [
     "./src/**/*.{html,ts}", // Ajusta esta ruta según tu estructura de archivos
   ],
+
   theme: {
     extend: {
       fontFamily: {
@@ -28,5 +26,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 }

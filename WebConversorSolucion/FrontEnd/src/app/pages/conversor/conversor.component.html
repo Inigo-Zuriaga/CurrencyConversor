@@ -4,10 +4,12 @@
 </div>
 <br>
 <!-- Contenedor principal con disposición en columna para pantallas pequeñas -->
-<div class="flex flex-col md:flex-row items-center ml-auto md:space-x-16 justify-center p-4 font-regularb">
+<!--<div class="flex flex-col md:flex-row items-center justify-center ml-auto md:space-x-8 p-4 font-regularb">-->
+<div class="flex flex-col md:flex-row items-center justify-center p-4 font-regularb space-y-5 md:space-y-0">
 
   <!-- Input de cantidad y selector de moneda origen -->
-  <div class="relative w-64 flex mb-5 md:mb-0">
+<!--  <div class="relative w-64 flex mb-5 md:mb-0">-->
+    <div class="relative w-64 flex">
     <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white ">
       <input
         type="number"
@@ -45,10 +47,20 @@
     </div>
   </div>
 
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flex content-center rotate-90 md:rotate-0 mb-5 md:mb-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+
+      <span class="icon-[lucide--arrow-left-right] mx-4"></span>
+
+<!--  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flex content-center rotate-90 md:rotate-0 mb-5 md:mb-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>-->
 <!--  <span class="i-material-symbols-arrow-right-alt"></span>-->
+<!--  <span class="icon-[lucide&#45;&#45;arrow-left-right] m-0 p-0 w-6 h-6"></span>-->
+
+
+
+
   <!-- Input y selector de moneda destino -->
-  <div class="relative w-64 flex font-regularb mb-10 md:mb-0">
+<!--  <div class="relative w-64 flex font-regularb mb-10 md:mb-0">-->
+    <div class="relative w-64 flex font-regularb" >
     <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
       <button
         (click)="toggleDropdown('to')"
