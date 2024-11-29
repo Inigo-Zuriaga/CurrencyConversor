@@ -23,6 +23,9 @@ import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HistorytableComponent } from './shared/components/historytable/historytable.component';
 
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import {TagModule} from 'primeng/tag';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 
@@ -43,6 +46,7 @@ import { HistorytableComponent } from './shared/components/historytable/historyt
     AboutComponent,
     ProfileComponent,
     HistorytableComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +57,9 @@ import { HistorytableComponent } from './shared/components/historytable/historyt
     CommonModule,
     NgChartsModule,
     NgOptimizedImage,
-
-
+    CarouselModule,
+    ButtonModule,
+    TagModule
   ],
   providers: [
     {

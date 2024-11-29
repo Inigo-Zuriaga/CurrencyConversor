@@ -24,6 +24,7 @@
     "jspdf": "^2.5.2",
     "jwt-decode": "^4.0.0",
     "ng2-charts": "^4.1.1",
+    "primeng": "^17.18.12",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.5",
     "tslib": "^2.3.0",
