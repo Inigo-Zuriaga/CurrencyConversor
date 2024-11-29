@@ -45,7 +45,7 @@ import {TagModule} from 'primeng/tag';
     NotFoundComponent,
     AboutComponent,
     ProfileComponent,
-    HistorytableComponent
+    HistorytableComponent,
     ProfileComponent
   ],
   imports: [
