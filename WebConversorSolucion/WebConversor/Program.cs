@@ -49,6 +49,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin", builder =>
     {
+        //Cambiar esto a la hora de produccion
         builder.WithOrigins("http://localhost:4200") // Cambia esto a la URL de tu frontend
                .AllowAnyHeader()
                .AllowAnyMethod();
@@ -69,10 +70,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:AzureConexion"]);
+        //builder.Configuration["ConnectionStrings:AzureConexion"]);
     
     // Si se quiere trabajar con la base en local descomentar la siguiente linea
-        // builder.Configuration["ConnectionStrings:CadenaConexion"]);
+         builder.Configuration["ConnectionStrings:CadenaConexion"]);
 });
 
 var app = builder.Build();

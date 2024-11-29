@@ -21,6 +21,8 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
+import { HistorytableComponent } from './shared/components/historytable/historytable.component';
+
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import {TagModule} from 'primeng/tag';
@@ -42,6 +44,8 @@ import {TagModule} from 'primeng/tag';
     HistoryComponent,
     NotFoundComponent,
     AboutComponent,
+    ProfileComponent,
+    HistorytableComponent
     ProfileComponent
   ],
   imports: [

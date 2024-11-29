@@ -16,6 +16,7 @@ export class HistoryComponent implements OnInit    {
   //   // @ts-ignore
   //   this.pdfComponent.generatePdf(); // Llama a la función del hijo para generar el PDF
   // }
+
   dataPdf: History[] = [];
 
   constructor(private authService: AuthService,private exchangeService:ExchangeService,private pdfService:PdfService,private route:Router) { }
