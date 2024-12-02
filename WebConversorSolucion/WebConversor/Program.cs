@@ -63,7 +63,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowOrigin", builder =>
     {
         //Cambiar esto a la hora de produccion
-        builder.WithOrigins("http://localhost:4200") // Cambia esto a la URL de tu frontend
+        builder.WithOrigins("https://conversor-git-main-inigozuriagas-projects.vercel.app/") // Cambia esto a la URL de tu frontend
                .AllowAnyHeader()
                .AllowAnyMethod();
     });

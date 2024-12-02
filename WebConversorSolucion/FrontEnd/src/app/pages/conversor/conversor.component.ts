@@ -5,6 +5,7 @@ import { ExchangeService } from '../../services/exchange.service';
 import { AuthService } from '../../services/auth.service';
 import { ChartService } from '../../services/chart.service';
 import { Router } from '@angular/router';
+
 interface Currency {
   name: string;
   shortname: string;
