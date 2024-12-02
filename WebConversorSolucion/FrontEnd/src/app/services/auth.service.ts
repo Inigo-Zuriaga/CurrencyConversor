@@ -50,12 +50,22 @@ export class AuthService {
          img:string): Observable<any> {
 
     const body = { name,lastName,email,fechaNacimiento,password,img };
-    return this.http.post(`${this.apiUrl}/SignIn`, body/*, { observe: 'response' }*/);
+    return this.http.post(`${this.apiUrl}/SignIn`, body);
 
   }
 
-  changePicture(){
+  // getUserData(email:string):Observable<any>{
+  getUserData():Observable<any>{
 
+    // return this.http.post(`${this.apiUrl}/GetUser`, JSON.stringify(email));
+    return this.http.get(`${this.apiUrl}/GetUserData`);
+  }
+
+  changePicture(email:string,profileImg: string):Observable<any>{
+
+    const body = {"Email": email, "Img":profileImg };
+
+    return this.http.post(`${this.apiUrl}/ChangeProfile`, body);
   }
 
   viewHistory(email: string): Observable<any> {

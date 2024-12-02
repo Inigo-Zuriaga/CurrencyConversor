@@ -42,6 +42,19 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = jwtSettings["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
     };
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("Authentication failed: " + context.Exception.Message);
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine("Token validated: " + context.SecurityToken);
+            return Task.CompletedTask;
+        }
+    };
 });
 
 // Configuracion de CORS para permitir solicitudes desde tu frontend Angular

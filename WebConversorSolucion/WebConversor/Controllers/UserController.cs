@@ -1,4 +1,6 @@
-﻿namespace WebConversor.Controllers;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace WebConversor.Controllers;
 
 [Route("api/[controller]")] // Define la ruta base para este controlador (e.g., api/User)
 [ApiController] // Indica que este controlador manejará solicitudes HTTP y valida automáticamente los modelos
@@ -6,12 +8,14 @@ public class UserController : ControllerBase
 {
     private readonly UserService _userService; // Servicio que gestiona la lógica relacionada con usuarios
     private readonly DbContexto _context; // Contexto para interactuar con la base de datos
-
+    private readonly ILogger<UserController> _logger;
+    
     // Constructor del controlador, inyecta el contexto y el servicio de usuario
-    public UserController(DbContexto context, UserService userService)
+    public UserController(DbContexto context, UserService userService,ILogger<UserController> logger)
     {
         _context = context; // Asigna el contexto a una propiedad privada
         _userService = userService; // Asigna el servicio de usuario a una propiedad privada
+        _logger = logger;
     }
 
     // Endpoint para obtener todos los usuarios registrados
@@ -20,6 +24,55 @@ public class UserController : ControllerBase
     {
         var users = await _context.Users.ToListAsync(); // Obtiene todos los usuarios de la base de datos
         return Ok(users); // Devuelve la lista de usuarios con un código HTTP 200 (OK)
+    }
+    
+    [HttpPost("ChangeProfile")] // Este endpoint responde a solicitudes POST en "api/User/ChangeProfile"
+    public async Task<IActionResult> ChangeProfile([FromBody] UserRequest request)
+    {
+        if (request == null)
+        {
+            return BadRequest(new { error = "Datos de perfil inválidos." });
+        }
+
+        var result = await _userService.ChangeProfile(request);
+        
+        if (result == false)
+        {
+            return BadRequest(new { error = "No se ha podido actualizar el perfil" });
+        }
+        return Ok(new { message = "Datos modificados correctamente" });
+    }
+    
+        
+    [HttpGet("GetUserData")] // This endpoint responds to GET requests at "api/User/GetUserData"
+    [Authorize]
+    public async Task<IActionResult> GetUserData()
+    {
+        //Comprobamos si los datos de la autorizacion son correctos
+        if (User == null || !User.Identity.IsAuthenticated)
+        {
+            return Unauthorized("The user is not authenticated.");
+        }
+    
+        var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+        
+        // if (emailClaim == null || string.IsNullOrEmpty(emailClaim))
+        // {
+        //     return Unauthorized("The user does not have a valid email claim.");
+        // }
+        try
+        {
+            var userData = await _context.Users
+                .Where(x => x.Email == emailClaim)
+                .FirstOrDefaultAsync();
+
+            return Ok(userData);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new { error = "No se han podido enviar los datos del usuario" });
+        }
+       
     }
 
     // Endpoint para registrar un nuevo usuario

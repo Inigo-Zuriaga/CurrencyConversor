@@ -6,7 +6,8 @@
     <nav class="hidden md:flex space-x-7">
         <a routerLink="/conversor" class="text-white hover:text-blue-300">Convert</a>
         <a routerLink="/about" class="text-white hover:text-blue-300">About</a>
-        <a routerLink="/services" class="text-white hover:text-blue-300">Services</a>
+<!--        <a routerLink="/services" class="text-white hover:text-blue-300">Services</a>-->
+      <img src="{{imageSrc}}" alt="Profile 2" class="w-10 h-10 rounded-full cursor-pointer border-4">
         <a *ngIf="isLoged" routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
         <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300 ml-auto">Login</a>
         <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Logout</a>

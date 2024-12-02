@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit,OnDestroy{
   constructor(private authService: AuthService) {}
   // this.authService.getAccessToken();
 
+  imageSrc :string='' ;
   ngOnInit():void {
 
     this.userSub = this.authService.isLogged.subscribe((value) => {
@@ -23,6 +24,19 @@ export class HeaderComponent implements OnInit,OnDestroy{
     this.userSub=this.authService.isLogged.subscribe({
       next: (value):any => {
         this.isLoged=value;
+
+        if(this.isLoged){
+          this.authService.getUserData().subscribe({
+            next: (data) => {
+              console.log("Datos recibidos:", data);
+              this.imageSrc = data.img;
+              console.log("Imagen",this.imageSrc);
+            },
+            error: (error) => {
+              console.error("Error al obtener el historial:", error);
+            }
+          });
+        }
       }
 
     })
