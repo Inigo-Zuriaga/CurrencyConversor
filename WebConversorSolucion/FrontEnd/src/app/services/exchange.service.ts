@@ -11,10 +11,10 @@ import { Observable } from 'rxjs';
 export class ExchangeService {
 
 
-  private apiUrl = 'http://localhost:25850/api/api';
+  private apiUrl = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/api';
   private apiUrl2 = environment.apiUrl2;
-  private apiUrl3 = 'http://localhost:25850/api/History';
-  private apiUrl4 = 'http://localhost:25850/api/Pdf';
+  private apiUrl3 = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/History';
+  private apiUrl4 = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/Pdf';
 
   //Api de prueba
   constructor(private http: HttpClient) {}
