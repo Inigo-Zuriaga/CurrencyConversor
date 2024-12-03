@@ -11,10 +11,14 @@ import { Observable } from 'rxjs';
 export class ExchangeService {
 
 
-  private apiUrl = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/api';
-  private apiUrl2 = environment.apiUrl2;
-  private apiUrl3 = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/History';
-  private apiUrl4 = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/Pdf';
+  // private apiUrl = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/api';
+
+  private apiUrl = environment.apiUrl3;  // API/API
+  private apiUrl2 = environment.apiUrl2; // API/History
+  private apiUrl3 = environment.apiUrl4;  // API/Pdf
+
+  // private apiUrl3 = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/History';
+  // private apiUrl4 = 'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/Pdf';
 
   //Api de prueba
   constructor(private http: HttpClient) {}
@@ -48,11 +52,11 @@ export class ExchangeService {
       date:date,
       email:email
     };
-    return this.http.post(`${this.apiUrl3}/CreateHistory`,body);
+    return this.http.post(`${this.apiUrl2}/CreateHistory`,body);
   }
   createPdf(history:History[]): Observable<any> {
 
-    return this.http.post(`${this.apiUrl4}`, history,{ responseType: 'blob' });
+    return this.http.post(`${this.apiUrl3}`, history,{ responseType: 'blob' });
   }
 
 

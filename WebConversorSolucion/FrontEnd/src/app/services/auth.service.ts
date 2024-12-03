@@ -9,10 +9,11 @@ import {environment} from "../environments/environment";
 })
 
 export class AuthService {
-   private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
-  private apiUrl3 = 'http://localhost:25850/api/History';  // URL de la API backend
+   // private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
+
+   private apiUrl = environment.apiUrl;  // API/User
   //private apiUrl=environment.apiUrl;
-  private apiUrl2=environment.apiUrl2;
+  private apiUrl2=environment.apiUrl2; // API/History
 
 
   // variable que indica si el usuario está logueado o no

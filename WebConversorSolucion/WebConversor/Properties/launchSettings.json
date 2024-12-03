@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/",
+      "applicationUrl": "http://localhost:25850",
       "sslPort": 0
     }
   },
@@ -14,8 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,  
       "launchUrl": "swagger",
-      //"applicationUrl": "http://localhost:5076",
-      "applicationUrl": "https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/",
+      "applicationUrl": "http://localhost:25850",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
