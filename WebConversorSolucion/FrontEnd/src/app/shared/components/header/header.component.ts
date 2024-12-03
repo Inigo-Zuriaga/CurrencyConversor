@@ -7,11 +7,20 @@ import {Subscription} from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
+
 export class HeaderComponent implements OnInit,OnDestroy{
   isMenuOpen = false;
   userSub!: Subscription;
   isLoged:boolean= false;
-  constructor(private authService: AuthService) {}
+  profilePhoto: string = '';
+  constructor(private authService: AuthService) {
+
+    if (this.authService.UserIsLogged()) {
+      this.authService.getUserData().subscribe((data:any) => {
+        this.authService.photoSubject.next(data.img); // Asumiendo que `img` es la propiedad de la foto
+      });
+      }
+  }
   // this.authService.getAccessToken();
 
   imageSrc :string='' ;
@@ -28,7 +37,7 @@ export class HeaderComponent implements OnInit,OnDestroy{
         if(this.isLoged){
           this.authService.getUserData().subscribe({
             next: (data) => {
-              console.log("Datos recibidos:", data);
+              console.log("Datos recibidos 222:", data);
               this.imageSrc = data.img;
               console.log("Imagen",this.imageSrc);
             },
@@ -40,6 +49,13 @@ export class HeaderComponent implements OnInit,OnDestroy{
       }
 
     })
+    this.authService.photoData$.subscribe((photo) => {
+      console.log("Foto de perfil actualizada en el header:", photo);
+      this.profilePhoto = photo;
+    });
+    this.authService.getUserData().subscribe((data) => {
+      this.profilePhoto = data.img; // Asumiendo que `img` es la propiedad de la foto
+    });
     this.isLoged = this.authService.UserIsLogged();
   }
 

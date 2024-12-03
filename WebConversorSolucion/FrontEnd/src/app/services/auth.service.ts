@@ -18,13 +18,22 @@ export class AuthService {
 
   // variable que indica si el usuario está logueado o no
   logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
-  // logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged() || !this.isTokenExpired());
 
   private historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); // Estado inicial vacío
   public historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
 
+
+  // photoBeh: BehaviorSubject<string>=new BehaviorSubject(String)()
+  photoSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  public photoData$ = this.photoSubject.asObservable();
   constructor(private http: HttpClient) {
     this.logged.next(this.UserIsLogged());
+  }
+
+  UserIsLogged():boolean{
+    this.isTokenExpired();
+    return !!localStorage.getItem('accessToken');
   }
 
   // método para iniciar sesión
@@ -32,6 +41,7 @@ export class AuthService {
     const body = { "email": email, "password": password };
     return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
   }
+
 
   updateHistory(historyData: any[]) {
     this.historySubject.next(historyData); // Emite el nuevo estado del historial
@@ -53,7 +63,6 @@ export class AuthService {
 
     const body = { name,lastName,email,fechaNacimiento,password,img };
     return this.http.post(`${this.apiUrl}/SignIn`, body);
-
   }
 
   // getUserData(email:string):Observable<any>{
@@ -118,8 +127,8 @@ export class AuthService {
       const currentTime = new Date().getTime(); // Obtenemos el tiempo actual en milisegundos
 
       // return currentTime > expirationDate;
-      console.log("El tiempo actual es: ",currentTime);
-      console.log("La fecha de expiración es: ",expirationDate);
+      // console.log("El tiempo actual es: ",currentTime);
+      // console.log("La fecha de expiración es: ",expirationDate);
 
       if (currentTime > expirationDate) {
         this.deleteToken(); // Si el token ha expirado, lo borramos
@@ -143,10 +152,7 @@ export class AuthService {
     localStorage.removeItem('username');
   }
   //Comprueba si hay un token almacenado en el localstorage. Y devuelve true si lo hay.
-  UserIsLogged():boolean{
-    this.isTokenExpired();
-    return !!localStorage.getItem('accessToken');
-  }
+
 
   decodeToken(token:string):any{
     try {
