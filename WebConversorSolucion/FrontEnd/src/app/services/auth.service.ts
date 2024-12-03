@@ -9,10 +9,11 @@ import {environment} from "../environments/environment";
 })
 
 export class AuthService {
-   private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
-  private apiUrl3 = 'http://localhost:25850/api/History';  // URL de la API backend
+   // private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
+
+   private apiUrl = environment.apiUrl;  // API/User
   //private apiUrl=environment.apiUrl;
-  private apiUrl2=environment.apiUrl2;
+  private apiUrl2=environment.apiUrl2; // API/History
 
 
   // variable que indica si el usuario está logueado o no
@@ -51,12 +52,22 @@ export class AuthService {
          img:string): Observable<any> {
 
     const body = { name,lastName,email,fechaNacimiento,password,img };
-    return this.http.post(`${this.apiUrl}/SignIn`, body/*, { observe: 'response' }*/);
+    return this.http.post(`${this.apiUrl}/SignIn`, body);
 
   }
 
-  changePicture(){
+  // getUserData(email:string):Observable<any>{
+  getUserData():Observable<any>{
 
+    // return this.http.post(`${this.apiUrl}/GetUser`, JSON.stringify(email));
+    return this.http.get(`${this.apiUrl}/GetUserData`);
+  }
+
+  changePicture(email:string,profileImg: string):Observable<any>{
+
+    const body = {"Email": email, "Img":profileImg };
+
+    return this.http.post(`${this.apiUrl}/ChangeProfile`, body);
   }
 
   viewHistory(email: string): Observable<any> {

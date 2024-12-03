@@ -6,7 +6,9 @@ public class UserService
 {
     private readonly IConfiguration _configuration; // Configuración para obtener claves y valores
     private readonly DbContexto _context; // Contexto de la bbdd
-    private readonly IPasswordHasher<User> _passwordHasher; // Instancia de IPasswordHasher para gestionar el hashing de contraseñas
+
+    private readonly IPasswordHasher<User>
+        _passwordHasher; // Instancia de IPasswordHasher para gestionar el hashing de contraseñas
 
     public UserService(DbContexto context, IConfiguration configuration, IPasswordHasher<User> passwordHasher)
     {
@@ -45,19 +47,44 @@ public class UserService
             FechaNacimiento = user.FechaNacimiento,
             Img = user.Img
         };
-        
+
         _context.Users.Add(newUser); // Agrega el nuevo usuario al contexto
         await _context.SaveChangesAsync(); // Guarda los cambios en la bbdd
 
         return "Usuario registrado con exito";
     }
 
-    // Método para iniciar sesión con las credenciales del usuario
+    public async Task<bool> ChangeProfile(UserRequest userRequest)
+    {
+        var userExist = _context.Users.FirstOrDefault(x => x.Email == userRequest.Email);
+
+        if (userExist == null)
+        {
+            // return "No se puede generar el historial, el usuario no existe";
+            return false;
+        }
+
+        userExist.Img = userRequest.Img;
+
+        try
+        {
+            _context.Users.Update(userExist);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+// Método para iniciar sesión con las credenciales del usuario
     public async Task<string> LoginUser(LoginRequest request)
     {
         try
         {
-            
+
             //Borrar los console
             Console.WriteLine("Datos recibidos en el endpoint Login:");
             Console.WriteLine($"Email: {request.Email}");
@@ -70,7 +97,8 @@ public class UserService
                 return "El correo o la contraseña son incorrectos";
             }
 
-            var passwordVerificationResult = _passwordHasher.VerifyHashedPassword(userExist, userExist.Password, request.Password);
+            var passwordVerificationResult =
+                _passwordHasher.VerifyHashedPassword(userExist, userExist.Password, request.Password);
 
             if (passwordVerificationResult == PasswordVerificationResult.Failed)
             {
@@ -86,7 +114,34 @@ public class UserService
         }
     }
 
-    //Configurar segun los datos que queramos pasar, genera un token JWT
+    // public async Task<bool> GetUserData(string email)
+    // {
+    //     var userExist = _context.Users.FirstOrDefault(x => x.Email == email);
+    //
+    //     if (userExist == null)
+    //     {
+    //         // return "No se puede generar el historial, el usuario no existe";
+    //         return false;
+    //     }
+    //
+    //     try
+    //     {
+    //         var userData = await _context.ExchangeHistory
+    //             .Include(x => x.User)
+    //             .Where(x => x.User.Email == email)
+    //             .OrderByDescending(x => x.Date)
+    //             .ToListAsync();
+    //         
+    //         
+    //     }catch(Exception ex)
+    //     {
+    //         return false;
+    //     }
+    //     
+    //     
+    // }
+
+//Configurar segun los datos que queramos pasar, genera un token JWT
     public string GenerateJwtToken(string email)
     {
         var jwtSettings = _configuration.GetSection("JwtSettings"); // Obtiene configuración JWT
