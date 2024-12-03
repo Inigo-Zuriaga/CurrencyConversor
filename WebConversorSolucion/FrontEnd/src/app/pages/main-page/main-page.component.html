@@ -15,10 +15,17 @@
       </div>
       
       <!-- Feature 2 -->
-      <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-        <div class=" flex w-16 h-16 mb-8"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
-        <h3 class="text-xl font-semibold text-indigo-600 mb-2">Login for Extra Benefits</h3>
-        <p class="text-gray-600 text-center">Create an account to access personalized features and a seamless experience.</p>
+      <div *ngIf="!isLoged; else loggedInContent">
+        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+            <div class="flex w-16 h-16 mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round">
+                    <circle cx="12" cy="8" r="5"></circle>
+                    <path d="M20 21a8 8 0 0 0-16 0"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Login for Extra Benefits</h3>
+            <p class="text-gray-600 text-center">Create an account to access personalized features and a seamless experience.</p>
+        </div>
       </div>
   
       <!-- Feature 3 -->
@@ -33,7 +40,14 @@
     <section class="mt-10 text-center space-x-10 items-center">
       <p class="text-lg mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
       <a href="/conversor" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Conversor</a>
-      <a href="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Login</a>
+      <a *ngIf="!isLoged" href="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-bold px-5 py-2">Go to the Login</a>
     </section>
   </div>
   
+<!-- lo que aparece cuando estas logueado-->
+  <ng-template #loggedInContent>
+    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+        <h3 class="text-xl font-semibold text-green-600 mb-2">Welcome Back!</h3>
+        <p class="text-gray-600 text-center">Thank you for logging in. Explore your personalized dashboard and enjoy your benefits.</p>
+    </div>
+</ng-template>
