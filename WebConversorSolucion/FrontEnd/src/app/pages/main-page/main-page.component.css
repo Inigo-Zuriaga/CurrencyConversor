@@ -56,3 +56,9 @@ border-radius: 12px;
   border-radius: 12px;
 }
 
+.bg-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+}
