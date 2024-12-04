@@ -27,7 +27,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DinkToPdf.TestWebServer": {
+    "DinkToPdf": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "http://localhost:25850/api/Pdf",
