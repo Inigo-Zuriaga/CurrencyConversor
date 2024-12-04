@@ -11,4 +11,3 @@ export const environment = {
   apiUrl3:'http://localhost:25850/api/api',
   apiUrl4:'http://localhost:25850/api/Pdf',
 };
-

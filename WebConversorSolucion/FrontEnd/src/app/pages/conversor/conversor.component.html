@@ -1,123 +1,123 @@
 <div class=" flex flex-col my-10 items-center">
-<h1 class="font-regularb font-bold">Conversor</h1>
-<p class="font-regularb">Select the source currency and the target currency. Click 'Convert it!' to see the conversion value.</p>
-</div>
-<br>
-<!-- Contenedor principal con disposición en columna para pantallas pequeñas -->
-
-<!--establecer un width al div-->
-<div class="flex flex-col md:flex-row items-center justify-center md:space-x-8 p-4 font-regularb ">
-<!--<div class="flex flex-col md:flex-row items-center justify-center p-4 font-regularb space-y-5 md:space-y-0">-->
-
-  <!-- Input de cantidad y selector de moneda origen -->
-<!--  <div class="relative w-64 flex mb-5 md:mb-0 mr-0.6">-->
-    <div class="relative w-50 flex font-regularb mb-2 md:mb-0">
-<!--    <div class="relative w-64 flex">-->
-    <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white ">
-      <input
-        type="number"
-        [(ngModel)]="amount"
-        class="flex-grow px-4 py-2 rounded-l-xl text-black bg-white outline-none border-0"
-      />
-      <button
-        (click)="toggleDropdown('from')"
-        class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-xl min-w-24 hover:bg-blue-800 font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <span class="mr-1">{{ fromCurrency.symbol }}</span>
-        <span class="text-sm">{{ fromCurrency.shortname }}</span>
-        <span class="ml-2">&#9662;</span>
-      </button>
-    </div>
-    <div
-      *ngIf="dropdownOpenFrom"
-      class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
-    >
-      <input
-        type="text"
-        (input)="filterCurrencies($event)"
-        class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20 "
-      />
-      <ul class="py-2">
-        <li
-          *ngFor="let currency of filteredCurrencies"
-          (click)="selectCurrency(currency, 'from')"
-          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-800"
+  <h1 class="font-regularb font-bold">Conversor</h1>
+  <p class="font-regularb">Select the source currency and the target currency. Click 'Convert it!' to see the conversion value.</p>
+  </div>
+  <br>
+  <!-- Contenedor principal con disposición en columna para pantallas pequeñas -->
+  
+  <!--establecer un width al div-->
+  <div class="flex flex-col md:flex-row items-center justify-center md:space-x-8 p-4 font-regularb ">
+  <!--<div class="flex flex-col md:flex-row items-center justify-center p-4 font-regularb space-y-5 md:space-y-0">-->
+  
+    <!-- Input de cantidad y selector de moneda origen -->
+  <!--  <div class="relative w-64 flex mb-5 md:mb-0 mr-0.6">-->
+      <div class="relative w-50 flex font-regularb mb-2 md:mb-0">
+  <!--    <div class="relative w-64 flex">-->
+      <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white ">
+        <input
+          type="number"
+          [(ngModel)]="amount"
+          class="flex-grow px-4 py-2 rounded-l-xl text-black bg-white outline-none border-0"
+        />
+        <button
+          (click)="toggleDropdown('from')"
+          class="flex items-center px-4 py-2 bg-primaryBlue text-white rounded-xl min-w-24 hover:bg-blue-800 font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <span class="mr-2">{{ currency.symbol }}</span>
-          <span>{{ currency.shortname }}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-
-
-    <span class="icon-[lucide--arrow-up-down] m-5 text-2xl text-gray-700 rotate-0 cursor-pointer  md:rotate-90" (click)="swapCurrencies()"></span>
-<!--  <span-->
-<!--    class="icon-[lucide&#45;&#45;arrow-up-down] m-5 text-2xl text-gray-700 cursor-pointer"-->
-<!--    (click)="swapCurrencies()">-->
-<!--</span>-->
-
-
-  <!-- Input y selector de moneda destino -->
-  <div class="relative w-50 flex font-regularb mb-10 md:mb-0">
-<!--    <div class="relative w-64 flex font-regularb" >-->
-    <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
-      <button
-        (click)="toggleDropdown('to')"
-        class="flex items-center px-4 py-2 mr-1 bg-primaryBlue text-white rounded-lg min-w-24 hover:bg-blue-800 font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
+          <span class="mr-1">{{ fromCurrency.symbol }}</span>
+          <span class="text-sm">{{ fromCurrency.shortname }}</span>
+          <span class="ml-2">&#9662;</span>
+        </button>
+      </div>
+      <div
+        *ngIf="dropdownOpenFrom"
+        class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
       >
-        <span class="mr-1">{{ toCurrency.symbol }}</span>
-        <span class="text-sm">{{ toCurrency.shortname }}</span>
-        <span class="ml-2">&#9662;</span>
-      </button>
-      <input
-        type="text"
-        [value]="convertedAmount"
-        class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 "
-        readonly
-      />
+        <input
+          type="text"
+          (input)="filterCurrencies($event)"
+          class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20 "
+        />
+        <ul class="py-2">
+          <li
+            *ngFor="let currency of filteredCurrencies"
+            (click)="selectCurrency(currency, 'from')"
+            class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-800"
+          >
+            <span class="mr-2">{{ currency.symbol }}</span>
+            <span>{{ currency.shortname }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div
-      *ngIf="dropdownOpenTo"
-      class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
-    >
-      <input
-        type="text"
-        (input)="filterCurrencies($event)"
-        class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20"
-      />
-      <ul class="py-2">
-        <li
-          *ngFor="let currency of filteredCurrencies"
-          (click)="selectCurrency(currency, 'to')"
-          class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
+  
+  
+  <div class="m-5 text-2xl text-gray-700 rotate-0 cursor-pointer  md:rotate-90">
+    
+    <svg xmlns="http://www.w3.org/2000/svg"  (click)="swapCurrencies()" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-up"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
+  </div>
+  
+  
+    <!-- Input y selector de moneda destino -->
+    <div class="relative w-50 flex font-regularb mb-10 md:mb-0">
+  <!--    <div class="relative w-64 flex font-regularb" >-->
+      <div class="flex border-0 rounded-xl shadow-xl px-1 py-1 bg-white">
+        <button
+          (click)="toggleDropdown('to')"
+          class="flex items-center px-4 py-2 mr-1 bg-primaryBlue text-white rounded-lg min-w-24 hover:bg-blue-800 font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <span class="mr-2">{{ currency.symbol }}</span>
-          <span>{{ currency.shortname }}</span>
-        </li>
-      </ul>
+          <span class="mr-1">{{ toCurrency.symbol }}</span>
+          <span class="text-sm">{{ toCurrency.shortname }}</span>
+          <span class="ml-2">&#9662;</span>
+        </button>
+        <input
+          type="text"
+          [value]="convertedAmount"
+          class="flex-grow px-4 py-2 rounded-r-md text-black bg-white outline-none border-0 "
+          readonly
+        />
+      </div>
+      <div
+        *ngIf="dropdownOpenTo"
+        class="absolute top-full right-0 mt-1 w-48 bg-primaryBlue text-white rounded-md shadow-lg z-10 max-h-80 overflow-y-auto"
+      >
+        <input
+          type="text"
+          (input)="filterCurrencies($event)"
+          class="w-full px-4 py-2 bg-primaryBlue text-white outline-none border-b border-gray-500 sticky top-0 z-20"
+        />
+        <ul class="py-2">
+          <li
+            *ngFor="let currency of filteredCurrencies"
+            (click)="selectCurrency(currency, 'to')"
+            class="flex items-center px-4 py-2 cursor-pointer hover:bg-blue-700"
+          >
+            <span class="mr-2">{{ currency.symbol }}</span>
+            <span>{{ currency.shortname }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="flex mt-10 items-center justify-center">
-  <button (click)="getExchangeRate(); closeDropdowns()" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold">
-    Convert
-  </button>
-</div>
-
-  <!-- Aquí se invoca el componente del gráfico -->
-<div *ngIf="chartReady" class="mt-20 px-4 max-w-screen-lg mx-auto">
-  <app-currency-chart [lineChartData]="lineChartData"></app-currency-chart>
-</div>
-
-<div class="mt-20 px-4 max-w-screen-lg mx-auto">
-  <h2 class="text-lg font-semibold mb-4 text-center md:text-center">Últimas conversiones</h2>
-  <app-historytable [historyData]="historyData" [limit]="3" class="w-full"></app-historytable>
-</div>
-  <!-- Botón para ver más -->
-  <div *ngIf="historyData.length>0" class="flex justify-center mt-4">
-
-    <a routerLink="/history" class=" text-blue-700 rounded-lg hover:text-white transition">Ver más</a>
+  
+  <div class="flex mt-10 items-center justify-center">
+    <button (click)="getExchangeRate(); closeDropdowns()" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold">
+      Convert
+    </button>
   </div>
+  
+    <!-- Aquí se invoca el componente del gráfico -->
+  <div *ngIf="chartReady" class="mt-20 px-4 max-w-screen-lg mx-auto">
+    <app-currency-chart [lineChartData]="lineChartData"></app-currency-chart>
+  </div>
+  
+  <div class="mt-20 px-4 max-w-screen-lg mx-auto">
+    <h2 class="text-lg font-semibold mb-4 text-center md:text-center">Últimas conversiones</h2>
+    <app-historytable [historyData]="historyData" [limit]="3" class="w-full"></app-historytable>
+  </div>
+    <!-- Botón para ver más -->
+    <div *ngIf="historyData.length>0" class="flex justify-center mt-4">
+  
+      <a routerLink="/history" class=" text-blue-700 rounded-lg hover:text-white transition">Ver más</a>
+    </div>
+
+    
