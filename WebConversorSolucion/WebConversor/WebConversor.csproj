@@ -43,6 +43,7 @@
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="WkHtmlToPdf" Version="1.0.2" />
+    <PackageReference Include="wkhtmltopdf.x64" Version="0.12.6" />
   </ItemGroup>
 
   <ItemGroup>

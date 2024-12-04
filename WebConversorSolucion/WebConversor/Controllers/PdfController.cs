@@ -18,6 +18,7 @@ namespace WebConversor.Controllers;
         [HttpPost]
         public async Task<IActionResult> GeneratePdf([FromBody] List<HistoryRequest> history)
         {
+            
    
             string filename= "test.pdf";
             var glb=new GlobalSettings()
