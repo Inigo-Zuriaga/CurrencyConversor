@@ -19,14 +19,12 @@ export class AuthService {
   // variable que indica si el usuario está logueado o no
   logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
 
-  private historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); // Estado inicial vacío
-  public historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
+   historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+   historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
 
-
-  // photoBeh: BehaviorSubject<string>=new BehaviorSubject(String)()
   photoSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
-  public photoData$ = this.photoSubject.asObservable();
+  //  photoSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+   photoData$ = this.photoSubject.asObservable();
   constructor(private http: HttpClient) {
     this.logged.next(this.UserIsLogged());
   }
@@ -70,6 +68,8 @@ export class AuthService {
 
     // return this.http.post(`${this.apiUrl}/GetUser`, JSON.stringify(email));
     return this.http.get(`${this.apiUrl}/GetUserData`);
+
+
   }
 
   changePicture(email:string,profileImg: string):Observable<any>{

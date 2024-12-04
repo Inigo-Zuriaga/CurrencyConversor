@@ -26,6 +26,7 @@ import { HistorytableComponent } from './shared/components/historytable/historyt
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import {TagModule} from 'primeng/tag';
+import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 
@@ -46,7 +47,8 @@ import {TagModule} from 'primeng/tag';
     AboutComponent,
     ProfileComponent,
     HistorytableComponent,
-    ProfileComponent
+    ProfileComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
