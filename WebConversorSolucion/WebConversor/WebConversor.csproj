@@ -39,6 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="chrome-win64.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Exports\test.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
