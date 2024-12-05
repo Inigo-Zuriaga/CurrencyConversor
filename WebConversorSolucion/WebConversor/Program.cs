@@ -112,6 +112,7 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseCors("AllowOrigin");
 
 // Configura las rutas y middlewares
+app.UseHttpsRedirection();
 app.UseAuthentication();  // Para permitir la autenticaci�n
 app.UseAuthorization();   // Para permitir la autorizaci�n
 
