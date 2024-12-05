@@ -144,7 +144,7 @@ namespace WebConversor.Helpers
         private static readonly string ChromiumZipPath = Path.Combine(Directory.GetCurrentDirectory(), "chrome-win64.zip");
 
         // Carpeta donde se descomprimirá Chromium
-        private static readonly string ChromiumExtractedPath = Path.Combine(Directory.GetCurrentDirectory(), "chrome-win64", "chrome-win64");
+        private static readonly string ChromiumExtractedPath = Path.Combine(Directory.GetCurrentDirectory(), "chrome-win64");
 
         /// <summary>
         /// Descomprime Chromium desde el ZIP si no está ya descomprimido.
