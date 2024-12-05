@@ -42,6 +42,9 @@
     <None Update="Exports\test.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="HtmlTemplates\History.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="HtmlTemplates\historyPdf.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
