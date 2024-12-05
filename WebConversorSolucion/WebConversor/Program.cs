@@ -2,6 +2,8 @@ using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
+using System.IO.Compression;
+using PuppeteerSharp;
 // using Serilog;
 
 
