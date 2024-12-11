@@ -62,6 +62,7 @@ export class HistoryComponent implements OnInit    {
 
 
 crearPdf(){
+
   console.log("El history"+this.dataPdf);
     this.exchangeService.createPdf(this.dataPdf).subscribe(
       (data:Blob) => {

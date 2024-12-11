@@ -17,12 +17,11 @@ namespace WebConversor.Controllers;
             _pdfService = pdfService;
         }
         
-        [HttpGet("GenerarListado")]
-        public IActionResult GenerarListado()
+        [HttpPost("GeneratePdf")]
+        public IActionResult GenerarListado([FromBody] List<HistoryRequest> history)
         {
-            var listado = ObtenerDatos(); // Obtener datos simulados
-            var pdfBytes = _pdfService.GenerarListadoPdf(listado);
-            return File(pdfBytes, "application/pdf", "Listado.pdf");
+            var pdfBytes = _pdfService.GenerarListadoPdf(history);
+            return File(pdfBytes, "application/pdf", "Historial_Conversiones.pdf");
         }
 
         private List<HistoryRequest> ObtenerDatos()

@@ -13,8 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +149,7 @@
       <workItem from="1733241874139" duration="4182000" />
       <workItem from="1733327905849" duration="5374000" />
       <workItem from="1733417539901" duration="4655000" />
-      <workItem from="1733932920980" duration="2739000" />
+      <workItem from="1733932920980" duration="4562000" />
     </task>
     <servers />
   </component>

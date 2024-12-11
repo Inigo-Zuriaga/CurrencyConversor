@@ -23,7 +23,7 @@ builder.Services.AddHttpClient<IApiService, ApiService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<HistoryService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
-builder.Services.AddTransient<PdfService>();
+
 
 // Configuracion de JWT
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
@@ -66,7 +66,10 @@ builder.Services.AddCors(options =>
     {
         //Cambiar esto a la hora de produccion
         // builder.WithOrigins("https://conversor-git-main-inigozuriagas-projects.vercel.app/") // Cambia esto a la URL de tu frontend
-        builder.AllowAnyOrigin() // Cambia esto a la URL de tu frontend
+        // Cambia esto a la URL de tu frontend
+        builder
+                //.WithOrigins("http://localhost:4200")
+               .AllowAnyOrigin()
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
@@ -111,8 +114,8 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 // Aplica la politica de CORS antes de autorizacion y controladores
-app.UseCors("AllowOrigin");
-
+//app.UseCors("AllowOrigin");
+app.UseCors("AllowAll");
 // Configura las rutas y middlewares
 app.UseHttpsRedirection();
 app.UseAuthentication();  // Para permitir la autenticaci�n
