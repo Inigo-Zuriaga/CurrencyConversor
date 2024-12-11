@@ -8,12 +8,6 @@
 
   <ItemGroup>
     <None Remove="test.pdf" />
-    <None Update="chrome-win64\setup.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="chrome-win64\chrome.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -45,9 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="chrome-win64.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Exports\test.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

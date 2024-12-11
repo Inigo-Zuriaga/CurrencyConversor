@@ -62,11 +62,11 @@ builder.Services.AddAuthentication(options =>
 // Configuracion de CORS para permitir solicitudes desde tu frontend Angular
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowOrigin", builder =>
+    options.AddPolicy("AllowAll", builder =>
     {
         //Cambiar esto a la hora de produccion
         // builder.WithOrigins("https://conversor-git-main-inigozuriagas-projects.vercel.app/") // Cambia esto a la URL de tu frontend
-        builder.WithOrigins("http://localhost:4200") // Cambia esto a la URL de tu frontend
+        builder.AllowAnyOrigin() // Cambia esto a la URL de tu frontend
                .AllowAnyHeader()
                .AllowAnyMethod();
     });

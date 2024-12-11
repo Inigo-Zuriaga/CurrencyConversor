@@ -10,4 +10,10 @@ export const environment = {
   apiUrl2:'http://localhost:25850/api/History',
   apiUrl3:'http://localhost:25850/api/api',
   apiUrl4:'http://localhost:25850/api/Pdf',
+
+  //Produccion
+  // apiUrl: 'http://localhost:25850/api/user',
+  // apiUrl2:'http://localhost:25850/api/History',
+  // apiUrl3:'http://localhost:25850/api/api',
+  // apiUrl4:'http://localhost:25850/api/Pdf',
 };
