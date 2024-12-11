@@ -13,151 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/130.0.6723.69.manifest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/ABOUT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/D3DCompiler_47.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/First Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/MEIPreload/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/MEIPreload/preloaded_data.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/PrivacySandboxAttestationsPreloaded/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome_100_percent.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome_200_percent.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome_elf.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome_proxy.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome_pwa_launcher.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/chrome_wer.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/dxcompiler.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/dxil.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/elevation_service.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-af.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-as.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-be.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-bg.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-bn.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-cs.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-cu.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-cy.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-da.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-de-1901.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-de-1996.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-de-ch-1901.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-el.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-en-gb.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-en-us.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-es.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-et.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-eu.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-fr.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-ga.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-gl.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-gu.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-hi.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-hr.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-hu.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-hy.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-it.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-ka.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-kn.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-la.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-lt.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-lv.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-ml.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-mn-cyrl.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-mr.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-mul-ethi.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-nb.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-nl.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-nn.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-or.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-pa.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-pt.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-ru.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-sk.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-sl.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-sq.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-sv.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-ta.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-te.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-tk.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-uk.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/hyph-und-ethi.hyb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/hyphen-data/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/icudtl.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/libEGL.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/libGLESv2.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/af.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/am.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ar.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/bg.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/bn.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ca.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/cs.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/da.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/de.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/el.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/en-GB.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/en-US.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/es-419.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/es.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/et.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/fa.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/fi.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/fil.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/fr.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/gu.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/he.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/hi.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/hr.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/hu.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/id.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/it.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ja.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/kn.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ko.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/lt.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/lv.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ml.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/mr.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ms.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/nb.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/nl.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/pl.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/pt-BR.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/pt-PT.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ro.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ru.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/sk.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/sl.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/sr.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/sv.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/sw.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ta.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/te.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/th.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/tr.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/uk.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/ur.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/vi.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/zh-CN.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/locales/zh-TW.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/notification_helper.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/resources.pak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/resources/accessibility/reading_mode_gdocs_helper/content.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/resources/accessibility/reading_mode_gdocs_helper/gdocs_script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/resources/accessibility/reading_mode_gdocs_helper_manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/setup.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/v8_context_snapshot.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/vk_swiftshader.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/vk_swiftshader_icd.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/chrome-win64/vulkan-1.dll" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +147,7 @@
       <workItem from="1733241874139" duration="4182000" />
       <workItem from="1733327905849" duration="5374000" />
       <workItem from="1733417539901" duration="4655000" />
-      <workItem from="1733932920980" duration="1587000" />
+      <workItem from="1733932920980" duration="2739000" />
     </task>
     <servers />
   </component>

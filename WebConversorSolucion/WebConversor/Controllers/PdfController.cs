@@ -10,6 +10,32 @@ namespace WebConversor.Controllers;
     public class PdfController : ControllerBase
     {
         
+        private readonly PdfService _pdfService;
+
+        public PdfController(PdfService pdfService)
+        {
+            _pdfService = pdfService;
+        }
+        
+        [HttpGet("GenerarListado")]
+        public IActionResult GenerarListado()
+        {
+            var listado = ObtenerDatos(); // Obtener datos simulados
+            var pdfBytes = _pdfService.GenerarListadoPdf(listado);
+            return File(pdfBytes, "application/pdf", "Listado.pdf");
+        }
+
+        private List<HistoryRequest> ObtenerDatos()
+        {
+            return new List<HistoryRequest>
+            {
+                new() { FromAmount=20,FromCoin = "USD", ToAmount =30, ToCoin="EUR", Date=DateTime.Now,Email="adrian@gmail.com" },
+                new() { FromAmount=30,FromCoin = "LIB", ToAmount =90, ToCoin="USD", Date=DateTime.Now,Email="adrian@gmail.com" },
+                new() { FromAmount=560,FromCoin = "EUR", ToAmount =730, ToCoin="USD", Date=DateTime.Now,Email="adrian@gmail.com" },
+            };
+        }
+        
+        
         //private readonly IConverter _converter;
         
         //public PdfController(IConverter converter)
@@ -42,13 +68,14 @@ namespace WebConversor.Controllers;
         //    return File(result, MediaTypeNames.Application.Pdf, filename);
         //}
 
-        [HttpPost]
-        public async Task<IActionResult> GeneratePdf([FromBody] List<HistoryRequest> history)
-        {
-            var result = await PdfHelper.GetProduct(history);
-            string filename = $"product-report-{DateTime.Now.ToString("yyMMddHHmmss")}.pdf";
-            return File(result, MediaTypeNames.Application.Pdf, filename);
-        }
+        
+        // [HttpPost]
+        // public async Task<IActionResult> GeneratePdf([FromBody] List<HistoryRequest> history)
+        // {
+        //     var result = await PdfHelper.GetProduct(history);
+        //     string filename = $"product-report-{DateTime.Now.ToString("yyMMddHHmmss")}.pdf";
+        //     return File(result, MediaTypeNames.Application.Pdf, filename);
+        // }
 
 
     //EL PRIMER PDF
@@ -91,6 +118,9 @@ namespace WebConversor.Controllers;
     //    return File(pdfDoc, "application/pdf", "test.pdf");
     //}
 
+    
+    
+    
 
 }
 
