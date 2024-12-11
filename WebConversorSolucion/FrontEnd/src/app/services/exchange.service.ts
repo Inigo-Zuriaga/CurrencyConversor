@@ -56,7 +56,7 @@ export class ExchangeService {
   }
   createPdf(history:History[]): Observable<any> {
 
-    return this.http.post(`${this.apiUrl3}/GeneratePdf`, history,{ responseType: 'blob' });
+    return this.http.post(`${this.apiUrl3}`, history,{ responseType: 'blob' });
   }
 
 

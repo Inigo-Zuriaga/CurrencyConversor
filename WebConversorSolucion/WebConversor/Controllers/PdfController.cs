@@ -17,7 +17,7 @@ namespace WebConversor.Controllers;
             _pdfService = pdfService;
         }
         
-        [HttpPost("GeneratePdf")]
+        [HttpPost]
         public IActionResult GenerarListado([FromBody] List<HistoryRequest> history)
         {
             var pdfBytes = _pdfService.GenerarListadoPdf(history);

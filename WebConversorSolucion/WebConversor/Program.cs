@@ -23,6 +23,7 @@ builder.Services.AddHttpClient<IApiService, ApiService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<HistoryService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddTransient<PdfService>();
 
 
 // Configuracion de JWT

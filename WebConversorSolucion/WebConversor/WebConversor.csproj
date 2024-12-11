@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <None Remove="test.pdf" />
+    <None Update=".env">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

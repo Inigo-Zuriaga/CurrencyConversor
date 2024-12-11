@@ -30,14 +30,15 @@ public class PdfService
 
                     table.Header(header =>
                     {
-                        header.Cell().Text("ID").Bold();
-                        header.Cell().Text("Nombre").Bold();
+                        header.Cell().Text("Moneda Base").Bold();
+                        header.Cell().Text("").Bold();
                         header.Cell().Text("Descripción").Bold();
                     });
 
                     foreach (var item in data)
                     {
-                        table.Cell().Text(item.FromAmount);
+                        table.Cell().Text(item.FromAmount + item.FromCoin);
+                        table.Cell().Text(item.ToAmount + item.ToCoin);
                         table.Cell().Text(item.FromCoin);
                         table.Cell().Text(item.ToCoin);
                     }

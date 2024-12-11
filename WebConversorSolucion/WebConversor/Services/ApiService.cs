@@ -9,8 +9,8 @@
         public ApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            // _apiKey = Environment.GetEnvironmentVariable("API_KEY");
-            _apiKey = "e8232f3beca6ca12993140cd";
+            _apiKey = Environment.GetEnvironmentVariable("API_KEY");
+            // _apiKey = "e8232f3beca6ca12993140cd";
             _apiKey2 = Environment.GetEnvironmentVariable("API_KEY2");
         }
 
