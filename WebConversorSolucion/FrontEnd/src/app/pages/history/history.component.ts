@@ -39,24 +39,32 @@ export class HistoryComponent implements OnInit    {
     //Obtengo el email del usuario desde el token
    this.email= this.authService.getUserEmail();
 
-   console.log("ESTE ES EL EMAIL",this.email);
-    this.authService.viewHistory(this.email).subscribe(
-      (data) => {
-        console.log("Datos recibidos:", data);
-        this.historyData = data;
+    this.authService.getUserData().subscribe((userData) => {
 
-        this.dataPdf = data.map((item: any) => ({
-          fromCoin: item.fromCoin,          // El tipo de moneda de la transacción
-          fromAmount: item.fromAmount,      // La cantidad de la moneda de origen
-          toCoin: item.toCoin,              // El tipo de moneda de destino
-          toAmount: item.toAmount,          // La cantidad de la moneda de destino
-          date: item.date ,                  // La fecha de la transacción
-          email: item.user.email            // El email del usuario relacionado con la transacción
-        }));
+      console.log("ESTE ES EL EMAIL", this.email);
+      this.authService.viewHistory(this.email).subscribe(
+        (data) => {
+          console.log("Datos recibidos:", data);
+          this.historyData = data;
 
-      },
-      (error) => {
-        console.error("Error al obtener el historial:", error);
+          this.dataPdf = data.map((item: any) => ({
+            fromCoin: item.fromCoin,          // El tipo de moneda de la transacción
+            fromAmount: item.fromAmount,      // La cantidad de la moneda de origen
+            toCoin: item.toCoin,              // El tipo de moneda de destino
+            toAmount: item.toAmount,          // La cantidad de la moneda de destino
+            date: item.date,                  // La fecha de la transacción
+            email: item.user.email,           // El email del usuario relacionado con la transacción
+            name: userData.name,
+            lastName: userData.lastName
+          }));
+
+        },
+        (error) => {
+          console.error("Error al obtener el historial:", error);
+        });
+
+    }, (error) => {
+      console.error("Error al obtener el historial:", error);
     });
   }
 

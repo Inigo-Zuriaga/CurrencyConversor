@@ -11,7 +11,8 @@ public class PdfService
         QuestPDF.Settings.License = LicenseType.Community;
 
      
-        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "icono-pdf.png");
+        // var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "icono-pdf.png");
+        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "Logo_Nombre2.png");
 
         var documento = Document.Create(container =>
         {
@@ -19,27 +20,32 @@ public class PdfService
             {
                 // Configuración de la página
                 page.Size(PageSizes.A4);
-                page.Margin(1, Unit.Inch);
+                // page.Margin(1, Unit.Inch);
+                page.Margin(30);
                 page.DefaultTextStyle(x => x.FontSize(12).FontFamily("Arial"));
 
                 // Encabezado
                 page.Header().Row(row =>
                 {
-                    row.ConstantItem(150)
+                    row.ConstantItem(250)
                         .Image(imagePath);
+                        
                     
                     row.RelativeItem()
                         .AlignMiddle()
+                        .AlignRight()
                         .Column(column =>
                         {
                             column.Item().Text("Datos Cliente").FontSize(20).Bold();
-                            column.Item().Text("Nombre: El nombre").FontSize(10);
-                            column.Item().Text("Apellido: El apellido");
-                            column.Item().Text("Correo: El correo");
+                            column.Item().Text($"Nombre: {data[0].Name}").FontSize(10);
+                            column.Item().Text($"Apellido: {data[0].LastName}").FontSize(10);
+                            column.Item().Text($"Correo: {data[0].Email}").FontSize(10);
+                            column.Item().Text($"Fecha Creación: {DateTime.Now.ToString("dd/MM/yyyy")}").FontSize(10);
+                            
                         });
-            
+                
                 });
-
+        
                 // Contenido principal
                 page.Content().Stack(content =>
                 {
@@ -70,7 +76,7 @@ public class PdfService
                     // });
                     content.Item()
                         // .AlignCenter()
-                        
+                        .PaddingTop(30)
                         .Text("Historial de Cambios").FontSize(20).Bold();
                     // Espaciado antes de la tabla
                     content.Item().PaddingVertical(6);
@@ -81,37 +87,52 @@ public class PdfService
                         // Definir columnas
                         table.ColumnsDefinition(columns =>
                         {
-                            columns.RelativeColumn(1); // Producto
-                            columns.RelativeColumn(1); // Precio Unitario
-                            columns.RelativeColumn(1); // Total
+                            
+                            columns.RelativeColumn(1);
+                            columns.RelativeColumn(1);
+                            columns.RelativeColumn(1);
                         });
 
                         // Encabezado de la tabla
                         table.Header(header =>
                         {
-                            header.Cell().Element(CellStyle).Text("Moneda Base").Bold();
-                            header.Cell().Element(CellStyle).Text("Cambio Obtenido").Bold();
-                            header.Cell().Element(CellStyle).Text("Fecha").Bold();
+                           
+                            header.Cell().Element(CellStyle).AlignMiddle().Text("Moneda Base").Bold();
+                            header.Cell().Element(CellStyle).AlignMiddle().Text("Cambio Obtenido").Bold();
+                            header.Cell().Element(CellStyle).AlignMiddle().Text("Fecha").Bold();
                         });
-
-                        // Filas dinámicas
-                        foreach (var item in data)
+                        
+                        for (var i=0;i< data.Count; i++)
                         {
-                            table.Cell().Element(CellStyle).Text(item.FromAmount +" "+ item.FromCoin); // Producto
-                            // table.Cell().Element(CellStyle).Text($"{item.FromAmount:C}"); // Precio Unitario
-                            table.Cell().Element(CellStyle).Text(item.ToAmount+" "+item.ToCoin); // Total
-                            table.Cell().Element(CellStyle).Text(item.Date.ToString("dd/MM/yyyy HH:mm")); // Total
+                         
+                                table.Cell().Element(c => Cell(c, i)).Text(data[i].FromAmount + " " + data[i].FromCoin); // Producto
+                                // table.Cell().Element(CellStyle).Text($"{item.FromAmount:C}"); // Precio Unitario
+                                table.Cell().Element(c => Cell(c, i)).Text(data[i].ToAmount+" "+data[i].ToCoin); // Total
+                                table.Cell().Element(c => Cell(c, i)).Text(data[i].Date.ToString("dd/MM/yyyy HH:mm")); // Total
                         }
 
+                        
                         // Estilo de celdas
-                        static IContainer CellStyle(IContainer container) =>
-                            container
-                                .Padding(0)
-                                .PaddingTop(3)
-                                .PaddingBottom(3)
-                                .BorderBottom(1)
-                                // .Background(Colors.Grey.Lighten3)
-                                .BorderColor(Colors.Grey.Lighten2);
+                        static IContainer CellStyle(IContainer container)
+                        {
+                            return container
+                                .Border(1)
+                                .Background(Colors.Grey.Lighten3)
+                                .BorderColor(Colors.Grey.Darken1)
+                                .PaddingVertical(5)
+                                .PaddingHorizontal(10)
+                                .AlignCenter()
+                                .AlignMiddle();
+                        }
+
+                        static IContainer Cell( IContainer container,int index)
+                        {
+                            return container
+                                .Border(1)
+                                .Background(index % 2 == 0 ? Colors.LightBlue.Lighten5 : Colors.Teal.Lighten4) // Alternar color según índice
+                                .Padding(6)
+                                .AlignCenter();
+                        }
                         
                     });
                 });

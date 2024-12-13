@@ -90,10 +90,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:AzureConexion"]);
+        // builder.Configuration["ConnectionStrings:AzureConexion"]);
     
     // Si se quiere trabajar con la base en local descomentar la siguiente linea
-         // builder.Configuration["ConnectionStrings:CadenaConexion"]);
+         builder.Configuration["ConnectionStrings:CadenaConexion"]);
 });
 
 var app = builder.Build();

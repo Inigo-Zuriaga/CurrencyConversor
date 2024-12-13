@@ -28,9 +28,9 @@ namespace WebConversor.Controllers;
         {
             return new List<HistoryRequest>
             {
-                new() { FromAmount=20,FromCoin = "USD", ToAmount =30, ToCoin="EUR", Date=DateTime.Now,Email="adrian@gmail.com" },
-                new() { FromAmount=30,FromCoin = "LIB", ToAmount =90, ToCoin="USD", Date=DateTime.Now,Email="adrian@gmail.com" },
-                new() { FromAmount=560,FromCoin = "EUR", ToAmount =730, ToCoin="USD", Date=DateTime.Now,Email="adrian@gmail.com" },
+                new() { FromAmount=20,FromCoin = "USD", ToAmount =30, ToCoin="EUR", Date=DateTime.Now,Email="adrian@gmail.com",Name="Adrian", LastName="Garcia" },
+                new() { FromAmount=30,FromCoin = "LIB", ToAmount =90, ToCoin="USD", Date=DateTime.Now,Email="adrian@gmail.com",Name="Adrian", LastName="Garcia" },
+                new() { FromAmount=560,FromCoin = "EUR", ToAmount =730, ToCoin="USD", Date=DateTime.Now,Email="adrian@gmail.com", Name="Adrian", LastName="Garcia" },
             };
         }
         

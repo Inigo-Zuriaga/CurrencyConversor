@@ -1,8 +1,8 @@
 import { Component,OnInit,OnDestroy} from '@angular/core';
 import { AuthService} from '../../../services/auth.service';
-import {Subscription} from 'rxjs';
+import {debounceTime, Observable, Subscription} from 'rxjs';
 import {Idropdownoption} from '../../../Interfaces/idropdownoption';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit,OnDestroy{
     { label: 'Perfil', route: '/profile' },
     { label: 'Cerrar Sesión', callback: () => this.disconnect() }
   ];
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,private router:Router) {
 
     if (this.authService.UserIsLogged()) {
       this.authService.getUserData().subscribe((data:any) => {
@@ -29,29 +29,58 @@ export class HeaderComponent implements OnInit,OnDestroy{
       });
       }
   }
+
+
   // this.authService.getAccessToken();
   ngOnInit():void {
-
+    //
     this.userSub = this.authService.isLogged.subscribe((value) => {
       this.isLoged = value; // Actualiza automáticamente
     });
 
-    this.isLoged = this.authService.UserIsLogged();
     this.userSub=this.authService.isLogged.subscribe({
       next: (value):any => {
         this.isLoged=value;
 
-        this.authService.getUserData().subscribe((data) => {
+        // this.authService.getUserData().pipe(debounceTime(2000)).subscribe((data) => {
+        //   console.log("Los Datossss:", data);
+        //   this.imageSrc = data.img; // Carga la foto del usuario
+        // });
+        this.authService.getUserData().pipe(debounceTime(2000)).subscribe({
+          next: (data):any => {
+
           console.log("Los Datossss:", data);
           this.imageSrc = data.img; // Carga la foto del usuario
-        });
+        }});
+
       }
+
     })
 
-    this.authService.photoData$.subscribe((photo) => {
-      this.imageSrc = photo;
-    });
+    // this.isLoged = this.authService.UserIsLogged();
+    // this.userSub=this.authService.isLogged.pipe(debounceTime(2000)).subscribe({
+    //   next: (value):any => {
+    //     this.isLoged=value;
+    //
+    //     this.authService.getUserData().pipe(debounceTime(2000)).subscribe((data) => {
+    //       console.log("Los Datossss:", data);
+    //       this.imageSrc = data.img; // Carga la foto del usuario
+    //     });
+    //
+    //   }
+    //
+    // })
 
+    //ESTO ESTABA ANTES
+    // this.authService.photoData$.pipe(debounceTime(2000)).subscribe((photo) => {
+    //   this.imageSrc = photo;
+    // });
+
+    this.authService.photoData$.pipe(debounceTime(2000)).subscribe({
+      next: (value):any => {
+
+      this.imageSrc = value;
+    }});
     //Obtenemos la foto de perfil del usuario en tiempo real
     // this.authService.getUserData().subscribe((data) => {
     //   console.log("Los Datossss:", data);
@@ -62,10 +91,20 @@ export class HeaderComponent implements OnInit,OnDestroy{
 
     this.isLoged = this.authService.UserIsLogged();
   }
+  // getUserData():Observable<any>{
+  //
+  //   // return this.http.post(`${this.apiUrl}/GetUser`, JSON.stringify(email));
+  //   return this.http.get(`${this.apiUrl}/GetUserData`);
+  //
+  //
+  // }
 
   disconnect(){
     this.authService.deleteToken();
     this.userSub.unsubscribe();
+    this.authService.logged.next(false);
+    // this.imageSrc ='' ;
+    this.router.navigate(['/']);
   }
   ngOnDestroy(): void {
       this.userSub.unsubscribe();

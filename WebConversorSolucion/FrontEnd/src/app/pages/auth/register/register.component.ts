@@ -20,7 +20,7 @@ export class RegisterComponent/* implements OnInit*/{
     fechaNacimiento:new Date(),
     img:''
   }
-
+  selectedPicture: string = '';
   // Constructor que inyecta el AuthService y FormBuilder para construir el formulario
   constructor(private authService: AuthService,private fb: FormBuilder,private route:Router) {
     // definir la estructura del form con sus campos y validaciones
@@ -33,7 +33,7 @@ export class RegisterComponent/* implements OnInit*/{
       img: ['']  // La imagen no es obligatoria
     });
   }
-      
+
   ngOnInit(): void {
     if (this.authService.UserIsLogged()){
       this.route.navigate(['/']).then(r => { })
@@ -61,4 +61,21 @@ export class RegisterComponent/* implements OnInit*/{
 
       });
   }
+
+  selectProfilePicture(picture: string) {
+    this.selectedPicture = picture;
+    this.loginForm.value.img= this.selectedPicture
+    console.log(`Selected profile picture: ${picture}`);
+  }
+
+   confirmSelection() {
+    if (this.selectedPicture) {
+
+        // Actualiza el BehaviorSubject con la nueva URL de la foto
+
+    } else {
+      console.log('No profile picture selected');
+    }
+  }
+
 }

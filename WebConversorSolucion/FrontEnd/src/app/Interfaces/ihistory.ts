@@ -5,4 +5,6 @@ export interface History {
   toAmount: number;
   date: Date; // o Date, dependiendo del manejo
   email: string;
+  name: string;
+  lastName: string;
 }
