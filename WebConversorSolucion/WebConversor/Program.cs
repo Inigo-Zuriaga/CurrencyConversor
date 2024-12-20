@@ -93,7 +93,7 @@ builder.Services.AddDbContext<DbContexto>(options =>
         // builder.Configuration["ConnectionStrings:AzureConexion"]);
     
     // Si se quiere trabajar con la base en local descomentar la siguiente linea
-         builder.Configuration["ConnectionStrings:CadenaConexion"]);
+         builder.Configuration["ConnectionStrings:AzureConexion"]);
 });
 
 var app = builder.Build();
