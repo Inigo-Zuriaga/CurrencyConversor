@@ -80,6 +80,8 @@ builder.Services.AddControllers()
 
 // builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
+
+
 // Configuracion de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
