@@ -1,4 +1,4 @@
-import {Component, OnInit,ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import coins from './coins.json';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ExchangeService } from '../../services/exchange.service';
@@ -28,83 +28,78 @@ export class ConversorComponent implements OnInit {
   filteredCurrencies: Currency[] = [];
   email: string = '';
   lastLength: number = 0;
-  name="";
-  lastname="";
 
-    // Datos para el gráfico
+  // Datos para el gráfico
   lineChartData: any = { datasets: [], labels: [] };
   historyData: any[] = [];
+
   constructor(
     private exchangeService: ExchangeService,
     private http: HttpClient,
     private authService: AuthService,
     private chartService: ChartService,
     private router: Router,
-
   ) {}
 
-
   ngOnInit() {
+    // Filtrar las monedas disponibles
     this.filteredCurrencies = this.currencies;
 
+    // Suscribirse a los cambios en el historial del usuario
     this.authService.historyData$.subscribe((data) => {
-      this.historyData = data; // Cuando el historial cambia, lo actualizamos en el componente
+      this.historyData = data; // Actualizar el historial cuando cambie
     });
-    this.email= this.authService.getUserEmail();
-    this.authService.getUserData().subscribe(
-      (userData) => {
 
-        // console.log("Los datos del usuarios son",userData);
-        this.name=userData.name;
-        this.lastname=userData.lastName;
-      });
+    // Obtener el correo del usuario autenticado
+    this.email = this.authService.getUserEmail();
+
+    // Obtener el historial de conversiones del usuario
     this.authService.viewHistory(this.email).subscribe(
       (data) => {
-        // console.log("Datos recibidos:", data);
+        console.log("Datos recibidos:", data);
         this.historyData = data;
-
       },
       (error) => {
         console.error("Error al obtener el historial:", error);
-      });
+      }
+    );
   }
+
   swapCurrencies() {
     // Intercambiar las monedas de origen y destino
     const temp = this.fromCurrency;
     this.fromCurrency = this.toCurrency;
     this.toCurrency = temp;
-
   }
+
   async getExchangeRate() {
     try {
-      // Llamamos al servicio para obtener la tasa de cambio y esperamos la respuesta
-      const data = await this.exchangeService.getExchangeRate(this.fromCurrency.shortname, this.toCurrency.shortname, this.amount).toPromise();
+      // Obtener la tasa de cambio usando el servicio ExchangeService
+      const data = await this.exchangeService.getExchangeRate(
+        this.fromCurrency.shortname,
+        this.toCurrency.shortname,
+        this.amount
+      ).toPromise();
 
-      console.log('Exchange rate fetched successfully', data);
+      console.log('Tasa de cambio obtenida correctamente', data);
 
-      // Asumimos que `data` contiene el resultado de la conversión
+      // Guardar el monto convertido
       this.convertedAmount = data.conversion_result;
 
-      // Recogemos el email del usuario logueado
+      // Crear el historial de la conversión
       const fromCoin: string = this.fromCurrency.shortname;
-      this.email = this.authService.getUserEmail();
+      await this.createExchangeHistory(fromCoin, data.conversion_result);
 
-      // Actualizamos los datos del gráfico si es necesario
-      this.updateChartData();
-
-      // Llamamos al servicio para crear el historial y esperar la respuesta
-      await this.createExchangeHistory(fromCoin, data.conversion_result); // Esperamos la creación del historial
-
-      // Actualizamos el historial en la vista
+      // Actualizar el historial y los datos del gráfico
       this.updateHistory();
-
+      this.updateChartData();
     } catch (error) {
       console.error('Error al obtener la tasa de cambio o crear el historial', error);
     }
   }
 
   async createExchangeHistory(fromCoin: string, conversionResult: number) {
-    // Llamamos al servicio para crear el historial
+    // Crear el historial de conversión
     try {
       const response = await this.exchangeService.createExchangeHistory(
         fromCoin,
@@ -112,23 +107,28 @@ export class ConversorComponent implements OnInit {
         this.toCurrency.shortname,
         conversionResult,
         new Date(),
-        this.email,
-        this.name,
-        this.lastname
-
+        this.email
       ).toPromise();
-      console.log("La respuesta"+response)
 
       console.log('Historial creado con éxito', response);
     } catch (error) {
       console.error('Error al crear el historial', error);
     }
   }
+
   toggleDropdown(select: 'from' | 'to') {
-    this.dropdownOpenFrom = select === 'from' ? !this.dropdownOpenFrom : false;
-    this.dropdownOpenTo = select === 'to' ? !this.dropdownOpenTo : false;
+    // Alternar la visibilidad de los dropdowns
+    if (select === 'from') {
+      this.dropdownOpenFrom = !this.dropdownOpenFrom;
+      this.dropdownOpenTo = false;
+    } else {
+      this.dropdownOpenTo = !this.dropdownOpenTo;
+      this.dropdownOpenFrom = false;
+    }
   }
+
   selectCurrency(currency: Currency, type: 'from' | 'to') {
+    // Seleccionar una moneda para la conversión
     if (type === 'from') {
       this.fromCurrency = currency;
     } else {
@@ -136,11 +136,15 @@ export class ConversorComponent implements OnInit {
     }
     this.closeDropdowns();
   }
+
   closeDropdowns() {
+    // Cerrar ambos dropdowns
     this.dropdownOpenFrom = false;
     this.dropdownOpenTo = false;
   }
+
   filterCurrencies(event: Event) {
+    // Filtrar las monedas según el texto ingresado
     const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
     this.filteredCurrencies = this.currencies.filter(
       (currency) =>
@@ -149,41 +153,46 @@ export class ConversorComponent implements OnInit {
         currency.name.toLowerCase().includes(searchTerm)
     );
   }
+
   updateHistory() {
+    // Actualizar el historial de conversiones
     this.email = this.authService.getUserEmail();
     this.authService.viewHistory(this.email).subscribe(
       (data) => {
-        // console.log("Datos recibidos:", data);
+        console.log("Datos recibidos:", data);
         this.historyData = data;
-
       },
       (error) => {
-        console.error("Error al modificar el historial:", error);
-      });
+        console.error("Error al obtener el historial:", error);
+      }
+    );
   }
 
   chartReady: boolean = false;
+  
   updateChartData() {
-    //DESCOMENTAR PARA QUE FUNCIONE EL GRAFICO
-
+    // Actualizar los datos del gráfico con los datos históricos
     this.chartService.getHistoricalData(this.fromCurrency.shortname, this.toCurrency.shortname).subscribe(
       (data) => {
-        console.log('Raw data received:', data);
+        console.log('Datos recibidos:', data);
 
         const timeSeries = data['Time Series FX (Daily)'];
         if (!timeSeries) {
-          console.error('Time Series data is missing in the response.');
+          console.error('Faltan datos de la serie temporal en la respuesta.');
           return;
         }
 
-        // Procesa las fechas y valores de cierre
+        // Procesar las fechas y valores de cierre
         const labels = Object.keys(timeSeries).reverse(); // Fechas en orden ascendente
         const values = labels.map(date => {
           const closeValue = timeSeries[date]?.['4. close'];
-          return closeValue ? parseFloat(closeValue) : 0; // Asegúrate de que sea un número
+          return closeValue ? parseFloat(closeValue) : 0; // Asegurarse de que sea un número
         });
 
-        // Asigna los datos al gráfico
+        console.log('Fechas procesadas:', labels);
+        console.log('Valores procesados:', values);
+
+        // Asignar los datos al gráfico
         this.lineChartData = {
           labels, // Fechas
           datasets: [
@@ -196,12 +205,18 @@ export class ConversorComponent implements OnInit {
           ],
         };
         this.chartReady = true;
+        console.log('Datos del gráfico actualizados:', this.lineChartData);
       },
       (error) => {
-        console.error('Error fetching chart data', error);
+        console.error('Error al obtener los datos del gráfico', error);
         this.chartReady = false;
       }
     );
   }
+
+  onAmountChange() {
+    // Aquí puedes manejar los cambios en el monto si es necesario
+  }
+
   protected readonly history = history;
 }
