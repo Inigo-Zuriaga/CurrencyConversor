@@ -13,10 +13,28 @@
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/ApiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/CoinsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/CoinsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/HistoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/PdfController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Controllers/WeatherForecastController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/GlobalUsings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Helpers/PdfHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/HtmlTemplates/History.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/HtmlTemplates/historyPdf.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/DbContexto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Models/History.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/History.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebConversor/Models/HistoryRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/HistoryRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/ApiService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/ApiService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/HistoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/HistoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/PdfService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/PdfService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/ViewModels/LoginViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/ViewModels/RegisterViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/WebConversor.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +171,7 @@
       <workItem from="1733932920980" duration="11071000" />
       <workItem from="1734019331849" duration="10659000" />
       <workItem from="1734111233098" duration="437000" />
-      <workItem from="1736351675507" duration="1866000" />
+      <workItem from="1736351675507" duration="5920000" />
     </task>
     <servers />
   </component>

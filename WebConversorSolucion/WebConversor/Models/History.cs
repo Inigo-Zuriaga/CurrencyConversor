@@ -1,6 +1,5 @@
 ﻿namespace WebConversor.Models;
 
-
 [Table("ExchangeHistory")]
 public class History
 {
@@ -23,6 +22,5 @@ public class History
     
     [Required] public decimal ToAmount { get; set; }
 
-    // public double Result { get; set; }
     [Required] public DateTime Date { get; set; } = DateTime.Now;
 }

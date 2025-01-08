@@ -12,7 +12,7 @@ public class HistoryService
 
     }
 
-    // M�todo para crear un historial de intercambio basado en una solicitud de historial
+    // Metodo para crear un historial de intercambio basado en una solicitud de historial
     public async Task<string> CreateHistory(HistoryRequest history)
     {
         // Verifica si el usuario existe en la base de datos
@@ -22,7 +22,6 @@ public class HistoryService
         {
             return "No se puede generar el historial, el usuario no existe";
         }
-        
         
         var countHistory = await _context.ExchangeHistory
             .Include(x => x.User)
@@ -64,52 +63,7 @@ public class HistoryService
         _context.ExchangeHistory.Remove(history); // Elimina el historial del contexto
         await _context.SaveChangesAsync(); // Guarda los cambios en la base de datos
 
-        // return "Historial eliminado con exito"; // Devuelve un mensaje de �xito
         return true;
-    }
-
-    public static string ToHtmlFile(List<HistoryRequest> data)
-    {
-        //string uploadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Exports");
-
-// Crear el directorio si no existe
-        //if (!Directory.Exists(uploadsPath))
-        //{
-        //    Directory.CreateDirectory(uploadsPath);
-        //}
-        
-        // Guardar un archivo
-        //string filePath = Path.Combine(uploadsPath, "test.pdf");
-        // File.WriteAllText(filePath, "Contenido del archivo.");
-        StringBuilder stringData=new StringBuilder(String.Empty);
-        string tempHtml=String.Empty;
-        try
-        {
-            string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
-            //string templatePath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HtmlTemplates", "historyPdf.html");
-            tempHtml=File.ReadAllText(templatePath);
-            // StringBuilder stringData=new StringBuilder(String.Empty);
-            for(int i = 0; i < data.Count; i++)
-            {
-                stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
-
-            };
-            
-        }
-        catch (Exception e)
-        {
-            return e.Message;
-        }
-        //  string templatePath=Path.Combine(Directory.GetCurrentDirectory(), "HtmlTemplates", "historyPdf.html");
-        // //string templatePath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HtmlTemplates", "historyPdf.html");
-        // string tempHtml=File.ReadAllText(templatePath);
-        // // StringBuilder stringData=new StringBuilder(String.Empty);
-        //     for(int i = 0; i < data.Count; i++)
-        //     {
-        //         stringData.Append($"<tr><td>{data[i].FromAmount} {data[i].FromCoin}</td><td>{data[i].ToAmount} {data[i].ToCoin}</td><td>{data[i].Date.ToString("yyyy-MM-dd HH:mm")}</td></tr>");
-        //
-        //     };
-        return tempHtml.Replace("{data}", stringData.ToString());
     }
     
 }

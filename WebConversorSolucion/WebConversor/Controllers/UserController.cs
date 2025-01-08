@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿namespace WebConversor.Controllers;
 
-namespace WebConversor.Controllers;
-
-[Route("api/[controller]")] // Define la ruta base para este controlador (e.g., api/User)
-[ApiController] // Indica que este controlador manejará solicitudes HTTP y valida automáticamente los modelos
+[Route("api/[controller]")]
+[ApiController]
 public class UserController : ControllerBase
 {
     private readonly UserService _userService; // Servicio que gestiona la lógica relacionada con usuarios
@@ -54,12 +52,9 @@ public class UserController : ControllerBase
             return Unauthorized("The user is not authenticated.");
         }
     
+        //Verificamos si el usuario tiene un claim de email en el Token
         var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
         
-        // if (emailClaim == null || string.IsNullOrEmpty(emailClaim))
-        // {
-        //     return Unauthorized("The user does not have a valid email claim.");
-        // }
         try
         {
             var userData = await _context.Users
@@ -89,8 +84,6 @@ public class UserController : ControllerBase
 
         if (result != "Usuario registrado con exito")
         {
-           // return BadRequest(new { error = result }); // Enviar el error al frontend
-
             return BadRequest(new { error = "No se ha podido registrar el usuario" });
         }
 
@@ -104,17 +97,13 @@ public class UserController : ControllerBase
         if (request == null)
         {
             return BadRequest(new { error = "Por favor, complete todos los campos." });
-
-            //return BadRequest("Datos de inicio de sesión inválidos.");
         }
 
         // Llama al servicio para validar las credenciales del usuario
         var result = await _userService.LoginUser(request);
 
-        if (result == "El correo o la contraseña son incorrectos")
+        if (result ==false)
         {
-            //return Unauthorized(new { error = result }); // Mensaje de error para el frontend
-
             return Unauthorized(new { error = "El correo o la contraseña son incorrectos" });
         }
 

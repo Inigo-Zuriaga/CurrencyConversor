@@ -9,9 +9,7 @@ public class PdfService
     public byte[] GenerarListadoPdf(List<HistoryRequest> data)
     {
         QuestPDF.Settings.License = LicenseType.Community;
-
-     
-        // var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "icono-pdf.png");
+        
         var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "Logo_Nombre2.png");
 
         var documento = Document.Create(container =>
@@ -20,7 +18,6 @@ public class PdfService
             {
                 // Configuración de la página
                 page.Size(PageSizes.A4);
-                // page.Margin(1, Unit.Inch);
                 page.Margin(30);
                 page.DefaultTextStyle(x => x.FontSize(12).FontFamily("Arial"));
 
@@ -50,44 +47,19 @@ public class PdfService
                 page.Content().Stack(content =>
                 {
                     content.Spacing(10); // Espaciado entre secciones
-
-                    // // Sección "From" y "For"
-                    // content.Item().Row(row =>
-                    // {
-                    //     row.RelativeColumn().Stack(stack =>
-                    //     {
-                    //         stack.Spacing(5);
-                    //         stack.Item().Text("From").Bold();
-                    //         stack.Item().Text("Asumenda Recusandae");
-                    //         stack.Item().Text("Consequatur eligendi");
-                    //         stack.Item().Text("molestias78@example.com");
-                    //         stack.Item().Text("215-792-3344");
-                    //     });
-                    //
-                    //     row.RelativeColumn().Stack(stack =>
-                    //     {
-                    //         stack.Spacing(5);
-                    //         stack.Item().Text("For").Bold();
-                    //         stack.Item().Text("Obcaecati Consequuntur");
-                    //         stack.Item().Text("Illo itaque debitis");
-                    //         stack.Item().Text("laudantium19@inventore.com");
-                    //         stack.Item().Text("559-400-7892");
-                    //     });
-                    // });
                     content.Item()
-                        // .AlignCenter()
                         .PaddingTop(30)
                         .Text("Historial de Cambios").FontSize(20).Bold();
+                    
                     // Espaciado antes de la tabla
                     content.Item().PaddingVertical(6);
-
+                    
                     // Tabla
                     content.Item().Table(table =>
                     {
                         // Definir columnas
                         table.ColumnsDefinition(columns =>
                         {
-                            
                             columns.RelativeColumn(1);
                             columns.RelativeColumn(1);
                             columns.RelativeColumn(1);
@@ -96,7 +68,6 @@ public class PdfService
                         // Encabezado de la tabla
                         table.Header(header =>
                         {
-                           
                             header.Cell().Element(CellStyle).AlignMiddle().Text("Moneda Base").Bold();
                             header.Cell().Element(CellStyle).AlignMiddle().Text("Cambio Obtenido").Bold();
                             header.Cell().Element(CellStyle).AlignMiddle().Text("Fecha").Bold();
@@ -106,11 +77,9 @@ public class PdfService
                         {
                          
                                 table.Cell().Element(c => Cell(c, i)).Text(data[i].FromAmount + " " + data[i].FromCoin); // Producto
-                                // table.Cell().Element(CellStyle).Text($"{item.FromAmount:C}"); // Precio Unitario
                                 table.Cell().Element(c => Cell(c, i)).Text(data[i].ToAmount+" "+data[i].ToCoin); // Total
                                 table.Cell().Element(c => Cell(c, i)).Text(data[i].Date.ToString("dd/MM/yyyy HH:mm")); // Total
                         }
-
                         
                         // Estilo de celdas
                         static IContainer CellStyle(IContainer container)
@@ -129,11 +98,10 @@ public class PdfService
                         {
                             return container
                                 .Border(1)
-                                .Background(index % 2 == 0 ? Colors.LightBlue.Lighten5 : Colors.Teal.Lighten4) // Alternar color según índice
+                                .Background(index % 2 == 0 ? Colors.LightBlue.Lighten5 : Colors.Teal.Lighten4) // Alterna el color según el índice
                                 .Padding(6)
                                 .AlignCenter();
                         }
-                        
                     });
                 });
 
