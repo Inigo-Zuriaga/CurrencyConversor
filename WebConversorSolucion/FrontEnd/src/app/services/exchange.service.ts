@@ -42,7 +42,7 @@ export class ExchangeService {
   }
 
   createExchangeHistory(fromCoin:string,fromAmount:number,toCoin:string,toAmount:number,date:Date,
-                        email:string): Observable<any> {
+                        email:string,name?:string,lastname?:string): Observable<any> {
 
     const body = {
       fromCoin:fromCoin,
@@ -50,7 +50,9 @@ export class ExchangeService {
       toCoin:toCoin,
       toAmount:toAmount,
       date:date,
-      email:email
+      email:email,
+      name:name,
+      lastName:lastname
     };
     return this.http.post(`${this.apiUrl2}/CreateHistory`,body);
   }

@@ -142,7 +142,7 @@ export class AuthService {
       return true;
     }
   }
-  
+
   getUserToken():string{
     return <string>localStorage.getItem('email');
   }

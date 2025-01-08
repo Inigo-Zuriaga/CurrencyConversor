@@ -28,9 +28,11 @@ export class ConversorComponent implements OnInit {
   filteredCurrencies: Currency[] = [];
   email: string = '';
   lastLength: number = 0;
+  name="";
+  lastname="";
 
     // Datos para el gráfico
-    lineChartData: any = { datasets: [], labels: [] };
+  lineChartData: any = { datasets: [], labels: [] };
   historyData: any[] = [];
   constructor(
     private exchangeService: ExchangeService,
@@ -48,13 +50,17 @@ export class ConversorComponent implements OnInit {
     this.authService.historyData$.subscribe((data) => {
       this.historyData = data; // Cuando el historial cambia, lo actualizamos en el componente
     });
-
-    // this.updateChartData();
-    // this.getExchangeRate();
     this.email= this.authService.getUserEmail();
+    this.authService.getUserData().subscribe(
+      (userData) => {
+
+        // console.log("Los datos del usuarios son",userData);
+        this.name=userData.name;
+        this.lastname=userData.lastName;
+      });
     this.authService.viewHistory(this.email).subscribe(
       (data) => {
-        console.log("Datos recibidos:", data);
+        // console.log("Datos recibidos:", data);
         this.historyData = data;
 
       },
@@ -68,8 +74,6 @@ export class ConversorComponent implements OnInit {
     this.fromCurrency = this.toCurrency;
     this.toCurrency = temp;
 
-    // Realizar la conversión nuevamente con las monedas intercambiadas
-    // this.getExchangeRate();
   }
   async getExchangeRate() {
     try {
@@ -108,32 +112,22 @@ export class ConversorComponent implements OnInit {
         this.toCurrency.shortname,
         conversionResult,
         new Date(),
-        this.email
+        this.email,
+        this.name,
+        this.lastname
+
       ).toPromise();
+      console.log("La respuesta"+response)
 
       console.log('Historial creado con éxito', response);
     } catch (error) {
       console.error('Error al crear el historial', error);
     }
   }
-
-  // async onConversionSuccess() {
-  //   try {
-  //     const email = this.authService.getUserEmail();
-  //
-  //     // Simulamos obtener el historial actualizado y lo emitimos
-  //     this.authService.fetchAndUpdateHistory(email); // Esto actualizará el BehaviorSubject
-  //   } catch (error) {
-  //     console.error('Error al obtener el historial:', error);
-  //   }
-  // }
-
-
   toggleDropdown(select: 'from' | 'to') {
     this.dropdownOpenFrom = select === 'from' ? !this.dropdownOpenFrom : false;
     this.dropdownOpenTo = select === 'to' ? !this.dropdownOpenTo : false;
   }
-
   selectCurrency(currency: Currency, type: 'from' | 'to') {
     if (type === 'from') {
       this.fromCurrency = currency;
@@ -142,12 +136,10 @@ export class ConversorComponent implements OnInit {
     }
     this.closeDropdowns();
   }
-
   closeDropdowns() {
     this.dropdownOpenFrom = false;
     this.dropdownOpenTo = false;
   }
-
   filterCurrencies(event: Event) {
     const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
     this.filteredCurrencies = this.currencies.filter(
@@ -157,55 +149,16 @@ export class ConversorComponent implements OnInit {
         currency.name.toLowerCase().includes(searchTerm)
     );
   }
-
-  // Método para obtener la tasa de cambio
-  // getExchangeRate() {
-  //   this.exchangeService.getExchangeRate(this.fromCurrency.shortname, this.toCurrency.shortname, this.amount).subscribe(
-  //     (data) => {
-  //       console.log('Exchange rate fetched successfully', data);
-  //
-  //       this.convertedAmount = data.conversion_result; // Asume que `data` tiene la estructura adecuada
-  //
-  //       // Recogemos el email del usuario logueado
-  //       const fromCoin: string = this.fromCurrency.shortname;
-  //       this.email = this.authService.getUserEmail();
-  //
-  //       this.updateChartData();
-  //       // Llamamos al servicio para crear el historial
-  //       this.exchangeService.createExchangeHistory(
-  //         this.fromCurrency.shortname,
-  //         this.amount,
-  //         this.toCurrency.shortname,
-  //         data.conversion_result,
-  //         new Date(),
-  //         this.email
-  //
-  //           ).subscribe(
-  //             (response) => {
-  //               console.log('Historial creado', response);
-  //               this.updateHistory();
-  //             },
-  //             (error) => {
-  //               console.error('Error al crear el historial', error);
-  //             }
-  //           );
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       console.error('Error fetching exchange rate', error);
-  //     }
-  //   );
-  // }
-
   updateHistory() {
     this.email = this.authService.getUserEmail();
     this.authService.viewHistory(this.email).subscribe(
       (data) => {
-        console.log("Datos recibidos:", data);
+        // console.log("Datos recibidos:", data);
         this.historyData = data;
 
       },
       (error) => {
-        console.error("Error al obtener el historial:", error);
+        console.error("Error al modificar el historial:", error);
       });
   }
 
@@ -230,9 +183,6 @@ export class ConversorComponent implements OnInit {
           return closeValue ? parseFloat(closeValue) : 0; // Asegúrate de que sea un número
         });
 
-        console.log('Processed labels:', labels);
-        console.log('Processed values:', values);
-
         // Asigna los datos al gráfico
         this.lineChartData = {
           labels, // Fechas
@@ -246,8 +196,6 @@ export class ConversorComponent implements OnInit {
           ],
         };
         this.chartReady = true;
-        // Log para verificar
-        console.log('Chart data updated:', this.lineChartData);
       },
       (error) => {
         console.error('Error fetching chart data', error);
@@ -255,11 +203,5 @@ export class ConversorComponent implements OnInit {
       }
     );
   }
-
-
-  onAmountChange() {
-    // Aquí puedes manejar los cambios en el input de cantidad si es necesario
-  }
-
   protected readonly history = history;
 }
