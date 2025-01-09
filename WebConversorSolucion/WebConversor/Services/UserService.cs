@@ -84,7 +84,6 @@ public class UserService
     {
         try
         {
-
             //Borrar los console
             Console.WriteLine("Datos recibidos en el endpoint Login:");
             Console.WriteLine($"Email: {request.Email}");
@@ -154,7 +153,8 @@ public class UserService
         var claims = new[]
         {
             //Indicamos los datos que queremos pasar con el token
-            new Claim("email", email)
+            new Claim("email", email),
+            // new Claim("img", img)
             //new Claim(JwtRegisteredClaimNames.Exp, expirationTime.ToString()) // Tiempo de expiraci�n
         };
 

@@ -42,6 +42,33 @@ public class UserController : ControllerBase
     }
     
         
+    // [HttpGet("GetUserData")] // This endpoint responds to GET requests at "api/User/GetUserData"
+    // [Authorize]
+    // public async Task<IActionResult> GetUserData()
+    // {
+    //     //Comprobamos si los datos de la autorizacion son correctos
+    //     if (User == null || !User.Identity.IsAuthenticated)
+    //     {
+    //         return Unauthorized("The user is not authenticated.");
+    //     }
+    //
+    //     //Verificamos si el usuario tiene un claim de email en el Token
+    //     var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+    //     
+    //     try
+    //     {
+    //         var userData = await _context.Users
+    //             .Where(x => x.Email == emailClaim)
+    //             .FirstOrDefaultAsync();
+    //
+    //         return Ok(userData);
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         return BadRequest(new { error = "No se han podido enviar los datos del usuario" });
+    //     }
+    //    
+    // }
     [HttpGet("GetUserData")] // This endpoint responds to GET requests at "api/User/GetUserData"
     [Authorize]
     public async Task<IActionResult> GetUserData()
@@ -67,9 +94,8 @@ public class UserController : ControllerBase
         {
             return BadRequest(new { error = "No se han podido enviar los datos del usuario" });
         }
-       
     }
-
+    
     // Endpoint para registrar un nuevo usuario
     [HttpPost("SignIn")] // Este endpoint responde a solicitudes POST en "api/User/SignIn"
     public async Task<IActionResult> Register([FromBody] User request)
@@ -102,12 +128,20 @@ public class UserController : ControllerBase
         // Llama al servicio para validar las credenciales del usuario
         var result = await _userService.LoginUser(request);
 
-        if (result ==false)
+        if (result == false)
         {
             return Unauthorized(new { error = "El correo o la contraseña son incorrectos" });
         }
 
+        // var userData = await _context.Users
+        //     .Where(x => x.Email == request.Email)
+        //     .Select(x => new {x.Img }) // Obtén solo los campos necesarios
+        //     .FirstOrDefaultAsync();
+        var imagen  = "userData.Img";
+        // Console.WriteLine("Datos del usuario logueado:");
+        // Console.WriteLine(userData.Img);
         // Genera un token JWT para el usuario autenticado
+        // var token = _userService.GenerateJwtToken(request.Email,userData.Img);
         var token = _userService.GenerateJwtToken(request.Email);
 
         return Ok(new { Token = token });

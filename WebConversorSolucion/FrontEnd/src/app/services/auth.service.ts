@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {jwtDecode, JwtPayload} from 'jwt-decode';
 import {environment} from "../environments/environment";
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -34,12 +35,28 @@ export class AuthService {
     return !!localStorage.getItem('accessToken');
   }
 
-  // método para iniciar sesión
+  //metodo para iniciar sesión
+  // login(email: string, password: string): Observable<any> {
+  //   const body = { "email": email, "password": password };
+  //   return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
+  // }
+
   login(email: string, password: string): Observable<any> {
     const body = { "email": email, "password": password };
-    return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
+    return this.http.post<any>(`${this.apiUrl}/Login`, body).pipe(
+      tap((response) => {
+        if (response && response.token) {
+          this.storeToken(response.token);
+          this.fetchUserData(); // Carga los datos del usuario actual
+        }
+      })
+    );
   }
-
+  fetchUserData() {
+    this.getUserData().subscribe((data: any) => {
+      this.photoSubject.next(data.img); // Actualiza la foto
+    });
+  }
 
   updateHistory(historyData: any[]) {
     this.historySubject.next(historyData); // Emite el nuevo estado del historial
@@ -51,7 +68,7 @@ export class AuthService {
   }
 
 
-  // método para registrar un usuario nuevo
+  // metodo para registrar un usuario nuevo
   signIn(name:string,
          lastName:string,
          email: string,
@@ -137,7 +154,10 @@ export class AuthService {
   getUserToken():string{
     return <string>localStorage.getItem('email');
   }
-
+  getUserImgToken():string{
+    const decodedToken=this.decodeToken(this.getAccessToken());
+    return <string>localStorage.getItem('img');
+  }
   DeleteUsername(): void {
     localStorage.removeItem('username');
   }

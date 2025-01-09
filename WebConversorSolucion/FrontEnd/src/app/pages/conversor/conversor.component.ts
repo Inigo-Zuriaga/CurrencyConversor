@@ -39,12 +39,17 @@ export class ConversorComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private chartService: ChartService,
-    private router: Router,
+    private route: Router,
 
   ) {}
 
 
   ngOnInit() {
+
+    if (!this.authService.UserIsLogged()){
+      this.route.navigate(['/']);
+    }
+
     this.filteredCurrencies = this.currencies;
 
     this.authService.historyData$.subscribe((data) => {
