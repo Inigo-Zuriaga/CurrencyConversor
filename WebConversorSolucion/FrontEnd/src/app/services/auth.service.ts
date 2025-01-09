@@ -66,10 +66,7 @@ export class AuthService {
   // getUserData(email:string):Observable<any>{
   getUserData():Observable<any>{
 
-    // return this.http.post(`${this.apiUrl}/GetUser`, JSON.stringify(email));
     return this.http.get(`${this.apiUrl}/GetUserData`);
-
-
   }
 
   changePicture(email:string,profileImg: string):Observable<any>{
@@ -106,11 +103,6 @@ export class AuthService {
   }
 
   //Borra el token del localstorage
-  // deleteToken():void {
-  //   localStorage.removeItem('accessToken');
-  //   this.logged.next(false);
-  // }
-
   deleteToken(): void {
     localStorage.removeItem('accessToken');
     this.logged.next(false); // Publica que el usuario ha cerrado sesión
@@ -126,7 +118,6 @@ export class AuthService {
       const expirationDate = decodedToken.exp * 1000; // El valor de 'exp' está en segundos, así que multiplicamos por 1000 para pasarlo a milisegundos
       const currentTime = new Date().getTime(); // Obtenemos el tiempo actual en milisegundos
 
-      // return currentTime > expirationDate;
       // console.log("El tiempo actual es: ",currentTime);
       // console.log("La fecha de expiración es: ",expirationDate);
 

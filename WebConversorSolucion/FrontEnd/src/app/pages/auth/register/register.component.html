@@ -70,18 +70,8 @@
     </div>
 
     <!-- Imagen -->
-    <div class="mb-4">
-      <label for="img" class="block text-sm font-medium">Image (optional)</label>
-      <input
-        id="img"
-        formControlName="img"
-        type="file"
-        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-      />
-    </div>
     <div class="container mx-auto px-4 py-8">
       <h1 class="text-2xl font-bold text-center mb-8">Selecciona una foto de perfil</h1>
-      <h4 class="text-1xl text-center mb-8">Para ver el cambio se debe recargar la pagina</h4>
       <div class="grid grid-cols-2 gap-4">
         <div class="flex justify-center">
           <img src="assets/images/profile/perfil1.png" alt="Profile 1" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil1.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil1.png'}" (click)="selectProfilePicture('assets/images/profile/perfil1.png')">
@@ -96,9 +86,7 @@
           <img src="assets/images/profile/perfil4.png" alt="Profile 4" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil4.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil4.png'}" (click)="selectProfilePicture('assets/images/profile/perfil4.png')">
         </div>
       </div>
-<!--      <div class="text-center mt-8">-->
-<!--        <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="confirmSelection()">Confirm Selection</button>-->
-<!--      </div>-->
+
     </div>
 
 
@@ -114,4 +102,3 @@
 
   </form>
 </div>
-<!-- <div class="bg-primaryBlue fixed top-0 right-0 h-full w-1/4 z-50"></div> -->
