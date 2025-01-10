@@ -22,9 +22,11 @@ import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HistorytableComponent } from './shared/components/historytable/historytable.component';
 import { CarouselModule } from 'primeng/carousel';
+import { ChartModule } from 'primeng/chart';
 import { ButtonModule } from 'primeng/button';
 import {TagModule} from 'primeng/tag';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
+import { ChartComponent } from './shared/chart/chart.component';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 
@@ -45,7 +47,8 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     ProfileComponent,
     HistorytableComponent,
     ProfileComponent,
-    DropdownComponent
+    DropdownComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     NgOptimizedImage,
     CarouselModule,
     ButtonModule,
-    TagModule
+    TagModule,
+    ChartModule
   ],
   providers: [
     {
