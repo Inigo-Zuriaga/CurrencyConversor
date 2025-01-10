@@ -1,9 +1,6 @@
-using DinkToPdf;
-using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
-using System.IO.Compression;
-using PuppeteerSharp;
+
 // using Serilog;
 
 
@@ -81,7 +78,6 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString;
     });
 
-builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 // Configuracion de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
@@ -105,12 +101,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+//Ver si se puede borrar
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "Exports")),
-    // Path.Combine(Directory.GetCurrentDirectory(), "Exports")),
-    // Path.Combine(Directory.GetCurrentDirectory(), "Files")),
+  
     RequestPath = "/Files"
 });
 

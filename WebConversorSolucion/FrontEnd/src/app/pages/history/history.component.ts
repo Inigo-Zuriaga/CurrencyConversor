@@ -1,9 +1,8 @@
-import {Component, OnInit,ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ExchangeService } from '../../services/exchange.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
-import {PdfService} from '../../services/pdf.service';
 import { History } from '../../Interfaces/ihistory';
 @Component({
   selector: 'app-history',
@@ -12,14 +11,10 @@ import { History } from '../../Interfaces/ihistory';
 })
 export class HistoryComponent implements OnInit    {
 
-  // downloadPdf() {
-  //   // @ts-ignore
-  //   this.pdfComponent.generatePdf(); // Llama a la función del hijo para generar el PDF
-  // }
 
   dataPdf: History[] = [];
 
-  constructor(private authService: AuthService,private exchangeService:ExchangeService,private pdfService:PdfService,private route:Router) { }
+  constructor(private authService: AuthService,private exchangeService:ExchangeService,private route:Router) { }
 
   historyData: any[] = [];
   email:string ='';
@@ -118,9 +113,6 @@ crearPdf(){
           });
 
       }});
-
-
-
   }
 
 }

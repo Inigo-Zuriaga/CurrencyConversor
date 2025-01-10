@@ -13,10 +13,20 @@
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/conversor/conversor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/profile/profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/history/history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/main-page/main-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/main-page/main-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/not-found/not-found.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/prueba/prueba.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/prueba/prueba.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/prueba/prueba.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/prueba/prueba.component.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/exchange.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebConversor/Models/HistoryRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebConversor/Models/HistoryRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/pdf.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +163,7 @@
       <workItem from="1733932920980" duration="11071000" />
       <workItem from="1734019331849" duration="10659000" />
       <workItem from="1734111233098" duration="437000" />
-      <workItem from="1736351675507" duration="1866000" />
+      <workItem from="1736351675507" duration="7936000" />
     </task>
     <servers />
   </component>
