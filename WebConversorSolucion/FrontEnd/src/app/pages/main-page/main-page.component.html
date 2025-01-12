@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center font-regularb ">
     <!-- Header Section -->
     <header class="text-center py-10">
-      <h1 class="text-4xl font-extrabold text-yellow-100 mb-4">Welcome to <span class="text-primaryBlue">Currency Conversor</span></h1>
+      <h1 class="text-4xl font-extrabold text-yellow-100 mb-4">Welcome to <span class="yellow-100">Currency Conversor</span></h1>
       <p *ngIf="!isLoged" class="text-lg font-semibold">Registrate o Inicia sesión para realizar la conversión</p>
     </header>
 
@@ -13,8 +13,9 @@
         <h3 class="text-xl font-semibold text-indigo-600 mb-2">Hundreds of Conversions</h3>
         <p class="text-gray-600 text-center">Convert between hundreds of currencies with real-time updates to ensure accurate rates.</p>
       </div>
-<!--     Logado-->
-      <div *ngIf="isLoged" class="bg-white bg-opacity-75 shadow-lg rounded-lg p-6 flex flex-col items-center">
+
+<!--Grafico Conversiones Realizadas-->
+      <div class="bg-white bg-opacity-75 shadow-lg rounded-lg p-6 flex flex-col items-center">
         <app-chart *ngIf="isLoged"></app-chart>
       </div>
 
@@ -34,15 +35,18 @@
 
       <!-- Feature 3 -->
       <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center bg-opacity-75">
-        <div class=" flex w-16 h-16 mb-8"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></div>
+        <div class=" flex w-16 h-16 mb-8">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+        </div>
         <h3 class="text-xl font-semibold text-indigo-600 mb-2">Conversion History</h3>
-        <p class="text-gray-600 text-center">Track your previous conversions and easily revisit them anytime.</p>
+        <p *ngIf="!isLoged" class="text-gray-600 text-center">Track your previous conversions and easily revisit them anytime.</p>
+        <button *ngIf="isLoged" routerLink="/history" class="bg-green-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-500 transition">Visualiza tu historial!</button>
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class=" text-center space-x-10 items-center mb-10 ">
-      <p class="text-lg mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
+    <section class=" text-center space-x-10 items-center mt-10 mb-10 ">
+      <p  class="text-lg text-white2 mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
       <a href="/conversor" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Conversor</a>
       <a *ngIf="!isLoged" href="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-bold px-5 py-2">Go to the Login</a>
     </section>
@@ -51,7 +55,7 @@
 <!-- lo que aparece cuando estas logueado-->
   <ng-template #loggedInContent>
     <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-        <h3 class="text-xl font-semibold text-green-600 mb-2">Welcome Back!</h3>
+        <h3 class="text-xl font-semibold text-green-600 mb-2">Welcome Back <span class="font-bold">{{this.name}}</span></h3>
         <p class="text-gray-600 text-center">Thank you for logging in. Explore your personalized dashboard and enjoy your benefits.</p>
     </div>
 </ng-template>

@@ -6,12 +6,8 @@
     <nav class="hidden md:flex space-x-7">
         <a *ngIf="isLoged" routerLink="/conversor" class="text-white hover:text-blue-300">Convert</a>
         <a routerLink="/about" class="text-white hover:text-blue-300">About</a>
-<!--        <a routerLink="/services" class="text-white hover:text-blue-300">Services</a>-->
-
         <a *ngIf="isLoged" routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
         <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300 ml-auto">Login</a>
-<!--        <img *ngIf="isLoged" src="{{imageSrc}}" alt="Profile 2" class="w-10 h-10 rounded-full cursor-pointer border-4">-->
-<!--        <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="text-white hover:text-blue-300 ml-auto">Logout</a>-->
       <app-dropdown *ngIf="isLoged"
                     [buttonImageUrl]="imageSrc || 'assets/images/profile/sinPerfil.png'"
                     [dropdownClass]="'bg-gray-100'"
@@ -34,7 +30,6 @@
 <div *ngIf="isMenuOpen" class="md:hidden bg-primaryBlue mt-16 pt-7 pb-7 rounded-xl rounded-t-none fixed z-50 top-0 left-0 right-0 mx-auto">
     <a *ngIf="isLoged" routerLink="/conversor" class="block px-4 py-2 text-white hover:bg-blue-700">Convert</a>
     <a routerLink="/about" class="block px-4 py-2 text-white hover:bg-blue-700">About</a>
-    <a routerLink="/services" class="block px-4 py-2 text-white hover:bg-blue-700">Services</a>
     <a *ngIf="isLoged" routerLink="/history" class="block px-4 py-2 text-white hover:bg-blue-700">Historial</a>
     <a *ngIf="!isLoged" routerLink="/login" class="block px-4 py-2 text-white hover:bg-blue-700">Login</a>
     <a *ngIf="isLoged" (click)="disconnect()" routerLink="/" class="block px-4 py-2 text-white hover:bg-blue-700">Logout</a>

@@ -26,7 +26,7 @@ import { ChartModule } from 'primeng/chart';
 import { ButtonModule } from 'primeng/button';
 import {TagModule} from 'primeng/tag';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
-import { ChartComponent } from './shared/chart/chart.component';
+import { ChartComponent } from './shared/components/chart/chart.component';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 

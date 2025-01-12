@@ -106,13 +106,17 @@ export class ConversorComponent implements OnInit {
   async createExchangeHistory(fromCoin: string, conversionResult: number) {
     // Crear el historial de conversión
     try {
+      const userData = await this.authService.getUserData().toPromise();
+
       const response = await this.exchangeService.createExchangeHistory(
         fromCoin,
         this.amount,
         this.toCurrency.shortname,
         conversionResult,
         new Date(),
-        this.email
+        this.email,
+        userData.name,
+        userData.lastName
       ).toPromise();
 
       console.log('Historial creado con éxito', response);
@@ -174,7 +178,7 @@ export class ConversorComponent implements OnInit {
   }
 
   chartReady: boolean = false;
-  
+
   updateChartData() {
     // Actualizar los datos del gráfico con los datos históricos
     this.chartService.getHistoricalData(this.fromCurrency.shortname, this.toCurrency.shortname).subscribe(
