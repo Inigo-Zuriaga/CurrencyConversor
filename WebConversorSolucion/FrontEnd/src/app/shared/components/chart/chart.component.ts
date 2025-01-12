@@ -8,7 +8,6 @@ import {AuthService} from '../../services/auth.service';
 })
 export class ChartComponent implements OnInit {
 
-
   data: any;
   options: any;
   toCoins: string[] = [];
@@ -21,39 +20,39 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
 
     this.extractAndCountCoins();
-    this.initChart();
   }
 
   initChart() {
+    const labels = Object.keys(this.coinCount);
+    const data = Object.values(this.coinCount);
+    console.log("Labels:", labels);
+    const backgroundColor = ['blue', '#FF3860', 'orange', 'green', 'purple', 'orange']; // Add more colors as needed
+
     this.data = {
-      labels: ['A', 'B', 'C'],
+      labels: labels,
       datasets: [
         {
-          data: [540, 325, 702],
-          backgroundColor: ['blue', '#FF3860', 'yellow'],
-          // hoverBackgroundColor:['#00D1B2','#FF3860','#00D1B2']
+          data: data,
+          backgroundColor: backgroundColor.slice(0, labels.length), // Ensure the number of colors matches the number of labels
         }
       ]
     }
   }
 
-
-
-
-  prueba: any[] = []
+  convertions: any[] = []
   extractAndCountCoins(){
 
     this.authService.viewHistory(this.authService.getUserEmail()).subscribe(
       (data) => {
 
-        this.prueba = data;
+        this.convertions = data;
 
-        console.log("Datos recibidos2222:", this.prueba);
+        console.log("Datos recibidos2222:", this.convertions);
         // console.log("Primera conversión:", this.prueba[0]);
 
-        console.log("CONVERSIONS ARRAY: ", this.prueba);
+        console.log("CONVERSIONS ARRAY: ", this.convertions);
 
-        this.prueba.forEach(prueba => {
+        this.convertions.forEach(prueba => {
 
           const coin = prueba.toCoin;
           // Almacenar el coin en el array
@@ -68,6 +67,7 @@ export class ChartComponent implements OnInit {
         });
 
         console.log("LAS MONEDAS :",this.coinCount);
+        this.initChart();
       },
       (error) => {
         console.error("Error mandar las monedas:", error);
