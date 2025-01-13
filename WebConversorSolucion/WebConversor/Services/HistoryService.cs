@@ -1,15 +1,17 @@
+using System.Net.Http;
+
 namespace WebConversor.Services;
 
 public class HistoryService
 {
     private readonly IConfiguration _configuration; // Permite acceder a las configuraciones
     private readonly DbContexto _context; // Contexto de la bbdd
-    
+
+
     public HistoryService(DbContexto context, IConfiguration configuration)
     {
         _context = context;
         _configuration = configuration;
-
     }
 
     // Metodo para crear un historial de intercambio basado en una solicitud de historial

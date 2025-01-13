@@ -15,8 +15,8 @@
       </div>
 
 <!--Grafico Conversiones Realizadas-->
-      <div class="bg-white bg-opacity-75 shadow-lg rounded-lg p-6 flex flex-col items-center">
-        <app-chart *ngIf="isLoged"></app-chart>
+      <div *ngIf="isLoged" class="bg-white bg-opacity-75 shadow-lg rounded-lg p-6 flex flex-col items-center">
+        <app-chart></app-chart>
       </div>
 
       <!-- Feature 2 -->

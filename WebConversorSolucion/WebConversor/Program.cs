@@ -92,6 +92,8 @@ builder.Services.AddDbContext<DbContexto>(options =>
          builder.Configuration["ConnectionStrings:AzureConexion"]);
 });
 
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 var app = builder.Build();
 
 // Configuracion del pipeline de solicitudes HTTP
