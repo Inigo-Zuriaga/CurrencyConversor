@@ -16,6 +16,8 @@ export class AuthService {
   //private apiUrl=environment.apiUrl;
   private apiUrl2=environment.apiUrl2; // API/History
 
+  private apiEmail=environment.apiUrl5; // API/Email
+
 
   // variable que indica si el usuario está logueado o no
   logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
@@ -37,8 +39,20 @@ export class AuthService {
 
   sendEmail(email:string,subject:string,body:string):Observable<any>{
 
-    const data = {email,subject,body};
-    return this.http.post(`${this.apiUrl}/SendEmail`,data);
+    // const data = {
+    //   "email": email,
+    //   "subject": subject,
+    //   "body": body
+    // };
+    const params = new HttpParams()
+      .set('email', email)
+      .set('theme', subject)
+      .set('body', body);
+
+    // console.log("El data");
+    // console.log(data);
+    // return this.http.post(`${this.apiEmail}/SendEmail`,data);
+    return this.http.post(`http://localhost:25850/api/Email`,null,{params});
   }
   //metodo para iniciar sesión
   login(email: string, password: string): Observable<any> {

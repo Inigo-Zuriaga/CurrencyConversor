@@ -21,5 +21,13 @@ namespace WebConversor.Controllers
             return Ok();
         }
 
+        
+        //hacer que contacte con nosotros
+        [HttpPost]
+        public async Task<ActionResult> Contact(string email,string theme, string body)
+        {
+            await _emailService.SendEmail(email,theme,body);
+            return Ok();
+        }
     }
 }

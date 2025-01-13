@@ -17,4 +17,5 @@ export const environment = {
   // apiUrl2:'http://localhost:25850/api/History',
   // apiUrl3:'http://localhost:25850/api/api',
   // apiUrl4:'http://localhost:25850/api/Pdf',
+  // apiUrl5:'http://localhost:25850/api/Email',
 };
