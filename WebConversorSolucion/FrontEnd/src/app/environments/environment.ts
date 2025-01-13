@@ -10,6 +10,7 @@ export const environment = {
   apiUrl2:'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/History',
   apiUrl3:'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/api',
   apiUrl4:'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/Pdf',
+  apiUrl5:'https://appconversor-g3aagrgqg0hrejgh.northeurope-01.azurewebsites.net/api/Email',
 
   //Produccion
   // apiUrl: 'http://localhost:25850/api/user',

@@ -1,35 +1,73 @@
-<div>
-    <button 
-      class="bg-red-600 fixed h-14 w-14 right-10 bottom-1/2 pl-4 rounded-full hover:bg-red-500 focus:outline-none"
-      (click)="toggleWindow()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-    </button>
-  </div>
-  
-  <div 
-    *ngIf="showWindow" 
-    class="fixed right-28 top-1/2 transform -translate-y-1/2 bg-white p-6 shadow-lg rounded-lg h-1/3 w-1/3 text-black">
-    <h2>Formulario</h2>
-    <div class="mb-4">
-        <label for="name" class="block text-sm font-medium">Nombre</label>
-        <input
-          id="name"
-          formControlName="name"
-          type="text"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-  
-      <!-- Apellido -->
-      <div class="mb-4">
-        <label for="lastName" class="block text-sm font-medium">Algo</label>
-        <input
-          id="lastName"
-          formControlName="lastName"
-          type="text"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-      <button>Enviar</button>
+<!--<div>-->
+<!--    <button -->
+<!--      class="bg-red-600 fixed h-14 w-14 right-10 bottom-1/2 pl-4 rounded-full hover:bg-red-500 focus:outline-none"-->
+<!--      (click)="toggleWindow()">-->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--  -->
+<!--  <div -->
+<!--    *ngIf="showWindow" -->
+<!--    class="fixed right-28 top-1/2 transform -translate-y-1/2 bg-white p-6 shadow-lg rounded-lg h-1/3 w-1/3 text-black">-->
+<!--    <h2>Formulario</h2>-->
+<!--    <div class="mb-4">-->
+<!--        <label for="name" class="block text-sm font-medium">Nombre</label>-->
+<!--        <input-->
+<!--          id="name"-->
+<!--          formControlName="name"-->
+<!--          type="text"-->
+<!--          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"-->
+<!--        />-->
+<!--      </div>-->
+<!--  -->
+<!--      &lt;!&ndash; Apellido &ndash;&gt;-->
+<!--      <div class="mb-4">-->
+<!--        <label for="lastName" class="block text-sm font-medium">Algo</label>-->
+<!--        <input-->
+<!--          id="lastName"-->
+<!--          formControlName="lastName"-->
+<!--          type="text"-->
+<!--          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"-->
+<!--        />-->
+<!--      </div>-->
+<!--      <button>Enviar</button>-->
 
+<!--</div>-->
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-6 text-center">Contact Us</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <!-- Subject -->
+    <div class="mb-4">
+      <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+      <input
+        id="subject"
+        type="text"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Enter the subject"
+        formControlName="Subject"
+      />
+    </div>
+
+    <!-- Body -->
+    <div class="mb-4">
+      <label for="body" class="block text-sm font-medium text-gray-700">Body</label>
+      <textarea
+        id="body"
+        rows="4"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Enter your message"
+        formControlName="Body"
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        Send
+      </button>
+    </div>
+  </form>
 </div>

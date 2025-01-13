@@ -35,12 +35,12 @@ export class AuthService {
     return !!localStorage.getItem('accessToken');
   }
 
-  //metodo para iniciar sesión
-  // login(email: string, password: string): Observable<any> {
-  //   const body = { "email": email, "password": password };
-  //   return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
-  // }
+  sendEmail(email:string,subject:string,body:string):Observable<any>{
 
+    const data = {email,subject,body};
+    return this.http.post(`${this.apiUrl}/SendEmail`,data);
+  }
+  //metodo para iniciar sesión
   login(email: string, password: string): Observable<any> {
     const body = { "email": email, "password": password };
     return this.http.post<any>(`${this.apiUrl}/Login`, body).pipe(

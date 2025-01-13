@@ -8,6 +8,7 @@ import {HistoryComponent} from './pages/history/history.component';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {AboutComponent} from './pages/about/about.component';
 import {ProfileComponent} from './pages/auth/profile/profile.component';
+import {ContactFormComponent} from './shared/components/contact-form/contact-form.component';
 //Aqui añadimos las rutas de la app. Asociamos cada ruta con un componente.
 //Si la ruta necesita un parámetro, se pone nombreAccion/:nombreDelParametro
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'history', component: HistoryComponent },
   {path: 'about', component: AboutComponent },
   {path: 'profile', component: ProfileComponent },
+  {path: 'contact-us', component: ContactFormComponent },
   {path: 'not-found', component:NotFoundComponent },
   {path: '**', component:NotFoundComponent },
 ];
