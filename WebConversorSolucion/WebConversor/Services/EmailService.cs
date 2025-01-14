@@ -6,7 +6,7 @@ namespace WebConversor.Services
     public interface IEmailService
     {
         Task SendEmail(string emailReceptor, string theme, string body);
-        Task Contact(string emailClient, string theme, string body);
+        Task Contact(string theme, string body);
     }
 
     public class EmailService : IEmailService
@@ -38,7 +38,7 @@ namespace WebConversor.Services
             await smtpClient.SendMailAsync(message);
         }
         //Harcodear correo de receptor
-        public async Task Contact(string emailClient,string theme, string body)
+        public async Task Contact(string theme, string body)
         {
             var smtpClient = new SmtpClient(_host, _port);
             smtpClient.EnableSsl = true;

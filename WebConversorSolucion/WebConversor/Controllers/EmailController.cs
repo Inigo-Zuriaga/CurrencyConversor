@@ -24,9 +24,9 @@ namespace WebConversor.Controllers
         
         //hacer que contacte con nosotros
         [HttpPost("Contact")]
-        public async Task<ActionResult> Contact(string email,string theme, string body)
+        public async Task<ActionResult> Contact(string theme, string body)
         {
-            await _emailService.SendEmail(email,theme,body);
+            await _emailService.Contact(theme,body);
             return Ok();
         }
     }

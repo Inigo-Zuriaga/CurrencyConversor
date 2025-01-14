@@ -28,11 +28,9 @@ export class ContactFormComponent {
       Subject: this.contactForm.value.Subject,
       Body: this.contactForm.value.Body,
     };
-    console.log("Llega aqui")
-
     this.email = this.authService.getUserEmail();
 
-    this.emailService.sendEmail(this.email,EmailData.Subject, EmailData.Body).subscribe(
+    this.emailService.contactUs(this.email,EmailData.Subject, EmailData.Body).subscribe(
 
       (data) => {
         console.log("Respuesta del backend:", data);
@@ -43,10 +41,5 @@ export class ContactFormComponent {
       }
 
     );
-  }
-
-
-  toggleWindow(): void {
-    this.showWindow = !this.showWindow;
   }
 }

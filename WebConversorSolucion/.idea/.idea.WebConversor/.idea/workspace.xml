@@ -13,6 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bef7171b-7532-4015-9e46-6a47f2aa53d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebConversor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/pages/auth/register/register.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/services/email.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/services/email.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/app/shared/components/contact-form/contact-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/app/shared/components/contact-form/contact-form.component.ts" afterDir="false" />
@@ -158,7 +159,7 @@
       <workItem from="1736438132201" duration="7645000" />
       <workItem from="1736529410009" duration="1698000" />
       <workItem from="1736789044722" duration="6433000" />
-      <workItem from="1736870364038" duration="2796000" />
+      <workItem from="1736870364038" duration="6138000" />
     </task>
     <servers />
   </component>
