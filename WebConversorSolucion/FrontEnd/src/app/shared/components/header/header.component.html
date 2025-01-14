@@ -3,18 +3,19 @@
     <a href="#" class="text-2xl font-regularb font-bold text-white">CONVERSOR</a>
 
     <!-- Desktop Navigation Links -->
-    <nav class="hidden md:flex space-x-7">
+    <nav class="hidden md:flex space-x-7 items-center">
         <a *ngIf="isLoged" routerLink="/conversor" class="text-white hover:text-blue-300">Convert</a>
         <a routerLink="/about" class="text-white hover:text-blue-300">About</a>
         <a *ngIf="isLoged" routerLink="/history" class="text-white hover:text-blue-300">Historial</a>
-        <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300 ml-auto">Login</a>
-      <app-dropdown *ngIf="isLoged"
-                    [buttonImageUrl]="imageSrc || 'assets/images/profile/sinPerfil.png'"
-                    [dropdownClass]="'bg-gray-100'"
-                    [useRouter]="true"
-                    [options]="options">
-      </app-dropdown>
-
+        <a *ngIf="!isLoged" routerLink="/login" class="text-white hover:text-blue-300">Login</a>
+        <app-dropdown 
+            *ngIf="isLoged"
+            class="ml-auto"
+            [buttonImageUrl]="imageSrc || 'assets/images/profile/sinPerfil.png'"
+            [dropdownClass]="'bg-gray-100'"
+            [useRouter]="true"
+            [options]="options">
+        </app-dropdown>
     </nav>
 
     <!-- Mobile Menu Button -->
