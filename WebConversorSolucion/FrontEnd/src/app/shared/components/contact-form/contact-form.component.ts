@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
+import {EmailService} from '../../../services/email.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,7 +14,8 @@ export class ContactFormComponent {
   contactForm: FormGroup;
 
   // constructor que recive FormBuilder y AuthService
-  constructor(private fb: FormBuilder, private authService: AuthService, private route: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService,
+              private route: Router,private emailService:EmailService) {
     // inicializa el formulario de login usando FormBuilder
     this.contactForm = this.fb.group({
       Subject: [''],
@@ -30,7 +32,7 @@ export class ContactFormComponent {
 
     this.email = this.authService.getUserEmail();
 
-    this.authService.sendEmail(this.email,EmailData.Subject, EmailData.Body).subscribe(
+    this.emailService.sendEmail(this.email,EmailData.Subject, EmailData.Body).subscribe(
 
       (data) => {
         console.log("Respuesta del backend:", data);

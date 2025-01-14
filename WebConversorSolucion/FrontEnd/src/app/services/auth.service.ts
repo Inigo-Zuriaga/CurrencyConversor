@@ -39,11 +39,6 @@ export class AuthService {
 
   sendEmail(email:string,subject:string,body:string):Observable<any>{
 
-    // const data = {
-    //   "email": email,
-    //   "subject": subject,
-    //   "body": body
-    // };
     const params = new HttpParams()
       .set('email', email)
       .set('theme', subject)
@@ -52,7 +47,8 @@ export class AuthService {
     // console.log("El data");
     // console.log(data);
     // return this.http.post(`${this.apiEmail}/SendEmail`,data);
-    return this.http.post(`http://localhost:25850/api/Email`,null,{params});
+    return this.http.post(`${this.apiEmail}/SendEmail`,null,{params});
+    // return this.http.post(`http://localhost:25850/api/Email`,null,{params});
   }
   //metodo para iniciar sesión
   login(email: string, password: string): Observable<any> {

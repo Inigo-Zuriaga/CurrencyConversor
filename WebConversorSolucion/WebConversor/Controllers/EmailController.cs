@@ -14,7 +14,7 @@ namespace WebConversor.Controllers
             _emailService = emailService;
         }
 
-        [HttpPost]
+        [HttpPost("SendEmail")]
         public async Task<ActionResult> SendEmail(string email,string theme, string body)
         {
             await _emailService.SendEmail(email,theme,body);
@@ -23,7 +23,7 @@ namespace WebConversor.Controllers
 
         
         //hacer que contacte con nosotros
-        [HttpPost]
+        [HttpPost("Contact")]
         public async Task<ActionResult> Contact(string email,string theme, string body)
         {
             await _emailService.SendEmail(email,theme,body);
