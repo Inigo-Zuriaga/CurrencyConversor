@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {Subscription} from 'rxjs';
-
+import {ChartComponent} from '../../shared/components/chart/chart.component';
 //Como indique antes, el nombre del componente lo encontramos en el selector
 @Component({
   selector: 'app-main-page',
@@ -11,7 +11,8 @@ import {Subscription} from 'rxjs';
 export class MainPageComponent implements OnInit, OnDestroy {
   userSub!: Subscription;
   isLoged: boolean = false;
-
+  conversions: any[] = [];
+  name: string = '';
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -22,6 +23,13 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     // Verificar el estado actual de autenticación
     this.isLoged = this.authService.UserIsLogged();
+
+    this.authService.getUserData().subscribe(
+      (data: any) => {
+        this.name = data.name;
+      }
+    )
+
   }
 
   ngOnDestroy(): void {

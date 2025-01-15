@@ -1,0 +1,7 @@
+<div *ngIf="convertions.length>0" class="card flex justify-center">
+  <p-chart type="pie" [data]="data" [options]="options" class="w-full md:w-[18rem]" />
+</div>
+
+<div *ngIf="convertions.length<1" >
+  <h1>No has realizado ninguna conversión aun</h1>
+</div>

@@ -20,4 +20,3 @@ global using Azure;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Http;
 global using System.Net.Mime;
-global using WebConversor.Helpers;

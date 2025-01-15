@@ -80,11 +80,10 @@ public class UserService
     }
 
 // Método para iniciar sesión con las credenciales del usuario
-    public async Task<string> LoginUser(LoginRequest request)
+    public async Task<Boolean> LoginUser(LoginRequest request)
     {
         try
         {
-
             //Borrar los console
             Console.WriteLine("Datos recibidos en el endpoint Login:");
             Console.WriteLine($"Email: {request.Email}");
@@ -94,7 +93,7 @@ public class UserService
 
             if (userExist == null)
             {
-                return "El correo o la contraseña son incorrectos";
+                return false;
             }
 
             var passwordVerificationResult =
@@ -102,15 +101,17 @@ public class UserService
 
             if (passwordVerificationResult == PasswordVerificationResult.Failed)
             {
-                return "El correo o la contraseña son incorrectos";
+                return false;
             }
 
-            return GenerateJwtToken(userExist.Email);
+            return true;
+            // return GenerateJwtToken(userExist.Email);
         }
         catch (Exception ex)
         {
             // Loguear el error o enviarlo al cliente
-            return $"Error al procesar la solicitud: {ex.Message}";
+            // return $"Error al procesar la solicitud: {ex.Message}";
+            return false;
         }
     }
 
@@ -152,7 +153,8 @@ public class UserService
         var claims = new[]
         {
             //Indicamos los datos que queremos pasar con el token
-            new Claim("email", email)
+            new Claim("email", email),
+            // new Claim("img", img)
             //new Claim(JwtRegisteredClaimNames.Exp, expirationTime.ToString()) // Tiempo de expiraci�n
         };
 

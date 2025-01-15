@@ -29,9 +29,6 @@ export class HeaderComponent implements OnInit,OnDestroy{
       });
       }
   }
-
-
-  // this.authService.getAccessToken();
   ngOnInit():void {
     //
     this.userSub = this.authService.isLogged.subscribe((value) => {
@@ -42,14 +39,11 @@ export class HeaderComponent implements OnInit,OnDestroy{
       next: (value):any => {
         this.isLoged=value;
 
-        // this.authService.getUserData().pipe(debounceTime(2000)).subscribe((data) => {
-        //   console.log("Los Datossss:", data);
-        //   this.imageSrc = data.img; // Carga la foto del usuario
-        // });
-        this.authService.getUserData().pipe(debounceTime(2000)).subscribe({
+        this.authService.getUserData().subscribe({
           next: (data):any => {
 
           console.log("Los Datossss:", data);
+
           this.imageSrc = data.img; // Carga la foto del usuario
         }});
 
@@ -57,53 +51,26 @@ export class HeaderComponent implements OnInit,OnDestroy{
 
     })
 
-    // this.isLoged = this.authService.UserIsLogged();
-    // this.userSub=this.authService.isLogged.pipe(debounceTime(2000)).subscribe({
-    //   next: (value):any => {
-    //     this.isLoged=value;
-    //
-    //     this.authService.getUserData().pipe(debounceTime(2000)).subscribe((data) => {
-    //       console.log("Los Datossss:", data);
-    //       this.imageSrc = data.img; // Carga la foto del usuario
-    //     });
-    //
-    //   }
-    //
-    // })
-
-    //ESTO ESTABA ANTES
-    // this.authService.photoData$.pipe(debounceTime(2000)).subscribe((photo) => {
-    //   this.imageSrc = photo;
-    // });
-
-    this.authService.photoData$.pipe(debounceTime(2000)).subscribe({
+    this.authService.photoData$.subscribe({
       next: (value):any => {
 
       this.imageSrc = value;
     }});
-    //Obtenemos la foto de perfil del usuario en tiempo real
-    // this.authService.getUserData().subscribe((data) => {
-    //   console.log("Los Datossss:", data);
-    //   this.imageSrc = data.img; // Carga la foto inicial
-    // });
+
     //Nos suscibimos al BehaviorSubject para obtener la foto de perfil
 
 
     this.isLoged = this.authService.UserIsLogged();
   }
-  // getUserData():Observable<any>{
-  //
-  //   // return this.http.post(`${this.apiUrl}/GetUser`, JSON.stringify(email));
-  //   return this.http.get(`${this.apiUrl}/GetUserData`);
-  //
-  //
-  // }
 
   disconnect(){
+    console.log("Cerrando sesión, eliminando token...");
     this.authService.deleteToken();
+    localStorage.clear(); // Limpia el localStorage completamente
+    // this.authService.photoSubject.next('');
     this.userSub.unsubscribe();
     this.authService.logged.next(false);
-    // this.imageSrc ='' ;
+    this.imageSrc ='' ;
     this.router.navigate(['/']);
   }
   ngOnDestroy(): void {

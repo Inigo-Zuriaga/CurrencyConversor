@@ -1,7 +1,6 @@
 
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-2xl font-bold text-center mb-8">Selecciona una foto de perfil</h1>
-  <h4 class="text-1xl text-center mb-8">Para ver el cambio se debe recargar la pagina</h4>
   <div class="grid grid-cols-2 gap-4">
     <div class="flex justify-center">
       <img src="assets/images/profile/perfil1.png" alt="Profile 1" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil1.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil1.png'}" (click)="selectProfilePicture('assets/images/profile/perfil1.png')">

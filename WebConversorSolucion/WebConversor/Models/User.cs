@@ -8,5 +8,5 @@ public class User
     public string Email { get; set; } = string.Empty;
     public DateTime? FechaNacimiento { get; set; }
     public string Password { get; set; } = string.Empty;
-    public string? Img { get; set; } = string.Empty;
+    public string? Img { get; set; } 
 }
