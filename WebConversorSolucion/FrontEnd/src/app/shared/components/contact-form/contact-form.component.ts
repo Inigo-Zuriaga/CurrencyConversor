@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
@@ -9,11 +9,10 @@ import {EmailService} from '../../../services/email.service';
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.css'
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnInit {
   showWindow = false;
   contactForm: FormGroup;
-
-  // constructor que recive FormBuilder y AuthService
+  email: string = '';
   constructor(private fb: FormBuilder, private authService: AuthService,
               private route: Router,private emailService:EmailService) {
     // inicializa el formulario de login usando FormBuilder
@@ -22,7 +21,13 @@ export class ContactFormComponent {
       Body: [''],
     });
   }
-  email: string = '';
+
+  ngOnInit() {
+    if (!this.authService.UserIsLogged()){
+      this.route.navigate(['/']);
+    }
+  }
+
   onSubmit() {
     const EmailData = {
       Subject: this.contactForm.value.Subject,
