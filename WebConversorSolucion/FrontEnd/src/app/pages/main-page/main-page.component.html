@@ -46,9 +46,9 @@
 
     <!-- Call to Action -->
     <section class=" text-center space-x-10 items-center mt-10 mb-10 ">
-      <p  class="text-lg text-white2 mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
-      <a href="/conversor" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Conversor</a>
-      <a *ngIf="!isLoged" href="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-bold px-5 py-2">Go to the Login</a>
+      <p *ngIf="!isLoged" class="text-lg text-white2 mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
+      <a *ngIf="isLoged" routerLink="/conversor" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Conversor</a>
+      <a *ngIf="!isLoged" routerLink="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-bold px-5 py-2">Go to the Login</a>
     </section>
   </div>
 
