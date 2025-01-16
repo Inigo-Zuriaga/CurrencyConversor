@@ -19,8 +19,10 @@ namespace WebConversor.Services
         public EmailService(IConfiguration configuration)
         {
             _configuration = configuration;
-            _emailEmisor = _configuration.GetValue<string>("CONFIGURACIONES_EMAIL:EMAIL");
-            _password = _configuration.GetValue<string>("CONFIGURACIONES_EMAIL:PASSWORD");
+            // _emailEmisor = _configuration.GetValue<string>("CONFIGURACIONES_EMAIL:EMAIL");
+            // _password = _configuration.GetValue<string>("CONFIGURACIONES_EMAIL:PASSWORD");
+            _emailEmisor = Environment.GetEnvironmentVariable("EMAIL");
+            _password = Environment.GetEnvironmentVariable("PASSWORD");
             _host = _configuration.GetValue<string>("CONFIGURACIONES_EMAIL:HOST");
             _port = _configuration.GetValue<int>("CONFIGURACIONES_EMAIL:PORT");
         }
