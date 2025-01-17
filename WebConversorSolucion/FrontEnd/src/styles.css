@@ -36,6 +36,16 @@ main {
   );
   --background-size: 300% 300%;
   --animation-gradient: gradientAnimation 8s ease infinite;
+
+  /*canvas {*/
+  /*  position : absolute;*/
+  /*  z-index : -1;*/
+  /*  overflow: hidden;*/
+  /*  width:100vw;*/
+  /*  height:100vh;*/
+  /*  background-color:black;*/
+  /*}*/
+
 }
 
 body {
@@ -43,6 +53,7 @@ body {
   background-size: cover;
   background-color: khaki;
 }
+
 
 body {
   margin: 0;
@@ -58,8 +69,15 @@ body {
   rgba(147, 51, 234, 0.5),
   rgba(244, 63, 94, 0.5)
 );
-  /*background-size: 300% 300%;*/
-  /*animation: gradientAnimation 8s ease infinite;*/
+
+  HTML CSS JSResult Skip Results Iframe
+  EDIT ON
+  * { margin:0; padding:0; }
+
+  html, body { width:100vw; height:100vh; } /* just to be sure these are full screen*/
+
+
+
 }
 
 /* Animación para el degradado */

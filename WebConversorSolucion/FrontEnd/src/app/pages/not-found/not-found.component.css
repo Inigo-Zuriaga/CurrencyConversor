@@ -16,6 +16,12 @@
   animation: elevator 2s ease-in-out infinite;
 }
 
-
+.no-background canvas {
+  display: none;
+}
+#unique-page-id canvas,
+.specific-page-class canvas {
+  display: none;
+}
 
 

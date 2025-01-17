@@ -19,6 +19,9 @@
 <!--</div>-->
 
 <!--</div>-->
+<div class="no-background">
+  <div id="unique-page-id">
+    <!-- Contenido de la página específica -->
 <div class="mi-componente-fondo min-h-screen flex items-center justify-center">
   <div id="text" class="text-center">
     <!-- Número 404 con la moneda como "0" -->
@@ -50,3 +53,13 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.pathname === '/pagina-especifica') {
+      document.body.classList.add('no-background');
+    }
+  });
+</script>
