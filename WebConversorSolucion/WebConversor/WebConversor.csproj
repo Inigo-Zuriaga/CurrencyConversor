@@ -4,25 +4,17 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>5dcf7315-6799-447a-98af-845066193391</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="libwkhtmltox.dll" />
-    <None Remove="libwkhtmltox.dylib" />
-    <None Remove="libwkhtmltox.so" />
     <None Remove="test.pdf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="libwkhtmltox.dll">
+    <None Update=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="libwkhtmltox.dylib">
+    </None>
+    <None Update="Images\Logo_Nombre2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="libwkhtmltox.so">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -38,23 +30,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+    <PackageReference Include="PuppeteerSharp" Version="20.0.5" />
+    <PackageReference Include="QuestPDF" Version="2025.1.0-alpha0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Controllers\WeatherForecastController.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <PackageReference Include="WkHtmlToPdf" Version="1.0.2" />
+    <PackageReference Include="wkhtmltopdf.x64" Version="0.12.6" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Exports\test.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="HtmlTemplates\historyPdf.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

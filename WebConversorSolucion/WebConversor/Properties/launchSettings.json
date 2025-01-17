@@ -14,7 +14,6 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,  
       "launchUrl": "swagger",
-      //"applicationUrl": "http://localhost:5076",
       "applicationUrl": "http://localhost:25850",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -24,6 +23,14 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "DinkToPdf": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:25850/api/Pdf",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

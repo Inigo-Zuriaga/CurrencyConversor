@@ -13,4 +13,8 @@ public class HistoryRequest
      public DateTime Date { get; set; } = DateTime.Now;
      
      public string Email { get; set; }
+     
+     public string  Name { get; set; }
+     
+     public string LastName { get; set; }
 }

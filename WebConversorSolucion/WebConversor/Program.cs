@@ -1,7 +1,6 @@
-using DinkToPdf;
-using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
+
 // using Serilog;
 
 
@@ -21,6 +20,7 @@ builder.Services.AddHttpClient<IApiService, ApiService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<HistoryService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddTransient<PdfService>();
 
 
 // Configuracion de JWT
@@ -42,15 +42,32 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = jwtSettings["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
     };
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("Authentication failed: " + context.Exception.Message);
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine("Token validated: " + context.SecurityToken);
+            return Task.CompletedTask;
+        }
+    };
 });
 
 // Configuracion de CORS para permitir solicitudes desde tu frontend Angular
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowOrigin", builder =>
+    options.AddPolicy("AllowAll", builder =>
     {
         //Cambiar esto a la hora de produccion
-        builder.WithOrigins("http://localhost:4200") // Cambia esto a la URL de tu frontend
+        // builder.WithOrigins("https://conversor-git-main-inigozuriagas-projects.vercel.app/") // Cambia esto a la URL de tu frontend
+        // Cambia esto a la URL de tu frontend
+        builder
+                //.WithOrigins("http://localhost:4200")
+               .AllowAnyOrigin()
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
@@ -61,7 +78,6 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString;
     });
 
-builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 // Configuracion de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
@@ -70,11 +86,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
-        //builder.Configuration["ConnectionStrings:AzureConexion"]);
+        // builder.Configuration["ConnectionStrings:AzureConexion"]);
     
     // Si se quiere trabajar con la base en local descomentar la siguiente linea
-         builder.Configuration["ConnectionStrings:CadenaConexion"]);
+         builder.Configuration["ConnectionStrings:AzureConexion"]);
 });
+
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();
 
@@ -85,19 +103,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+//Ver si se puede borrar
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "Exports")),
-    // Path.Combine(Directory.GetCurrentDirectory(), "Exports")),
-    // Path.Combine(Directory.GetCurrentDirectory(), "Files")),
+  
     RequestPath = "/Files"
 });
 
 // Aplica la politica de CORS antes de autorizacion y controladores
-app.UseCors("AllowOrigin");
-
+//app.UseCors("AllowOrigin");
+app.UseCors("AllowAll");
 // Configura las rutas y middlewares
+app.UseHttpsRedirection();
 app.UseAuthentication();  // Para permitir la autenticaci�n
 app.UseAuthorization();   // Para permitir la autorizaci�n
 

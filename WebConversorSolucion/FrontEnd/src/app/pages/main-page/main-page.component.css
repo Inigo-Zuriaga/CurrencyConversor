@@ -3,46 +3,6 @@ p{
     font-size: large;
     text-align: center;
 }
-/*.animated-border {*/
-/*  position: relative;*/
-/*  border: 2px solid transparent;*/
-/*  border-radius:20px; !* Para un borde redondeado consistente *!*/
-/*  padding: 1rem;*/
-/*  background-clip: padding-box;*/
-/*  z-index: 0;*/
-/*}*/
-
-/*.animated-border::before {*/
-/*  content: "";*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*  bottom: 0;*/
-/*  border-radius: 8px;*/
-/*  margin: -4px; !* Ajusta para que el borde se mantenga fuera del contenido *!*/
-/*  background: linear-gradient(90deg, #ffffff, #f5ffdd, #9fb6ff, #a4b0ea);*/
-/*  background-size: 400% 400%;*/
-/*  z-index: -1;*/
-/*  animation: gradient-border 6s infinite linear;*/
-/*}*/
-
-/*@keyframes gradient-border {*/
-/*  0% {*/
-/*    background-position: 0% 50%;*/
-/*  }*/
-/*  50% {*/
-/*    background-position: 100% 50%;*/
-/*  }*/
-/*  100% {*/
-/*    background-position: 0% 50%;*/
-/*  }*/
-/*}*/
-
-/*body {*/
-/*background-image: url("../../../assets/MonedaWork.gif");*/
-/*  background-size: cover;*/
-/*}*/
 
 #clase1 {
 border-radius: 12px;
@@ -56,3 +16,9 @@ border-radius: 12px;
   border-radius: 12px;
 }
 
+.bg-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

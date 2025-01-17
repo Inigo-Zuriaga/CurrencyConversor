@@ -1,21 +1,21 @@
 
 <div class="container mx-auto px-4 py-8">
-  <h1 class="text-2xl font-bold text-center mb-8">Select Your Profile Picture</h1>
+  <h1 class="text-2xl font-bold text-center mb-8">Selecciona una foto de perfil</h1>
   <div class="grid grid-cols-2 gap-4">
     <div class="flex justify-center">
-      <img src="assets/images/profile/perfil1.png" alt="Profile 1" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'profile1.jpg', 'border-transparent': selectedPicture !== 'profile1.jpg'}" (click)="selectProfilePicture('profile1.jpg')">
+      <img src="assets/images/profile/perfil1.png" alt="Profile 1" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil1.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil1.png'}" (click)="selectProfilePicture('assets/images/profile/perfil1.png')">
     </div>
     <div class="flex justify-center">
-      <img src="assets/images/profile/perfil2.png" alt="Profile 2" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'profile2.jpg', 'border-transparent': selectedPicture !== 'profile2.jpg'}" (click)="selectProfilePicture('profile2.jpg')">
+      <img src="assets/images/profile/perfil2.png" alt="Profile 2" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil2.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil2.png'}" (click)="selectProfilePicture('assets/images/profile/perfil2.png')">
     </div>
     <div class="flex justify-center">
-      <img src="assets/images/profile/perfil3.png" alt="Profile 3" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'profile3.jpg', 'border-transparent': selectedPicture !== 'profile3.jpg'}" (click)="selectProfilePicture('profile3.jpg')">
+      <img src="assets/images/profile/perfil3.png" alt="Profile 3" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil3.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil3.png'}" (click)="selectProfilePicture('assets/images/profile/perfil3.png')">
     </div>
     <div class="flex justify-center">
-      <img src="assets/images/profile/perfil4.png" alt="Profile 4" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'profile4.jpg', 'border-transparent': selectedPicture !== 'profile4.jpg'}" (click)="selectProfilePicture('profile4.jpg')">
+      <img src="assets/images/profile/perfil4.png" alt="Profile 4" class="w-32 h-32 rounded-full cursor-pointer border-4" [ngClass]="{'border-blue-500': selectedPicture === 'assets/images/profile/perfil4.png', 'border-transparent': selectedPicture !== 'assets/images/profile/perfil4.png'}" (click)="selectProfilePicture('assets/images/profile/perfil4.png')">
     </div>
   </div>
   <div class="text-center mt-8">
-    <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="confirmSelection()">Confirm Selection</button>
+    <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="confirmSelection()">Confirmar</button>
   </div>
 </div>

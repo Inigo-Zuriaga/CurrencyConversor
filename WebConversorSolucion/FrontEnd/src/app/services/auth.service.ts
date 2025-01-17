@@ -3,32 +3,56 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {jwtDecode, JwtPayload} from 'jwt-decode';
 import {environment} from "../environments/environment";
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
-   private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
-  private apiUrl3 = 'http://localhost:25850/api/History';  // URL de la API backend
+   // private apiUrl = 'http://localhost:25850/api/user';  // URL de la API backend
+
+   private apiUrl = environment.apiUrl;  // API/User
   //private apiUrl=environment.apiUrl;
-  private apiUrl2=environment.apiUrl2;
+  private apiUrl2=environment.apiUrl2; // API/History
+
+  private apiEmail=environment.apiUrl5; // API/Email
 
 
   // variable que indica si el usuario está logueado o no
   logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged());
-  // logged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.UserIsLogged() || !this.isTokenExpired());
 
-  private historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); // Estado inicial vacío
-  public historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
+   historySubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+   historyData$ = this.historySubject.asObservable(); // Exponemos el observable para que otros se suscriban
 
+  photoSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  //  photoSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+   photoData$ = this.photoSubject.asObservable();
   constructor(private http: HttpClient) {
     this.logged.next(this.UserIsLogged());
   }
 
-  // método para iniciar sesión
+  UserIsLogged():boolean{
+    this.isTokenExpired();
+    return !!localStorage.getItem('accessToken');
+  }
+
+  //metodo para iniciar sesión
   login(email: string, password: string): Observable<any> {
     const body = { "email": email, "password": password };
-    return this.http.post<any>(`${this.apiUrl}/Login`, body); // Asegúrate de que la respuesta sea tipo 'any' para aceptar el token
+    return this.http.post<any>(`${this.apiUrl}/Login`, body).pipe(
+      tap((response) => {
+        if (response && response.token) {
+          this.storeToken(response.token);
+          this.fetchUserData(); // Carga los datos del usuario actual
+        }
+      })
+    );
+  }
+  fetchUserData() {
+    this.getUserData().subscribe((data: any) => {
+      this.photoSubject.next(data.img); // Actualiza la foto
+    });
   }
 
   updateHistory(historyData: any[]) {
@@ -41,7 +65,7 @@ export class AuthService {
   }
 
 
-  // método para registrar un usuario nuevo
+  // metodo para registrar un usuario nuevo
   signIn(name:string,
          lastName:string,
          email: string,
@@ -50,12 +74,20 @@ export class AuthService {
          img:string): Observable<any> {
 
     const body = { name,lastName,email,fechaNacimiento,password,img };
-    return this.http.post(`${this.apiUrl}/SignIn`, body/*, { observe: 'response' }*/);
-
+    return this.http.post(`${this.apiUrl}/SignIn`, body);
   }
 
-  changePicture(){
+  // getUserData(email:string):Observable<any>{
+  getUserData():Observable<any>{
 
+    return this.http.get(`${this.apiUrl}/GetUserData`);
+  }
+
+  changePicture(email:string,profileImg: string):Observable<any>{
+
+    const body = {"Email": email, "Img":profileImg };
+
+    return this.http.post(`${this.apiUrl}/ChangeProfile`, body);
   }
 
   viewHistory(email: string): Observable<any> {
@@ -85,11 +117,6 @@ export class AuthService {
   }
 
   //Borra el token del localstorage
-  // deleteToken():void {
-  //   localStorage.removeItem('accessToken');
-  //   this.logged.next(false);
-  // }
-
   deleteToken(): void {
     localStorage.removeItem('accessToken');
     this.logged.next(false); // Publica que el usuario ha cerrado sesión
@@ -105,9 +132,8 @@ export class AuthService {
       const expirationDate = decodedToken.exp * 1000; // El valor de 'exp' está en segundos, así que multiplicamos por 1000 para pasarlo a milisegundos
       const currentTime = new Date().getTime(); // Obtenemos el tiempo actual en milisegundos
 
-      // return currentTime > expirationDate;
-      console.log("El tiempo actual es: ",currentTime);
-      console.log("La fecha de expiración es: ",expirationDate);
+      // console.log("El tiempo actual es: ",currentTime);
+      // console.log("La fecha de expiración es: ",expirationDate);
 
       if (currentTime > expirationDate) {
         this.deleteToken(); // Si el token ha expirado, lo borramos
@@ -122,19 +148,18 @@ export class AuthService {
     }
   }
 
-
   getUserToken():string{
     return <string>localStorage.getItem('email');
   }
-
+  getUserImgToken():string{
+    const decodedToken=this.decodeToken(this.getAccessToken());
+    return <string>localStorage.getItem('img');
+  }
   DeleteUsername(): void {
     localStorage.removeItem('username');
   }
   //Comprueba si hay un token almacenado en el localstorage. Y devuelve true si lo hay.
-  UserIsLogged():boolean{
-    this.isTokenExpired();
-    return !!localStorage.getItem('accessToken');
-  }
+
 
   decodeToken(token:string):any{
     try {

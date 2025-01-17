@@ -9,7 +9,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ConversorComponent } from './pages/conversor/conversor.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { PruebaComponent } from './prueba/prueba.component';
 import {loginInterceptor} from './Interceptors/login.interceptor';
 import {AuthInterceptor} from './Interceptors/auth.interceptor';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
@@ -22,10 +21,13 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HistorytableComponent } from './shared/components/historytable/historytable.component';
-
 import { CarouselModule } from 'primeng/carousel';
+import { ChartModule } from 'primeng/chart';
 import { ButtonModule } from 'primeng/button';
 import {TagModule} from 'primeng/tag';
+import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
+import { ChartComponent } from './shared/components/chart/chart.component';
+import { ContactFormComponent } from './shared/components/contact-form/contact-form.component';
 //En este Archivo importaremos todos los componentes que creemos y
 //los añadiremos a la lista de declarations.
 
@@ -38,7 +40,6 @@ import {TagModule} from 'primeng/tag';
     HeaderComponent,
     FooterComponent,
     ConversorComponent,
-    PruebaComponent,
     CurrencyChartComponent,
     RegisterComponent,
     HistoryComponent,
@@ -46,7 +47,10 @@ import {TagModule} from 'primeng/tag';
     AboutComponent,
     ProfileComponent,
     HistorytableComponent,
-    ProfileComponent
+    ProfileComponent,
+    DropdownComponent,
+    ChartComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import {TagModule} from 'primeng/tag';
     NgOptimizedImage,
     CarouselModule,
     ButtonModule,
-    TagModule
+    TagModule,
+    ChartModule
   ],
   providers: [
     {

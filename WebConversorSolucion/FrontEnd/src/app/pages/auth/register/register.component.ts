@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Iuser} from '../../../Interfaces/iuser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {EmailService} from '../../../services/email.service';
 
 @Component({
   selector: 'app-register',
@@ -20,24 +21,19 @@ export class RegisterComponent/* implements OnInit*/{
     fechaNacimiento:new Date(),
     img:''
   }
-
+  selectedPicture: string = '';
   // Constructor que inyecta el AuthService y FormBuilder para construir el formulario
-  constructor(private authService: AuthService,private fb: FormBuilder,private route:Router) {
+  constructor(private authService: AuthService,private fb: FormBuilder,
+              private route:Router,private emailService:EmailService) {
     // definir la estructura del form con sus campos y validaciones
     this.loginForm = this.fb.group({
-      name: ['', Validators.required],  // Nombre obligatorio
-      lastName: ['', Validators.required],  // Apellobligatorio
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],  // Email es obligatorio y debe tener un formato válido
       password: ['', [Validators.required, Validators.minLength(6)]],  // Contraseña obligatoria, mínimo 6 caracteres
       fechaNacimiento: [''],
       img: ['']  // La imagen no es obligatoria
     });
-  }
-      
-  ngOnInit(): void {
-    if (this.authService.UserIsLogged()){
-      this.route.navigate(['/']).then(r => { })
-    }
   }
 
   // función que se llama al enviar el form
@@ -52,13 +48,22 @@ export class RegisterComponent/* implements OnInit*/{
     )
       .subscribe(
         (data) => {
-          //hola
-        console.log(data);
-
-          //Comprobar si funciona dando errores (Puede que sea que detecta que salta un error lo que devuelve la api)
+          this.emailService.sendRegisterEmail(this.loginForm.value.email).subscribe(
+            (data) => {
+              console.log("Respuesta del backend:", data);
+            },
+            (error) => {
+              console.error("Error en el envio del email:", error);
+            }
+          )
           this.route.navigate(['/'])
-        //Si el registro es correcto, redirige al login
-
       });
   }
+
+  selectProfilePicture(picture: string) {
+    this.selectedPicture = picture;
+    this.loginForm.value.img= this.selectedPicture
+    console.log(`Selected profile picture: ${picture}`);
+  }
+
 }
