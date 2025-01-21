@@ -20,7 +20,6 @@ export class EmailService {
 
     this.subject="Registro en Conversor de Divisas";
 
-    // this.body=`Gracias por registrarte en Conversor de Divisas.`;
     this.body = `
 ¡Gracias por registrarte en Currency Converter! 🌟 Estamos emocionados de tenerte a bordo.
 
@@ -28,13 +27,10 @@ Con Currency Converter, puedes:
 - Convertir monedas en tiempo real con las tasas de cambio más actualizadas.
 - Guardar tus conversiones y acceder a tu historial de transacciones.
 
-### Tus credenciales:
+### Tus credenciales de registro :
 Correo electrónico: ${email}
 
 Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos a través de nuestro equipo de soporte en **currencyconversor@gmail.com**.
-
-Haz clic en el enlace de abajo para comenzar a explorar nuestras funcionalidades:
-👉 [Inicia Sesión en Currency Conversor](https://currency-conversor.vercel.app/login)
 
 Gracias por elegirnos para tus necesidades de conversión de divisas. ¡Esperamos ayudarte a convertir tus sueños en realidad, moneda por moneda!
 

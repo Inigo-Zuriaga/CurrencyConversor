@@ -11,29 +11,7 @@ public class HistoryController : ControllerBase
             _context = context;
             _historyService = historyService;
         }
-
-        // Endpoint para obtener el historial de intercambios de un usuario autenticado
-    //     [HttpGet]
-    //     public async Task<ActionResult<List<History>>> Get()
-    //     {
-    //         //Correo Hardcodeado para pruebas
-    //         var email = "ggrg2@gmail.com";
-    //
-    //         if (string.IsNullOrEmpty(email))
-    //         {
-    //             return Unauthorized("El usuario no está autenticado."); // Retorna 401 Unauthorized si no hay correo
-    //         }
-    //
-    //         // Obtiene el historial de intercambios del usuario ordenado por fecha descendente
-    //         List<History> exchangeList = await _context.ExchangeHistory
-    //             .Include(x => x.User) // Incluye los datos del usuario asociado
-    //             .Where(x => x.User.Email == email) // Filtra por correo electrónico
-    //             .OrderByDescending(x => x.Date) // Ordena por fecha descendente
-    //             .ToListAsync();
-    //
-    //     return Ok(exchangeList);
-    // }
-
+        
         // Endpoint para obtener el historial de intercambios basándose en un correo electrónico proporcionado
         [HttpPost("History")]
         public async Task<ActionResult<List<History>>> GetHistory([FromBody] string email)

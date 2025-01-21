@@ -132,16 +132,8 @@ public class UserController : ControllerBase
         {
             return Unauthorized(new { error = "El correo o la contraseña son incorrectos" });
         }
+        
 
-        // var userData = await _context.Users
-        //     .Where(x => x.Email == request.Email)
-        //     .Select(x => new {x.Img }) // Obtén solo los campos necesarios
-        //     .FirstOrDefaultAsync();
-        var imagen  = "userData.Img";
-        // Console.WriteLine("Datos del usuario logueado:");
-        // Console.WriteLine(userData.Img);
-        // Genera un token JWT para el usuario autenticado
-        // var token = _userService.GenerateJwtToken(request.Email,userData.Img);
         var token = _userService.GenerateJwtToken(request.Email);
 
         return Ok(new { Token = token });
