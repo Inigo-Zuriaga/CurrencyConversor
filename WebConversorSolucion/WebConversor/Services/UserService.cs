@@ -119,7 +119,9 @@ public class UserService
     public string GenerateJwtToken(string email)
     {
         var jwtSettings = _configuration.GetSection("JwtSettings"); // Obtiene configuración JWT
-        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])); // Llave secreta
+        // var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])); // Llave secreta
+        // var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])); // Llave secreta
+        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SecretKey")));
         var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256); // Credenciales de firma
 
         // Reclamaciones del token (datos que se incluirán)
