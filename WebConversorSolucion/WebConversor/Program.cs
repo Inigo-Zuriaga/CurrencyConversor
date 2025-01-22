@@ -1,20 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
 
-// using Serilog;
-
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Log.Logger = new LoggerConfiguration()
-//     .MinimumLevel.Debug()
-//     .WriteTo.Console()
-//     .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Day)
-//     .CreateLogger();
-
-
-// Agregar servicio de Serilog
-// builder.Logging.AddSerilog();
 // Add services to the container.
 builder.Services.AddHttpClient<IApiService, ApiService>();
 builder.Services.AddScoped<UserService>();
@@ -40,7 +28,8 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = jwtSettings["Issuer"],
         ValidAudience = jwtSettings["Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+        // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SecretKey")))
     };
     options.Events = new JwtBearerEvents
     {
@@ -86,8 +75,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseSqlServer(
-        // builder.Configuration["ConnectionStrings:AzureConexion"]);
-    
     // Si se quiere trabajar con la base en local descomentar la siguiente linea
          builder.Configuration["ConnectionStrings:AzureConexion"]);
 });
@@ -103,23 +90,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
-//Ver si se puede borrar
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "Exports")),
-  
-    RequestPath = "/Files"
-});
-
 // Aplica la politica de CORS antes de autorizacion y controladores
 //app.UseCors("AllowOrigin");
 app.UseCors("AllowAll");
 // Configura las rutas y middlewares
 app.UseHttpsRedirection();
-app.UseAuthentication();  // Para permitir la autenticaci�n
-app.UseAuthorization();   // Para permitir la autorizaci�n
+app.UseAuthentication();  // Para permitir la autenticacion
+app.UseAuthorization();   // Para permitir la autorizacion
 
 Env.Load();
 

@@ -114,39 +114,14 @@ public class UserService
             return false;
         }
     }
-
-    // public async Task<bool> GetUserData(string email)
-    // {
-    //     var userExist = _context.Users.FirstOrDefault(x => x.Email == email);
-    //
-    //     if (userExist == null)
-    //     {
-    //         // return "No se puede generar el historial, el usuario no existe";
-    //         return false;
-    //     }
-    //
-    //     try
-    //     {
-    //         var userData = await _context.ExchangeHistory
-    //             .Include(x => x.User)
-    //             .Where(x => x.User.Email == email)
-    //             .OrderByDescending(x => x.Date)
-    //             .ToListAsync();
-    //         
-    //         
-    //     }catch(Exception ex)
-    //     {
-    //         return false;
-    //     }
-    //     
-    //     
-    // }
-
+    
 //Configurar segun los datos que queramos pasar, genera un token JWT
     public string GenerateJwtToken(string email)
     {
         var jwtSettings = _configuration.GetSection("JwtSettings"); // Obtiene configuración JWT
-        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])); // Llave secreta
+        // var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])); // Llave secreta
+        // var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])); // Llave secreta
+        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SecretKey")));
         var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256); // Credenciales de firma
 
         // Reclamaciones del token (datos que se incluirán)
@@ -154,7 +129,6 @@ public class UserService
         {
             //Indicamos los datos que queremos pasar con el token
             new Claim("email", email),
-            // new Claim("img", img)
             //new Claim(JwtRegisteredClaimNames.Exp, expirationTime.ToString()) // Tiempo de expiraci�n
         };
 
