@@ -5,7 +5,7 @@ import { ExchangeService } from '../../services/exchange.service';
 import { AuthService } from '../../services/auth.service';
 import { ChartService } from '../../services/chart.service';
 import { Router } from '@angular/router';
-
+import { Subscription } from 'rxjs';
 interface Currency {
   name: string;
   shortname: string;
@@ -28,11 +28,14 @@ export class ConversorComponent implements OnInit {
   filteredCurrencies: Currency[] = [];
   email: string = '';
   lastLength: number = 0;
+  userSub!: Subscription;
+
 
   // Datos para el gráfico
   lineChartData: any = { datasets: [], labels: [] };
   historyData: any[] = [];
 
+  
   constructor(
     private exchangeService: ExchangeService,
     private http: HttpClient,
@@ -42,11 +45,18 @@ export class ConversorComponent implements OnInit {
 
   ) {}
 
+  isLoged:boolean= false;
   ngOnInit() {
 
-    if (!this.authService.UserIsLogged()){
-      this.route.navigate(['/']);
-    }
+    this.userSub = this.authService.isLogged.subscribe((value) => {
+      this.isLoged = value; // Actualiza automáticamente
+    });
+
+    this.isLoged = this.authService.UserIsLogged();
+
+    // if (!this.authService.UserIsLogged()){
+    //   this.route.navigate(['/']);
+    // }
 
     this.filteredCurrencies = this.currencies;
 
@@ -68,6 +78,10 @@ export class ConversorComponent implements OnInit {
         console.error("Error al obtener el historial:", error);
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 
   swapCurrencies() {

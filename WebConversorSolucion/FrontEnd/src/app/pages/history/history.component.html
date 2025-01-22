@@ -1,12 +1,12 @@
 
-<div id="contentToConvert" class="overflow-x-auto px-4 py-6">
-  <table *ngIf="historyData.length > 0" class="w-[90%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
+<div id="contentToConvert" class="overflow-x-auto px-4 py-6 mt-5">
+  <table *ngIf="historyData.length > 0" class="w-[80%] max-w-6xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg">
     <thead>
     <tr>
-      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Dinero Cambiado</th>
-      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Cantidad Obtenida</th>
-      <th class="py-2 px-6 border-b text-left text-gray-600 font-semibold bg-yellow-100">Fecha</th>
-      <th class="py-2 px-6 border-b text-center text-gray-600 font-semibold bg-yellow-100">Acciones</th>
+      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Exchanged Money</th>
+      <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100">Amount Received</th>
+      <th class="py-2 px-6 border-b text-left text-gray-600 font-semibold bg-yellow-100">Date</th>
+      <th class="py-2 px-6 border-b text-center text-gray-600 font-semibold bg-yellow-100">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
       <td class="py-2 px-4 border-b text-center">
         <button id="btn-borrar" (click)="deleteHistory(item.id)"
                 class="bg-red-600 text-white py-1 px-3 rounded-lg shadow-md hover:bg-red-500 transition">
-          Borrar
+          Delete
         </button>
       </td>
     </tr>
@@ -29,11 +29,11 @@
 <div *ngIf="historyData.length > 0" class="flex justify-center mt-6">
   <button (click)="crearPdf()"
           class="bg-green-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-500 transition">
-    Descargar PDF
+    Download PDF
   </button>
 
 </div>
 
 <!-- Mensaje cuando no hay datos -->
-<p *ngIf="historyData.length === 0" class="text-center text-gray-500 mt-4">No se ha realizado ninguna conversión.</p>
+<p *ngIf="historyData.length === 0" class="text-center text-gray-500 mt-4">No data yet.</p>
 

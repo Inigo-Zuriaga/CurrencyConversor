@@ -2,7 +2,6 @@
     <!-- Header Section -->
     <header class="text-center py-10">
       <h1 class="text-4xl font-extrabold text-yellow-100 mb-4">Welcome to <span class="yellow-100">Currency Conversor</span></h1>
-      <p *ngIf="!isLoged" class="text-lg font-semibold">Registrate o Inicia sesión para realizar la conversión</p>
     </header>
 
     <!-- Features Section -->
@@ -28,8 +27,8 @@
                     <path d="M20 21a8 8 0 0 0-16 0"></path>
                 </svg>
             </div>
-            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Login for Extra Benefits</h3>
-            <p class="text-gray-600 text-center">Create an account to access personalized features and a seamless experience.</p>
+            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Login to access extra benefits</h3>
+            <p class="text-gray-600 text-center">Be able to see your conversions history and track coins value evolution</p>
         </div>
       </div>
 
@@ -40,15 +39,15 @@
         </div>
         <h3 class="text-xl font-semibold text-indigo-600 mb-2">Conversion History</h3>
         <p *ngIf="!isLoged" class="text-gray-600 text-center">Track your previous conversions and easily revisit them anytime.</p>
-        <button *ngIf="isLoged" routerLink="/history" class="bg-green-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-500 transition">Visualiza tu historial!</button>
+        <button *ngIf="isLoged" routerLink="/history" class="bg-green-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-500 transition">Check your history</button>
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class=" text-center space-x-10 items-center mt-10 mb-10 ">
-      <p *ngIf="!isLoged" class="text-lg text-white2 mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
-      <a *ngIf="isLoged" routerLink="/conversor" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Conversor</a>
-      <a *ngIf="!isLoged" routerLink="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-bold px-5 py-2">Go to the Login</a>
+    <section class=" text-center justify-center space-x-11 items-center mt-10 mb-10">
+      <p  class="text-lg text-white2 mb-4 font-semibold">Join thousands of users who trust us for their currency needs.</p>
+      <a href="/conversor" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-regularb font-bold px-5 py-2">Go to the Conversor</a>
+      <a *ngIf="!isLoged" href="/login" class="bg-primaryRed text-white p-2 rounded hover:bg-red-900 font-bold px-5 py-2">Go to the Login</a>
     </section>
   </div>
 

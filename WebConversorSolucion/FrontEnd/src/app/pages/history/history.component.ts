@@ -75,7 +75,7 @@ crearPdf(){
         const a = document.createElement('a');
         a.href = url;
         this.email= this.authService.getUserEmail();
-        a.download = 'HistorialConversiones.pdf'; // Nombre del archivo
+        a.download = 'conversionHistory.pdf'; // Nombre del archivo
         a.click();
         window.URL.revokeObjectURL(url);
       }
@@ -86,14 +86,14 @@ crearPdf(){
 
 
     Swal.fire({
-      title: "Estas seguro?",
-      text: "Se borrara el registro!",
+      title: "Are you sure you what to delete it?",
+      // text: "Se borrara el registro!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      cancelButtonText: "Cancelar",
-      confirmButtonText: "Confirmar"
+      cancelButtonText: "Delete",
+      confirmButtonText: "Cancel"
     }).then((result:any) => {
 
       if (result.isConfirmed) {
