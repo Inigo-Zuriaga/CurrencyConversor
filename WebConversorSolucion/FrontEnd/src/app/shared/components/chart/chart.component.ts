@@ -1,5 +1,5 @@
-import { Component,OnInit,ChangeDetectorRef } from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-chart',
@@ -7,17 +7,21 @@ import {AuthService} from '../../../services/auth.service';
   styleUrl: './chart.component.css'
 })
 export class ChartComponent implements OnInit {
-
   data: any;
   options: any;
   toCoins: string[] = [];
-
   coinCount: { [key: string]: number } = {};
+  accessToken: string | null = null;
 
-  constructor( private authService: AuthService, private cd: ChangeDetectorRef) {
-  }
+  constructor(private authService: AuthService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.accessToken = this.authService.getAccessToken(); // Obtener el accessToken desde el AuthService
+
+    if (!this.accessToken) {
+      console.warn("Access token not available. Chart will not be initialized.");
+      return; // Detener la ejecución si no hay token
+    }
 
     this.extractAndCountCoins();
   }
@@ -36,24 +40,16 @@ export class ChartComponent implements OnInit {
           backgroundColor: backgroundColor.slice(0, labels.length), // Ensure the number of colors matches the number of labels
         }
       ]
-    }
+    };
   }
 
-  convertions: any[] = []
-  extractAndCountCoins(){
-
+  convertions: any[] = [];
+  extractAndCountCoins() {
     this.authService.viewHistory(this.authService.getUserEmail()).subscribe(
       (data) => {
-
         this.convertions = data;
 
-        console.log("Datos recibidos2222:", this.convertions);
-        // console.log("Primera conversión:", this.prueba[0]);
-
-        console.log("CONVERSIONS ARRAY: ", this.convertions);
-
-        this.convertions.forEach(prueba => {
-
+        this.convertions.forEach((prueba) => {
           const coin = prueba.toCoin;
           // Almacenar el coin en el array
           this.toCoins.push(coin);
@@ -66,15 +62,12 @@ export class ChartComponent implements OnInit {
           }
         });
 
-        console.log("LAS MONEDAS :",this.coinCount);
+        console.log("LAS MONEDAS :", this.coinCount);
         this.initChart();
       },
       (error) => {
-        console.error("Error mandar las monedas:", error);
+        console.error("Error al mandar las monedas:", error);
       }
-    )
-
-
+    );
   }
-
-}
+};

@@ -3,7 +3,6 @@ import {AuthService} from '../../../services/auth.service';
 import {Iuser} from '../../../Interfaces/iuser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {EmailService} from '../../../services/email.service';
 
 @Component({
   selector: 'app-register',
@@ -23,8 +22,7 @@ export class RegisterComponent/* implements OnInit*/{
   }
   selectedPicture: string = '';
   // Constructor que inyecta el AuthService y FormBuilder para construir el formulario
-  constructor(private authService: AuthService,private fb: FormBuilder,
-              private route:Router,private emailService:EmailService) {
+  constructor(private authService: AuthService,private fb: FormBuilder,private route:Router) {
     // definir la estructura del form con sus campos y validaciones
     this.loginForm = this.fb.group({
       name: ['', Validators.required],
@@ -48,14 +46,6 @@ export class RegisterComponent/* implements OnInit*/{
     )
       .subscribe(
         (data) => {
-          this.emailService.sendRegisterEmail(this.loginForm.value.email).subscribe(
-            (data) => {
-              console.log("Respuesta del backend:", data);
-            },
-            (error) => {
-              console.error("Error en el envio del email:", error);
-            }
-          )
           this.route.navigate(['/'])
       });
   }

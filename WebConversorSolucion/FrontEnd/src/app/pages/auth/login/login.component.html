@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md font-regularb my-10">
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md font-regularb my-10">  
       <h2 class="text-2xl font-semibold text-gray-700 mb-4">User login</h2>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
@@ -12,7 +12,7 @@
           Email is mandatory and MUST be valid.
         </div>
       </div>
-
+      
       <!-- Campo de Contraseña -->
       <div>
         <label for="password" class="block text-sm font-medium ">Password</label>
@@ -31,7 +31,7 @@
         <!-- Mostrar mensaje de contraseña incorrecta -->
         <div *ngIf="loginForm.get('password')?.hasError('incorrectPassword')"
             class="text-red-900 font-bold text-sm mt-1">
-          The password or enail is incorrect or doesnt exist.
+          The password is incorrect.
         </div>
       </div>
 

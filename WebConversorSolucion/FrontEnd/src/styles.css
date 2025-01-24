@@ -27,14 +27,14 @@ main {
   --font-barlowsemibold: 'Barlow', sans-serif;
   --font-barlowbold: 'Barlow', sans-serif;
 
-  /*--background: linear-gradient(*/
-  /*  45deg,*/
-  /*  rgba(30, 58, 138, 0.5),*/
-  /*  rgba(59, 130, 246, 0.5),*/
-  /*  rgba(147, 51, 234, 0.5),*/
-  /*  rgba(244, 63, 94, 0.5)*/
-  /*);*/
-  --background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(27,90,205,1) 100%);
+  --background: linear-gradient(
+    45deg,
+    rgba(30, 58, 138, 0.5),
+    rgba(59, 130, 246, 0.5),
+    rgba(147, 51, 234, 0.5),
+    rgba(244, 63, 94, 0.5)
+  );
+  /* --background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(27,90,205,1) 100%); */
 
   --background-size: 300% 300%;
   --animation-gradient: gradientAnimation 8s ease infinite;
@@ -64,20 +64,20 @@ body {
   display: flex;
   flex-direction: column;
 
-/*  background: linear-gradient(*/
-/*  45deg,*/
-/*  rgba(30, 58, 138, 0.5),*/
-/*  rgba(59, 130, 246, 0.5),*/
-/*  rgba(147, 51, 234, 0.5),*/
-/*  rgba(244, 63, 94, 0.5)*/
-/*);*/
-/*  background: rgb(1,0,17);*/
-/*  background: linear-gradient(0deg, rgba(1,0,17,1) 8%, rgb(35, 35, 248) 88%, rgb(64, 66, 223) 97%);*/
+  background: linear-gradient(
+    45deg,
+    rgba(30, 58, 138, 0.5),
+    rgba(59, 130, 246, 0.5),
+    rgba(147, 51, 234, 0.5),
+    rgba(244, 63, 94, 0.5)
+  );
+  /* background: rgb(1,0,17); */
+  /* background: linear-gradient(0deg, rgba(1,0,17,1) 8%, rgb(35, 35, 248) 88%, rgb(64, 66, 223) 97%); */
 
-  /*background: rgb(0,0,0);*/
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(27,90,205,1) 100%);
-  /*background-size: 300% 300%;*/
-  /*animation: gradientAnimation 8s ease infinite;*/
+  /* background: rgb(0,0,0); */
+  /* background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(27,90,205,1) 100%); */
+  background-size: 300% 300%;
+  animation: gradientAnimation 8s ease infinite;
 }
 
 /* Animación para el degradado */

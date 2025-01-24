@@ -1,9 +1,9 @@
 <table *ngIf="displayedData.length > 0" class="w-[90%]  max-w-6xl mx-auto border border-gray-300 rounded-lg shadow-lg bg-amber-100">
   <thead>
   <tr>
-    <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100 bg-opacity-25">Dinero Cambiado</th>
-    <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100 bg-opacity-25" >Cantidad Obtenida</th>
-    <th class="py-2 px-6 border-b text-left text-gray-600 font-semibold bg-yellow-100 bg-opacity-25">Fecha</th>
+    <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100 bg-opacity-25">Exchanged Money</th>
+    <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold bg-yellow-100 bg-opacity-25" >Amount Received</th>
+    <th class="py-2 px-6 border-b text-left text-gray-600 font-semibold bg-yellow-100 bg-opacity-25">Date</th>
   </tr>
   </thead>
   <tbody>
@@ -14,4 +14,4 @@
   </tr>
   </tbody>
 </table>
-<p *ngIf="displayedData.length === 0" class="text-center text-gray-500 mt-4">No hay datos disponibles.</p>
+<p *ngIf="displayedData.length === 0" class=" mb-5 text-center text-gray-500 mt-4">No data yet.</p>

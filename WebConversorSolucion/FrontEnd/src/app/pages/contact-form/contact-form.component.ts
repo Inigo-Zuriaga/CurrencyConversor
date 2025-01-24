@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
-import {EmailService} from '../../../services/email.service';
+import {EmailService} from '../../services/email.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -42,7 +42,7 @@ export class ContactFormComponent implements OnInit {
         console.log("Respuesta del backend:", data);
 
         Swal.fire({
-          title: "Email Enviado",
+          title: "Email sent successfully",
           text: "",
           icon: "success",
           showCancelButton: false,
