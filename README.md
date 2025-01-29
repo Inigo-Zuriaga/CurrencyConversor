@@ -1,20 +1,34 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# 🌍 Currency Converter  
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Currency Converter is a **web application** that allows users to **convert currencies** and **analyze historical exchange rates** using interactive charts. It’s built with **Angular and .NET Core**, and hosted on **Azure** for scalability.  
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## 🛠️ **Tech Stack**  
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+| **Category**  | **Technology**  |
+|--------------|----------------|
+| 🌐 Frontend | Angular, Tailwind CSS |
+| ⚙️ Backend  | .NET Core API  |
+| 📊 Charts   | ng2-charts      |
+| 🔄 API      | Alpha Vantage   |
+| 🗄️ Database | SQL Server     |
+| ☁️ Hosting  | Microsoft Azure |
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## ✨ **Features**  
+✅ **Convert between 150+ currencies** in real time.  
+📈 **Visualize historical trends** using interactive charts.  
+🚀 **Fast & scalable**, hosted on Microsoft Azure.  
+
+## 🚀 **Getting Started**  
+
+### **Prerequisites**  
+- **Node.js** (v16 or above)  
+- **Angular CLI** (v15 or above)  
+- **.NET SDK**  
+- **SQL Server**  
+
+### **Installation**  
+
+1. **Clone the repository:**  
+   ```bash
+   git clone https://github.com/Inigo-Zuriaga/Currency-Converter.git
+   cd Currency-Converter
