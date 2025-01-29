@@ -80,4 +80,3 @@ export class HeaderComponent implements OnInit,OnDestroy{
     this.isMenuOpen = !this.isMenuOpen;
   }
 }
-

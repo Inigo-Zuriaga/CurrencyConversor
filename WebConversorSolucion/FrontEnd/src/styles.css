@@ -38,16 +38,6 @@ main {
 
   --background-size: 300% 300%;
   --animation-gradient: gradientAnimation 8s ease infinite;
-
-  /*canvas {*/
-  /*  position : absolute;*/
-  /*  z-index : -1;*/
-  /*  overflow: hidden;*/
-  /*  width:100vw;*/
-  /*  height:100vh;*/
-  /*  background-color:black;*/
-  /*}*/
-
 }
 
 body {
@@ -55,7 +45,6 @@ body {
   background-size: cover;
   background-color: khaki;
 }
-
 
 body {
   margin: 0;

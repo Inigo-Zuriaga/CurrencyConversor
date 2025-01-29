@@ -8,14 +8,29 @@ import { ChartService } from '../services/chart.service';
 })
 export class CurrencyChartComponent implements OnInit, OnChanges {
   @Input() lineChartData: any;
-
+  // lineChartData: any = {
+  //   labels: [],  // Aquí van las fechas
+  //   datasets: [
+  //     {
+  //       data: [],  // Aquí van las tasas de cambio
+  //       label: 'Exchange Rate',
+  //       borderColor: '#00f',
+  //       fill: false,
+  //       tension: 0.1,
+  //     },
+  //   ],
+  // };
 
   constructor(private chartService: ChartService,private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     console.log('Initial chart data:', this.lineChartData);
   }
-
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes['lineChartData']) {
+  //     console.log('Chart data updated:', this.lineChartData);
+  //   }
+  // }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['lineChartData']) {
       console.log('Chart data has changed:', this.lineChartData);
@@ -24,6 +39,9 @@ export class CurrencyChartComponent implements OnInit, OnChanges {
     }
   }
 
+  // ngOnInit() {
+  //   this.loadExchangeHistory();
+  // }
 
   loadExchangeHistory() {
     const fromCurrency = 'USD';  // Ajusta según lo necesites
